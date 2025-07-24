@@ -390,6 +390,113 @@ main {
     border-radius: 2px;
     transition: all 0.3s ease;
 }
+/* ADD THIS MOBILE RESPONSIVE CODE RIGHT AFTER LINE 195 */
+
+/* MOBILE RESPONSIVE NAVIGATION */
+@media (max-width: 968px) {
+    /* Show hamburger menu */
+    .menu-icon {
+        display: flex;
+    }
+    
+    .menu-icon i {
+        font-size: 1.5rem;
+        color: var(--text-dark);
+    }
+    
+    /* Hide accessibility controls on mobile */
+    .accessibility-controls {
+        display: none;
+    }
+    
+    /* Adjust header container */
+    header .container {
+        padding: 0 20px;
+        position: relative;
+    }
+    
+    /* Style mobile navigation */
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100vw;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 20px 0;
+        gap: 0;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid var(--glass-border);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 999;
+    }
+    
+    /* Show menu when checkbox is checked */
+    #menu-toggle:checked ~ .nav-links {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Style mobile menu items */
+    .nav-links li {
+        width: 100%;
+        padding: 0;
+    }
+    
+    .nav-links a {
+        display: block;
+        padding: 15px 30px;
+        width: 100%;
+        text-align: left;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        font-size: 1.1rem;
+    }
+    
+    .nav-links a::after {
+        display: none;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a.active {
+        background: var(--glass-bg);
+        color: var(--primary-purple);
+    }
+    
+    /* Adjust logo for mobile */
+    .logo-container h1 {
+        font-size: 1.4rem;
+    }
+    
+    /* Adjust body padding for mobile */
+    body {
+        padding-top: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    header .container {
+        padding: 0 15px;
+    }
+    
+    .logo-container h1 {
+        font-size: 1.2rem;
+    }
+    
+    .nav-links {
+        left: 0;
+        width: 100vw;
+    }
+    
+    .nav-links a {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+}
 
 /* Accessibility Controls */
 .accessibility-controls {
@@ -2755,91 +2862,5 @@ pre code {
     .form-group input,
     .form-group select {
         -webkit-appearance: none;
-    }
-}
-/* Mobile Navigation Fix - Add this to your style.css */
-
-/* Hide the checkbox input */
-#menu-toggle {
-    display: none;
-}
-
-/* Hide hamburger menu icon on desktop */
-.menu-icon {
-    display: none;
-    color: #fff;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 10px;
-}
-
-/* Mobile styles - Apply when screen is 768px or smaller */
-@media (max-width: 768px) {
-    
-    /* Show hamburger menu icon on mobile */
-    .menu-icon {
-        display: block;
-    }
-    
-    /* Style the navigation links for mobile */
-    .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100vw;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        flex-direction: column;
-        padding: 1rem 0;
-        transform: translateX(-100%); /* Hide menu by default */
-        transition: transform 0.3s ease;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        z-index: 999;
-    }
-    
-    /* Show menu when checkbox is checked */
-    #menu-toggle:checked ~ .nav-links {
-        transform: translateX(0); /* Show menu */
-    }
-    
-    /* Style individual menu items on mobile */
-    .nav-links li {
-        padding: 0 2rem;
-        width: 100%;
-    }
-    
-    .nav-links a {
-        display: block;
-        padding: 1rem;
-        border-radius: 0;
-        width: 100%;
-        text-align: left;
-    }
-    
-    /* Make header container responsive */
-    header .container {
-        flex-wrap: wrap;
-        position: relative;
-    }
-    
-    /* Hide accessibility controls on mobile if needed */
-    .accessibility-controls {
-        display: none;
-    }
-    
-    /* Adjust logo size on mobile */
-    .logo-container h1 {
-        font-size: 1.2rem;
-    }
-}
-
-/* Extra small screens */
-@media (max-width: 480px) {
-    .nav-links {
-        left: -20px;
-        width: calc(100vw + 40px);
-    }
-    
-    .logo-container h1 {
-        font-size: 1rem;
     }
 }
