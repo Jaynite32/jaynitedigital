@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - SkillSavvy GH | Premium Digital Solutions in Ghana</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+/* SkillSavvy GH - Premium Design System */
+:root {
+    /* Primary Brand Colors */
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    --gold-gradient: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+    
+    /* Core Colors */
+    --primary-purple: #667eea;
+    --primary-blue: #4facfe;
+    --accent-gold: #f7971e;
+    --text-dark: #2c3e50;
+    --text-light: #7f8c8d;
+    --white: #ffffff;
+    --black: #000000;
+    --success: #00d4aa;
+    --warning: #ffb74d;
+    --error: #ff6b6b;
+    
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --dark-glass-bg: rgba(0, 0, 0, 0.1);
+    
+    /* Spacing */
+    --section-padding: 120px 0;
+    --container-padding: 0 20px;
+    --border-radius: 20px;
+    --border-radius-small: 12px;
+    
+    /* Typography */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    /* Shadows */
+    --shadow-small: 0 2px 20px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 8px 40px rgba(0, 0, 0, 0.12);
+    --shadow-large: 0 16px 60px rgba(0, 0, 0, 0.15);
+    --shadow-glow: 0 0 40px rgba(102, 126, 234, 0.4);
+}
+
+/* Global Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.7;
+    color: var(--text-dark);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    overflow-x: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    padding-top: 90px;
+}
+
+/* Animated Background Particles */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.3) 0%, transparent 50%);
+    z-index: -2;
+    animation: particleMove 20s ease-in-out infinite;
+}
+
+@keyframes particleMove {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(30px, -30px) rotate(120deg); }
+    66% { transform: translate(-20px, 20px) rotate(240deg); }
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+
+p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 80px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Skip Link for Accessibility */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 20px;
+    background: var(--text-dark);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: var(--border-radius-small);
+    z-index: 10000;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 20px;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 20px 0;
+    transition: all 0.3s ease;
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-small);
+}
+
+.logo-container h1 {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--text-dark);
+    font-weight: 500;
+    padding: 10px 0;
+    position: relative;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: var(--accent-gradient);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary-purple);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+}
+
+.accessibility-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.accessibility-controls button {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-dark);
+    padding: 8px 12px;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+}
+
+.accessibility-controls button:hover {
+    background: var(--primary-gradient);
+    color: var(--white);
+    border-color: transparent;
+}
+
+/* Services Hero Section */
+.services-hero {
+    background: var(--primary-gradient);
+    color: var(--white);
+    text-align: center;
+    padding: 150px 0 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.services-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.1)"/><stop offset="100%" style="stop-color:rgba(255,255,255,0)"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="300" cy="700" r="120" fill="url(%23a)"/><circle cx="700" cy="800" r="80" fill="url(%23a)"/></svg>');
+    opacity: 0.1;
+    animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.services-hero h1 {
+    color: var(--white);
+    margin-bottom: 2rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.services-hero p {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+.services-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--glass-border);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--accent-gold);
+    display: block;
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Service Categories */
+.service-categories {
+    padding: var(--section-padding);
+    background: var(--white);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.section-header h2 {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+}
+
+.section-header p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Service Grid */
+.service-category {
+    margin-bottom: 8rem;
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--glass-border);
+}
+
+.category-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--primary-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.category-info h3 {
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.category-info p {
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+/* Service Items */
+.service-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.service-item {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--accent-gradient);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.service-item:hover::before {
+    transform: scaleX(1);
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-large);
+}
+
+.service-item-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.service-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-gradient);
+    border-radius: var(--border-radius-small);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.5rem;
+}
+
+.service-item h4 {
+    color: var(--text-dark);
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.service-description {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.service-features {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.service-features li {
+    color: var(--text-light);
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.service-features li::before {
+    content: '\f058';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--success);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.service-pricing {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius-small);
+    border: 1px solid var(--glass-border);
+}
+
+.price-info {
+    flex: 1;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: 800;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.price-note {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.service-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary-gradient);
+    color: var(--white);
+    padding: 12px 24px;
+    border-radius: var(--border-radius-small);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.service-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* CTA Section */
+.cta-section {
+    padding: var(--section-padding);
+    background: var(--dark-gradient);
+    color: var(--white);
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-section h2 {
+    color: var(--white);
+    margin-bottom: 2rem;
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 3rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 18px 36px;
+    border-radius: var(--border-radius-small);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.cta-btn-primary {
+    background: var(--accent-gradient);
+    color: var(--white);
+}
+
+.cta-btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-large);
+}
+
+/* Footer */
+footer {
+    background: var(--text-dark);
+    color: var(--white);
+    padding: 60px 0 30px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-section h3 {
+    color: var(--white);
+    margin-bottom: 1.5rem;
+}
+
+.footer-section p,
+.footer-section li {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-section ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: var(--primary-purple);
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icons a {
+    width: 45px;
+    height: 45px;
+    background: var(--primary-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .menu-icon {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 4px;
+    }
+    
+    .menu-icon i {
+        font-size: 1.5rem;
+        color: var(--text-dark);
+    }
+    
+    .services-hero {
+        padding: 120px 0 80px;
+    }
+    
+    .services-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .category-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .service-items {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-pricing {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="SkillSavvy GH Logo" class="logo-img">
+                <h1>SKILLSAVVY GH</h1>
+            </div>
+            <nav id="main-nav" aria-label="Main Navigation">
+                <input type="checkbox" id="menu-toggle">
+                <label for="menu-toggle" class="menu-icon">
+                    <i class="fas fa-bars"></i>
+                </label>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="accessibility-controls">
+                <button id="increase-text" aria-label="Increase text size" title="Increase text size">A+</button>
+                <button id="decrease-text" aria-label="Decrease text size" title="Decrease text size">A-</button>
+                <button id="toggle-contrast" aria-label="Toggle high contrast mode" title="Toggle high contrast mode">
+                    <i class="fas fa-adjust"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Hero Section -->
+    <section class="services-hero">
+        <div class="container">
+            <h1>Our Premium Services</h1>
+            <p>Comprehensive digital solutions tailored for Ghana's growing tech landscape. From web development to cybersecurity, we deliver excellence in every project.</p>
+            
+            <div class="services-stats">
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Projects Completed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">250+</span>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Service Categories</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Support Available</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Digital Development Services -->
+        <section class="service-categories" id="web-development">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Digital Development & Design</h2>
+                    <p>Building the future of digital experiences with modern technologies and user-centered design principles.</p>
+                </div>
+
+                <div class="service-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3>Development & Design Solutions</h3>
+                            <p>From concept to deployment, we create digital experiences that drive results and engage users.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-items">
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-laptop-code"></i>
+                                </div>
+                                <h4>Web Development</h4>
+                            </div>
+                            <p class="service-description">
+                                Modern, responsive websites and web applications built with cutting-edge technologies including React, Node.js, and WordPress. Perfect for businesses looking to establish a strong online presence.
+                            </p>
+                            <ul class="service-features">
+                                <li>Responsive design for all devices</li>
+                                <li>SEO optimized structure</li>
+                                <li>Fast loading speeds</li>
+                                <li>CMS integration</li>
+                                <li>E-commerce functionality</li>
+                                <li>Custom web applications</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">From GH₵ 2,500</div>
+                                    <div class="price-note">Starting price for basic websites</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+
+                        <div class="service-item" id="ui-ux-design">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <h4>UI/UX Design</h4>
+                            </div>
+                            <p class="service-description">
+                                User-centered design that creates memorable and engaging digital experiences. We focus on usability, accessibility, and aesthetic appeal to ensure your users love interacting with your product.
+                            </p>
+                            <ul class="service-features">
+                                <li>User research and personas</li>
+                                <li>Wireframing and prototyping</li>
+                                <li>Mobile-first design approach</li>
+                                <li>Accessibility compliance</li>
+                                <li>Brand identity design</li>
+                                <li>Design system creation</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">From GH₵ 1,800</div>
+                                    <div class="price-note">Starting price for design projects</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-cloud"></i>
+                                </div>
+                                <h4>Cloud Solutions</h4>
+                            </div>
+                            <p class="service-description">
+                                Scalable cloud infrastructure and migration services to modernize your business operations. We help you leverage the power of cloud computing for better performance and cost efficiency.
+                            </p>
+                            <ul class="service-features">
+                                <li>Cloud migration planning</li>
+                                <li>AWS & Google Cloud setup</li>
+                                <li>Database management</li>
+                                <li>Backup and disaster recovery</li>
+                                <li>Performance optimization</li>
+                                <li>24/7 monitoring</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">From GH₵ 3,200</div>
+                                    <div class="price-note">Starting price for cloud setup</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security & Protection Services -->
+        <section class="service-categories" id="cybersecurity">
+            <div class="container">
+                <div class="service-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3>Cybersecurity & Protection</h3>
+                            <p>Comprehensive security solutions to protect your digital assets and ensure business continuity in an evolving threat landscape.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-items">
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <h4>Security Assessment</h4>
+                            </div>
+                            <p class="service-description">
+                                Comprehensive security audits and vulnerability assessments to identify and address potential threats before they become problems.
+                            </p>
+                            <ul class="service-features">
+                                <li>Network security analysis</li>
+                                <li>Penetration testing</li>
+                                <li>Vulnerability scanning</li>
+                                <li>Security policy development</li>
+                                <li>Compliance auditing</li>
+                                <li>Risk assessment reports</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">From GH₵ 2,800</div>
+                                    <div class="price-note">Per security assessment</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-user-shield"></i>
+                                </div>
+                                <h4>Data Protection</h4>
+                            </div>
+                            <p class="service-description">
+                                Advanced data protection strategies including encryption, backup solutions, and privacy compliance to keep your sensitive information secure.
+                            </p>
+                            <ul class="service-features">
+                                <li>Data encryption services</li>
+                                <li>Secure backup solutions</li>
+                                <li>GDPR compliance</li>
+                                <li>Access control systems</li>
+                                <li>Data recovery planning</li>
+                                <li>Privacy policy development</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">From GH₵ 2,200</div>
+                                    <div class="price-note">Per protection package</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marketing & Promotion Services -->
+        <section class="service-categories" id="digital-marketing">
+            <div class="container">
+                <div class="service-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3>Digital Marketing & Promotion</h3>
+                            <p>Strategic marketing solutions to boost your online presence and reach your target audience effectively across digital platforms.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-items">
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <h4>SEO & Content Strategy</h4>
+                            </div>
+                            <p class="service-description">
+                                Improve your search engine rankings and create compelling content that drives organic traffic and engages your audience.
+                            </p>
+                            <ul class="service-features">
+                                <li>Keyword research & analysis</li>
+                                <li>On-page SEO optimization</li>
+                                <li>Content creation & strategy</li>
+                                <li>Local SEO for Ghana market</li>
+                                <li>Google Analytics setup</li>
+                                <li>Performance tracking & reporting</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">From GH₵ 1,500</div>
+                                    <div class="price-note">Monthly SEO package</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-share-alt"></i>
+                                </div>
+                                <h4>Social Media Management</h4>
+                            </div>
+                            <p class="service-description">
+                                Comprehensive social media strategy and management to build your brand presence and engage with your audience across platforms.
+                            </p>
+                            <ul class="service-features">
+                                <li>Social media strategy development</li>
+                                <li>Content creation & scheduling</li>
+                                <li>Community management</li>
+                                <li>Paid advertising campaigns</li>
+                                <li>Influencer collaboration</li>
+                                <li>Analytics & performance reporting</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">From GH₵ 1,200</div>
+                                    <div class="price-note">Monthly management fee</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Print & Publications Services -->
+        <section class="service-categories" id="print-publications">
+            <div class="container">
+                <div class="service-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-print"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3>Print & Publications</h3>
+                            <p>Professional printing services, book printing, large format printing, and graphic design for all your publication needs.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-items">
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <h4>Book & Magazine Printing</h4>
+                            </div>
+                            <p class="service-description">
+                                High-quality book printing services including novels, textbooks, magazines, and catalogs with various binding options.
+                            </p>
+                            <ul class="service-features">
+                                <li>Perfect binding & saddle stitching</li>
+                                <li>Full-color and black & white printing</li>
+                                <li>Custom cover design</li>
+                                <li>ISBN registration assistance</li>
+                                <li>Various paper quality options</li>
+                                <li>Paper cutting</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">From GH₵ 8.00</div>
+                                    <div class="price-note">Per book (minimum 10 copies)</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-palette"></i>
+                                </div>
+                                <h4>Graphic Design & Branding</h4>
+                            </div>
+                            <p class="service-description">
+                                Creative graphic design services including logos, branding materials, flyers, posters, and marketing collateral.
+                            </p>
+                            <ul class="service-features">
+                                <li>Logo design & brand identity</li>
+                                <li>Business cards & letterheads</li>
+                                <li>Flyers & poster design</li>
+                                <li>Brochure & catalog design</li>
+                                <li>Billboard & banner design</li>
+                                <li>Package design & labels</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">From GH₵ 150</div>
+                                    <div class="price-note">Per design project</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Services -->
+        <section class="service-categories" id="form-services">
+            <div class="container">
+                <div class="service-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3>Form Services & Applications</h3>
+                            <p>University forms, passport applications, WAEC checkers, and results checking services to simplify your administrative tasks.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-items">
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h4>University Applications</h4>
+                            </div>
+                            <p class="service-description">
+                                Complete assistance with university application forms, admission processes, and academic document preparation for Ghanaian and international institutions.
+                            </p>
+                            <ul class="service-features">
+                                <li>University of Ghana applications</li>
+                                <li>KNUST, UCC, UDS, UEW etc admission forms</li>
+                                <li>UPSA, KAAF, STU, CUCG etc application assistance</li>
+                                <li>International university applications</li>
+                                <li>Scholarship application support</li>
+                                <li>Document verification & processing</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">From GH₵ 80</div>
+                                    <div class="price-note">Per application form</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-clipboard-check"></i>
+                                </div>
+                                <h4>Results & Verification</h4>
+                            </div>
+                            <p class="service-description">
+                                WAEC results checking, BECE results verification, and other examination result services with fast and reliable processing.
+                            </p>
+                            <ul class="service-features">
+                                <li>WAEC results checking</li>
+                                <li>BECE results verification</li>
+                                <li>University exam results</li>
+                                <li>Professional exam results</li>
+                                <li>Certificate verification</li>
+                                <li>Academic transcript requests</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">From GH₵ 25</div>
+                                    <div class="price-note">Per results check</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Delivery Services -->
+        <section class="service-categories" id="delivery-services">
+            <div class="container">
+                <div class="service-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3>Delivery & Logistics</h3>
+                            <p>Fast and reliable delivery of documents, prints, and other materials across Ghana with tracking and insurance options.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-items">
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-motorcycle"></i>
+                                </div>
+                                <h4>Express Delivery</h4>
+                            </div>
+                            <p class="service-description">
+                                Same-day and next-day delivery services for urgent documents, prints, and packages within Accra, Kumasi, and major cities.
+                            </p>
+                            <ul class="service-features">
+                                <li>Same-day delivery (within city)</li>
+                                <li>Next-day delivery (intercity)</li>
+                                <li>Real-time tracking</li>
+                                <li>Package insurance</li>
+                                <li>Proof of delivery</li>
+                                <li>Cash on delivery options</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">From GH₵ 15</div>
+                                    <div class="price-note">Within city delivery</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-box"></i>
+                                </div>
+                                <h4>Bulk Delivery</h4>
+                            </div>
+                            <p class="service-description">
+                                Specialized delivery services for large quantities of printed materials, promotional items, and business supplies across Ghana.
+                            </p>
+                            <ul class="service-features">
+                                <li>Bulk document delivery</li>
+                                <li>Promotional material distribution</li>
+                                <li>Event material transport</li>
+                                <li>Custom packaging solutions</li>
+                                <li>Scheduled delivery options</li>
+                                <li>Volume discounts available</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">Contact Us</div>
+                                    <div class="price-note">Custom pricing for bulk orders</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tutoring Services -->
+        <section class="service-categories" id="tutoring-services">
+            <div class="container">
+                <div class="service-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3>Tutoring & Skills Development</h3>
+                            <p>Professional tutoring in various subjects and technical skills development to help students and professionals excel.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-items">
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-laptop"></i>
+                                </div>
+                                <h4>Technical Skills Training</h4>
+                            </div>
+                            <p class="service-description">
+                                Hands-on training in programming, web development, cybersecurity, and other technical skills for career advancement.
+                            </p>
+                            <ul class="service-features">
+                                <li>Web development (HTML, CSS, JavaScript)</li>
+                                <li>Programming languages (Python, Java)</li>
+                                <li>Cybersecurity fundamentals</li>
+                                <li>Database management</li>
+                                <li>Digital marketing skills</li>
+                                <li>Practical project-based learning</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">From GH₵ 200</div>
+                                    <div class="price-note">Per session (2 hours)</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-calculator"></i>
+                                </div>
+                                <h4>Academic Tutoring</h4>
+                            </div>
+                            <p class="service-description">
+                                Personalized tutoring for Computer science/IT, and other academic subjects for students from JHS to university level.
+                            </p>
+                            <ul class="service-features">
+                                <li>Computing / IT</li>
+                                <li>Creative arts</li>
+                                <li>Computer Science subjects</li>
+                                <li>Business studies</li>
+                                <li>Exam preparation support</li>
+                                <li>Free WAEC past questions</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">From GH₵ 120</div>
+                                    <div class="price-note">Per session (1.5 hours)</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Picture Frames & Citations -->
+        <section class="service-categories" id="picture-frames">
+            <div class="container">
+                <div class="service-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3>Picture Frames & Citations</h3>
+                            <p>Custom picture frames, certificates, citations, and awards for all occasions including graduations, achievements, and special events.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-items">
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-images"></i>
+                                </div>
+                                <h4>Custom Picture Frames</h4>
+                            </div>
+                            <p class="service-description">
+                                Professional custom framing services for photographs, certificates, artwork, and memorabilia with various frame styles and matting options.
+                            </p>
+                            <ul class="service-features">
+                                <li>Various frame materials & styles</li>
+                                <li>Professional matting options</li>
+                                <li>UV-protective glass</li>
+                                <li>Custom sizing available</li>
+                                <li>Multiple finish options</li>
+                                <li>Quick turnaround time</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">From GH₵ 45</div>
+                                    <div class="price-note">Per frame (8x10 standard)</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <h4>Citations & Awards</h4>
+                            </div>
+                            <p class="service-description">
+                                Professional design and printing of citations, awards, certificates, and recognition materials for corporate and personal achievements.
+                            </p>
+                            <ul class="service-features">
+                                <li>Custom citation design</li>
+                                <li>Award certificates</li>
+                                <li>Achievement recognition</li>
+                                <li>Corporate awards</li>
+                                <li>Graduation certificates</li>
+                                <li>Premium paper & finishes</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">From GH₵ 35</div>
+                                    <div class="price-note">Per citation/award</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tickets & Subtitles -->
+        <section class="service-categories" id="tickets-subtitles">
+            <div class="container">
+                <div class="service-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-ticket-alt"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3>Tickets & Subtitles</h3>
+                            <p>VIP Bus Tickets, Movies and Series Subtitles with professional quality and fast delivery across Ghana.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-items">
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-bus"></i>
+                                </div>
+                                <h4>VIP Bus Tickets</h4>
+                            </div>
+                            <p class="service-description">
+                                Convenient booking service for VIP bus tickets across Ghana with multiple operators and destinations available.
+                            </p>
+                            <ul class="service-features">
+                                <li>Multiple bus operators</li>
+                                <li>All major routes covered</li>
+                                <li>Online booking system</li>
+                                <li>Seat selection options</li>
+                                <li>Mobile ticket delivery</li>
+                                <li>24/7 booking support</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">Ticket Price + GH₵ 5</div>
+                                    <div class="price-note">Service fee per booking</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-video"></i>
+                                </div>
+                                <h4>Movie & Series Subtitles</h4>
+                            </div>
+                            <p class="service-description">
+                                Professional subtitle creation and translation services for movies, series, and video content in multiple languages.
+                            </p>
+                            <ul class="service-features">
+                                <li>English to local languages</li>
+                                <li>Twi, Ga, Ewe, Hausa subtitles</li>
+                                <li>Accurate timing sync</li>
+                                <li>Professional quality</li>
+                                <li>Fast turnaround</li>
+                                <li>Multiple format support</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">From GH₵ 80</div>
+                                    <div class="price-note">Per hour of content</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+   <!-- Video Production & Photography -->
+        <section class="service-categories" id="video-photography">
+            <div class="container">
+                <div class="service-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3>Video Production & Photography</h3>
+                            <p>Professional video production and photography services for weddings, funerals, birthdays, and special events across Ghana.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-items">
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                                <h4>Event Photography</h4>
+                            </div>
+                            <p class="service-description">
+                                Capture your precious moments with our professional photography services for weddings, birthdays, graduations, and corporate events.
+                            </p>
+                            <ul class="service-features">
+                                <li>Wedding photography packages</li>
+                                <li>Birthday & celebration shoots</li>
+                                <li>Corporate event coverage</li>
+                                <li>Portrait & family sessions</li>
+                                <li>High-resolution digital delivery</li>
+                                <li>Same-day preview gallery</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">From GH₵ 800</div>
+                                    <div class="price-note">Per event (4-6 hours)</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+
+                        <div class="service-item">
+                            <div class="service-item-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-film"></i>
+                                </div>
+                                <h4>Video Production</h4>
+                            </div>
+                            <p class="service-description">
+                                Professional videography services including wedding films, funeral documentaries, birthday celebrations, and promotional videos.
+                            </p>
+                            <ul class="service-features">
+                                <li>Wedding cinematography</li>
+                                <li>Funeral & memorial videos</li>
+                                <li>Birthday party highlights</li>
+                                <li>Corporate promotional videos</li>
+                                <li>Professional editing & color grading</li>
+                                <li>Multiple format delivery</li>
+                            </ul>
+                            <div class="service-pricing">
+                                <div class="price-info">
+                                    <div class="price">From GH₵ 1,200</div>
+                                    <div class="price-note">Per event with full editing</div>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="service-cta">
+                                <i class="fas fa-arrow-right"></i>
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+ <!-- Service Packages Section -->
+        <section class="service-packages" style="padding: 120px 0; background: var(--white);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Popular Service Packages</h2>
+                    <p>Comprehensive packages designed to meet common business needs with significant cost savings.</p>
+                </div>
+
+                <div class="packages-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; margin-top: 4rem;">
+                    <div class="package-card" style="background: var(--white); padding: 3rem 2.5rem; border-radius: var(--border-radius); box-shadow: var(--shadow-medium); position: relative; overflow: hidden; transition: all 0.4s ease;">
+                        <div class="package-badge" style="position: absolute; top: 20px; right: 20px; background: var(--success); color: var(--white); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Most Popular</div>
+                        <div class="package-icon" style="width: 80px; height: 80px; background: var(--primary-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 2rem; margin-bottom: 2rem;">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 style="color: var(--text-dark); margin-bottom: 1rem;">Startup Essentials</h3>
+                        <p style="color: var(--text-light); margin-bottom: 2rem;">Perfect for new businesses looking to establish a strong digital presence.</p>
+                        <div class="package-price" style="margin-bottom: 2rem;">
+                            <span style="font-size: 3rem; font-weight: 800; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">GH₵ 8,500</span>
+                            <span style="color: var(--text-light); text-decoration: line-through; margin-left: 1rem;">GH₵ 12,000</span>
+                        </div>
+                        <ul style="list-style: none; margin-bottom: 2rem;">
+                            <li style="color: var(--text-light); margin-bottom: 0.8rem; position: relative; padding-left: 2rem;"><i class="fas fa-check" style="color: var(--success); position: absolute; left: 0; top: 0;"></i>Professional Website Development</li>
+                            <li style="color: var(--text-light); margin-bottom: 0.8rem; position: relative; padding-left: 2rem;"><i class="fas fa-check" style="color: var(--success); position: absolute; left: 0; top: 0;"></i>Logo & Brand Identity Design</li>
+                            <li style="color: var(--text-light); margin-bottom: 0.8rem; position: relative; padding-left: 2rem;"><i class="fas fa-check" style="color: var(--success); position: absolute; left: 0; top: 0;"></i>Basic SEO Setup</li>
+                            <li style="color: var(--text-light); margin-bottom: 0.8rem; position: relative; padding-left: 2rem;"><i class="fas fa-check" style="color: var(--success); position: absolute; left: 0; top: 0;"></i>Social Media Graphics (10 posts)</li>
+                            <li style="color: var(--text-light); margin-bottom: 0.8rem; position: relative; padding-left: 2rem;"><i class="fas fa-check" style="color: var(--success); position: absolute; left: 0; top: 0;"></i>3 Months Free Hosting</li>
+                            <li style="color: var(--text-light); margin-bottom: 0.8rem; position: relative; padding-left: 2rem;"><i class="fas fa-check" style="color: var(--success); position: absolute; left: 0; top: 0;"></i>Basic Training Session</li>
+                        </ul>
+                        <a href="contact.html" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--primary-gradient); color: var(--white); padding: 15px 30px; border-radius: var(--border-radius-small); text-decoration: none; font-weight: 600; transition: all 0.3s ease; width: 100%; justify-content: center;">
+                            <i class="fas fa-arrow-right"></i>
+                            Choose Package
+                        </a>
+                    </div>
+
+                    <div class="package-card" style="background: var(--white); padding: 3rem 2.5rem; border-radius: var(--border-radius); box-shadow: var(--shadow-medium); position: relative; overflow: hidden; transition: all 0.4s ease;">
+                        <div class="package-icon" style="width: 80px; height: 80px; background: var(--secondary-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 2rem; margin-bottom: 2rem;">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 style="color: var(--text-dark); margin-bottom: 1rem;">Business Growth</h3>
+                        <p style="color: var(--text-light); margin-bottom: 2rem;">Comprehensive solutions for growing businesses ready to scale.</p>
+                        <div class="package-price" style="margin-bottom: 2rem;">
+                            <span style="font-size: 3rem; font-weight: 800; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">GH₵ 15,000</span>
+                            <span style="color: var(--text-light); text-decoration: line-through; margin-left: 1rem;">GH₵ 22,000</span>
+                        </div>
+                        <ul style="list-style: none; margin-bottom: 2rem;">
+                            <li style="color: var(--text-light); margin-bottom: 0.8rem; position: relative; padding-left: 2rem;"><i class="fas fa-check" style="color: var(--success); position: absolute; left: 0; top: 0;"></i>Custom Web Application</li>
+                            <li style="color: var(--text-light); margin-bottom: 0.8rem; position: relative; padding-left: 2rem;"><i class="fas fa-check" style="color: var(--success); position: absolute; left: 0; top: 0;"></i>Complete Brand Package</li>
+                            <li style="color: var(--text-light); margin-bottom: 0.8rem; position: relative; padding-left: 2rem;"><i class="fas fa-check" style="color: var(--success); position: absolute; left: 0; top: 0;"></i>Digital Marketing Strategy</li>
+                            <li style="color: var(--text-light); margin-bottom: 0.8rem; position: relative; padding-left: 2rem;"><i class="fas fa-check" style="color: var(--success); position: absolute; left: 0; top: 0;"></i>Business Analytics Dashboard</li>
+                            <li style="color: var(--text-light); margin-bottom: 0.8rem; position: relative; padding-left: 2rem;"><i class="fas fa-check" style="color: var(--success); position: absolute; left: 0; top: 0;"></i>Security Audit & Setup</li>
+                            <li style="color: var(--text-light); margin-bottom: 0.8rem; position: relative; padding-left: 2rem;"><i class="fas fa-check" style="color: var(--success); position: absolute; left: 0; top: 0;"></i>6 Months Premium Support</li>
+                        </ul>
+                        <a href="contact.html" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--secondary-gradient); color: var(--white); padding: 15px 30px; border-radius: var(--border-radius-small); text-decoration: none; font-weight: 600; transition: all 0.3s ease; width: 100%; justify-content: center;">
+                            <i class="fas fa-arrow-right"></i>
+                            Choose Package
+                        </a>
+                    </div>
+
+                    <div class="package-card" style="background: var(--white); padding: 3rem 2.5rem; border-radius: var(--border-radius); box-shadow: var(--shadow-medium); position: relative; overflow: hidden; transition: all 0.4s ease;">
+                        <div class="package-badge" style="position: absolute; top: 20px; right: 20px; background: var(--accent-gold); color: var(--white); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Premium</div>
+                        <div class="package-icon" style="width: 80px; height: 80px; background: var(--dark-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 2rem; margin-bottom: 2rem;">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3 style="color: var(--text-dark); margin-bottom: 1rem;">Enterprise Solution</h3>
+                        <p style="color: var(--text-light); margin-bottom: 2rem;">Complete digital transformation for established enterprises.</p>
+                        <div class="package-price" style="margin-bottom: 2rem;">
+                            <span style="font-size: 3rem; font-weight: 800; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">GH₵ 35,000</span>
+                            <span style="color: var(--text-light); text-decoration: line-through; margin-left: 1rem;">GH₵ 50,000</span>
+                        </div>
+                        <ul style="list-style: none; margin-bottom: 2rem;">
+                            <li style="color: var(--text-light); margin-bottom: 0.8rem; position: relative; padding-left: 2rem;"><i class="fas fa-check" style="color: var(--success); position: absolute; left: 0; top: 0;"></i>Complete Digital Transformation</li>
+                            <li style="color: var(--text-light); margin-bottom: 0.8rem; position: relative; padding-left: 2rem;"><i class="fas fa-check" style="color: var(--success); position: absolute; left: 0; top: 0;"></i>Enterprise Web Platform</li>
+                            <li style="color: var(--text-light); margin-bottom: 0.8rem; position: relative; padding-left: 2rem;"><i class="fas fa-check" style="color: var(--success); position: absolute; left: 0; top: 0;"></i>Advanced Security Implementation</li>
+                            <li style="color: var(--text-light); margin-bottom: 0.8rem; position: relative; padding-left: 2rem;"><i class="fas fa-check" style="color: var(--success); position: absolute; left: 0; top: 0;"></i>Custom Analytics & BI</li>
+                            <li style="color: var(--text-light); margin-bottom: 0.8rem; position: relative; padding-left: 2rem;"><i class="fas fa-check" style="color: var(--success); position: absolute; left: 0; top: 0;"></i>Team Training Program</li>
+                            <li style="color: var(--text-light); margin-bottom: 0.8rem; position: relative; padding-left: 2rem;"><i class="fas fa-check" style="color: var(--success); position: absolute; left: 0; top: 0;"></i>12 Months Premium Support</li>
+                        </ul>
+                        <a href="contact.html" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--dark-gradient); color: var(--white); padding: 15px 30px; border-radius: var(--border-radius-small); text-decoration: none; font-weight: 600; transition: all 0.3s ease; width: 100%; justify-content: center;">
+                            <i class="fas fa-arrow-right"></i>
+                            Choose Package
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Digital Presence?</h2>
+                <p>Join over 250 satisfied clients who have chosen SkillSavvy GH for their digital transformation journey. Let's create something amazing together.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="cta-btn cta-btn-primary">
+                        <i class="fas fa-phone"></i>
+                        Get Free Consultation
+                    </a>
+                    <a href="portfolio.html" class="cta-btn cta-btn-secondary">
+                        <i class="fas fa-eye"></i>
+                        View Our Work
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h3>About SkillSavvy GH</h3>
+                    <p>Empowering digital innovation in Ghana since 2020. Your trusted partner for web development, graphic design, and digital transformation services.</p>
+                </div>
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Sunyani, Bono Region</p>
+                    <p><i class="fas fa-phone"></i> +233505638937</p>
+                    <p><i class="fas fa-envelope"></i> skillsavvygh@gmail.com</p>
+                    <p><i class="fas fa-globe"></i> www.skillsavvygh.com</p>
+                </div>
+                <div class="footer-section social">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="https://youtube.com/@skillsavvygh?si=VHCLWgZXM1sQSvXE" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i
+                            ></a>
+                        <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/message/YCYBTUIO5ZD5J1" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/jaynite_official" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://education.github.com/pack" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SkillSavvy GH. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
