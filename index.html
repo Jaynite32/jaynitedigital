@@ -5,66 +5,1037 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkillSavvy GH - Empowering Digital Innovation in Ghana</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Skip Link for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 1000;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(102, 126, 234, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .logo-container h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Navigation Styles */
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Accessibility Controls */
+        .accessibility-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .accessibility-controls button {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .accessibility-controls button:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            margin-top: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><polygon points="0,0 1000,100 1000,0"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .mission-card,
+        .vision-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .mission-card h3,
+        .vision-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .content-wrapper {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 3rem 0;
+        }
+
+        .services-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .service-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            border-color: #667eea;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .service-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .service-box p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .service-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Founder Section */
+        .founder-section {
+            padding: 3rem 0;
+            background: #f8f9fa;
+            margin: 2rem 0;
+            border-radius: 15px;
+        }
+
+        .founder-profile {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #667eea;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-details h2 {
+            color: #667eea;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-details h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-details .title {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .bio {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .education-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 3rem 0;
+        }
+
+        .testimonials-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .quote-icon {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Payment Section */
+        .payment-section {
+            padding: 3rem 0;
+            background: #f8f9fa;
+            margin: 2rem 0;
+            border-radius: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .payment-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .payment-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .supported-networks {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 1rem 0;
+        }
+
+        .network-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .network-badge.mtn { background: #ffeb3b; color: #333; }
+        .network-badge.vodafone { background: #f44336; color: white; }
+        .network-badge.airteltigo { background: #2196f3; color: white; }
+
+        .payment-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .payment-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-form input {
+            padding: 1rem;
+            border: none;
+            border-radius: 25px;
+            min-width: 250px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .premium-ad {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .ad-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .ad-placeholder {
+            background: #f0f0f0;
+            padding: 3rem 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .ad-cta {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .special-offers {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .offers-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+            color: #ff6b35;
+        }
+
+        .offer-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .offer-badge {
+            background: #ff6b35;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .social-sidebar {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link.youtube { background: #ff0000; color: white; }
+        .social-link.linkedin { background: #0077b5; color: white; }
+        .social-link.whatsapp { background: #25d366; color: white; }
+        .social-link.instagram { background: #e4405f; color: white; }
+        .social-link.github { background: #333; color: white; }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px);
+            background: #764ba2;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #555;
+            color: #ccc;
+        }
+
+        /* Modal Styles */
+        .payment-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .submit-payment {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4caf50;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            z-index: 3000;
+            animation: toastSlideIn 0.3s ease;
+        }
+
+        @keyframes toastSlideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem 2rem;
+                width: 100%;
+                border-radius: 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .accessibility-controls {
+                order: -1;
+                margin-right: 1rem;
+            }
+
+            .header-content {
+                justify-content: space-between;
+            }
+
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .founder-profile {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .profile-image {
+                margin: 0 auto;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .newsletter-form input {
+                min-width: auto;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .content-wrapper {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .services-section h2,
+            .testimonials-section h2 {
+                font-size: 2rem;
+            }
+
+            .service-box,
+            .testimonial-card,
+            .payment-card {
+                padding: 1.5rem;
+            }
+
+            .modal-content {
+                margin: 10% auto;
+                padding: 1.5rem;
+            }
+        }
+
+        /* High Contrast Mode */
+        .high-contrast {
+            filter: contrast(150%) brightness(1.2);
+        }
+
+        .high-contrast header {
+            background: #000 !important;
+        }
+
+        .high-contrast .service-box,
+        .high-contrast .testimonial-card,
+        .high-contrast .education-card,
+        .high-contrast .payment-card {
+            border: 2px solid #000 !important;
+        }
+
+        /* Print Styles */
+        @media print {
+            .header,
+            .sidebar,
+            .newsletter-section,
+            .payment-section,
+            footer {
+                display: none;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                background: white;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-   <!-- FIXED HTML HEADER - Replace your current <header> section with this -->
-<header>
-    <div class="container">
-        <div class="logo-container">
-            <img src="images/logo.png" alt="SkillSavvy GH Logo" class="logo-img">
-            <h1>SKILLSAVVY GH</h1>
-        </div>
-        <nav id="main-nav" aria-label="Main Navigation">
-            <input type="checkbox" id="menu-toggle">
-            <label for="menu-toggle" class="menu-icon">
-                <i class="fas fa-bars"></i>
-            </label>
-            <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="blog.html">Blog</a></li>
-    <li><a href="contact.html">Contact</a></li>
-</ul>
-        </nav>
-        <div class="accessibility-controls">
-            <button id="increase-text" aria-label="Increase text size" title="Increase text size">A+</button>
-            <button id="decrease-text" aria-label="Decrease text size" title="Decrease text size">A-</button>
-            <button id="toggle-contrast" aria-label="Toggle high contrast mode" title="Toggle high contrast mode">
-                <i class="fas fa-adjust"></i>
-            </button>
-        </div>
-    </div>
-</header>
-
-    <!-- Hero Section with Video Background -->
-    <section class="hero-section" id="home">
-        <div class="video-container">
-            <video id="hero-video" autoplay muted loop>
-                <source src="videos/hero-video.mp4" type="video/mp4">
-                <source src="videos/hero-video.webm" type="video/webm">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-        <div class="hero-content">
-            <h2>SkillSavvy GH</h2>
-            <p class="subtitle">Empowering Digital Innovation in Ghana</p>
-            <div class="mission-vision">
-                <div class="mission-card">
-                    <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
-                    <p>To empower individuals and businesses in Ghana with cutting-edge digital solutions, fostering innovation and technological advancement across the nation.</p>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="images/logo.png" alt="SkillSavvy GH Logo" class="logo-img">
+                    <h1>SKILLSAVVY GH</h1>
                 </div>
-                <div class="vision-card">
-                    <h3><i class="fas fa-eye"></i> Our Vision</h3>
-                    <p>To be Ghana's leading digital transformation partner, creating a future where technology bridges opportunities and drives sustainable growth.</p>
+                
+                <div class="nav-container">
+                    <nav aria-label="Main Navigation">
+                        <ul class="nav-links" id="navLinks">
+                            <li><a href="index.html" class="active">Home</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="portfolio.html">Portfolio</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                        <button class="menu-toggle" id="menuToggle" aria-label="Toggle mobile menu">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </nav>
+
+                    <div class="accessibility-controls">
+                        <button id="increase-text" aria-label="Increase text size" title="Increase text size">A+</button>
+                        <button id="decrease-text" aria-label="Decrease text size" title="Decrease text size">A-</button>
+                        <button id="toggle-contrast" aria-label="Toggle high contrast mode" title="Toggle high contrast mode">
+                            <i class="fas fa-adjust"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
-            <a href="#services" class="cta-button">Explore Our Services</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="hero-content">
+            <div class="container">
+                <h2>SkillSavvy GH</h2>
+                <p class="subtitle">Empowering Digital Innovation in Ghana</p>
+                <div class="mission-vision">
+                    <div class="mission-card">
+                        <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                        <p>To empower individuals and businesses in Ghana with cutting-edge digital solutions, fostering innovation and technological advancement across the nation.</p>
+                    </div>
+                    <div class="vision-card">
+                        <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                        <p>To be Ghana's leading digital transformation partner, creating a future where technology bridges opportunities and drives sustainable growth.</p>
+                    </div>
+                </div>
+                <a href="#services" class="cta-button">Explore Our Services</a>
+            </div>
         </div>
     </section>
 
@@ -72,93 +1043,93 @@
         <div class="content-wrapper">
             
             <!-- Services Section -->
-<section class="services-section" id="services">
-    <div class="container">
-        <h2>Our Services</h2>
-        <div class="services-grid">
-            <div class="service-box">
-                <div class="service-icon">
-                    <i class="fas fa-laptop-code"></i>
+            <section class="services-section" id="services">
+                <div class="container">
+                    <h2>Our Services</h2>
+                    <div class="services-grid">
+                        <div class="service-box">
+                            <div class="service-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h3>Web Development</h3>
+                            <p>Modern, responsive websites and web applications built with cutting-edge technologies</p>
+                            <a href="services.html#web-development" class="service-btn">Learn More</a>
+                        </div>
+                        <div class="service-box">
+                            <div class="service-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3>UI/UX Design</h3>
+                            <p>User-centered design that creates memorable and engaging digital experiences</p>
+                            <a href="services.html#ui-ux-design" class="service-btn">Learn More</a>
+                        </div>
+                        <div class="service-box">
+                            <div class="service-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Cybersecurity</h3>
+                            <p>Protecting digital assets with comprehensive security solutions and best practices</p>
+                            <a href="services.html#cybersecurity" class="service-btn">Learn More</a>
+                        </div>
+                        <div class="service-box">
+                            <div class="service-icon">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <h3>Digital Marketing</h3>
+                            <p>Boost your online presence and reach your target audience effectively</p>
+                            <a href="services.html#digital-marketing" class="service-btn">Learn More</a>
+                        </div>
+                        <div class="service-box">
+                            <div class="service-icon">
+                                <i class="fas fa-print"></i>
+                            </div>
+                            <h3>Print & Publications</h3>
+                            <p>Professional printing services, photocopying, scanning, large format printing, and graphic designing</p>
+                            <a href="services.html#print-publications" class="service-btn">Learn More</a>
+                        </div>
+                        <div class="service-box">
+                            <div class="service-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h3>Form Services</h3>
+                            <p>For all university forms, passport applications, WAEC checkers, results checking services & online registrations</p>
+                            <a href="services.html#form-services" class="service-btn">Learn More</a>
+                        </div>
+                        <div class="service-box">
+                            <div class="service-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <h3>Delivery Services</h3>
+                            <p>Fast and reliable delivery of documents, prints, and other materials across Ghana</p>
+                            <a href="services.html#delivery-services" class="service-btn">Learn More</a>
+                        </div>
+                        <div class="service-box">
+                            <div class="service-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h3>Tutoring Services</h3>
+                            <p>Professional tutoring in various subjects and technical skills development</p>
+                            <a href="services.html#tutoring-services" class="service-btn">Learn More</a>
+                        </div>
+                        <div class="service-box">                             
+                            <div class="service-icon">                                 
+                                <i class="fas fa-images"></i>                             
+                            </div>                             
+                            <h3>Picture Frames & Citations</h3>                             
+                            <p>Custom picture frames, certificates, citations, and awards for all occasions</p>                             
+                            <a href="services.html#picture-frames" class="service-btn">Learn More</a>                         
+                        </div>
+                        <div class="service-box">
+                            <div class="service-icon">
+                                <i class="fas fa-ticket-alt"></i>
+                            </div>
+                            <h3>Tickets & Subtitles</h3>
+                            <p>Bus Tickets such as VIP, STC, OA, 2M express etc, Request Movies and Series Subtitles</p>
+                            <a href="services.html#tickets-subtitles" class="service-btn">Learn More</a>
+                        </div>
+                    </div>
                 </div>
-                <h3>Web Development</h3>
-                <p>Modern, responsive websites and web applications built with cutting-edge technologies</p>
-                <a href="services.html#web-development" class="service-btn">Learn More</a>
-            </div>
-            <div class="service-box">
-                <div class="service-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <h3>UI/UX Design</h3>
-                <p>User-centered design that creates memorable and engaging digital experiences</p>
-                <a href="services.html#ui-ux-design" class="service-btn">Learn More</a>
-            </div>
-            <div class="service-box">
-                <div class="service-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>Cybersecurity</h3>
-                <p>Protecting digital assets with comprehensive security solutions and best practices</p>
-                <a href="services.html#cybersecurity" class="service-btn">Learn More</a>
-            </div>
-            <div class="service-box">
-                <div class="service-icon">
-                    <i class="fas fa-bullhorn"></i>
-                </div>
-                <h3>Digital Marketing</h3>
-                <p>Boost your online presence and reach your target audience effectively</p>
-                <a href="services.html#digital-marketing" class="service-btn">Learn More</a>
-            </div>
-            <div class="service-box">
-                <div class="service-icon">
-                    <i class="fas fa-print"></i>
-                </div>
-                <h3>Print & Publications</h3>
-                <p>Professional printing services, photocopying, scanning, large format printing, and graphic designing</p>
-                <a href="services.html#print-publications" class="service-btn">Learn More</a>
-            </div>
-            <div class="service-box">
-                <div class="service-icon">
-                    <i class="fas fa-file-alt"></i>
-                </div>
-                <h3>Form Services</h3>
-                <p>For all university forms, passport applications, WAEC checkers, results checking services & online registrations</p>
-                <a href="services.html#form-services" class="service-btn">Learn More</a>
-            </div>
-            <div class="service-box">
-                <div class="service-icon">
-                    <i class="fas fa-truck"></i>
-                </div>
-                <h3>Delivery Services</h3>
-                <p>Fast and reliable delivery of documents, prints, and other materials across Ghana</p>
-                <a href="services.html#delivery-services" class="service-btn">Learn More</a>
-            </div>
-            <div class="service-box">
-                <div class="service-icon">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                </div>
-                <h3>Tutoring Services</h3>
-                <p>Professional tutoring in various subjects and technical skills development</p>
-                <a href="services.html#tutoring-services" class="service-btn">Learn More</a>
-            </div>
-            <div class="service-box">                             
-                <div class="service-icon">                                 
-                    <i class="fas fa-images"></i>                             
-                </div>                             
-                <h3>Picture Frames & Citations</h3>                             
-                <p>Custom picture frames, certificates, citations, and awards for all occasions</p>                             
-                <a href="services.html#picture-frames" class="service-btn">Learn More</a>                         
-            </div>
-            <div class="service-box">
-                <div class="service-icon">
-                    <i class="fas fa-ticket-alt"></i>
-                </div>
-                <h3>Tickets & Subtitles</h3>
-                <p>Bus Tickets such as VIP, STC, OA, 2M express etc, Request Movies and Series Subtitles</p>
-                <a href="services.html#tickets-subtitles" class="service-btn">Learn More</a>
-            </div>
-        </div>
-    </div>
-</section>
+            </section>
 
             <!-- About/Founder Section -->
             <section class="founder-section" id="about">
@@ -228,175 +1199,173 @@
             </section>
 
             <!-- Testimonials Section -->
-<!-- Version with 2 Testimonials -->
-<section class="testimonials-section" id="testimonials">
-    <div class="container">
-        <h2>What Our Clients Say</h2>
-        <div class="testimonials-grid two-columns">
-            <div class="testimonial-card">
-                <div class="testimonial-content">
-                    <div class="quote-icon">
-                        <i class="fas fa-quote-left"></i>
+            <section class="testimonials-section" id="testimonials">
+                <div class="container">
+                    <h2>What Our Clients Say</h2>
+                    <div class="testimonials-grid two-columns">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <div class="quote-icon">
+                                    <i class="fas fa-quote-left"></i>
+                                </div>
+                                <p>"SkillSavvy GH transformed our business with their exceptional web development services. The team's professionalism and technical expertise exceeded our expectations."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="images/louisa.jpg" alt="Louisa Boateng">
+                                <div class="author-info">
+                                    <h4>Louisa Boateng</h4>
+                                    <p>Founder, LOUEL Collections</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <div class="quote-icon">
+                                    <i class="fas fa-quote-left"></i>
+                                </div>
+                                <p>"Outstanding cybersecurity solutions that gave us peace of mind. Their expertise in protecting our digital assets is unmatched in Ghana."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="images/loveson.jpg" alt="Kpausah Loveson Snr">
+                                <div class="author-info">
+                                    <h4>Kpausah Loveson Snr</h4>
+                                    <p>CEO, Destin Estate</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p>"SkillSavvy GH transformed our business with their exceptional web development services. The team's professionalism and technical expertise exceeded our expectations."</p>
                 </div>
-                <div class="testimonial-author">
-                    <img src="images/louisa.jpg" alt="Louisa Boateng">
-                    <div class="author-info">
-                        <h4>Louisa Boateng</h4>
-                        <p>Founder, LOUEL Collections</p>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-content">
-                    <div class="quote-icon">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <p>"Outstanding cybersecurity solutions that gave us peace of mind. Their expertise in protecting our digital assets is unmatched in Ghana."</p>
-                </div>
-                <div class="testimonial-author">
-                    <img src="images/loveson.jpg" alt="Kpausah Loveson Snr">
-                    <div class="author-info">
-                        <h4>Kpausah Loveson Snr</h4>
-                        <p>CEO, Destin Estate</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+            </section>
 
            <!-- Payment Section -->
-<section class="payment-section" id="payment">
-    <div class="container">
-        <h2>Easy Payment Options</h2>
-        <p class="section-subtitle">We accept multiple payment methods for your convenience</p>
-        <div class="payment-options">
-            <div class="payment-card">
-                <div class="payment-icon">
-                    <i class="fas fa-mobile-alt"></i>
+            <section class="payment-section" id="payment">
+                <div class="container">
+                    <h2>Easy Payment Options</h2>
+                    <p class="section-subtitle">We accept multiple payment methods for your convenience</p>
+                    <div class="payment-options">
+                        <div class="payment-card">
+                            <div class="payment-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3>Mobile Money</h3>
+                            <p>Pay instantly with MTN MoMo, Teleel Cash, or AirtelTigo Money</p>
+                            <div class="supported-networks">
+                                <span class="network-badge mtn">MTN</span>
+                                <span class="network-badge vodafone">Telecel</span>
+                                <span class="network-badge airteltigo">AirtelTigo</span>
+                            </div>
+                            <button class="payment-button momo-button" onclick="openMomoModal()">
+                                <i class="fas fa-phone"></i> Pay with MoMo
+                            </button>
+                        </div>
+                        <div class="payment-card">
+                            <div class="payment-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <h3>Bank Transfer</h3>
+                            <p>Secure bank transfers via Stanbic Bank</p>
+                            <div class="bank-info">
+                                <p><strong>Stanbic Bank Ghana</strong></p>
+                                <p>Account: Emmanuel Akomani</p>
+                            </div>
+                            <button class="payment-button bank-button" onclick="openBankModal()">
+                                <i class="fas fa-credit-card"></i> Bank Transfer
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <h3>Mobile Money</h3>
-                <p>Pay instantly with MTN MoMo, Teleel Cash, or AirtelTigo Money</p>
-                <div class="supported-networks">
-                    <span class="network-badge mtn">MTN</span>
-                    <span class="network-badge vodafone">Telecel</span>
-                    <span class="network-badge airteltigo">AirtelTigo</span>
-                </div>
-                <button class="payment-button momo-button" onclick="openMomoModal()">
-                    <i class="fas fa-phone"></i> Pay with MoMo
-                </button>
-            </div>
-            <div class="payment-card">
-                <div class="payment-icon">
-                    <i class="fas fa-university"></i>
-                </div>
-                <h3>Bank Transfer</h3>
-                <p>Secure bank transfers via Stanbic Bank</p>
-                <div class="bank-info">
-                    <p><strong>Stanbic Bank Ghana</strong></p>
-                    <p>Account: Emmanuel Akomani</p>
-                </div>
-                <button class="payment-button bank-button" onclick="openBankModal()">
-                    <i class="fas fa-credit-card"></i> Bank Transfer
-                </button>
-            </div>
-        </div>
-    </div>
-</section>
+            </section>
 
-<!-- Payment Modals -->
-<!-- Mobile Money Payment Modal -->
-<div id="momoModal" class="payment-modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeMomoModal()">&times;</span>
-        <h3><i class="fas fa-mobile-alt"></i> Mobile Money Payment</h3>
-        <form id="momoForm">
-            <div class="form-group">
-                <label for="network">Select Network:</label>
-                <select id="network" name="network" required>
-                    <option value="">Choose Network</option>
-                    <option value="mtn">MTN Mobile Money</option>
-                    <option value="vodafone">Telecel Cash</option>
-                    <option value="airteltigo">AirtelTigo Money</option>
-                </select>
+            <!-- Payment Modals -->
+            <!-- Mobile Money Payment Modal -->
+            <div id="momoModal" class="payment-modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeMomoModal()">&times;</span>
+                    <h3><i class="fas fa-mobile-alt"></i> Mobile Money Payment</h3>
+                    <form id="momoForm">
+                        <div class="form-group">
+                            <label for="network">Select Network:</label>
+                            <select id="network" name="network" required>
+                                <option value="">Choose Network</option>
+                                <option value="mtn">MTN Mobile Money</option>
+                                <option value="vodafone">Telecel Cash</option>
+                                <option value="airteltigo">AirtelTigo Money</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="momoNumber">Mobile Number:</label>
+                            <input type="tel" id="momoNumber" name="momoNumber" placeholder="0XX XXX XXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Amount (GHS):</label>
+                            <input type="number" id="amount" name="amount" placeholder="0.00" min="1" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <input type="text" id="description" name="description" placeholder="Payment for services" required>
+                        </div>
+                        <button type="submit" class="submit-payment">
+                            <i class="fas fa-paper-plane"></i> Proceed to Payment
+                        </button>
+                    </form>
+                    <div id="momoStatus" class="payment-status"></div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="momoNumber">Mobile Number:</label>
-                <input type="tel" id="momoNumber" name="momoNumber" placeholder="0XX XXX XXXX" required>
-            </div>
-            <div class="form-group">
-                <label for="amount">Amount (GHS):</label>
-                <input type="number" id="amount" name="amount" placeholder="0.00" min="1" step="0.01" required>
-            </div>
-            <div class="form-group">
-                <label for="description">Description:</label>
-                <input type="text" id="description" name="description" placeholder="Payment for services" required>
-            </div>
-            <button type="submit" class="submit-payment">
-                <i class="fas fa-paper-plane"></i> Proceed to Payment
-            </button>
-        </form>
-        <div id="momoStatus" class="payment-status"></div>
-    </div>
-</div>
 
-<!-- Bank Transfer Modal -->
-<div id="bankModal" class="payment-modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeBankModal()">&times;</span>
-        <h3><i class="fas fa-university"></i> Bank Transfer Details</h3>
-        <div class="bank-details">
-            <div class="bank-info-card">
-                <h4>Stanbic Bank Ghana Limited</h4>
-                <div class="account-details">
-                    <div class="detail-row">
-                        <span class="label">Account Name:</span>
-                        <span class="value">Emmanuel Akomani</span>
-                        <button class="copy-btn" onclick="copyToClipboard('Emmanuel Akomani', 'Account Name')">
-                            <i class="fas fa-copy"></i>
-                        </button>
-                    </div>
-                    <div class="detail-row">
-                        <span class="label">Account Number:</span>
-                        <span class="value">90400012121274</span>
-                        <button class="copy-btn" onclick="copyToClipboard('90400012121274', 'Account Number')">
-                            <i class="fas fa-copy"></i>
-                        </button>
-                    </div>
-                    <div class="detail-row">
-                        <span class="label">Branch:</span>
-                        <span class="value">Sunyani Branch</span>
-                        <button class="copy-btn" onclick="copyToClipboard('Sunyani Branch', 'Branch')">
-                            <i class="fas fa-copy"></i>
-                        </button>
-                    </div>
-                    <div class="detail-row">
-                        <span class="label">Swift Code:</span>
-                        <span class="value">SBICGHAC</span>
-                        <button class="copy-btn" onclick="copyToClipboard('SBICGHAC', 'Swift Code')">
-                            <i class="fas fa-copy"></i>
+            <!-- Bank Transfer Modal -->
+            <div id="bankModal" class="payment-modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeBankModal()">&times;</span>
+                    <h3><i class="fas fa-university"></i> Bank Transfer Details</h3>
+                    <div class="bank-details">
+                        <div class="bank-info-card">
+                            <h4>Stanbic Bank Ghana Limited</h4>
+                            <div class="account-details">
+                                <div class="detail-row">
+                                    <span class="label">Account Name:</span>
+                                    <span class="value">Emmanuel Akomani</span>
+                                    <button class="copy-btn" onclick="copyToClipboard('Emmanuel Akomani', 'Account Name')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="label">Account Number:</span>
+                                    <span class="value">90400012121274</span>
+                                    <button class="copy-btn" onclick="copyToClipboard('90400012121274', 'Account Number')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="label">Branch:</span>
+                                    <span class="value">Sunyani Branch</span>
+                                    <button class="copy-btn" onclick="copyToClipboard('Sunyani Branch', 'Branch')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="label">Swift Code:</span>
+                                    <span class="value">SBICGHAC</span>
+                                    <button class="copy-btn" onclick="copyToClipboard('SBICGHAC', 'Swift Code')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="transfer-instructions">
+                            <h4>Transfer Instructions:</h4>
+                            <ol>
+                                <li>Use the account details above for your transfer</li>
+                                <li>Include your name and service description in the reference</li>
+                                <li>Send a screenshot of the transfer to our WhatsApp</li>
+                                <li>We'll confirm receipt and begin your service</li>
+                            </ol>
+                        </div>
+                        <button class="whatsapp-btn" onclick="sendTransferProof()">
+                            <i class="fab fa-whatsapp"></i> Send Transfer Proof
                         </button>
                     </div>
                 </div>
             </div>
-            <div class="transfer-instructions">
-                <h4>Transfer Instructions:</h4>
-                <ol>
-                    <li>Use the account details above for your transfer</li>
-                    <li>Include your name and service description in the reference</li>
-                    <li>Send a screenshot of the transfer to our WhatsApp</li>
-                    <li>We'll confirm receipt and begin your service</li>
-                </ol>
-            </div>
-            <button class="whatsapp-btn" onclick="sendTransferProof()">
-                <i class="fab fa-whatsapp"></i> Send Transfer Proof
-            </button>
-        </div>
-    </div>
-</div>
-
 
             <!-- Newsletter Section -->
             <section class="newsletter-section">
@@ -590,8 +1559,9 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Payment Modals -->
     <script>
+        // Continue from where original got cut off - complete JavaScript functionality
+        
         // Modal Functions
         function openMomoModal() {
             document.getElementById('momoModal').style.display = 'block';
@@ -715,213 +1685,304 @@
         });
 
        // Keyboard shortcuts
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeMomoModal();
-            closeBankModal();
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMomoModal();
+                closeBankModal();
+            }
+        });
+
+        // Newsletter subscription
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = e.target.querySelector('input[type="email"]').value;
+            
+            // Show success message
+            showToast('Thank you for subscribing to our newsletter!', 'success');
+            e.target.reset();
+        });
+
+        // Contact for advertisement
+        function contactForAd() {
+            const whatsappNumber = '233533852891';
+            const message = encodeURIComponent('Hello! I\'m interested in advertising on your website. Can you provide more details about your advertising packages?');
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
         }
-    });
 
- // Ad loading function
-function loadAd(mediaUrl, mediaType) {
-    const adContainer = document.getElementById('adMedia');
-    const placeholder = document.getElementById('adPlaceholder');
-    
-    // Hide placeholder
-    placeholder.style.display = 'none';
-    
-    // Create media element
-    if (mediaType === 'image') {
-        const img = document.createElement('img');
-        img.src = mediaUrl;
-        img.alt = 'Advertisement';
-        adContainer.appendChild(img);
-    } else if (mediaType === 'video') {
-        const video = document.createElement('video');
-        video.src = mediaUrl;
-        video.controls = true;
-        video.muted = true;
-          adContainer.appendChild(video);
-    }
-}
-// Example calls (you'd use these when you have actual ads)
-loadAd('images/ad1.jpg', 'image');
-// or
-// loadAd('videos/ad1.mp4', 'video');
-</script>
+        // Claim offer function
+        function claimOffer() {
+            const whatsappNumber = '233533852891';
+            const message = encodeURIComponent('Hello! I\'d like to claim one of your limited time offers. Can you tell me more about the current promotions?');
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        }
 
-<!-- ✅ New Script for Mobile Nav & Accessibility -->
-<script>
-// SkillSavvy GH - Accessibility Controls JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-    // Text size controls
-    let currentFontSize = 16;
-    const minFontSize = 12;
-    const maxFontSize = 24;
-
-    const increaseTextBtn = document.getElementById('increase-text');
-    const decreaseTextBtn = document.getElementById('decrease-text');
-    const toggleContrastBtn = document.getElementById('toggle-contrast');
-
-    if (increaseTextBtn) {
-        increaseTextBtn.addEventListener('click', function() {
-            if (currentFontSize < maxFontSize) {
-                currentFontSize += 2;
-                updateFontSize();
-                localStorage.setItem('skillsavvy-font-size', currentFontSize);
-            }
-        });
-    }
-
-    if (decreaseTextBtn) {
-        decreaseTextBtn.addEventListener('click', function() {
-            if (currentFontSize > minFontSize) {
-                currentFontSize -= 2;
-                updateFontSize();
-                localStorage.setItem('skillsavvy-font-size', currentFontSize);
-            }
-        });
-    }
-
-    if (toggleContrastBtn) {
-        toggleContrastBtn.addEventListener('click', function() {
-            document.body.classList.toggle('high-contrast');
-            const isHighContrast = document.body.classList.contains('high-contrast');
-            localStorage.setItem('skillsavvy-high-contrast', isHighContrast);
-
-            toggleContrastBtn.style.background = isHighContrast ? '#000' : '';
-            toggleContrastBtn.style.color = isHighContrast ? '#fff' : '';
-        });
-    }
-
-    function updateFontSize() {
-        document.documentElement.style.fontSize = currentFontSize + 'px';
-
-        const elementsToScale = [
-            'p', 'span', 'div', 'a', 'li', 'td', 'th',
-            '.service-box p', '.testimonial-card p', '.bio'
-        ];
-
-        elementsToScale.forEach(selector => {
-            const elements = document.querySelectorAll(selector);
-            elements.forEach(element => {
-                const currentSize = window.getComputedStyle(element).fontSize;
-                const currentSizeNum = parseFloat(currentSize);
-                const scaleFactor = currentFontSize / 16;
-                element.style.fontSize = (currentSizeNum * scaleFactor) + 'px';
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
-    }
 
-    function loadSavedPreferences() {
-        const savedFontSize = localStorage.getItem('skillsavvy-font-size');
-        if (savedFontSize) {
-            currentFontSize = parseInt(savedFontSize);
-            updateFontSize();
-        }
+        // Add loading animation to service buttons
+        document.querySelectorAll('.service-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+                this.style.pointerEvents = 'none';
+                
+                setTimeout(() => {
+                    // Simulate navigation or action
+                    showToast('Service details will be available soon!', 'info');
+                    this.innerHTML = originalText;
+                    this.style.pointerEvents = 'auto';
+                }, 1500);
+            });
+        });
 
-        const savedHighContrast = localStorage.getItem('skillsavvy-high-contrast');
-        if (savedHighContrast === 'true') {
-            document.body.classList.add('high-contrast');
-            if (toggleContrastBtn) {
-                toggleContrastBtn.style.background = '#000';
-                toggleContrastBtn.style.color = '#fff';
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.service-box, .testimonial-card, .education-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Counter animation for stats
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start).toLocaleString();
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target.toLocaleString();
+                }
             }
+            
+            updateCounter();
         }
-    }
 
-    loadSavedPreferences();
+        // Animate counters when they come into view
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.textContent.replace(/[^\d]/g, ''));
+                    animateCounter(counter, target);
+                    counterObserver.unobserve(counter);
+                }
+            });
+        });
 
-    const header = document.querySelector('header');
-    if (header) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
+        // Add some basic form validation
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function validatePhone(phone) {
+            const re = /^[0-9]{10}$/;
+            return re.test(phone.replace(/\s/g, ''));
+        }
+
+        // Enhanced mobile money form validation
+        document.getElementById('momoForm').addEventListener('input', function(e) {
+            const network = document.getElementById('network').value;
+            const momoNumber = document.getElementById('momoNumber').value;
+            const amount = document.getElementById('amount').value;
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            
+            if (network && validatePhone(momoNumber) && amount > 0) {
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
             } else {
-                header.classList.remove('scrolled');
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.6';
             }
         });
-    }
 
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    anchorLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-
-            if (targetElement) {
-                const headerHeight = header ? header.offsetHeight : 0;
-                const targetPosition = targetElement.offsetTop - headerHeight - 20;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    const mobileMenuLinks = document.querySelectorAll('.nav-links a');
-    const menuToggle = document.getElementById('menu-toggle');
-
-    mobileMenuLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (menuToggle) {
-                menuToggle.checked = false;
-            }
-        });
-    });
-
-    document.addEventListener('click', function(e) {
-        const nav = document.querySelector('nav');
-        const menuIcon = document.querySelector('.menu-icon');
-
-        if (menuToggle && menuToggle.checked &&
-            !nav.contains(e.target) &&
-            !menuIcon.contains(e.target)) {
-            menuToggle.checked = false;
+        // Preload images for better performance
+        function preloadImages() {
+            const imageUrls = [
+                'images/profile.jpg',
+                'images/louisa.jpg',
+                'images/loveson.jpg'
+            ];
+            
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+            });
         }
-    });
-});
 
-// High contrast CSS styles
-const highContrastStyles = `
-.high-contrast {
-    filter: contrast(150%) brightness(1.2);
-}
-.high-contrast header {
-    background: #000 !important;
-    color: #fff !important;
-}
-.high-contrast .nav-links a {
-    color: #fff !important;
-}
-.high-contrast .hero-content {
-    background: rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-}
-.high-contrast .service-box,
-.high-contrast .testimonial-card,
-.high-contrast .education-card,
-.high-contrast .payment-card {
-    background: #fff !important;
-    color: #000 !important;
-    border: 2px solid #000 !important;
-}
-.high-contrast .mission-card,
-.high-contrast .vision-card {
-    background: rgba(255, 255, 255, 0.95) !important;
-    color: #000 !important;
-    border: 2px solid #000 !important;
-}
-`;
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            preloadImages();
+            
+            // Add fade-in animation to hero section
+            const heroSection = document.querySelector('.hero-section');
+            if (heroSection) {
+                heroSection.style.opacity = '0';
+                heroSection.style.animation = 'fadeIn 1s ease forwards';
+            }
+        });
 
-const styleSheet = document.createElement('style');
-styleSheet.textContent = highContrastStyles;
-document.head.appendChild(styleSheet);
-</script>
+        // Add CSS animations via JavaScript
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            
+            .toast {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #2ecc71;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 5px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+            }
+            
+            .toast.success {
+                background: #2ecc71;
+            }
+            
+            .toast.info {
+                background: #3498db;
+            }
+            
+            .toast.error {
+                background: #e74c3c;
+            }
+            
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            .payment-status {
+                padding: 15px;
+                margin-top: 15px;
+                border-radius: 5px;
+                text-align: center;
+                display: none;
+            }
+            
+            .payment-status.success {
+                background: #d4edda;
+                color: #155724;
+                border: 1px solid #c3e6cb;
+            }
+            
+            .payment-status i {
+                margin-right: 8px;
+            }
+            
+            .service-box:hover {
+                transform: translateY(-5px);
+                transition: transform 0.3s ease;
+            }
+            
+            .testimonial-card:hover {
+                transform: translateY(-3px);
+                transition: transform 0.3s ease;
+            }
+            
+            .social-link:hover {
+                transform: scale(1.05);
+                transition: transform 0.2s ease;
+            }
+        `;
+        
+        document.head.appendChild(style);
 
+        // Error handling for images
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', function() {
+                this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjZjBmMGYwIi8+CjxwYXRoIGQ9Ik0xMDAgNTBMMTUwIDEwMEwxMDAgMTUwTDUwIDEwMFoiIGZpbGw9IiNjY2MiLz4KPC9zdmc+';
+                this.alt = 'Image not available';
+            });
+        });
+
+        // Add scroll to top functionality
+        const scrollToTopBtn = document.createElement('button');
+        scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        scrollToTopBtn.className = 'scroll-to-top';
+        scrollToTopBtn.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        `;
+        
+        document.body.appendChild(scrollToTopBtn);
+        
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.style.display = 'block';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
+        });
+
+        // Final initialization
+        console.log('SkillSavvy GH website loaded successfully!');
+    </script>
 </body>
 </html>
