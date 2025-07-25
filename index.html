@@ -1793,20 +1793,7 @@
             });
         });
 
-        // Remove the problematic service button code and replace with this:
-document.querySelectorAll('.service-btn').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-        // Allow the normal link behavior - don't preventDefault()
-        // Just add a small loading effect before navigation
-        const originalText = this.innerHTML;
-        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
         
-        // Small delay then navigate normally
-        setTimeout(() => {
-            window.location.href = this.getAttribute('href');
-        }, 300);
-    });
-});
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
