@@ -141,125 +141,143 @@
             top: 20px;
         }
 
-        /* Header */
+       /* Header Styles */
         header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
             position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
+            top: 0;
             z-index: 1000;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
 
-        header .container {
+        header.scrolled {
+            background: rgba(102, 126, 234, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
         }
 
         .logo-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-    box-shadow: var(--shadow-small);
-    object-fit: cover;
-}
-        .logo-container h1 {
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-size: 1.8rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
         }
 
-        /* Navigation */
+        .logo-container h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Navigation Styles */
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 40px;
-            align-items: center;
+            gap: 2rem;
             margin: 0;
-            padding: 0;
         }
 
         .nav-links a {
-            color: var(--text-dark);
-            font-weight: 500;
-            padding: 10px 0;
-            position: relative;
-            transition: all 0.3s ease;
+            color: white;
             text-decoration: none;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 3px;
-            background: var(--accent-gradient);
-            border-radius: 2px;
-            transition: width 0.3s ease;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
         }
 
         .nav-links a:hover,
         .nav-links a.active {
-            color: var(--primary-purple);
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
         }
 
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        /* Mobile Menu */
-        #menu-toggle {
+        /* Mobile Menu Toggle */
+        .menu-toggle {
             display: none;
-        }
-
-        .menu-icon {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 4px;
-        }
-
-        .accessibility-controls {
-            display: flex;
-            gap: 10px;
-        }
-
-        .accessibility-controls button {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 8px;
-            padding: 8px 12px;
-            color: var(--text-dark);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .accessibility-controls button:hover {
-            background: var(--primary-gradient);
+            background: none;
+            border: none;
             color: white;
-            border-color: transparent;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
         }
+
+        /* Mobile Menu Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 100px;
+        transition: right 0.3s ease;
+        z-index: 999;
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links li {
+        margin: 20px 0;
+    }
+    
+    .nav-links a {
+        font-size: 1.2rem;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a.active {
+        background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: #333;
+        cursor: pointer;
+        z-index: 1000;
+    }
+}
+
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none;
+    }
+}
 
         /* Page Hero */
         .page-hero {
@@ -890,29 +908,35 @@
     <!-- Header -->
     <header>
         <div class="container">
-            <div class="logo-container">
-<img src="images/logo.png" alt="SkillSavvy GH Logo" class="logo-img">                <h1>SKILLSAVVY GH</h1>
-            </div>
-            <nav id="main-nav" aria-label="Main Navigation">
-                <input type="checkbox" id="menu-toggle">
-                <label for="menu-toggle" class="menu-icon">
-                    <i class="fas fa-bars"></i>
-                </label>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="about.html" class="active">About</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="accessibility-controls">
-                <button id="increase-text" aria-label="Increase text size" title="Increase text size">A+</button>
-                <button id="decrease-text" aria-label="Decrease text size" title="Decrease text size">A-</button>
-                <button id="toggle-contrast" aria-label="Toggle high contrast mode" title="Toggle high contrast mode">
-                    <i class="fas fa-adjust"></i>
-                </button>
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="images/logo.png" alt="SkillSavvy GH Logo" class="logo-img">
+                    <h1>SKILLSAVVY GH</h1>
+                </div>
+                
+                <div class="nav-container">
+                    <nav aria-label="Main Navigation">
+                        <ul class="nav-links" id="navLinks">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="about.html" class="active">About</a></li>
+                            <li><a href="portfolio.html">Portfolio</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                        <button class="menu-toggle" id="menuToggle" aria-label="Toggle mobile menu">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </nav>
+
+                    <div class="accessibility-controls">
+                        <button id="increase-text" aria-label="Increase text size" title="Increase text size">A+</button>
+                        <button id="decrease-text" aria-label="Decrease text size" title="Decrease text size">A-</button>
+                        <button id="toggle-contrast" aria-label="Toggle high contrast mode" title="Toggle high contrast mode">
+                            <i class="fas fa-adjust"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -1159,7 +1183,63 @@
             </div>
         </div>
     </footer>
+<!-- Your other HTML content -->
+    
+    <script>
+        // Hamburger Menu Toggle Functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
 
+        // Toggle mobile menu
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                
+                // Toggle hamburger icon
+                const icon = menuToggle.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Close menu when clicking on a nav link (mobile)
+            const navLinkItems = navLinks.querySelectorAll('a');
+            navLinkItems.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                        const icon = menuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!menuToggle.contains(event.target) && !navLinks.contains(event.target)) {
+                    navLinks.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    navLinks.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+    </script>
     <!-- Scroll to Top Button -->
     <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
         <i class="fas fa-chevron-up"></i>
