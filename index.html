@@ -741,7 +741,7 @@ function loadAd(mediaUrl, mediaType) {
         video.src = mediaUrl;
         video.controls = true;
         video.muted = true;
-        adContainer.appendChild(video);
+          adContainer.appendChild(video);
     }
 }
 // Example calls (you'd use these when you have actual ads)
@@ -749,5 +749,179 @@ loadAd('images/ad1.jpg', 'image');
 // or
 // loadAd('videos/ad1.mp4', 'video');
 </script>
+
+<!-- ✅ New Script for Mobile Nav & Accessibility -->
+<script>
+// SkillSavvy GH - Accessibility Controls JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    // Text size controls
+    let currentFontSize = 16;
+    const minFontSize = 12;
+    const maxFontSize = 24;
+
+    const increaseTextBtn = document.getElementById('increase-text');
+    const decreaseTextBtn = document.getElementById('decrease-text');
+    const toggleContrastBtn = document.getElementById('toggle-contrast');
+
+    if (increaseTextBtn) {
+        increaseTextBtn.addEventListener('click', function() {
+            if (currentFontSize < maxFontSize) {
+                currentFontSize += 2;
+                updateFontSize();
+                localStorage.setItem('skillsavvy-font-size', currentFontSize);
+            }
+        });
+    }
+
+    if (decreaseTextBtn) {
+        decreaseTextBtn.addEventListener('click', function() {
+            if (currentFontSize > minFontSize) {
+                currentFontSize -= 2;
+                updateFontSize();
+                localStorage.setItem('skillsavvy-font-size', currentFontSize);
+            }
+        });
+    }
+
+    if (toggleContrastBtn) {
+        toggleContrastBtn.addEventListener('click', function() {
+            document.body.classList.toggle('high-contrast');
+            const isHighContrast = document.body.classList.contains('high-contrast');
+            localStorage.setItem('skillsavvy-high-contrast', isHighContrast);
+
+            toggleContrastBtn.style.background = isHighContrast ? '#000' : '';
+            toggleContrastBtn.style.color = isHighContrast ? '#fff' : '';
+        });
+    }
+
+    function updateFontSize() {
+        document.documentElement.style.fontSize = currentFontSize + 'px';
+
+        const elementsToScale = [
+            'p', 'span', 'div', 'a', 'li', 'td', 'th',
+            '.service-box p', '.testimonial-card p', '.bio'
+        ];
+
+        elementsToScale.forEach(selector => {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(element => {
+                const currentSize = window.getComputedStyle(element).fontSize;
+                const currentSizeNum = parseFloat(currentSize);
+                const scaleFactor = currentFontSize / 16;
+                element.style.fontSize = (currentSizeNum * scaleFactor) + 'px';
+            });
+        });
+    }
+
+    function loadSavedPreferences() {
+        const savedFontSize = localStorage.getItem('skillsavvy-font-size');
+        if (savedFontSize) {
+            currentFontSize = parseInt(savedFontSize);
+            updateFontSize();
+        }
+
+        const savedHighContrast = localStorage.getItem('skillsavvy-high-contrast');
+        if (savedHighContrast === 'true') {
+            document.body.classList.add('high-contrast');
+            if (toggleContrastBtn) {
+                toggleContrastBtn.style.background = '#000';
+                toggleContrastBtn.style.color = '#fff';
+            }
+        }
+    }
+
+    loadSavedPreferences();
+
+    const header = document.querySelector('header');
+    if (header) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
+
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    anchorLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                const headerHeight = header ? header.offsetHeight : 0;
+                const targetPosition = targetElement.offsetTop - headerHeight - 20;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    const mobileMenuLinks = document.querySelectorAll('.nav-links a');
+    const menuToggle = document.getElementById('menu-toggle');
+
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (menuToggle) {
+                menuToggle.checked = false;
+            }
+        });
+    });
+
+    document.addEventListener('click', function(e) {
+        const nav = document.querySelector('nav');
+        const menuIcon = document.querySelector('.menu-icon');
+
+        if (menuToggle && menuToggle.checked &&
+            !nav.contains(e.target) &&
+            !menuIcon.contains(e.target)) {
+            menuToggle.checked = false;
+        }
+    });
+});
+
+// High contrast CSS styles
+const highContrastStyles = `
+.high-contrast {
+    filter: contrast(150%) brightness(1.2);
+}
+.high-contrast header {
+    background: #000 !important;
+    color: #fff !important;
+}
+.high-contrast .nav-links a {
+    color: #fff !important;
+}
+.high-contrast .hero-content {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+.high-contrast .service-box,
+.high-contrast .testimonial-card,
+.high-contrast .education-card,
+.high-contrast .payment-card {
+    background: #fff !important;
+    color: #000 !important;
+    border: 2px solid #000 !important;
+}
+.high-contrast .mission-card,
+.high-contrast .vision-card {
+    background: rgba(255, 255, 255, 0.95) !important;
+    color: #000 !important;
+    border: 2px solid #000 !important;
+}
+`;
+
+const styleSheet = document.createElement('style');
+styleSheet.textContent = highContrastStyles;
+document.head.appendChild(styleSheet);
+</script>
+
 </body>
 </html>
