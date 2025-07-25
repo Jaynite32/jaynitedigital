@@ -230,7 +230,7 @@ p {
         right: -100%;
         width: 80%;
         height: 100vh;
-        background: rgba(0, 0, 0, 0.95);
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
@@ -1805,172 +1805,142 @@ footer {
         </div>
     </footer>
     
-    <script>
-        // Hamburger Menu Toggle Functionality
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
+   <script>
+    // Hamburger Menu Toggle Functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
 
-        // Toggle mobile menu
-        if (menuToggle && navLinks) {
-            menuToggle.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-                
-                // Toggle hamburger icon
+    // Toggle mobile menu
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            
+            // Toggle hamburger icon
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close menu when clicking on a nav link (mobile)
+        const navLinkItems = navLinks.querySelectorAll('a');
+        navLinkItems.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!menuToggle.contains(event.target) && !navLinks.contains(event.target)) {
+                navLinks.classList.remove('active');
                 const icon = menuToggle.querySelector('i');
-                if (navLinks.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
-            
-            // Close menu when clicking on a nav link (mobile)
-            const navLinkItems = navLinks.querySelectorAll('a');
-            navLinkItems.forEach(link => {
-                link.addEventListener('click', function() {
-                    if (window.innerWidth <= 768) {
-                        navLinks.classList.remove('active');
-                        const icon = menuToggle.querySelector('i');
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                });
-            });
-            
-            // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!menuToggle.contains(event.target) && !navLinks.contains(event.target)) {
-                    navLinks.classList.remove('active');
-                    const icon = menuToggle.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
-            
-            // Handle window resize
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768) {
-                    navLinks.classList.remove('active');
-                    const icon = menuToggle.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
-        }
-    </script>
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                navLinks.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+     // Accessibility features
+        let textSize = 16;
+        let highContrast = false;
 
-    <!-- Add this script section right here -->
-    <script>
-        // Handle navigation to specific service sections
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check if there's a hash in the URL (like #web-development)
-            if (window.location.hash) {
-                const targetId = window.location.hash.substring(1);
-                const targetElement = document.getElementById(targetId);
-                
-                if (targetElement) {
-                    // Small delay to ensure page is fully loaded
+        document.getElementById('increase-text').addEventListener('click', function() {
+            if (textSize < 24) {
+                textSize += 2;
+                document.documentElement.style.fontSize = textSize + 'px';
+            }
+        });
+
+        document.getElementById('decrease-text').addEventListener('click', function() {
+            if (textSize > 12) {
+                textSize -= 2;
+                document.documentElement.style.fontSize = textSize + 'px';
+            }
+        });
+
+        document.getElementById('toggle-contrast').addEventListener('click', function() {
+            highContrast = !highContrast;
+            if (highContrast) {
+                document.body.classList.add('high-contrast');
+            } else {
+                document.body.classList.remove('high-contrast');
+            }
+        });
+</script>
+
+<script>
+    // Handle navigation to specific service sections
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if there's a hash in the URL (like #web-development)
+        if (window.location.hash) {
+            const targetId = window.location.hash.substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                // Small delay to ensure page is fully loaded
+                setTimeout(function() {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Optional: Add highlight effect to the target service
+                    targetElement.style.backgroundColor = 'rgba(0, 123, 255, 0.1)';
+                    targetElement.style.border = '2px solid #007bff';
+                    targetElement.style.borderRadius = '8px';
+                    targetElement.style.transition = 'all 0.3s ease';
+                    
+                    // Remove highlight after 3 seconds
                     setTimeout(function() {
+                        targetElement.style.backgroundColor = '';
+                        targetElement.style.border = '';
+                    }, 3000);
+                }, 100);
+            }
+        }
+        
+        // Handle smooth scrolling for any internal service links
+        const serviceLinks = document.querySelectorAll('a[href*="#"]');
+        serviceLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                
+                // Check if it's an internal link (starts with #)
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
                         targetElement.scrollIntoView({
                             behavior: 'smooth',
                             block: 'start'
                         });
-                        
-                        // Optional: Add highlight effect to the target service
-                        targetElement.style.backgroundColor = 'rgba(0, 123, 255, 0.1)';
-                        targetElement.style.border = '2px solid #007bff';
-                        targetElement.style.borderRadius = '8px';
-                        targetElement.style.transition = 'all 0.3s ease';
-                        
-                        // Remove highlight after 3 seconds
-                        setTimeout(function() {
-                            targetElement.style.backgroundColor = '';
-                            targetElement.style.border = '';
-                        }, 3000);
-                    }, 100);
-                }
-            }
-            
-            // Handle smooth scrolling for any internal service links
-            const serviceLinks = document.querySelectorAll('a[href*="#"]');
-            serviceLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    
-                    // Check if it's an internal link (starts with #)
-                    if (href.startsWith('#')) {
-                        e.preventDefault();
-                        const targetId = href.substring(1);
-                        const targetElement = document.getElementById(targetId);
-                        
-                        if (targetElement) {
-                            targetElement.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
-                        }
                     }
-                });
+                }
             });
         });
-        <!-- Your other HTML content -->
-    
-    <script>
-        // Hamburger Menu Toggle Functionality
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-
-        // Toggle mobile menu
-        if (menuToggle && navLinks) {
-            menuToggle.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-                
-                // Toggle hamburger icon
-                const icon = menuToggle.querySelector('i');
-                if (navLinks.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
-            
-            // Close menu when clicking on a nav link (mobile)
-            const navLinkItems = navLinks.querySelectorAll('a');
-            navLinkItems.forEach(link => {
-                link.addEventListener('click', function() {
-                    if (window.innerWidth <= 768) {
-                        navLinks.classList.remove('active');
-                        const icon = menuToggle.querySelector('i');
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                });
-            });
-            
-            // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!menuToggle.contains(event.target) && !navLinks.contains(event.target)) {
-                    navLinks.classList.remove('active');
-                    const icon = menuToggle.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
-            
-            // Handle window resize
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768) {
-                    navLinks.classList.remove('active');
-                    const icon = menuToggle.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
-        }
-    </script>
+    });
+</script>
+ <script src="js/accessibility.js"></script>
 </body>
 </html>
