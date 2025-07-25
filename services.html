@@ -529,6 +529,17 @@ header .container {
     box-shadow: var(--shadow-medium);
 }
 
+/* Service section highlight animation */
+.service-categories {
+    transition: all 0.3s ease;
+}
+
+.service-categories:target {
+    background-color: rgba(0, 123, 255, 0.05);
+    border-left: 4px solid #007bff;
+    padding-left: 20px;
+}
+
 /* CTA Section */
 .cta-section {
     padding: var(--section-padding);
@@ -1767,3 +1778,62 @@ footer {
             </div>
         </div>
     </footer>
+
+    <!-- Add this script section right here -->
+    <script>
+        // Handle navigation to specific service sections
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if there's a hash in the URL (like #web-development)
+            if (window.location.hash) {
+                const targetId = window.location.hash.substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    // Small delay to ensure page is fully loaded
+                    setTimeout(function() {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Optional: Add highlight effect to the target service
+                        targetElement.style.backgroundColor = 'rgba(0, 123, 255, 0.1)';
+                        targetElement.style.border = '2px solid #007bff';
+                        targetElement.style.borderRadius = '8px';
+                        targetElement.style.transition = 'all 0.3s ease';
+                        
+                        // Remove highlight after 3 seconds
+                        setTimeout(function() {
+                            targetElement.style.backgroundColor = '';
+                            targetElement.style.border = '';
+                        }, 3000);
+                    }, 100);
+                }
+            }
+            
+            // Handle smooth scrolling for any internal service links
+            const serviceLinks = document.querySelectorAll('a[href*="#"]');
+            serviceLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    // Check if it's an internal link (starts with #)
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        
+                        if (targetElement) {
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
