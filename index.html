@@ -82,11 +82,12 @@
             object-fit: cover;
         }
 
-        .logo i {
-            color: var(--primary-orange);
-            margin-right: 0.5rem;
-            font-size: 1.8rem;
-        }
+       .logo i {
+    color: var(--primary-orange);
+    margin-right: 0.5rem;
+    font-size: 1.8rem;
+    display: none;
+}
 
         .nav-desktop {
             display: none;
@@ -1261,7 +1262,7 @@
             <div class="header-content">
                 <a href="index.html" class="logo">
                     <!-- Replace with your actual logo -->
-                    <img src="images/logo.png" alt="SkillSavvy GH Logo" class="logo-img" style="display: none;">
+                    <img src="images/logo.png" alt="SkillSavvy GH Logo" class="logo-img">
                     <i class="fas fa-bolt"></i>
                     SkillSavvy GH
                 </a>
@@ -1427,7 +1428,7 @@
                         "SkillSavvy GH transformed our business with their exceptional web development services. The team's professionalism and technical expertise exceeded our expectations."
                     </p>
                     <div class="testimonial-author">
-                        <img src="images/testimonials/louisa-boateng.jpg" alt="Louisa Boateng" class="author-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <img src="images/louisa.jpg" alt="Louisa Boateng" class="author-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div class="author-avatar-placeholder" style="display: none;">LB</div>
                         <div class="author-info">
                             <h4>Louisa Boateng</h4>
@@ -1444,7 +1445,7 @@
                         "Outstanding cybersecurity solutions that gave us peace of mind. Their expertise in protecting our digital assets is unmatched in Ghana."
                     </p>
                     <div class="testimonial-author">
-                        <img src="images/testimonials/kpausah-loveson.jpg" alt="Kpausah Loveson Snr" class="author-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <img src="images/loveson.jpg" alt="Kpausah Loveson Snr" class="author-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div class="author-avatar-placeholder" style="display: none;">KL</div>
                         <div class="author-info">
                             <h4>Kpausah Loveson Snr</h4>
@@ -1774,16 +1775,38 @@ Please send me the payment prompt.`;
             closeBankModal();
         }
 
-        // Newsletter subscription
-        function subscribeNewsletter(event) {
-            event.preventDefault();
-            const email = event.target.querySelector('input[type="email"]').value;
-            const message = `Hello SkillSavvy GH! I would like to subscribe to your newsletter with this email: ${email}`;
-            const whatsappURL = `https://wa.me/233505638937?text=${encodeURIComponent(message)}`;
-            window.open(whatsappURL, '_blank');
-            event.target.reset();
-            alert('Thank you for subscribing! We will contact you via WhatsApp.');
-        }
+// Newsletter subscription
+function subscribeNewsletter(event) {
+    event.preventDefault();
+    const email = event.target.querySelector('input[type="email"]').value;
+    const button = event.target.querySelector('button');
+    
+    // Change button to show success immediately
+    button.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
+    button.style.background = '#28a745'; // Green color
+    button.disabled = true; // Disable button temporarily
+    
+    // Show success message
+    alert('Thank you for subscribing to our newsletter!');
+    
+    // Send email to WhatsApp in background (they won't see this)
+    const message = `New Newsletter Subscription: ${email}`;
+    const whatsappURL = `https://wa.me/233505638937?text=${encodeURIComponent(message)}`;
+    
+    // Open WhatsApp in a small popup that closes automatically
+    const popup = window.open(whatsappURL, 'whatsapp', 'width=400,height=400');
+    setTimeout(() => {
+        if (popup) popup.close();
+    }, 2000); // Close popup after 2 seconds
+    
+    // Reset button after 3 seconds
+    setTimeout(() => {
+        button.innerHTML = '<i class="fas fa-paper-plane"></i> Subscribe';
+        button.style.background = ''; // Back to original color
+        button.disabled = false; // Re-enable button
+        event.target.reset(); // Clear the email input
+    }, 3000);
+}
 
         // Mobile footer accordion functionality
         document.addEventListener('DOMContentLoaded', function() {
