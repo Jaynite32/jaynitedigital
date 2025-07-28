@@ -630,22 +630,87 @@
         }
 
         /* Footer */
+        :root {
+            --charcoal: #2c3e50;
+            --primary-orange: #ff6b35;
+            --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #ff6b35, #f7931e);
+            --transition: all 0.3s ease;
+            --light-gray: #f8f9fa;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Main content for demo */
+        .main-content {
+            min-height: 50vh;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Footer Styles */
         footer {
             background: var(--charcoal);
             color: var(--white);
             padding: 3rem 0 1rem;
+            position: relative;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
+        }
+
+        .footer-section {
+            position: relative;
         }
 
         .footer-section h3 {
             color: var(--primary-orange);
             margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .footer-section h3::after {
+            content: '';
+            display: none;
+        }
+
+        .footer-section p {
+            opacity: 0.9;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
         }
 
         .footer-section ul {
@@ -653,7 +718,12 @@
         }
 
         .footer-section ul li {
-            margin: 0.5rem 0;
+            margin: 0.75rem 0;
+            transition: var(--transition);
+        }
+
+        .footer-section ul li:hover {
+            transform: translateX(5px);
         }
 
         .footer-section a {
@@ -661,6 +731,9 @@
             text-decoration: none;
             opacity: 0.8;
             transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .footer-section a:hover {
@@ -668,31 +741,172 @@
             color: var(--primary-orange);
         }
 
+        .footer-section a i {
+            width: 16px;
+            font-size: 0.9rem;
+        }
+
+        /* Social Icons */
         .social-icons {
             display: flex;
             gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1.5rem;
         }
 
         .social-icons a {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             background: var(--gradient-primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
         }
 
         .social-icons a:hover {
             transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .social-icons a i {
+            font-size: 1.2rem;
+            color: var(--white);
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--border-color);
             opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .footer-section {
+                border-bottom: 1px solid var(--border-color);
+                padding: 1rem 0;
+            }
+
+            .footer-section:last-child {
+                border-bottom: none;
+            }
+
+            /* About section stays open on mobile */
+            .footer-section:first-child h3 {
+                cursor: default;
+            }
+
+            .footer-section:first-child .footer-content-wrapper {
+                display: block !important;
+            }
+
+            /* Collapsible sections for other footer sections */
+            .footer-section:not(:first-child) h3 {
+                cursor: pointer;
+                user-select: none;
+                padding: 1rem 0;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .footer-section:not(:first-child) h3::after {
+                content: '\f067';
+                font-family: "Font Awesome 6 Free";
+                font-weight: 900;
+                display: block;
+                font-size: 0.8rem;
+                transition: var(--transition);
+            }
+
+            .footer-section:not(:first-child) h3.active::after {
+                content: '\f068';
+                transform: rotate(180deg);
+            }
+
+            .footer-section:not(:first-child) .footer-content-wrapper {
+                display: none;
+                padding: 1rem 0 0.5rem;
+                animation: slideDown 0.3s ease;
+            }
+
+            .footer-section:not(:first-child) .footer-content-wrapper.active {
+                display: block;
+            }
+
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .social-icons {
+                justify-content: center;
+                gap: 1.5rem;
+                margin: 2rem 0 1rem;
+            }
+
+            .social-icons a {
+                width: 50px;
+                height: 50px;
+            }
+
+            footer {
+                padding: 2rem 0 1rem;
+            }
+        }
+
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .footer-section h3 {
+                font-size: 1rem;
+            }
+
+            .footer-section ul li {
+                margin: 0.5rem 0;
+            }
+
+            .social-icons {
+                gap: 1rem;
+            }
+
+            .social-icons a {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        /* Tablet styles */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .footer-section:first-child {
+                grid-column: 1 / -1;
+                text-align: center;
+                border-bottom: 1px solid var(--border-color);
+                padding-bottom: 2rem;
+                margin-bottom: 1rem;
+            }
         }
 
         /* Payment Modal Styles */
@@ -1297,54 +1511,70 @@
         </div>
     </section>
 
+   <!-- Demo main content -->
+    <div class="main-content">
+        <div>
+            <h1>SkillSavvy GH Website</h1>
+            <p>Scroll down to see the improved mobile footer design</p>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>About SkillSavvy GH</h3>
-                    <p>Empowering digital innovation in Ghana since 2020. Your trusted partner for web development, graphic design, and digital transformation services.</p>
-                    <div class="social-icons">
-                        <a href="https://youtube.com/@skillsavvygh?si=VHCLWgZXM1sQSvXE" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://wa.me/message/YCYBTUIO5ZD5J1" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.instagram.com/jaynite_official" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://education.github.com/pack" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <div class="footer-content-wrapper">
+                        <p>Empowering digital innovation in Ghana since 2020. Your trusted partner for web development, graphic design, and digital transformation services.</p>
+                        <div class="social-icons">
+                            <a href="https://youtube.com/@skillsavvygh?si=VHCLWgZXM1sQSvXE" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://wa.me/message/YCYBTUIO5ZD5J1" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://www.instagram.com/jaynite_official" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://education.github.com/pack" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#payment">Payment</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
+                    <div class="footer-content-wrapper">
+                        <ul>
+                            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                            <li><a href="services.html"><i class="fas fa-cogs"></i> Services</a></li>
+                            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                            <li><a href="#testimonials"><i class="fas fa-star"></i> Testimonials</a></li>
+                            <li><a href="#payment"><i class="fas fa-credit-card"></i> Payment</a></li>
+                            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                        </ul>
+                    </div>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Services</h3>
-                    <ul>
-                        <li><a href="services.html">Web Development</a></li>
-                        <li><a href="services.html">UI/UX Design</a></li>
-                        <li><a href="services.html">Cybersecurity</a></li>
-                        <li><a href="services.html">Digital Marketing</a></li>
-                        <li><a href="services.html">Print Services</a></li>
-                        <li><a href="services.html">Tutoring</a></li>
-                    </ul>
+                    <div class="footer-content-wrapper">
+                        <ul>
+                            <li><a href="services.html"><i class="fas fa-code"></i> Web Development</a></li>
+                            <li><a href="services.html"><i class="fas fa-paint-brush"></i> UI/UX Design</a></li>
+                            <li><a href="services.html"><i class="fas fa-shield-alt"></i> Cybersecurity</a></li>
+                            <li><a href="services.html"><i class="fas fa-bullhorn"></i> Digital Marketing</a></li>
+                            <li><a href="services.html"><i class="fas fa-print"></i> Print Services</a></li>
+                            <li><a href="services.html"><i class="fas fa-chalkboard-teacher"></i> Tutoring</a></li>
+                        </ul>
+                    </div>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Contact Info</h3>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> Sunyani, Bono Region</li>
-                        <li><i class="fas fa-phone"></i> +233505638937</li>
-                        <li><i class="fas fa-envelope"></i> skillsavvygh@gmail.com</li>
-                        <li><i class="fas fa-globe"></i> www.skillsavvygh.com</li>
-                    </ul>
+                    <div class="footer-content-wrapper">
+                        <ul>
+                            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Sunyani, Bono Region</a></li>
+                            <li><a href="tel:+233505638937"><i class="fas fa-phone"></i> +233505638937</a></li>
+                            <li><a href="mailto:skillsavvygh@gmail.com"><i class="fas fa-envelope"></i> skillsavvygh@gmail.com</a></li>
+                            <li><a href="https://www.skillsavvygh.com"><i class="fas fa-globe"></i> www.skillsavvygh.com</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             
