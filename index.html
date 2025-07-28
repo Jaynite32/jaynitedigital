@@ -1511,14 +1511,6 @@
         </div>
     </section>
 
-   <!-- Demo main content -->
-    <div class="main-content">
-        <div>
-            <h1>SkillSavvy GH Website</h1>
-            <p>Scroll down to see the improved mobile footer design</p>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1792,6 +1784,61 @@ Please send me the payment prompt.`;
             event.target.reset();
             alert('Thank you for subscribing! We will contact you via WhatsApp.');
         }
+
+        // Mobile footer accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Only run on mobile/tablet devices
+            function initAccordion() {
+                if (window.innerWidth <= 768) {
+                    const footerSections = document.querySelectorAll('.footer-section');
+                    
+                    // Skip the first section (About section)
+                    for (let i = 1; i < footerSections.length; i++) {
+                        const header = footerSections[i].querySelector('h3');
+                        const contentWrapper = footerSections[i].querySelector('.footer-content-wrapper');
+                        
+                        if (header && contentWrapper) {
+                            header.addEventListener('click', function() {
+                                const isActive = this.classList.contains('active');
+                                
+                                // Close all other sections
+                                for (let j = 1; j < footerSections.length; j++) {
+                                    const otherHeader = footerSections[j].querySelector('h3');
+                                    const otherContent = footerSections[j].querySelector('.footer-content-wrapper');
+                                    
+                                    if (otherHeader && otherContent) {
+                                        otherHeader.classList.remove('active');
+                                        otherContent.classList.remove('active');
+                                    }
+                                }
+                                
+                                // Toggle current section
+                                if (!isActive) {
+                                    this.classList.add('active');
+                                    contentWrapper.classList.add('active');
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+            
+            // Initialize accordion
+            initAccordion();
+            
+            // Re-initialize on window resize
+            window.addEventListener('resize', function() {
+                // Remove all active classes first
+                const headers = document.querySelectorAll('.footer-section h3');
+                const contents = document.querySelectorAll('.footer-content-wrapper');
+                
+                headers.forEach(h => h.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+                
+                // Re-initialize
+                setTimeout(initAccordion, 100);
+            });
+        });
 
         // Animation on scroll
         const observerOptions = {
