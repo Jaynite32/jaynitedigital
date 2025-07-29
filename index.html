@@ -1808,61 +1808,96 @@ function subscribeNewsletter(event) {
     }, 3000);
 }
 
-        // Mobile footer accordion functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Only run on mobile/tablet devices
-            function initAccordion() {
-                if (window.innerWidth <= 768) {
-                    const footerSections = document.querySelectorAll('.footer-section');
-                    
-                    // Skip the first section (About section)
-                    for (let i = 1; i < footerSections.length; i++) {
-                        const header = footerSections[i].querySelector('h3');
-                        const contentWrapper = footerSections[i].querySelector('.footer-content-wrapper');
+// Mobile footer accordion functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Only run on mobile/tablet devices
+    function initAccordion() {
+        if (window.innerWidth <= 768) {
+            const footerSections = document.querySelectorAll('.footer-section');
+            
+            // Remove any existing event listeners first
+            footerSections.forEach(section => {
+                const header = section.querySelector('h3');
+                if (header) {
+                    // Create a new header element to remove old listeners
+                    const newHeader = header.cloneNode(true);
+                    header.parentNode.replaceChild(newHeader, header);
+                }
+            });
+            
+            // Skip the first section (About section)
+            for (let i = 1; i < footerSections.length; i++) {
+                const header = footerSections[i].querySelector('h3');
+                const contentWrapper = footerSections[i].querySelector('.footer-content-wrapper');
+                
+                if (header && contentWrapper) {
+                    // Add click event listener
+                    header.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
                         
-                        if (header && contentWrapper) {
-                            header.addEventListener('click', function() {
-                                const isActive = this.classList.contains('active');
+                        const isActive = this.classList.contains('active');
+                        
+                        // Close all other sections
+                        footerSections.forEach((section, index) => {
+                            if (index > 0) { // Skip About section
+                                const otherHeader = section.querySelector('h3');
+                                const otherContent = section.querySelector('.footer-content-wrapper');
                                 
-                                // Close all other sections
-                                for (let j = 1; j < footerSections.length; j++) {
-                                    const otherHeader = footerSections[j].querySelector('h3');
-                                    const otherContent = footerSections[j].querySelector('.footer-content-wrapper');
-                                    
-                                    if (otherHeader && otherContent) {
-                                        otherHeader.classList.remove('active');
-                                        otherContent.classList.remove('active');
-                                    }
+                                if (otherHeader && otherContent) {
+                                    otherHeader.classList.remove('active');
+                                    otherContent.classList.remove('active');
                                 }
-                                
-                                // Toggle current section
-                                if (!isActive) {
-                                    this.classList.add('active');
-                                    contentWrapper.classList.add('active');
-                                }
-                            });
+                            }
+                        });
+                        
+                        // Toggle current section
+                        if (!isActive) {
+                            this.classList.add('active');
+                            contentWrapper.classList.add('active');
                         }
-                    }
+                    });
+                    
+                    // Make header focusable and add keyboard support
+                    header.setAttribute('tabindex', '0');
+                    header.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            this.click();
+                        }
+                    });
                 }
             }
-            
-            // Initialize accordion
-            initAccordion();
-            
-            // Re-initialize on window resize
-            window.addEventListener('resize', function() {
-                // Remove all active classes first
-                const headers = document.querySelectorAll('.footer-section h3');
-                const contents = document.querySelectorAll('.footer-content-wrapper');
+        } else {
+            // On desktop, remove all active classes and event listeners
+            const footerSections = document.querySelectorAll('.footer-section');
+            footerSections.forEach(section => {
+                const header = section.querySelector('h3');
+                const contentWrapper = section.querySelector('.footer-content-wrapper');
                 
-                headers.forEach(h => h.classList.remove('active'));
-                contents.forEach(c => c.classList.remove('active'));
-                
-                // Re-initialize
-                setTimeout(initAccordion, 100);
+                if (header) {
+                    header.classList.remove('active');
+                    header.removeAttribute('tabindex');
+                }
+                if (contentWrapper) {
+                    contentWrapper.classList.remove('active');
+                }
             });
-        });
-
+        }
+    }
+    
+    // Initialize accordion
+    initAccordion();
+    
+    // Re-initialize on window resize with debounce
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            initAccordion();
+        }, 250);
+    });
+});
         // Animation on scroll
         const observerOptions = {
             threshold: 0.1,
