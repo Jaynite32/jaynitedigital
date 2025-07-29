@@ -3,1169 +3,851 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - SkillSavvy GH | Tech Insights & Digital Innovation</title>
-    <meta name="description" content="Explore tech insights, digital transformation guides, and entrepreneurship tips from SkillSavvy GH. Learn about web development, cybersecurity, and growing your business in Ghana.">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <title>Blog - SkillSavvy GH | Digital Innovation Insights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-      /* SkillSavvy GH - Premium Design System */
         :root {
-            /* Primary Brand Colors */
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            --gold-gradient: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
-            
-            /* Core Colors */
-            --primary-purple: #667eea;
-            --primary-blue: #4facfe;
-            --accent-gold: #f7971e;
-            --text-dark: #2c3e50;
-            --text-light: #7f8c8d;
-            --white: #ffffff;
+            --primary-orange: #FF6B35;
+            --dark-blue: #1B365D;
+            --charcoal: #2D3436;
+            --light-gray: #F8F9FA;
+            --white: #FFFFFF;
             --black: #000000;
-            --success: #00d4aa;
-            --warning: #ffb74d;
-            --error: #ff6b6b;
-            
-            /* Glassmorphism */
-            --glass-bg: rgba(255, 255, 255, 0.15);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --dark-glass-bg: rgba(0, 0, 0, 0.1);
-            
-            /* Spacing */
-            --section-padding: 120px 0;
-            --container-padding: 0 20px;
-            --border-radius: 20px;
-            --border-radius-small: 12px;
-            
-            /* Typography */
-            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            
-            /* Shadows */
-            --shadow-small: 0 2px 20px rgba(0, 0, 0, 0.1);
-            --shadow-medium: 0 8px 40px rgba(0, 0, 0, 0.12);
-            --shadow-large: 0 16px 60px rgba(0, 0, 0, 0.15);
-            --shadow-glow: 0 0 40px rgba(102, 126, 234, 0.4);
+            --mtn-yellow: #FFCC00;
+            --telecel-red: #E53935;
+            --airteltigo-blue: #1976D2;
+            --gradient-primary: linear-gradient(135deg, #FF6B35 0%, #E55A2B 100%);
+            --gradient-secondary: linear-gradient(135deg, #1B365D 0%, #0F2A47 100%);
+            --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 5px 25px rgba(0, 0, 0, 0.15);
+            --shadow-heavy: 0 10px 40px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s ease;
+            --border-radius: 12px;
         }
 
-        /* Global Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
         body {
-            font-family: var(--font-primary);
-            line-height: 1.7;
-            color: var(--text-dark);
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--charcoal);
             overflow-x: hidden;
-            position: relative;
-            margin: 0;
-            padding: 0;
-            padding-top: 90px;
         }
 
-        /* Animated Background Particles */
-        body::before {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            margin-right: 0.5rem;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .logo i {
+            color: var(--primary-orange);
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+            display: none;
+        }
+
+        .nav-desktop {
+            display: none;
+        }
+
+        .nav-desktop ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-desktop a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-desktop a::after {
             content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-orange);
+            transition: var(--transition);
+        }
+
+        .nav-desktop a:hover::after,
+        .nav-desktop a.active::after {
+            width: 100%;
+        }
+
+        .nav-desktop a:hover,
+        .nav-desktop a.active {
+            color: var(--primary-orange);
+        }
+
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--charcoal);
+            margin: 3px 0;
+            transition: var(--transition);
+            transform-origin: center;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--white);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 999;
+            padding-top: 80px;
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 2rem;
+        }
+
+        .mobile-menu li {
+            margin: 1.5rem 0;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-size: 1.2rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .mobile-menu a:hover {
+            background: var(--light-gray);
+            color: var(--primary-orange);
+            transform: translateX(10px);
+        }
+
+        .mobile-menu i {
+            margin-right: 1rem;
+            width: 20px;
+            color: var(--primary-orange);
+        }
+
+        /* Blog Hero Section */
+        .blog-hero {
+            padding: 8rem 0 4rem;
+            background: var(--gradient-secondary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .blog-hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .blog-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Blog Main Content */
+        .blog-main {
+            padding: 4rem 0;
+            background: var(--light-gray);
+        }
+
+        .blog-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        /* Featured Post */
+        .featured-post {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            margin-bottom: 3rem;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 300px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 4rem;
+        }
+
+        .featured-content {
+            padding: 2rem;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--primary-orange);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .post-category {
+            background: var(--primary-orange);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .featured-content h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .featured-excerpt {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .read-more-btn {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .read-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2.5rem;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .blog-excerpt {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Search and Filter */
+        .blog-filters {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            margin-bottom: 3rem;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+        }
+
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter-tag {
+            padding: 0.5rem 1rem;
+            background: var(--light-gray);
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .filter-tag:hover,
+        .filter-tag.active {
+            background: var(--primary-orange);
+            color: var(--white);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.3) 0%, transparent 50%);
-            z-index: -2;
-            animation: particleMove 20s ease-in-out infinite;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
         }
 
-        @keyframes particleMove {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(120deg); }
-            66% { transform: translate(-20px, 20px) rotate(240deg); }
-        }
-
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-heading);
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
-        h2 { font-size: clamp(2rem, 4vw, 3rem); }
-        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
-
-        p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 80px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        /* Skip Link for Accessibility */
-        .skip-link {
-            position: absolute;
-            top: -100px;
-            left: 20px;
-            background: var(--text-dark);
-            color: var(--white);
-            padding: 10px 20px;
-            border-radius: var(--border-radius-small);
-            z-index: 10000;
-            transition: top 0.3s ease;
-        }
-
-        .skip-link:focus {
-            top: 20px;
-        } 
-      
-       /* Header Styles */
-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 1rem 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-}
-
-header.scrolled {
-    background: rgba(102, 126, 234, 0.95);
-    backdrop-filter: blur(10px);
-}
-
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo-img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-.logo-container h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
-/* Navigation Styles */
-.nav-container {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    margin: 0;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    background: rgba(255,255,255,0.2);
-    transform: translateY(-2px);
-}
-
-/* Mobile Menu Toggle */
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0.5rem;
-}
-
-/* Mobile Menu Styles */
-@media (max-width: 768px) {
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        height: 100vh;
-        background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        padding-top: 100px;
-        transition: right 0.3s ease;
-        z-index: 999;
-    }
-    
-    .nav-links.active {
-        right: 0;
-    }
-    
-    .nav-links li {
-        margin: 20px 0;
-    }
-    
-    .nav-links a {
-        font-size: 1.2rem;
-        color: white;
-        text-decoration: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        transition: background 0.3s ease;
-    }
-    
-    .nav-links a:hover,
-    .nav-links a.active {
-        background: rgba(255, 255, 255, 0.1);
-    }
-    
-    .menu-toggle {
-        display: block;
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        color: white; /* FIXED: Changed from #333 to white */
-        cursor: pointer;
-        z-index: 1000;
-    }
-}
-
-@media (min-width: 769px) {
-    .menu-toggle {
-        display: none;
-    }
-}
-
-       /* Blog-Specific Styles */
-        .blog-hero {
-            background: var(--primary-gradient);
-            padding: 140px 0 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .blog-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.5;
-        }
-
-        .blog-hero-content {
-            text-align: center;
-            color: white;
-            position: relative;
-            z-index: 2;
-        }
-
-        .blog-hero h1 {
-            color: white;
-            margin-bottom: 20px;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-        }
-
-        .blog-hero p {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-
-        .blog-stats {
+        .modal.active {
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 60px;
-            margin-top: 40px;
         }
 
-        .stat-item {
-            text-align: center;
+        .modal-content {
+            background: var(--white);
+            max-width: 800px;
+            max-height: 90vh;
+            width: 90%;
+            border-radius: var(--border-radius);
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 0.3s ease;
         }
 
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Blog Filter */
-        .blog-filter {
-            background: white;
-            padding: 40px 0;
-            box-shadow: var(--shadow-small);
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid #e0e0e0;
             position: sticky;
-            top: 90px;
-            z-index: 100;
+            top: 0;
+            background: var(--white);
+            z-index: 10;
         }
 
-        .filter-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+        .modal-header h2 {
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
         }
 
-        .filter-tab {
-            padding: 12px 24px;
-            background: var(--glass-bg);
-            border: 2px solid var(--glass-border);
-            border-radius: var(--border-radius-small);
-            color: var(--text-dark);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            backdrop-filter: blur(10px);
-        }
-
-        .filter-tab.active,
-        .filter-tab:hover {
-            background: var(--primary-gradient);
-            color: white;
-            border-color: transparent;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .search-bar {
-            max-width: 400px;
-            margin: 0 auto 20px;
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 15px 50px 15px 20px;
-            border: 2px solid var(--glass-border);
-            border-radius: var(--border-radius-small);
-            font-size: 1rem;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-        }
-
-        .search-btn {
+        .close-modal {
             position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 1rem;
+            right: 1rem;
             background: none;
             border: none;
-            color: var(--primary-purple);
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        /* Blog Grid */
-        .blog-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .blog-card {
-            background: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-small);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            cursor: pointer;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-large);
-        }
-
-        .blog-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--accent-gradient);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .blog-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .blog-image {
-            width: 100%;
-            height: 240px;
-            background: var(--primary-gradient);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .blog-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .blog-card:hover .blog-image img {
-            transform: scale(1.1);
-        }
-
-        .blog-category {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: var(--accent-gradient);
-            color: white;
-            padding: 8px 16px;
-            border-radius: var(--border-radius-small);
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .blog-content {
-            padding: 30px;
-        }
-
-        .blog-meta {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .blog-title {
             font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-            line-height: 1.3;
-        }
-
-        .blog-excerpt {
-            color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .blog-footer {
+            cursor: pointer;
+            color: var(--charcoal);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
+            transition: var(--transition);
         }
 
-        .read-more {
-            background: var(--primary-gradient);
-            color: white;
-            padding: 10px 20px;
-            border-radius: var(--border-radius-small);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
+        .close-modal:hover {
+            background: var(--light-gray);
         }
 
-        .read-more:hover {
-            transform: translateX(5px);
-            box-shadow: var(--shadow-medium);
+        .modal-body {
+            padding: 0 2rem 2rem;
         }
 
-        .blog-tags {
-            display: flex;
-            gap: 10px;
-        }
-
-        .tag {
-            background: var(--glass-bg);
-            color: var(--text-dark);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            border: 1px solid var(--glass-border);
-        }
-
-        /* Featured Post */
-        .featured-post {
-            background: white;
+        .modal-body img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
             border-radius: var(--border-radius);
-            overflow: hidden;
-            margin-bottom: 60px;
-            box-shadow: var(--shadow-medium);
-            position: relative;
+            margin-bottom: 2rem;
         }
 
-        .featured-badge {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: var(--gold-gradient);
-            color: white;
-            padding: 10px 20px;
-            border-radius: var(--border-radius-small);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            z-index: 2;
-            box-shadow: var(--shadow-medium);
+        .modal-body p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
 
-        .featured-content {
+        .modal-body h3 {
+            color: var(--dark-blue);
+            margin: 2rem 0 1rem;
+            font-size: 1.3rem;
+        }
+
+        .modal-body ul {
+            margin: 1rem 0 1.5rem 2rem;
+        }
+
+        .modal-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            align-items: center;
-            min-height: 400px;
-        }
-
-        .featured-text {
-            padding: 60px;
-        }
-
-        .featured-title {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .featured-excerpt {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-        }
-
-        .featured-image {
-            height: 400px;
-            background: var(--primary-gradient);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Newsletter Signup */
-        .blog-newsletter {
-            background: var(--primary-gradient);
-            padding: 80px 0;
+            grid-template-columns: 1fr;
+            gap: 2rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
 
-        .blog-newsletter::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .newsletter-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .newsletter-content h2 {
-            color: white;
-            margin-bottom: 20px;
-            font-size: 2.5rem;
-        }
-
-        .newsletter-content p {
-            color: rgba(255, 255, 255, 0.9);
+        .footer-section h3 {
+            color: var(--primary-orange);
+            margin-bottom: 1rem;
             font-size: 1.2rem;
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        .newsletter-form {
-            max-width: 500px;
-            margin: 0 auto;
+        .footer-section p {
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .social-icons {
             display: flex;
-            gap: 15px;
+            justify-content: center;
+            gap: 1rem;
         }
 
-        .newsletter-input {
-            flex: 1;
-            padding: 18px 24px;
-            border: none;
-            border-radius: var(--border-radius-small);
-            font-size: 1.1rem;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 107, 53, 0.1);
+            border: 2px solid var(--primary-orange);
+            border-radius: 50%;
+            color: var(--primary-orange);
+            text-decoration: none;
+            transition: var(--transition);
         }
 
-        .newsletter-input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .newsletter-btn {
-            background: white;
-            color: var(--primary-purple);
-            padding: 18px 30px;
-            border: none;
-            border-radius: var(--border-radius-small);
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .newsletter-btn:hover {
+        .social-icons a:hover {
+            background: var(--primary-orange);
+            color: var(--white);
             transform: translateY(-2px);
-            box-shadow: var(--shadow-large);
         }
 
-        /* Load More Button */
-        .load-more-section {
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+            padding-top: 2rem;
             text-align: center;
-            padding: 40px 0;
-        }
-
-        .load-more-btn {
-            background: var(--primary-gradient);
-            color: white;
-            padding: 16px 40px;
-            border: none;
-            border-radius: var(--border-radius-small);
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .load-more-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-large);
+            opacity: 0.7;
         }
 
         /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .blog-hero {
-                padding: 120px 0 60px;
+        @media (min-width: 768px) {
+            .nav-desktop {
+                display: block;
             }
 
-            .blog-stats {
-                gap: 30px;
+            .menu-toggle {
+                display: none;
             }
 
-            .stat-number {
-                font-size: 2rem;
+            .blog-hero h1 {
+                font-size: 4rem;
             }
 
             .blog-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .featured-content {
-                grid-template-columns: 1fr;
+            .blog-container {
+                grid-template-columns: 2fr 1fr;
             }
 
-            .featured-text {
-                padding: 40px 30px;
+            .featured-image {
+                height: 400px;
             }
 
-            .featured-title {
-                font-size: 1.8rem;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-            }
-
-            .container {
-                padding: 0 20px;
-            }
-
-            .filter-tabs {
-                gap: 10px;
-            }
-
-            .filter-tab {
-                padding: 10px 16px;
-                font-size: 0.9rem;
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+                text-align: left;
             }
         }
 
-        /* Dark mode support */
-        @media (prefers-color-scheme: dark) {
-            .blog-card {
-                background: rgba(255, 255, 255, 0.05);
-                backdrop-filter: blur(10px);
-                border: 1px solid rgba(255, 255, 255, 0.1);
+        @media (min-width: 1024px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
-    <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
-   <!-- Header -->
+    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo-container">
-                    <img src="images/logo.png" alt="SkillSavvy GH Logo" class="logo-img">
-                    <h1>SKILLSAVVY GH</h1>
-                </div>
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="SkillSavvy GH Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                    <i class="fas fa-bolt"></i>
+                    SkillSavvy GH
+                </a>
                 
-                <div class="nav-container">
-                    <nav aria-label="Main Navigation">
-                        <ul class="nav-links" id="navLinks">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="portfolio.html">Portfolio</a></li>
-                            <li><a href="blog.html" class="active">Blog</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                        <button class="menu-toggle" id="menuToggle" aria-label="Toggle mobile menu">
-                            <i class="fas fa-bars"></i>
-                        </button>
-                    </nav>
+                <nav class="nav-desktop">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="blog.html" class="active">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
 
-                    <div class="accessibility-controls">
-                        <button id="increase-text" aria-label="Increase text size" title="Increase text size">A+</button>
-                        <button id="decrease-text" aria-label="Decrease text size" title="Decrease text size">A-</button>
-                        <button id="toggle-contrast" aria-label="Toggle high contrast mode" title="Toggle high contrast mode">
-                            <i class="fas fa-adjust"></i>
-                        </button>
-                    </div>
-                </div>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+                <li><a href="services.html"><i class="fas fa-cogs"></i>Services</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i>About</a></li>
+                <li><a href="portfolio.html"><i class="fas fa-briefcase"></i>Portfolio</a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
+            </ul>
         </div>
     </header>
 
-    <main id="main-content">
-        <!-- Blog Hero Section -->
-        <section class="blog-hero">
-            <div class="container">
-                <div class="blog-hero-content">
-                    <h1>Tech Insights & Innovation Hub</h1>
-                    <p>Discover the latest trends in technology, digital transformation strategies, and entrepreneurship insights that drive success in Ghana's digital economy.</p>
-                    
-                    <div class="blog-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">50+</span>
-                            <span class="stat-label">Articles</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">5K+</span>
-                            <span class="stat-label">Readers</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">12</span>
-                            <span class="stat-label">Categories</span>
-                        </div>
-                    </div>
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1>Our Blog</h1>
+            <p>Insights, tips, and the latest trends in digital innovation, technology, and business growth in Ghana and beyond.</p>
+        </div>
+    </section>
+
+    <!-- Blog Main Content -->
+    <section class="blog-main">
+        <div class="container">
+            <!-- Search and Filter -->
+            <div class="blog-filters">
+                <input type="text" class="search-box" placeholder="Search articles..." id="searchBox">
+                <div class="filter-tags">
+                    <button class="filter-tag active" data-category="all">All</button>
+                    <button class="filter-tag" data-category="web-development">Web Development</button>
+                    <button class="filter-tag" data-category="cybersecurity">Cybersecurity</button>
+                    <button class="filter-tag" data-category="digital-marketing">Digital Marketing</button>
+                    <button class="filter-tag" data-category="business">Business</button>
+                    <button class="filter-tag" data-category="technology">Technology</button>
                 </div>
             </div>
-        </section>
 
-        <!-- Blog Filter -->
-        <section class="blog-filter">
-            <div class="container">
-                <div class="search-bar">
-                    <input type="text" class="search-input" placeholder="Search articles..." id="searchInput">
-                    <button class="search-btn" onclick="searchArticles()">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-                
-                <div class="filter-tabs">
-                    <button class="filter-tab active" onclick="filterPosts('all')">All Posts</button>
-                    <button class="filter-tab" onclick="filterPosts('web-dev')">Web Development</button>
-                    <button class="filter-tab" onclick="filterPosts('cybersecurity')">Cybersecurity</button>
-                    <button class="filter-tab" onclick="filterPosts('business')">Business</button>
-                    <button class="filter-tab" onclick="filterPosts('tutorials')">Tutorials</button>
-                    <button class="filter-tab" onclick="filterPosts('ghana-tech')">Ghana Tech</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Blog Content -->
-        <section class="blog-section">
-            <div class="container">
-                <!-- Featured Post -->
-                <article class="featured-post" data-category="business">
-                    <div class="featured-badge">
-                        <i class="fas fa-star"></i> Featured
-                    </div>
-                    <div class="featured-content">
-                        <div class="featured-text">
-                            <h2 class="featured-title">Building a Digital Business in Ghana: A Complete Guide</h2>
-                            <p class="featured-excerpt">Discover how to leverage technology and digital marketing to build a successful business in Ghana's growing digital economy. From e-commerce to service-based businesses, learn the strategies that work.</p>
-                            <div class="blog-meta">
-                                <div class="meta-item">
-                                    <i class="fas fa-calendar"></i>
-                                    <span>January 15, 2025</span>
-                                </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-clock"></i>
-                                    <span>12 min read</span>
-                                </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-user"></i>
-                                    <span>Emmanuel Akomani</span>
-                                </div>
-                            </div>
-                            <a href="#" class="read-more">Read Full Article</a>
-                        </div>
+            <div class="blog-container">
+                <div class="blog-main-content">
+                    <!-- Featured Post -->
+                    <article class="featured-post" data-category="web-development">
                         <div class="featured-image">
-                            <div style="background: var(--primary-gradient); height: 100%; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
-                                <i class="fas fa-rocket"></i>
-                            </div>
+                            <i class="fas fa-code"></i>
                         </div>
-                    </div>
-                </article>
-
-                <!-- Blog Grid -->
-                <div class="blog-grid" id="blogGrid">
-                    <!-- Article 1 -->
-                    <article class="blog-card" data-category="web-dev">
-                        <div class="blog-image">
-                            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white;">
-                                <i class="fas fa-code"></i>
+                        <div class="featured-content">
+                            <div class="post-meta">
+                                <span class="post-category">Web Development</span>
+                                <span><i class="fas fa-calendar"></i> January 15, 2025</span>
+                                <span><i class="fas fa-user"></i> Emmanuel Akomani</span>
                             </div>
-                            <div class="blog-category">Web Development</div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <div class="meta-item">
-                                    <i class="fas fa-calendar"></i>
-                                    <span>Jan 12, 2025</span>
-                                </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-eye"></i>
-                                    <span>1.2k views</span>
-                                </div>
-                            </div>
-                            <h3 class="blog-title">Modern Web Development Trends in 2025</h3>
-                            <p class="blog-excerpt">Explore the latest web development technologies and frameworks that are shaping the digital landscape. From Progressive Web Apps to AI integration.</p>
-                            <div class="blog-footer">
-                                <a href="#" class="read-more">Read More</a>
-                                <div class="blog-tags">
-                                    <span class="tag">React</span>
-                                    <span class="tag">PWA</span>
-                                </div>
-                            </div>
+                            <h2>The Future of Web Development in Ghana: Trends to Watch in 2025</h2>
+                            <p class="featured-excerpt">
+                                As Ghana continues its digital transformation journey, web development is evolving rapidly. From progressive web apps to AI integration, discover the key trends shaping the future of web development in Ghana and how businesses can leverage these technologies for growth.
+                            </p>
+                            <a href="#" class="read-more-btn" onclick="openArticle(1)">
+                                Read Full Article <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
                     </article>
 
-                    <!-- Article 2 -->
-                    <article class="blog-card" data-category="cybersecurity">
-                        <div class="blog-image">
-                            <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white;">
+                    <!-- Blog Grid -->
+                    <div class="blog-grid">
+                        <article class="blog-card" data-category="cybersecurity">
+                            <div class="blog-image">
                                 <i class="fas fa-shield-alt"></i>
                             </div>
-                            <div class="blog-category">Cybersecurity</div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <div class="meta-item">
-                                    <i class="fas fa-calendar"></i>
-                                    <span>Jan 10, 2025</span>
+                            <div class="blog-content">
+                                <div class="post-meta">
+                                    <span class="post-category">Cybersecurity</span>
+                                    <span><i class="fas fa-calendar"></i> January 12, 2025</span>
                                 </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-eye"></i>
-                                    <span>856 views</span>
-                                </div>
+                                <h3>Essential Cybersecurity Practices for Small Businesses in Ghana</h3>
+                                <p class="blog-excerpt">
+                                    Small businesses are increasingly becoming targets for cyber attacks. Learn the fundamental security practices that every Ghanaian business should implement to protect their digital assets.
+                                </p>
+                                <a href="#" class="read-more-btn" onclick="openArticle(2)">
+                                    Read More <i class="fas fa-arrow-right"></i>
+                                </a>
                             </div>
-                            <h3 class="blog-title">Essential Cybersecurity Practices for Small Businesses</h3>
-                            <p class="blog-excerpt">Protect your business from cyber threats with these proven security strategies. Learn about password management, data encryption, and threat detection.</p>
-                            <div class="blog-footer">
-                                <a href="#" class="read-more">Read More</a>
-                                <div class="blog-tags">
-                                    <span class="tag">Security</span>
-                                    <span class="tag">Business</span>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
+                        </article>
 
-                    <!-- Article 3 -->
-                    <article class="blog-card" data-category="tutorials">
-                        <div class="blog-image">
-                            <div style="background: linear-gradient(135deg, #00d4aa 0%, #01a085 100%); height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white;">
-                                <i class="fas fa-play-circle"></i>
+                        <article class="blog-card" data-category="digital-marketing">
+                            <div class="blog-image">
+                                <i class="fas fa-bullhorn"></i>
                             </div>
-                            <div class="blog-category">Tutorial</div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <div class="meta-item">
-                                    <i class="fas fa-calendar"></i>
-                                    <span>Jan 8, 2025</span>
+                            <div class="blog-content">
+                                <div class="post-meta">
+                                    <span class="post-category">Digital Marketing</span>
+                                    <span><i class="fas fa-calendar"></i> January 10, 2025</span>
                                 </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-eye"></i>
-                                    <span>2.1k views</span>
-                                </div>
+                                <h3>Social Media Marketing Strategies That Work in Ghana</h3>
+                                <p class="blog-excerpt">
+                                    Understanding the Ghanaian social media landscape is crucial for effective marketing. Discover platform-specific strategies that drive engagement and conversions.
+                                </p>
+                                <a href="#" class="read-more-btn" onclick="openArticle(3)">
+                                    Read More <i class="fas fa-arrow-right"></i>
+                                </a>
                             </div>
-                            <h3 class="blog-title">Complete Guide to Setting Up Your First Website</h3>
-                            <p class="blog-excerpt">Step-by-step tutorial on creating your first website from scratch. Covers domain registration, hosting, design basics, and content management.</p>
-                            <div class="blog-footer">
-                                <a href="#" class="read-more">Read More</a>
-                                <div class="blog-tags">
-                                    <span class="tag">Beginner</span>
-                                    <span class="tag">HTML/CSS</span>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
+                        </article>
 
-                    <!-- Article 4 -->
-                    <article class="blog-card" data-category="ghana-tech">
-                        <div class="blog-image">
-                            <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white;">
-                                <i class="fas fa-globe-africa"></i>
-                            </div>
-                            <div class="blog-category">Ghana Tech</div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <div class="meta-item">
-                                    <i class="fas fa-calendar"></i>
-                                    <span>Jan 6, 2025</span>
-                                </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-eye"></i>
-                                    <span>945 views</span>
-                                </div>
-                            </div>
-                            <h3 class="blog-title">The Rise of Fintech in Ghana: Opportunities and Challenges</h3>
-                            <p class="blog-excerpt">Analyzing Ghana's fintech revolution and how mobile money and digital banking are transforming the financial landscape across West Africa.</p>
-                            <div class="blog-footer">
-                                <a href="#" class="read-more">Read More</a>
-                                <div class="blog-tags">
-                                    <span class="tag">Fintech</span>
-                                    <span class="tag">Mobile Money</span>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Article 5 -->
-                    <article class="blog-card" data-category="business">
-                        <div class="blog-image">
-                            <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white;">
+                        <article class="blog-card" data-category="business">
+                            <div class="blog-image">
                                 <i class="fas fa-chart-line"></i>
                             </div>
-                            <div class="blog-category">Business</div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <div class="meta-item">
-                                    <i class="fas fa-calendar"></i>
-                                    <span>Jan 4, 2025</span>
+                            <div class="blog-content">
+                                <div class="post-meta">
+                                    <span class="post-category">Business</span>
+                                    <span><i class="fas fa-calendar"></i> January 8, 2025</span>
                                 </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-eye"></i>
-                                    <span>1.5k views</span>
-                                </div>
+                                <h3>Digital Transformation: A Guide for Ghanaian Enterprises</h3>
+                                <p class="blog-excerpt">
+                                    Digital transformation is no longer optional. Learn how Ghanaian businesses can successfully navigate their digital journey with practical steps and real examples.
+                                </p>
+                                <a href="#" class="read-more-btn" onclick="openArticle(4)">
+                                    Read More <i class="fas fa-arrow-right"></i>
+                                </a>
                             </div>
-                            <h3 class="blog-title">Digital Marketing Strategies That Work in Ghana</h3>
-                            <p class="blog-excerpt">Discover effective digital marketing tactics specifically tailored for the Ghanaian market. From social media to email marketing campaigns.</p>
-                            <div class="blog-footer">
-                                <a href="#" class="read-more">Read More</a>
-                                <div class="blog-tags">
-                                    <span class="tag">Marketing</span>
-                                    <span class="tag">Social Media</span>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
+                        </article>
 
-                    <!-- Article 6 -->
-                    <article class="blog-card" data-category="tutorials">
-                        <div class="blog-image">
-                            <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: #333;">
-                                <i class="fas fa-palette"></i>
+                        <article class="blog-card" data-category="technology">
+                            <div class="blog-image">
+                                <i class="fas fa-mobile-alt"></i>
                             </div>
-                            <div class="blog-category">Design</div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <div class="meta-item">
-                                    <i class="fas fa-calendar"></i>
-                                    <span>Jan 2, 2025</span>
+                            <div class="blog-content">
+                                <div class="post-meta">
+                                    <span class="post-category">Technology</span>
+                                    <span><i class="fas fa-calendar"></i> January 5, 2025</span>
                                 </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-eye"></i>
-                                    <span>1.8k views</span>
-                                </div>
+                                <h3>Mobile-First Design: Why It Matters in Ghana</h3>
+                                <p class="blog-excerpt">
+                                    With high mobile internet usage in Ghana, mobile-first design is essential. Learn why and how to implement effective mobile-first strategies.
+                                </p>
+                                <a href="#" class="read-more-btn" onclick="openArticle(5)">
+                                    Read More <i class="fas fa-arrow-right"></i>
+                                </a>
                             </div>
-                            <h3 class="blog-title">UI/UX Design Principles for Better User Experience</h3>
-                            <p class="blog-excerpt">Master the fundamentals of user interface and user experience design. Learn about typography, color theory, and user-centered design approaches.</p>
-                            <div class="blog-footer">
-                                <a href="#" class="read-more">Read More</a>
-                                <div class="blog-tags">
-                                    <span class="tag">Design</span>
-                                    <span class="tag">UX/UI</span>
-                                </div>
+                        </article>
+
+                        <article class="blog-card" data-category="web-development">
+                            <div class="blog-image">
+                                <i class="fas fa-laptop-code"></i>
                             </div>
-                        </div>
-                    </article>
+                            <div class="blog-content">
+                                <div class="post-meta">
+                                    <span class="post-category">Web Development</span>
+                                    <span><i class="fas fa-calendar"></i> January 3, 2025</span>
+                                </div>
+                                <h3>Building Fast and Reliable Websites for African Users</h3>
+                                <p class="blog-excerpt">
+                                    Network conditions in Africa require special considerations. Learn optimization techniques that ensure your website performs well across the continent.
+                                </p>
+                                <a href="#" class="read-more-btn" onclick="openArticle(6)">
+                                    Read More <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="blog-card" data-category="digital-marketing">
+                            <div class="blog-image">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="blog-content">
+                                <div class="post-meta">
+                                    <span class="post-category">Digital Marketing</span>
+                                    <span><i class="fas fa-calendar"></i> December 28, 2024</span>
+                                </div>
+                                <h3>SEO Best Practices for Ghanaian Businesses</h3>
+                                <p class="blog-excerpt">
+                                    Local SEO strategies tailored for the Ghanaian market. Learn how to improve your search rankings and attract more local customers.
+                                </p>
+                                <a href="#" class="read-more-btn" onclick="openArticle(7)">
+                                    Read More <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
                 </div>
-
-                <!-- Load More Section -->
-                <div class="load-more-section">
-                    <button class="load-more-btn" onclick="loadMorePosts()">
-                        <i class="fas fa-plus"></i> Load More Articles
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Newsletter Section -->
-        <section class="blog-newsletter">
-            <div class="container">
-                <div class="newsletter-content">
-                    <h2><i class="fas fa-envelope"></i> Stay Updated</h2>
-                    <p>Subscribe to our newsletter and never miss our latest tech insights, tutorials, and industry updates. Join our community of digital innovators!</p>
-                    <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
-                        <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
-                        <button type="submit" class="newsletter-btn">
-                            <i class="fas fa-paper-plane"></i> Subscribe
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Social Sidebar -->
-    <aside>
-        <div class="social-sidebar">
-            <h3>Connect With Us</h3>
-            <div class="social-links">
-                <a href="https://youtube.com/@skillsavvygh?si=VHCLWgZXM1sQSvXE" target="_blank" class="social-link youtube">
-                    <i class="fab fa-youtube"></i>
-                    <div class="social-info">
-                        <span>YouTube</span>
-                        <small>Subscribe for tutorials</small>
-                    </div>
-                </a>
-                <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" target="_blank" class="social-link linkedin">
-                    <i class="fab fa-linkedin"></i>
-                    <div class="social-info">
-                        <span>LinkedIn</span>
-                        <small>Professional network</small>
-                    </div>
-                </a>
-                <a href="https://wa.me/message/YCYBTUIO5ZD5J1" target="_blank" class="social-link whatsapp">
-                    <i class="fab fa-whatsapp"></i>
-                    <div class="social-info">
-                        <span>WhatsApp</span>
-                        <small>Chat with us</small>
-                    </div>
-                </a>
-                <a href="https://www.instagram.com/jaynite_official" target="_blank" class="social-link instagram">
-                    <i class="fab fa-instagram"></i>
-                    <div class="social-info">
-                        <span>Instagram</span>
-                        <small>Follow for updates</small>
-                    </div>
-                </a>
-                <a href="https://education.github.com/pack" target="_blank" class="social-link github">
-                    <i class="fab fa-github"></i>
-                    <div class="social-info">
-                        <span>GitHub</span>
-                        <small>View our code</small>
-                    </div>
-                </a>
             </div>
         </div>
-    </aside>
+    </section>
+
+    <!-- Article Modal -->
+    <div class="modal" id="articleModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Article Title</h2>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Article content will be populated here -->
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -1173,28 +855,7 @@ header.scrolled {
             <div class="footer-content">
                 <div class="footer-section about">
                     <h3>About SkillSavvy GH</h3>
-                    <p>Empowering digital innovation in Ghana since 2020. Your trusted partner for web development, graphic design, and digital transformation services.</p>
-                </div>
-                <div class="footer-section links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section contact">
-                    <h3>Contact Info</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Sunyani, Bono Region</p>
-                    <p><i class="fas fa-phone"></i> +233505638937</p>
-                    <p><i class="fas fa-envelope"></i> skillsavvygh@gmail.com</p>
-                    <p><i class="fas fa-globe"></i> www.skillsavvygh.com</p>
-                </div>
-                <div class="footer-section social">
-                    <h3>Follow Us</h3>
+                    <p>Empowering digital innovation in Ghana since 2020. Your trusted partner for web development, graphic design, cybersecurity, and comprehensive digital transformation services.</p>
                     <div class="social-icons">
                         <a href="https://youtube.com/@skillsavvygh?si=VHCLWgZXM1sQSvXE" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
                         <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
@@ -1203,234 +864,346 @@ header.scrolled {
                         <a href="https://education.github.com/pack" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="index.html" style="color: rgba(255,255,255,255,0.8); text-decoration: none; transition: color 0.3s ease;">Home</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="services.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease;">Services</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="about.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease;">About</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="portfolio.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease;">Portfolio</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="blog.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease;">Blog</a></li>
+                        <li><a href="contact.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease;">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt" style="color: var(--primary-orange); margin-right: 0.5rem;"></i> Sunyani, Bono Region, Ghana</p>
+                    <p><i class="fas fa-phone" style="color: var(--primary-orange); margin-right: 0.5rem;"></i> +233 50 563 8937</p>
+                    <p><i class="fas fa-envelope" style="color: var(--primary-orange); margin-right: 0.5rem;"></i> skillsavvygh@gmail.com</p>
+                    <p><i class="fas fa-globe" style="color: var(--primary-orange); margin-right: 0.5rem;"></i> www.skillsavvygh.com</p>
+                </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 SkillSavvy GH. All rights reserved. | <a href="#" style="color: inherit;">Privacy Policy</a> | <a href="#" style="color: inherit;">Terms of Service</a></p>
+                <p>&copy; 2025 SkillSavvy GH. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-   <!-- JavaScript for Blog Functionality -->
-<script>
-    // Blog filter functionality
-    function filterPosts(category, element) {
-        const posts = document.querySelectorAll('.blog-card, .featured-post');
-        const tabs = document.querySelectorAll('.filter-tab');
-        
-        // Update active tab
-        tabs.forEach(tab => tab.classList.remove('active'));
-        element.classList.add('active');
-        
-        // Show/hide posts
-        posts.forEach(post => {
-            if (category === 'all' || post.dataset.category === category) {
-                post.style.display = 'block';
-                post.style.animation = 'fadeInUp 0.5s ease forwards';
-            } else {
-                post.style.display = 'none';
-            }
-        });
-    }
-     // Accessibility features
-        let textSize = 16;
-        let highContrast = false;
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
 
-        document.getElementById('increase-text').addEventListener('click', function() {
-            if (textSize < 24) {
-                textSize += 2;
-                document.documentElement.style.fontSize = textSize + 'px';
-            }
-        });
-
-        document.getElementById('decrease-text').addEventListener('click', function() {
-            if (textSize > 12) {
-                textSize -= 2;
-                document.documentElement.style.fontSize = textSize + 'px';
-            }
-        });
-
-        document.getElementById('toggle-contrast').addEventListener('click', function() {
-            highContrast = !highContrast;
-            if (highContrast) {
-                document.body.classList.add('high-contrast');
-            } else {
-                document.body.classList.remove('high-contrast');
-            }
-        });
-
-    // Search functionality
-    function searchArticles() {
-        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-        const posts = document.querySelectorAll('.blog-card, .featured-post');
-        
-        posts.forEach(post => {
-            const title = post.querySelector('.blog-title, .featured-title').textContent.toLowerCase();
-            const excerpt = post.querySelector('.blog-excerpt, .featured-excerpt').textContent.toLowerCase();
-            
-            if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
-                post.style.display = 'block';
-            } else {
-                post.style.display = 'none';
-            }
-        });
-    }
-
-    // Search on Enter key
-    document.getElementById('searchInput').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            searchArticles();
-        }
-    });
-
-    // Load more posts functionality
-    function loadMorePosts() {
-        const button = document.querySelector('.load-more-btn');
-        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
-        
-        // Simulate loading delay
-        setTimeout(() => {
-            button.innerHTML = '<i class="fas fa-plus"></i> Load More Articles';
-            // In a real implementation, you would load more posts here
-            alert('More articles would be loaded here. This is a demo implementation.');
-        }, 1500);
-    }
-
-    // Newsletter subscription
-    function subscribeNewsletter(event) {
-        event.preventDefault();
-        const email = event.target.querySelector('input[type="email"]').value;
-        const button = event.target.querySelector('button');
-        
-        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
-        
-        // Simulate subscription process
-        setTimeout(() => {
-            button.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
-            event.target.reset();
-            
-            setTimeout(() => {
-                button.innerHTML = '<i class="fas fa-paper-plane"></i> Subscribe';
-            }, 2000);
-        }, 1500);
-    }
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-
-    // Add scroll animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-
-    // Observe blog cards for animation
-    document.addEventListener('DOMContentLoaded', function() {
-        const blogCards = document.querySelectorAll('.blog-card');
-        blogCards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'all 0.6s ease';
-            observer.observe(card);
-        });
-    });
-
-    // Accessibility improvements
-    document.addEventListener('DOMContentLoaded', function() {
-        // Add keyboard navigation for filter tabs
-        const filterTabs = document.querySelectorAll('.filter-tab');
-        filterTabs.forEach(tab => {
-            tab.setAttribute('tabindex', '0');
-            tab.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.click();
-                }
-            });
-        });
-
-        // Add ARIA labels for better accessibility
-        const readMoreLinks = document.querySelectorAll('.read-more');
-        readMoreLinks.forEach(link => {
-            const title = link.closest('.blog-card').querySelector('.blog-title').textContent;
-            link.setAttribute('aria-label', `Read more about: ${title}`);
-        });
-    });
-</script>
-
-<script>
-    // Hamburger Menu Toggle Functionality
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-
-    // Toggle mobile menu
-    if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            
-            // Toggle hamburger icon
-            const icon = menuToggle.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
         });
-        
-        // Close menu when clicking on a nav link (mobile)
-        const navLinkItems = navLinks.querySelectorAll('a');
-        navLinkItems.forEach(link => {
+
+        // Close mobile menu when clicking on a link
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+        mobileMenuLinks.forEach(link => {
             link.addEventListener('click', function() {
-                if (window.innerWidth <= 768) {
-                    navLinks.classList.remove('active');
-                    const icon = menuToggle.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Search functionality
+        const searchBox = document.getElementById('searchBox');
+        const blogCards = document.querySelectorAll('.blog-card, .featured-post');
+
+        searchBox.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            blogCards.forEach(card => {
+                const title = card.querySelector('h2, h3').textContent.toLowerCase();
+                const excerpt = card.querySelector('.featured-excerpt, .blog-excerpt').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
                 }
             });
         });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!menuToggle.contains(event.target) && !navLinks.contains(event.target)) {
-                navLinks.classList.remove('active');
-                const icon = menuToggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+
+        // Filter functionality
+        const filterTags = document.querySelectorAll('.filter-tag');
+
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', function() {
+                // Remove active class from all tags
+                filterTags.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tag
+                this.classList.add('active');
+
+                const category = this.getAttribute('data-category');
+
+                blogCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Modal functionality
+        function openArticle(articleId) {
+            const modal = document.getElementById('articleModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+
+            // Article content based on articleId
+            const articles = {
+                1: {
+                    title: "The Future of Web Development in Ghana: Trends to Watch in 2025",
+                    content: `
+                        <img src="https://via.placeholder.com/800x300/FF6B35/FFFFFF?text=Web+Development+Ghana" alt="Web Development in Ghana">
+                        <p>Ghana's digital landscape is evolving at an unprecedented pace, and web development is at the forefront of this transformation. As we move through 2025, several key trends are shaping how businesses approach their online presence.</p>
+                        
+                        <h3>Progressive Web Apps (PWAs) Gaining Traction</h3>
+                        <p>With mobile internet usage dominating in Ghana, Progressive Web Apps are becoming increasingly popular. These applications offer native app-like experiences while being accessible through web browsers, making them perfect for users with varying device capabilities and network conditions.</p>
+                        
+                        <h3>AI Integration in Web Development</h3>
+                        <p>Artificial Intelligence is no longer a futuristic concept. Ghanaian businesses are beginning to integrate AI-powered chatbots, personalized content recommendations, and automated customer service features into their websites.</p>
+                        
+                        <h3>Mobile-First Development</h3>
+                        <p>Given that over 80% of internet users in Ghana access the web primarily through mobile devices, mobile-first development has become essential rather than optional. This approach ensures optimal user experience across all devices.</p>
+                        
+                        <h3>Local Payment Integration</h3>
+                        <p>Integration with local payment systems like Mobile Money (MTN, Vodafone, AirtelTigo) is becoming standard for e-commerce websites. This localization is crucial for businesses looking to serve the Ghanaian market effectively.</p>
+                        
+                        <h3>Sustainable Web Development</h3>
+                        <p>Environmental consciousness is growing, and this includes web development. Optimizing websites for lower energy consumption and carbon footprint is becoming a priority for forward-thinking businesses.</p>
+                        
+                        <p>As these trends continue to evolve, businesses that adapt early will have a significant competitive advantage in the Ghanaian digital marketplace.</p>
+                    `
+                },
+                2: {
+                    title: "Essential Cybersecurity Practices for Small Businesses in Ghana",
+                    content: `
+                        <img src="https://via.placeholder.com/800x300/1B365D/FFFFFF?text=Cybersecurity+Ghana" alt="Cybersecurity for Small Businesses">
+                        <p>Small businesses in Ghana are increasingly becoming targets for cybercriminals. As digital adoption grows, so does the need for robust cybersecurity measures. Here are essential practices every small business should implement.</p>
+                        
+                        <h3>Strong Password Policies</h3>
+                        <p>Implement strong password requirements across all business accounts. Use password managers and enable two-factor authentication wherever possible. This simple step can prevent the majority of basic cyber attacks.</p>
+                        
+                        <h3>Regular Software Updates</h3>
+                        <p>Keep all software, operating systems, and applications up to date. Many cyber attacks exploit known vulnerabilities in outdated software. Set up automatic updates where possible.</p>
+                        
+                        <h3>Employee Training</h3>
+                        <p>Your employees are your first line of defense. Conduct regular training sessions on identifying phishing emails, social engineering attempts, and safe internet practices.</p>
+                        
+                        <h3>Secure Wi-Fi Networks</h3>
+                        <p>Use WPA3 encryption for your business Wi-Fi and create separate networks for guests. Avoid conducting business over public Wi-Fi networks.</p>
+                        
+                        <h3>Regular Data Backups</h3>
+                        <p>Implement a robust backup strategy following the 3-2-1 rule: 3 copies of important data, stored on 2 different media types, with 1 copy stored offsite or in the cloud.</p>
+                        
+                        <h3>Access Control</h3>
+                        <p>Implement the principle of least privilege. Employees should only have access to systems and data necessary for their job functions.</p>
+                        
+                        <p>Cybersecurity is not a one-time investment but an ongoing process. Stay informed about the latest threats and continuously update your security measures.</p>
+                    `
+                },
+                3: {
+                    title: "Social Media Marketing Strategies That Work in Ghana",
+                    content: `
+                        <img src="https://via.placeholder.com/800x300/FF6B35/FFFFFF?text=Social+Media+Marketing" alt="Social Media Marketing in Ghana">
+                        <p>Ghana's social media landscape is unique, with distinct user behaviors and preferences. Understanding these nuances is crucial for effective social media marketing.</p>
+                        
+                        <h3>Facebook Dominance</h3>
+                        <p>Facebook remains the most popular social media platform in Ghana, with high engagement rates. Focus on creating engaging posts, using local languages where appropriate, and leveraging Facebook's business tools.</p>
+                        
+                        <h3>WhatsApp Business</h3>
+                        <p>WhatsApp is widely used for business communication in Ghana. Set up WhatsApp Business to provide customer support, share product catalogs, and process orders directly through the platform.</p>
+                        
+                        <h3>Instagram for Visual Storytelling</h3>
+                        <p>Instagram's visual nature makes it perfect for showcasing products and services. Use Stories, Reels, and IGTV to create engaging content that resonates with Ghanaian audiences.</p>
+                        
+                        <h3>Local Content Creation</h3>
+                        <p>Create content that reflects Ghanaian culture, values, and current events. Use local languages, reference cultural elements, and participate in trending conversations.</p>
+                        
+                        <h3>Influencer Partnerships</h3>
+                        <p>Collaborate with local influencers who have authentic connections with their followers. Micro-influencers often provide better engagement rates than macro-influencers.</p>
+                        
+                        <h3>Community Building</h3>
+                        <p>Focus on building genuine communities around your brand. Engage with followers, respond to comments, and create content that encourages user participation.</p>
+                        
+                        <p>Success in social media marketing in Ghana requires consistency, authenticity, and a deep understanding of local culture and preferences.</p>
+                    `
+                },
+                4: {
+                    title: "Digital Transformation: A Guide for Ghanaian Enterprises",
+                    content: `
+                        <img src="https://via.placeholder.com/800x300/1B365D/FFFFFF?text=Digital+Transformation" alt="Digital Transformation in Ghana">
+                        <p>Digital transformation is reshaping how businesses operate in Ghana. It's not just about adopting new technologies; it's about fundamentally changing how you deliver value to customers.</p>
+                        
+                        <h3>Assessment and Strategy</h3>
+                        <p>Begin with a comprehensive assessment of your current digital maturity. Identify gaps, opportunities, and define clear objectives for your digital transformation journey.</p>
+                        
+                        <h3>Customer-Centric Approach</h3>
+                        <p>Put customers at the center of your transformation efforts. Understand their digital preferences and behaviors to create meaningful digital experiences.</p>
+                        
+                        <h3>Technology Infrastructure</h3>
+                        <p>Invest in robust, scalable technology infrastructure. Consider cloud solutions that offer flexibility and cost-effectiveness for growing businesses.</p>
+                        
+                        <h3>Data-Driven Decision Making</h3>
+                        <p>Implement systems to collect, analyze, and act on data. Data analytics can provide valuable insights into customer behavior, operational efficiency, and market trends.</p>
+                        
+                        <h3>Employee Training and Change Management</h3>
+                        <p>Digital transformation is as much about people as it is about technology. Invest in training your workforce and managing organizational change effectively.</p>
+                        
+                        <h3>Partnerships and Collaboration</h3>
+                        <p>Consider partnerships with technology providers, digital agencies, and other businesses to accelerate your transformation journey.</p>
+                        
+                        <p>Digital transformation is a marathon, not a sprint. Start with small, achievable goals and gradually expand your digital capabilities.</p>
+                    `
+                },
+                5: {
+                    title: "Mobile-First Design: Why It Matters in Ghana",
+                    content: `
+                        <img src="https://via.placeholder.com/800x300/FF6B35/FFFFFF?text=Mobile+First+Design" alt="Mobile-First Design">
+                        <p>In Ghana, mobile devices are the primary gateway to the internet for most users. This reality makes mobile-first design not just important, but essential for success.</p>
+                        
+                        <h3>The Mobile Reality in Ghana</h3>
+                        <p>With mobile internet penetration exceeding desktop usage by a significant margin, designing for mobile first ensures you're reaching your primary audience effectively.</p>
+                        
+                        <h3>Performance Optimization</h3>
+                        <p>Mobile-first design encourages optimization for slower network conditions common in many parts of Ghana. This includes optimizing images, minimizing HTTP requests, and using efficient coding practices.</p>
+                        
+                        <h3>Touch-Friendly Interfaces</h3>
+                        <p>Design interfaces with touch interaction in mind. Use appropriately sized buttons, ensure adequate spacing between interactive elements, and consider thumb-friendly navigation patterns.</p>
+                        
+                        <h3>Progressive Enhancement</h3>
+                        <p>Start with a solid mobile experience and enhance it for larger screens. This approach ensures that core functionality remains accessible regardless of device capabilities.</p>
+                        
+                        <h3>Local Network Considerations</h3>
+                        <p>Design with intermittent connectivity in mind. Implement offline functionality where possible and provide clear feedback about network status.</p>
+                        
+                        <h3>Testing Across Devices</h3>
+                        <p>Test your designs across various mobile devices popular in Ghana, including budget smartphones with different screen sizes and processing capabilities.</p>
+                        
+                        <p>Mobile-first design is not just about making your website look good on mobile devices; it's about creating experiences optimized for how people actually use the internet in Ghana.</p>
+                    `
+                },
+                6: {
+                    title: "Building Fast and Reliable Websites for African Users",
+                    content: `
+                        <img src="https://via.placeholder.com/800x300/1B365D/FFFFFF?text=Fast+Websites+Africa" alt="Fast Websites for Africa">
+                        <p>Network conditions across Africa, including Ghana, present unique challenges for web developers. Building fast, reliable websites requires specific optimization strategies.</p>
+                        
+                        <h3>Content Delivery Networks (CDNs)</h3>
+                        <p>Use CDNs with African presence to reduce latency. Services like Cloudflare and AWS CloudFront have nodes in Africa that can significantly improve loading times.</p>
+                        
+                        <h3>Image Optimization</h3>
+                        <p>Implement aggressive image optimization strategies. Use modern formats like WebP, implement lazy loading, and provide multiple image sizes for different devices.</p>
+                        
+                        <h3>Minimize HTTP Requests</h3>
+                        <p>Reduce the number of HTTP requests by combining CSS and JavaScript files, using CSS sprites, and minimizing the use of external resources.</p>
+                        
+                        <h3>Caching Strategies</h3>
+                        <p>Implement comprehensive caching strategies including browser caching, server-side caching, and database query caching to reduce server load and improve response times.</p>
+                        
+                        <h3>Graceful Degradation</h3>
+                        <p>Design websites that work well even when certain resources fail to load. Provide fallbacks for web fonts, images, and JavaScript functionality.</p>
+                        
+                        <h3>Connection-Aware Features</h3>
+                        <p>Use JavaScript APIs to detect connection speed and adjust content delivery accordingly. Provide data-light alternatives for users on slower connections.</p>
+                        
+                        <p>Building for African users means prioritizing performance and reliability over flashy features. Focus on core functionality and optimize relentlessly.</p>
+                    `
+                },
+                7: {
+                    title: "SEO Best Practices for Ghanaian Businesses",
+                    content: `
+                        <img src="https://via.placeholder.com/800x300/FF6B35/FFFFFF?text=SEO+Ghana" alt="SEO for Ghanaian Businesses">
+                        <p>Search Engine Optimization (SEO) for Ghanaian businesses requires understanding local search behaviors and implementing strategies that work in the Ghanaian context.</p>
+                        
+                        <h3>Local SEO Optimization</h3>
+                        <p>Claim and optimize your Google My Business listing. Include accurate location information, business hours, and encourage customer reviews. This is crucial for local search visibility.</p>
+                        
+                        <h3>Local Keywords Research</h3>
+                        <p>Research keywords that Ghanaians actually use when searching for your products or services. Include local terms, city names, and region-specific language.</p>
+                        
+                        <h3>Mobile-First Indexing</h3>
+                        <p>With Google's mobile-first indexing, ensure your mobile site is fully optimized. Given Ghana's mobile-first internet usage, this is particularly important.</p>
+                        
+                        <h3>Page Speed Optimization</h3>
+                        <p>Fast-loading pages are crucial for SEO, especially in markets with varying internet speeds. Optimize images, minimize code, and use efficient hosting solutions.</p>
+                        
+                        <h3>Local Link Building</h3>
+                        <p>Build relationships with other Ghanaian businesses, local directories, and relevant websites. Local backlinks carry significant weight for local search rankings.</p>
+                        
+                        <h3>Content in Local Languages</h3>
+                        <p>Consider creating content in local Ghanaian languages for broader reach. While English is widely used, local language content can capture additional audiences.</p>
+                        
+                        <p>SEO is a long-term strategy. Focus on creating valuable, relevant content for your Ghanaian audience and the rankings will follow.</p>
+                    `
+                }
+            };
+
+            const article = articles[articleId];
+            if (article) {
+                modalTitle.textContent = article.title;
+                modalBody.innerHTML = article.content;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('articleModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside content
+        document.getElementById('articleModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
             }
         });
-        
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                navLinks.classList.remove('active');
-                const icon = menuToggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
             }
         });
-    }
-</script>
-<!-- Accessibility script from main site -->
-<script src="js/accessibility.js"></script>
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling up
+                header.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>
