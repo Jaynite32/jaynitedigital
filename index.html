@@ -1188,6 +1188,31 @@
             .footer-content {
                 text-align: center;
             }
+             .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 107, 53, 0.1);
+            border: 2px solid var(--primary-orange);
+            border-radius: 50%;
+            color: var(--primary-orange);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-orange);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
 
             /* Mobile menu improvements */
             .mobile-menu {
