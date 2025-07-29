@@ -359,11 +359,23 @@
             color: var(--primary-orange);
             margin-bottom: 0.5rem;
         }
+    .stat-number {
+        display: inline-block;
+        min-width: 80px;
+        text-align: center;
+        font-variant-numeric: tabular-nums; /* Use monospace numbers */
+    }
 
-        .stat-label {
-            font-weight: 600;
-            color: var(--dark-blue);
-        }
+    .stat-item {
+        min-height: 120px; /* Fixed minimum height */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+            .stat-label {
+                font-weight: 600;
+                color: var(--dark-blue);
+            }
 
         .visual-card {
             background: var(--white);
@@ -1140,35 +1152,46 @@
             }
         });
 
-        // Animate stats on scroll
-        const observerOptions = {
-            threshold: 0.5,
-            rootMargin: '0px 0px -50px 0px'
-        };
+       // Animate stats on scroll
+const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px 0px -50px 0px'
+};
 
-        const statsObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const statNumber = entry.target.querySelector('.stat-number');
-                    const finalNumber = statNumber.textContent;
-                    const numericValue = parseInt(finalNumber.replace(/\D/g, ''));
-                    
-                    let currentNumber = 0;
-                    const increment = numericValue / 50;
-                    const timer = setInterval(() => {
-                        currentNumber += increment;
-                        if (currentNumber >= numericValue) {
-                            statNumber.textContent = finalNumber;
-                            clearInterval(timer);
-                        } else {
-                            statNumber.textContent = Math.floor(currentNumber) + '+';
-                        }
-                    }, 30);
-                    
-                    statsObserver.unobserve(entry.target);
+const statsObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const statNumber = entry.target.querySelector('.stat-number');
+            const finalNumber = statNumber.textContent;
+            const numericValue = parseInt(finalNumber.replace(/\D/g, ''));
+            
+            // Fix layout by setting minimum width to prevent shifting
+            const originalWidth = statNumber.offsetWidth;
+            statNumber.style.minWidth = Math.max(originalWidth, 80) + 'px';
+            statNumber.style.display = 'inline-block';
+            
+            let currentNumber = 0;
+            const increment = numericValue / 50;
+            const timer = setInterval(() => {
+                currentNumber += increment;
+                if (currentNumber >= numericValue) {
+                    statNumber.textContent = finalNumber;
+                    clearInterval(timer);
+                } else {
+                    // Use consistent formatting to prevent layout shifts
+                    const displayNumber = Math.floor(currentNumber);
+                    if (finalNumber.includes('+')) {
+                        statNumber.textContent = displayNumber + '+';
+                    } else {
+                        statNumber.textContent = displayNumber.toString();
+                    }
                 }
-            });
-        }, observerOptions);
+            }, 50); // Increased interval to reduce rapid updates
+            
+            statsObserver.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
 
         // Observe all stat items
         document.querySelectorAll('.stat-item').forEach(item => {
