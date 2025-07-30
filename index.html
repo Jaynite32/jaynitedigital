@@ -1798,10 +1798,104 @@
             showPaymentOptionsModal(network, number, amount, description);
         }
 
-        function showUSSDGuide(network, amount) {
+        function showPaymentOptionsModal(network, number, amount, description) {
+    const modal = document.createElement('div');
+    modal.className = 'payment-options-modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Complete Your Payment</h3>
+                <span class="close-btn" onclick="closePaymentOptionsModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="payment-summary">
+                    <p><strong>Network:</strong> ${network.toUpperCase()}</p>
+                    <p><strong>Amount:</strong> GHS ${amount}</p>
+                    <p><strong>Description:</strong> ${description}</p>
+                </div>
+                
+                <div class="payment-methods">
+                    <h4>Choose Payment Method:</h4>
+                    
+                    <!-- Option 1: Direct USSD Dial -->
+                    <button class="payment-btn ussd-btn" onclick="initiateUSSDPayment('${network}', '${number}', '${amount}')">
+                        <div class="btn-icon">📱</div>
+                        <div class="btn-text">
+                            <strong>Pay via USSD</strong>
+                            <small>Dial ${getUSSDCode(network)} directly</small>
+                        </div>
+                    </button>
+                    
+                    <!-- Option 2: Step-by-step USSD Guide -->
+                    <button class="payment-btn guide-btn" onclick="showUSSDGuide('${network}', '${amount}')">
+                        <div class="btn-icon">📋</div>
+                        <div class="btn-text">
+                            <strong>USSD Payment Guide</strong>
+                            <small>Step-by-step instructions</small>
+                        </div>
+                    </button>
+                    
+                    <!-- Option 3: WhatsApp (as backup) -->
+                    <button class="payment-btn whatsapp-btn" onclick="sendWhatsAppPayment('${network}', '${number}', '${amount}', '${description}')">
+                        <div class="btn-icon">💬</div>
+                        <div class="btn-text">
+                            <strong>Contact via WhatsApp</strong>
+                            <small>Get manual assistance</small>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+}
+
+// Helper function to get the correct USSD code
+function getUSSDCode(network) {
+    const ussdCodes = {
+        'mtn': '*170#',
+        'vodafone': '*110#',
+        'telecel': '*110#',
+        'airteltigo': '*110#'
+    };
+    return ussdCodes[network.toLowerCase()] || '*170#';
+}
+
+// Helper function to get the correct merchant number
+function getMerchantNumber(network) {
+    const merchantNumbers = {
+        'mtn': '0533852891',
+        'vodafone': '0201485621',
+        'telecel': '0201485621',
+        'airteltigo': '0201485621'
+    };
+    return merchantNumbers[network.toLowerCase()] || '0533852891';
+}
+
+// Option 1: Direct USSD initiation (works on mobile browsers)
+function initiateUSSDPayment(network, number, amount) {
+    const ussdCode = getUSSDCode(network);
+    
+    // Try to initiate USSD call (works on some mobile browsers)
+    try {
+        window.location.href = `tel:${ussdCode}`;
+        closePaymentOptionsModal();
+    } catch (error) {
+        // Fallback to showing instructions - don't close modal yet
+        console.log('USSD dial failed, showing guide instead');
+        showUSSDGuide(network, amount);
+    }
+}
+
+// Option 2: Step-by-step USSD guide
+function showUSSDGuide(network, amount) {
+    const networkLower = network.toLowerCase();
+    const ussdCode = getUSSDCode(network);
+    const merchantNumber = getMerchantNumber(network);
+    
     const guides = {
         'mtn': {
-            ussdCode: '*170#',
             steps: [
                 'Dial *170# on your phone',
                 'Select option 1 (Send Money)',
@@ -1812,7 +1906,6 @@
             note: 'MTN Mobile Money'
         },
         'vodafone': {
-            ussdCode: '*110#',
             steps: [
                 'Dial *110# on your phone',
                 'Select option 1 (Send Money)',
@@ -1822,21 +1915,30 @@
             ],
             note: 'Vodafone Cash'
         },
-        'airteltigo': {
-            ussdCode: '*110#',
+        'telecel': {
             steps: [
                 'Dial *110# on your phone',
                 'Select option 1 (Send Money)',
-                'Enter number: 0533852891',
+                'Enter number: 0201485621',
+                `Enter amount: ${amount}`,
+                'Enter your PIN to complete'
+            ],
+            note: 'Telecel Cash'
+        },
+        'airteltigo': {
+            steps: [
+                'Dial *110# on your phone',
+                'Select option 1 (Send Money)',
+                'Enter number: 0201485621',
                 `Enter amount: ${amount}`,
                 'Enter your PIN to complete'
             ],
             note: 'AirtelTigo Money'
         }
     };
-
-    const guide = guides[network.toLowerCase()] || guides['mtn'];
-
+    
+    const guide = guides[networkLower] || guides['mtn'];
+    
     const guideModal = document.createElement('div');
     guideModal.className = 'ussd-guide-modal';
     guideModal.innerHTML = `
@@ -1856,8 +1958,8 @@
                 </div>
                 
                 <div class="guide-actions">
-                    <button class="action-btn dial-btn" onclick="window.location.href='tel:${guide.ussdCode}'">
-                        📱 Dial Now
+                    <button class="action-btn dial-btn" onclick="window.location.href='tel:${ussdCode}'">
+                        📱 Dial ${ussdCode}
                     </button>
                     <button class="action-btn confirm-btn" onclick="confirmPaymentSent()">
                         ✅ I've Sent Payment
@@ -1866,16 +1968,38 @@
                 
                 <div class="merchant-info">
                     <p><strong>Name:</strong> Akomani Emmanuel</p>
-                    <p><strong>Number:</strong> ${network.toLowerCase() === 'vodafone' ? '0201485621' : '0533852891'}</p>
+                    <p><strong>Number:</strong> ${merchantNumber}</p>
                     <p><strong>Amount:</strong> GHS ${amount}</p>
                 </div>
             </div>
         </div>
     `;
-
+    
     document.body.appendChild(guideModal);
 }
-;
+
+// Additional helper functions you'll need
+function closePaymentOptionsModal() {
+    const modal = document.querySelector('.payment-options-modal');
+    if (modal) {
+        modal.remove();
+    }
+}
+
+function closeUSSDGuide() {
+    const modal = document.querySelector('.ussd-guide-modal');
+    if (modal) {
+        modal.remove();
+    }
+}
+
+function confirmPaymentSent() {
+    // Add your confirmation logic here
+    alert('Thank you! We will verify your payment shortly.');
+    closeUSSDGuide();
+    closePaymentOptionsModal();
+};
+    
 
         // Option 3: WhatsApp fallback (your current method)
         function sendWhatsAppPayment(network, number, amount, description) {
