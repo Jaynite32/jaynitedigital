@@ -1782,7 +1782,7 @@
             }
         });
 
-        // Process MoMo Payment
+        // ENHANCED MOMO PAYMENT WITH USSD INTEGRATION
         function processMomoPayment(event) {
             event.preventDefault();
             const formData = new FormData(event.target);
@@ -1791,7 +1791,165 @@
             const amount = formData.get('amount');
             const description = formData.get('description');
 
-            // WhatsApp message
+            // Close the original modal first
+            closeMomoModal();
+            
+            // Show payment options modal
+            showPaymentOptionsModal(network, number, amount, description);
+        }
+
+        function showPaymentOptionsModal(network, number, amount, description) {
+            const modal = document.createElement('div');
+            modal.className = 'payment-options-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Complete Your Payment</h3>
+                        <span class="close-btn" onclick="closePaymentOptionsModal()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="payment-summary">
+                            <p><strong>Network:</strong> ${network.toUpperCase()}</p>
+                            <p><strong>Amount:</strong> GHS ${amount}</p>
+                            <p><strong>Description:</strong> ${description}</p>
+                        </div>
+                        
+                        <div class="payment-methods">
+                            <h4>Choose Payment Method:</h4>
+                            
+                            <!-- Option 1: Direct USSD Dial -->
+                            <button class="payment-btn ussd-btn" onclick="initiateUSSDPayment('${network}', '${number}', '${amount}')">
+                                <div class="btn-icon">📱</div>
+                                <div class="btn-text">
+                                    <strong>Pay via USSD</strong>
+                                    <small>Dial *170# directly</small>
+                                </div>
+                            </button>
+                            
+                            <!-- Option 2: Step-by-step USSD Guide -->
+                            <button class="payment-btn guide-btn" onclick="showUSSDGuide('${network}', '${amount}')">
+                                <div class="btn-icon">📋</div>
+                                <div class="btn-text">
+                                    <strong>USSD Payment Guide</strong>
+                                    <small>Step-by-step instructions</small>
+                                </div>
+                            </button>
+                            
+                            <!-- Option 3: WhatsApp (as backup) -->
+                            <button class="payment-btn whatsapp-btn" onclick="sendWhatsAppPayment('${network}', '${number}', '${amount}', '${description}')">
+                                <div class="btn-icon">💬</div>
+                                <div class="btn-text">
+                                    <strong>Contact via WhatsApp</strong>
+                                    <small>Get manual assistance</small>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+
+        // Option 1: Direct USSD initiation (works on mobile browsers)
+        function initiateUSSDPayment(network, number, amount) {
+            const ussdCodes = {
+                'mtn': '*170#',
+                'vodafone': '*110#',
+                'airteltigo': '*110#'
+            };
+            
+            const ussdCode = ussdCodes[network.toLowerCase()] || '*170#';
+            
+            // Try to initiate USSD call (works on some mobile browsers)
+            try {
+                window.location.href = `tel:${ussdCode}`;
+            } catch (error) {
+                // Fallback to showing instructions
+                showUSSDGuide(network, amount);
+            }
+            
+            closePaymentOptionsModal();
+        }
+
+        // Option 2: Step-by-step USSD guide
+        function showUSSDGuide(network, amount) {
+            const guides = {
+                'mtn': {
+                    steps: [
+                        'Dial *170# on your phone',
+                        'Select option 1 (Send Money)',
+                        'Enter merchant number: 0249310509',
+                        `Enter amount: ${amount}`,
+                        'Enter your PIN to complete'
+                    ],
+                    note: 'MTN Mobile Money'
+                },
+                'vodafone': {
+                    steps: [
+                        'Dial *110# on your phone',
+                        'Select option 1 (Send Money)',
+                        'Enter merchant number: 0249310509',
+                        `Enter amount: ${amount}`,
+                        'Enter your PIN to complete'
+                    ],
+                    note: 'Vodafone Cash'
+                },
+                'airteltigo': {
+                    steps: [
+                        'Dial *110# on your phone',
+                        'Select option 1 (Send Money)',
+                        'Enter merchant number: 0249310509',
+                        `Enter amount: ${amount}`,
+                        'Enter your PIN to complete'
+                    ],
+                    note: 'AirtelTigo Money'
+                }
+            };
+            
+            const guide = guides[network.toLowerCase()] || guides['mtn'];
+            
+            const guideModal = document.createElement('div');
+            guideModal.className = 'ussd-guide-modal';
+            guideModal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>${guide.note} - Payment Steps</h3>
+                        <span class="close-btn" onclick="closeUSSDGuide()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="guide-steps">
+                            ${guide.steps.map((step, index) => `
+                                <div class="step">
+                                    <div class="step-number">${index + 1}</div>
+                                    <div class="step-text">${step}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <div class="guide-actions">
+                            <button class="action-btn dial-btn" onclick="window.location.href='tel:*170#'">
+                                📱 Dial Now
+                            </button>
+                            <button class="action-btn confirm-btn" onclick="confirmPaymentSent()">
+                                ✅ I've Sent Payment
+                            </button>
+                        </div>
+                        
+                        <div class="merchant-info">
+                            <p><strong>Merchant:</strong> Jaynite Digital Solutions</p>
+                            <p><strong>Number:</strong> 0249310509</p>
+                            <p><strong>Amount:</strong> GHS ${amount}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(guideModal);
+        }
+
+        // Option 3: WhatsApp fallback (your current method)
+        function sendWhatsAppPayment(network, number, amount, description) {
             const message = `Hello Jaynite Digital Solutions! I want to make a Mobile Money payment:
 Network: ${network.toUpperCase()}
 Number: ${number}
@@ -1802,7 +1960,54 @@ Please send me the payment prompt.`;
 
             const whatsappURL = `https://wa.me/233249310509?text=${encodeURIComponent(message)}`;
             window.open(whatsappURL, '_blank');
-            closeMomoModal();
+            closePaymentOptionsModal();
+        }
+
+        // Confirmation functions
+        function confirmPaymentSent() {
+            closeUSSDGuide();
+            showPaymentConfirmation();
+        }
+
+        function showPaymentConfirmation() {
+            const confirmModal = document.createElement('div');
+            confirmModal.className = 'confirmation-modal';
+            confirmModal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Payment Confirmation</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="success-icon">✅</div>
+                        <p>Thank you! We'll verify your payment and process your order shortly.</p>
+                        <p>You'll receive a confirmation message once verified.</p>
+                        <button class="action-btn" onclick="closeConfirmationModal()">Done</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(confirmModal);
+            
+            // Auto close after 5 seconds
+            setTimeout(() => {
+                closeConfirmationModal();
+            }, 5000);
+        }
+
+        // Modal control functions for USSD payment
+        function closePaymentOptionsModal() {
+            const modal = document.querySelector('.payment-options-modal');
+            if (modal) modal.remove();
+        }
+
+        function closeUSSDGuide() {
+            const modal = document.querySelector('.ussd-guide-modal');
+            if (modal) modal.remove();
+        }
+
+        function closeConfirmationModal() {
+            const modal = document.querySelector('.confirmation-modal');
+            if (modal) modal.remove();
         }
 
         // Copy to clipboard function
@@ -1829,129 +2034,304 @@ Please send me the payment prompt.`;
             closeBankModal();
         }
 
-// Newsletter subscription
-function subscribeNewsletter(event) {
-    event.preventDefault();
-    const email = event.target.querySelector('input[type="email"]').value;
-    const button = event.target.querySelector('button');
-    
-    // Change button to show success immediately
-    button.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
-    button.style.background = '#28a745'; // Green color
-    button.disabled = true; // Disable button temporarily
-    
-    // Show success message
-    alert('Thank you for subscribing to our newsletter!');
-    
-    // Send email to WhatsApp in background (they won't see this)
-    const message = `New Newsletter Subscription: ${email}`;
-    const whatsappURL = `https://wa.me/233249310509?text=${encodeURIComponent(message)}`;
-    
-    // Open WhatsApp in a small popup that closes automatically
-    const popup = window.open(whatsappURL, 'whatsapp', 'width=400,height=400');
-    setTimeout(() => {
-        if (popup) popup.close();
-    }, 2000); // Close popup after 2 seconds
-    
-    // Reset button after 3 seconds
-    setTimeout(() => {
-        button.innerHTML = '<i class="fas fa-paper-plane"></i> Subscribe';
-        button.style.background = ''; // Back to original color
-        button.disabled = false; // Re-enable button
-        event.target.reset(); // Clear the email input
-    }, 3000);
-}
+        // Newsletter subscription
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            const button = event.target.querySelector('button');
+            
+            // Change button to show success immediately
+            button.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
+            button.style.background = '#28a745'; // Green color
+            button.disabled = true; // Disable button temporarily
+            
+            // Show success message
+            alert('Thank you for subscribing to our newsletter!');
+            
+            // Send email to WhatsApp in background (they won't see this)
+            const message = `New Newsletter Subscription: ${email}`;
+            const whatsappURL = `https://wa.me/233249310509?text=${encodeURIComponent(message)}`;
+            
+            // Open WhatsApp in a small popup that closes automatically
+            const popup = window.open(whatsappURL, 'whatsapp', 'width=400,height=400');
+            setTimeout(() => {
+                if (popup) popup.close();
+            }, 2000); // Close popup after 2 seconds
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-paper-plane"></i> Subscribe';
+                button.style.background = ''; // Back to original color
+                button.disabled = false; // Re-enable button
+                event.target.reset(); // Clear the email input
+            }, 3000);
+        }
 
-// Mobile footer accordion functionality
-document.addEventListener('DOMContentLoaded', function() {
-    // Only run on mobile/tablet devices
-    function initAccordion() {
-        if (window.innerWidth <= 768) {
-            const footerSections = document.querySelectorAll('.footer-section');
-            
-            // Remove any existing event listeners first
-            footerSections.forEach(section => {
-                const header = section.querySelector('h3');
-                if (header) {
-                    // Create a new header element to remove old listeners
-                    const newHeader = header.cloneNode(true);
-                    header.parentNode.replaceChild(newHeader, header);
-                }
-            });
-            
-            // Skip the first section (About section)
-            for (let i = 1; i < footerSections.length; i++) {
-                const header = footerSections[i].querySelector('h3');
-                const contentWrapper = footerSections[i].querySelector('.footer-content-wrapper');
-                
-                if (header && contentWrapper) {
-                    // Add click event listener
-                    header.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        
-                        const isActive = this.classList.contains('active');
-                        
-                        // Close all other sections
-                        footerSections.forEach((section, index) => {
-                            if (index > 0) { // Skip About section
-                                const otherHeader = section.querySelector('h3');
-                                const otherContent = section.querySelector('.footer-content-wrapper');
-                                
-                                if (otherHeader && otherContent) {
-                                    otherHeader.classList.remove('active');
-                                    otherContent.classList.remove('active');
-                                }
-                            }
-                        });
-                        
-                        // Toggle current section
-                        if (!isActive) {
-                            this.classList.add('active');
-                            contentWrapper.classList.add('active');
+        // Mobile footer accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Only run on mobile/tablet devices
+            function initAccordion() {
+                if (window.innerWidth <= 768) {
+                    const footerSections = document.querySelectorAll('.footer-section');
+                    
+                    // Remove any existing event listeners first
+                    footerSections.forEach(section => {
+                        const header = section.querySelector('h3');
+                        if (header) {
+                            // Create a new header element to remove old listeners
+                            const newHeader = header.cloneNode(true);
+                            header.parentNode.replaceChild(newHeader, header);
                         }
                     });
                     
-                    // Make header focusable and add keyboard support
-                    header.setAttribute('tabindex', '0');
-                    header.addEventListener('keydown', function(e) {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            this.click();
+                    // Skip the first section (About section)
+                    for (let i = 1; i < footerSections.length; i++) {
+                        const header = footerSections[i].querySelector('h3');
+                        const contentWrapper = footerSections[i].querySelector('.footer-content-wrapper');
+                        
+                        if (header && contentWrapper) {
+                            // Add click event listener
+                            header.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                
+                                const isActive = this.classList.contains('active');
+                                
+                                // Close all other sections
+                                footerSections.forEach((section, index) => {
+                                    if (index > 0) { // Skip About section
+                                        const otherHeader = section.querySelector('h3');
+                                        const otherContent = section.querySelector('.footer-content-wrapper');
+                                        
+                                        if (otherHeader && otherContent) {
+                                            otherHeader.classList.remove('active');
+                                            otherContent.classList.remove('active');
+                                        }
+                                    }
+                                });
+                                
+                                // Toggle current section
+                                if (!isActive) {
+                                    this.classList.add('active');
+                                    contentWrapper.classList.add('active');
+                                }
+                            });
+                            
+                            // Make header focusable and add keyboard support
+                            header.setAttribute('tabindex', '0');
+                            header.addEventListener('keydown', function(e) {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    this.click();
+                                }
+                            });
+                        }
+                    }
+                } else {
+                    // On desktop, remove all active classes and event listeners
+                    const footerSections = document.querySelectorAll('.footer-section');
+                    footerSections.forEach(section => {
+                        const header = section.querySelector('h3');
+                        const contentWrapper = section.querySelector('.footer-content-wrapper');
+                        
+                        if (header) {
+                            header.classList.remove('active');
+                            header.removeAttribute('tabindex');
+                        }
+                        if (contentWrapper) {
+                            contentWrapper.classList.remove('active');
                         }
                     });
                 }
             }
-        } else {
-            // On desktop, remove all active classes and event listeners
-            const footerSections = document.querySelectorAll('.footer-section');
-            footerSections.forEach(section => {
-                const header = section.querySelector('h3');
-                const contentWrapper = section.querySelector('.footer-content-wrapper');
-                
-                if (header) {
-                    header.classList.remove('active');
-                    header.removeAttribute('tabindex');
-                }
-                if (contentWrapper) {
-                    contentWrapper.classList.remove('active');
-                }
-            });
-        }
-    }
-    
-    // Initialize accordion
-    initAccordion();
-    
-    // Re-initialize on window resize with debounce
-    let resizeTimer;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
+            
+            // Initialize accordion
             initAccordion();
-        }, 250);
-    });
-});
+            
+            // Re-initialize on window resize with debounce
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    initAccordion();
+                }, 250);
+            });
+
+            // Inject CSS styles for USSD payment modals
+            const modalStyles = `
+            .payment-options-modal, .ussd-guide-modal, .confirmation-modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+            }
+
+            .payment-options-modal .modal-content,
+            .ussd-guide-modal .modal-content,
+            .confirmation-modal .modal-content {
+                background: white;
+                border-radius: 12px;
+                padding: 0;
+                max-width: 400px;
+                width: 90%;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+
+            .payment-options-modal .modal-header,
+            .ussd-guide-modal .modal-header,
+            .confirmation-modal .modal-header {
+                padding: 20px;
+                border-bottom: 1px solid #eee;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .payment-options-modal .modal-body,
+            .ussd-guide-modal .modal-body,
+            .confirmation-modal .modal-body {
+                padding: 20px;
+            }
+
+            .payment-btn {
+                width: 100%;
+                padding: 15px;
+                margin: 10px 0;
+                border: 2px solid #ddd;
+                border-radius: 8px;
+                background: white;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+
+            .payment-btn:hover {
+                border-color: #007bff;
+                background: #f8f9fa;
+            }
+
+            .btn-icon {
+                font-size: 24px;
+                margin-right: 15px;
+            }
+
+            .btn-text strong {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            .btn-text small {
+                color: #666;
+            }
+
+            .guide-steps {
+                margin: 20px 0;
+            }
+
+            .step {
+                display: flex;
+                align-items: center;
+                margin: 15px 0;
+                padding: 10px;
+                background: #f8f9fa;
+                border-radius: 8px;
+            }
+
+            .step-number {
+                background: #007bff;
+                color: white;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 15px;
+                font-weight: bold;
+            }
+
+            .guide-actions {
+                display: flex;
+                gap: 10px;
+                margin: 20px 0;
+            }
+
+            .action-btn {
+                flex: 1;
+                padding: 12px;
+                border: none;
+                border-radius: 8px;
+                background: #007bff;
+                color: white;
+                cursor: pointer;
+                font-weight: bold;
+            }
+
+            .dial-btn {
+                background: #28a745;
+            }
+
+            .merchant-info {
+                background: #f8f9fa;
+                padding: 15px;
+                border-radius: 8px;
+                margin-top: 20px;
+            }
+
+            .success-icon {
+                font-size: 48px;
+                text-align: center;
+                margin: 20px 0;
+            }
+
+            .confirmation-modal .modal-body {
+                text-align: center;
+            }
+
+            .close-btn {
+                font-size: 24px;
+                cursor: pointer;
+                color: #666;
+            }
+
+            .close-btn:hover {
+                color: #000;
+            }
+
+            .payment-summary {
+                background: #f8f9fa;
+                padding: 15px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+            }
+
+            .payment-summary p {
+                margin: 5px 0;
+            }
+
+            .payment-methods h4 {
+                margin-bottom: 15px;
+                color: #333;
+            }
+            `;
+
+            // Inject styles if not already present
+            if (!document.querySelector('#payment-modal-styles')) {
+                const styleSheet = document.createElement('style');
+                styleSheet.id = 'payment-modal-styles';
+                styleSheet.textContent = modalStyles;
+                document.head.appendChild(styleSheet);
+            }
+        });
+
         // Animation on scroll
         const observerOptions = {
             threshold: 0.1,
