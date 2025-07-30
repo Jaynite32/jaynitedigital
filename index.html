@@ -1254,6 +1254,50 @@
             outline: 2px solid var(--primary-orange);
             outline-offset: 2px;
         }
+        /* Add this to your existing CSS - Responsive Header Fix */
+
+/* Mobile-specific adjustments for logo text */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.2rem; /* Smaller font size for mobile */
+        white-space: nowrap; /* Prevent text wrapping */
+        overflow: hidden; /* Hide overflow if needed */
+    }
+    
+    .header-content {
+        padding: 0.8rem 0; /* Slightly less padding on mobile */
+    }
+    
+    .container {
+        padding: 0 15px; /* Less side padding on mobile */
+    }
+}
+
+/* For very small screens - keeps full name but smaller */
+@media (max-width: 380px) {
+    .logo {
+        font-size: 0.9rem !important; /* Force smaller size */
+        line-height: 1.2;
+    }
+    
+    .logo-img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* Extra small screens - even more compact */
+@media (max-width: 360px) {
+    .logo {
+        font-size: 0.8rem !important; /* Even smaller for very tight spaces */
+    }
+    
+    .logo-img {
+        width: 30px;
+        height: 30px;
+        margin-right: 0.3rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -1265,7 +1309,7 @@
                     <!-- Replace with your actual logo -->
                     <img src="images/logo.png" alt="SkillSavvy GH Logo" class="logo-img">
                     <i class="fas fa-bolt"></i>
-                    Jaynite LTD
+                    Jaynite Digital Solutions
                 </a>
                 
                 <nav class="nav-desktop">
