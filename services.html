@@ -1280,21 +1280,21 @@ document.querySelectorAll('.footer-section a').forEach(link => {
             });
         });
 
-        // Header scroll effect
-        let lastScrollTop = 0;
-        const header = document.querySelector('header');
+        // // Header scroll effect
+        // let lastScrollTop = 0;
+        // const header = document.querySelector('header');
         
-        window.addEventListener('scroll', function() {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        // window.addEventListener('scroll', function() {
+        //     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                header.style.transform = 'translateY(-100%)';
-            } else {
-                header.style.transform = 'translateY(0)';
-            }
+        //     if (scrollTop > lastScrollTop && scrollTop > 100) {
+        //         header.style.transform = 'translateY(-100%)';
+        //     } else {
+        //         header.style.transform = 'translateY(0)';
+        //     }
             
-            lastScrollTop = scrollTop;
-        });
+        //     lastScrollTop = scrollTop;
+        // });
 
         // Service card hover effects
         document.querySelectorAll('.service-card').forEach(card => {
