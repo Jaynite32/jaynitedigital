@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>About Us - Jaynite Digital Solutions | Digital Innovation Experts</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -32,25 +32,35 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--charcoal);
             overflow-x: hidden;
+            min-width: 320px;
+            width: 100%;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
         }
 
-        /* Header & Navigation */
+        /* Header & Navigation - Fixed for Infinix Hot 10 */
         header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
+            width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -63,6 +73,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0;
+            width: 100%;
+            min-height: 60px;
         }
 
         .logo {
@@ -72,6 +84,8 @@
             font-weight: 800;
             color: var(--dark-blue);
             text-decoration: none;
+            flex-shrink: 0;
+            max-width: calc(100vw - 100px);
         }
 
         .logo-img {
@@ -80,6 +94,7 @@
             margin-right: 0.5rem;
             border-radius: 8px;
             object-fit: cover;
+            flex-shrink: 0;
         }
 
         .logo i {
@@ -140,6 +155,7 @@
             cursor: pointer;
             z-index: 1001;
             position: relative;
+            flex-shrink: 0;
         }
 
         .menu-toggle span {
@@ -215,7 +231,7 @@
             color: var(--primary-orange);
         }
 
-        /* Page Hero */
+        /* Page Hero - Fixed for all devices */
         .page-hero {
             padding-top: 120px;
             padding-bottom: 80px;
@@ -223,6 +239,8 @@
             color: var(--white);
             position: relative;
             overflow: hidden;
+            width: 100%;
+            min-height: 400px;
         }
 
         .page-hero::before {
@@ -232,21 +250,27 @@
             left: 0;
             right: 0;
             bottom: 0;
+            width: 100%;
+            height: 100%;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,107,53,0.1)" points="0,1000 1000,800 1000,1000"/></svg>');
             background-size: cover;
+            background-repeat: no-repeat;
         }
 
         .page-hero-content {
             position: relative;
             z-index: 2;
             text-align: center;
+            width: 100%;
         }
 
         .page-hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 900;
             margin-bottom: 1rem;
             line-height: 1.1;
+            word-wrap: break-word;
+            hyphens: auto;
         }
 
         .page-hero p {
@@ -254,12 +278,14 @@
             opacity: 0.9;
             max-width: 600px;
             margin: 0 auto;
+            line-height: 1.6;
         }
 
         /* Breadcrumb */
         .breadcrumb {
             background: var(--light-gray);
             padding: 1rem 0;
+            width: 100%;
         }
 
         .breadcrumb nav {
@@ -267,6 +293,7 @@
             align-items: center;
             gap: 0.5rem;
             font-size: 0.9rem;
+            flex-wrap: wrap;
         }
 
         .breadcrumb a {
@@ -292,11 +319,13 @@
         /* Main Content */
         main {
             padding: 2rem 0;
+            width: 100%;
         }
 
         /* Story Section */
         .story-section {
             padding: 3rem 0;
+            width: 100%;
         }
 
         .story-grid {
@@ -304,14 +333,16 @@
             grid-template-columns: 1fr;
             gap: 3rem;
             align-items: center;
+            width: 100%;
         }
 
         .story-content h2 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
             color: var(--dark-blue);
             margin-bottom: 2rem;
             position: relative;
+            word-wrap: break-word;
         }
 
         .story-content h2::after {
@@ -329,22 +360,28 @@
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
             line-height: 1.8;
+            word-wrap: break-word;
         }
 
         .story-stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
+            gap: 1.5rem;
             margin-top: 3rem;
+            width: 100%;
         }
 
         .stat-item {
             text-align: center;
-            padding: 2rem;
+            padding: 1.5rem;
             background: var(--white);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-light);
             transition: var(--transition);
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .stat-item:hover {
@@ -353,36 +390,30 @@
         }
 
         .stat-number {
-            display: block;
-            font-size: 2.5rem;
+            display: inline-block;
+            font-size: 2.2rem;
             font-weight: 900;
             color: var(--primary-orange);
             margin-bottom: 0.5rem;
+            min-width: 80px;
+            text-align: center;
+            font-variant-numeric: tabular-nums;
         }
-    .stat-number {
-        display: inline-block;
-        min-width: 80px;
-        text-align: center;
-        font-variant-numeric: tabular-nums; /* Use monospace numbers */
-    }
 
-    .stat-item {
-        min-height: 120px; /* Fixed minimum height */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-            .stat-label {
-                font-weight: 600;
-                color: var(--dark-blue);
-            }
+        .stat-label {
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.9rem;
+            line-height: 1.3;
+        }
 
         .visual-card {
             background: var(--white);
             border-radius: var(--border-radius);
-            padding: 3rem;
+            padding: 2.5rem 1.5rem;
             box-shadow: var(--shadow-medium);
             text-align: center;
+            width: 100%;
         }
 
         .visual-icon {
@@ -412,6 +443,7 @@
         .mvv-section {
             padding: 4rem 0;
             background: var(--light-gray);
+            width: 100%;
         }
 
         .text-center {
@@ -420,10 +452,11 @@
         }
 
         .text-center h2 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
             color: var(--dark-blue);
             margin-bottom: 1rem;
+            word-wrap: break-word;
         }
 
         .text-center p {
@@ -435,17 +468,19 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 2rem;
+            width: 100%;
         }
 
         .mvv-card {
             background: var(--white);
             border-radius: var(--border-radius);
-            padding: 3rem 2rem;
+            padding: 2.5rem 1.5rem;
             text-align: center;
             box-shadow: var(--shadow-light);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
 
         .mvv-card::before {
@@ -486,7 +521,7 @@
         }
 
         .mvv-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--dark-blue);
             margin-bottom: 1.5rem;
@@ -499,7 +534,8 @@
 
         /* Founder Section */
         .founder-section {
-            padding: 5rem 0;
+            padding: 4rem 0;
+            width: 100%;
         }
 
         .founder-profile {
@@ -508,6 +544,7 @@
             gap: 3rem;
             align-items: center;
             margin-bottom: 4rem;
+            width: 100%;
         }
 
         .profile-image-container {
@@ -515,8 +552,8 @@
         }
 
         .profile-image {
-            width: 280px;
-            height: 280px;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             overflow: hidden;
             margin: 0 auto;
@@ -541,17 +578,19 @@
         }
 
         .profile-details h3 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 900;
             color: var(--dark-blue);
             margin-bottom: 0.5rem;
+            word-wrap: break-word;
         }
 
         .profile-details .title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--primary-orange);
             font-weight: 600;
             margin-bottom: 2rem;
+            line-height: 1.4;
         }
 
         .profile-details .bio {
@@ -559,6 +598,7 @@
             line-height: 1.8;
             margin-bottom: 1.5rem;
             text-align: justify;
+            word-wrap: break-word;
         }
 
         /* Education Grid */
@@ -567,6 +607,7 @@
             grid-template-columns: 1fr;
             gap: 2rem;
             margin-top: 3rem;
+            width: 100%;
         }
 
         .education-card {
@@ -576,6 +617,7 @@
             box-shadow: var(--shadow-light);
             transition: var(--transition);
             border-left: 4px solid var(--primary-orange);
+            width: 100%;
         }
 
         .education-card:hover {
@@ -627,14 +669,16 @@
         .team-section {
             padding: 4rem 0;
             background: var(--light-gray);
+            width: 100%;
         }
 
         .team-section h2 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
             color: var(--dark-blue);
             text-align: center;
             margin-bottom: 1rem;
+            word-wrap: break-word;
         }
 
         .team-section > p {
@@ -647,9 +691,10 @@
         .team-preview {
             background: var(--white);
             border-radius: var(--border-radius);
-            padding: 3rem;
+            padding: 2.5rem 1.5rem;
             text-align: center;
             box-shadow: var(--shadow-light);
+            width: 100%;
         }
 
         .join-icon {
@@ -669,7 +714,7 @@
         }
 
         .team-preview h3 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--dark-blue);
             margin-bottom: 1.5rem;
@@ -703,11 +748,12 @@
             margin-right: 0.5rem;
         }
 
-        /* Simple Footer */
+        /* Footer */
         footer {
             background: var(--dark-blue);
             color: var(--white);
             padding: 3rem 0 2rem;
+            width: 100%;
         }
 
         .footer-content {
@@ -715,6 +761,7 @@
             grid-template-columns: 1fr;
             gap: 2rem;
             text-align: center;
+            width: 100%;
         }
 
         .footer-section h3 {
@@ -732,6 +779,7 @@
             display: flex;
             justify-content: center;
             gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .social-icons a {
@@ -762,7 +810,110 @@
             opacity: 0.7;
         }
 
-        /* Responsive Design */
+        /* Enhanced Responsive Design for Infinix Hot 10 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .page-hero {
+                padding-top: 100px;
+                padding-bottom: 60px;
+                min-height: 350px;
+            }
+
+            .page-hero h1 {
+                font-size: 1.8rem;
+                line-height: 1.2;
+            }
+
+            .page-hero p {
+                font-size: 1rem;
+            }
+
+            .story-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .text-center h2 {
+                font-size: 1.8rem;
+            }
+
+            .profile-details h3 {
+                font-size: 1.8rem;
+            }
+
+            .team-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .stat-item {
+                padding: 1.2rem;
+            }
+
+            .mvv-card {
+                padding: 2rem 1.2rem;
+            }
+
+            .visual-card {
+                padding: 2rem 1.2rem;
+            }
+
+            .team-preview {
+                padding: 2rem 1.2rem;
+            }
+
+            .profile-image {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        /* Specific fix for Infinix Hot 10 (around 360px) */
+        @media (max-width: 389px) and (min-width: 320px) {
+            .logo {
+                font-size: 1.1rem !important;
+                line-height: 1.2;
+            }
+            
+            .logo-img {
+                width: 35px;
+                height: 35px;
+            }
+
+            .page-hero {
+                margin: 0;
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .page-hero-content {
+                padding: 0 15px;
+            }
+
+            .page-hero h1 {
+                font-size: 1.6rem;
+                padding: 0 10px;
+            }
+
+            .story-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .education-grid {
+                gap: 1.5rem;
+            }
+
+            .mvv-grid {
+                gap: 1.5rem;
+            }
+        }
+
         @media (min-width: 768px) {
             .nav-desktop {
                 display: block;
@@ -804,6 +955,11 @@
                 grid-template-columns: repeat(2, 1fr);
                 text-align: left;
             }
+
+            .profile-image {
+                width: 280px;
+                height: 280px;
+            }
         }
 
         @media (min-width: 1024px) {
@@ -823,64 +979,11 @@
                 grid-template-columns: repeat(3, 1fr);
             }
         }
-        /* Add this to your existing CSS - Responsive Header Fix */
-
-/* iPhone XR and similar devices (414px width) */
-@media (max-width: 480px) and (min-width: 415px) {
-    .logo {
-        font-size: 1.4rem; /* Keep closer to original for iPhone XR */
-        white-space: nowrap;
-        overflow: hidden;
-    }
-}
-
-/* Medium mobile screens (like iPhone XR at 414px) */
-@media (max-width: 414px) and (min-width: 390px) {
-    .logo {
-        font-size: 1.3rem; /* Slightly smaller but still good size */
-        white-space: nowrap;
-        overflow: hidden;
-    }
-    
-    .header-content {
-        padding: 0.8rem 0;
-    }
-    
-    .container {
-        padding: 0 15px;
-    }
-}
-
-/* Your Infinix Hot 10 range (around 360-389px) */
-@media (max-width: 389px) and (min-width: 361px) {
-    .logo {
-        font-size: 1.1rem !important; /* Larger than before for better readability */
-        line-height: 1.2;
-    }
-    
-    .logo-img {
-        width: 35px;
-        height: 35px;
-    }
-}
-
-/* Very small screens */
-@media (max-width: 360px) {
-    .logo {
-        font-size: 1rem !important; /* Still readable but compact */
-    }
-    
-    .logo-img {
-        width: 32px;
-        height: 32px;
-        margin-right: 0.3rem;
-    }
-}
     </style>
 </head>
 <body>
     <!-- Header -->
-     <header>
+    <header>
         <div class="container">
             <div class="header-content">
                 <a href="index.html" class="logo">
@@ -992,7 +1095,7 @@
             <div class="container">
                 <div class="text-center">
                     <h2>Our Foundation</h2>
-                    <p>The core principles that drive everything we do at SkillSavvy GH</p>
+                    <p>The core principles that drive everything we do at Jaynite Digital Solutions</p>
                 </div>
                 <div class="mvv-grid">
                     <div class="mvv-card">
@@ -1025,7 +1128,7 @@
             <div class="container">
                 <div class="text-center">
                     <h2>Meet Our Founder</h2>
-                    <p>The visionary behind Jaynite Digital Solution's mission to transform Ghana's digital landscape</p>
+                    <p>The visionary behind Jaynite Digital Solutions' mission to transform Ghana's digital landscape</p>
                 </div>
                 
                 <div class="founder-profile">
@@ -1101,7 +1204,7 @@
                     <div class="join-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h3>Join the Jaynite Digital Solution's family</h3>
+                    <h3>Join the Jaynite Digital Solutions family</h3>
                     <p>Are you passionate about technology and innovation? Do you want to make a real impact in Ghana's digital landscape? We're always looking for talented individuals who share our vision and values.</p>
                     <p>Whether you're a developer, designer, marketer, or have skills in any of our service areas, we'd love to hear from you.</p>
                     <a href="contact.html" class="cta-button">
