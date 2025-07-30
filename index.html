@@ -1792,7 +1792,7 @@
             const description = formData.get('description');
 
             // WhatsApp message
-            const message = `Hello SkillSavvy GH! I want to make a Mobile Money payment:
+            const message = `Hello Jaynite Digital Solutions! I want to make a Mobile Money payment:
 Network: ${network.toUpperCase()}
 Number: ${number}
 Amount: GHS ${amount}
@@ -1800,7 +1800,7 @@ Description: ${description}
 
 Please send me the payment prompt.`;
 
-            const whatsappURL = `https://wa.me/233505638937?text=${encodeURIComponent(message)}`;
+            const whatsappURL = `https://wa.me/233249310509?text=${encodeURIComponent(message)}`;
             window.open(whatsappURL, '_blank');
             closeMomoModal();
         }
@@ -1824,7 +1824,7 @@ Please send me the payment prompt.`;
         // Send transfer proof via WhatsApp
         function sendTransferProof() {
             const message = `Jaynite Digital Solutions! I have made a bank transfer to your Stanbic Bank account. Please find the transfer receipt attached.`;
-            const whatsappURL = `https://wa.me/233201485621?text=${encodeURIComponent(message)}`;
+            const whatsappURL = `https://wa.me/233249310509?text=${encodeURIComponent(message)}`;
             window.open(whatsappURL, '_blank');
             closeBankModal();
         }
@@ -1845,7 +1845,7 @@ function subscribeNewsletter(event) {
     
     // Send email to WhatsApp in background (they won't see this)
     const message = `New Newsletter Subscription: ${email}`;
-    const whatsappURL = `https://wa.me/233201485621?text=${encodeURIComponent(message)}`;
+    const whatsappURL = `https://wa.me/233249310509?text=${encodeURIComponent(message)}`;
     
     // Open WhatsApp in a small popup that closes automatically
     const popup = window.open(whatsappURL, 'whatsapp', 'width=400,height=400');
