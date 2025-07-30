@@ -979,6 +979,59 @@
                 grid-template-columns: repeat(3, 1fr);
             }
         }
+         /* Add this to your existing CSS - Responsive Header Fix */
+
+/* iPhone XR and similar devices (414px width) */
+@media (max-width: 480px) and (min-width: 415px) {
+    .logo {
+        font-size: 1.4rem; /* Keep closer to original for iPhone XR */
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}
+
+/* Medium mobile screens (like iPhone XR at 414px) */
+@media (max-width: 414px) and (min-width: 390px) {
+    .logo {
+        font-size: 1.3rem; /* Slightly smaller but still good size */
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    
+    .header-content {
+        padding: 0.8rem 0;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* Your Infinix Hot 10 range (around 360-389px) */
+@media (max-width: 389px) and (min-width: 361px) {
+    .logo {
+        font-size: 1.1rem !important; /* Larger than before for better readability */
+        line-height: 1.2;
+    }
+    
+    .logo-img {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+    .logo {
+        font-size: 1rem !important; /* Still readable but compact */
+    }
+    
+    .logo-img {
+        width: 32px;
+        height: 32px;
+        margin-right: 0.3rem;
+    }
+}
     </style>
 </head>
 <body>
