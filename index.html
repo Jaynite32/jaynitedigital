@@ -1879,7 +1879,7 @@
                     steps: [
                         'Dial *170# on your phone',
                         'Select option 1 (Send Money)',
-                        'Enter merchant number: 0249310509',
+                        'Enter number: 0533852891',
                         `Enter amount: ${amount}`,
                         'Enter your PIN to complete'
                     ],
@@ -1889,7 +1889,7 @@
                     steps: [
                         'Dial *110# on your phone',
                         'Select option 1 (Send Money)',
-                        'Enter merchant number: 0249310509',
+                        'Enter number: 0201485621',
                         `Enter amount: ${amount}`,
                         'Enter your PIN to complete'
                     ],
@@ -1899,7 +1899,7 @@
                     steps: [
                         'Dial *110# on your phone',
                         'Select option 1 (Send Money)',
-                        'Enter merchant number: 0249310509',
+                        'Enter number: 0533852891',
                         `Enter amount: ${amount}`,
                         'Enter your PIN to complete'
                     ],
@@ -1937,8 +1937,8 @@
                         </div>
                         
                         <div class="merchant-info">
-                            <p><strong>Merchant:</strong> Jaynite Digital Solutions</p>
-                            <p><strong>Number:</strong> 0249310509</p>
+                            <p><strong>Name:</strong> Akomani Emmanuel</p>
+                            <p><strong>Number:</strong> 0533852891</p>
                             <p><strong>Amount:</strong> GHS ${amount}</p>
                         </div>
                     </div>
@@ -1958,7 +1958,7 @@ Description: ${description}
 
 Please send me the payment prompt.`;
 
-            const whatsappURL = `https://wa.me/233249310509?text=${encodeURIComponent(message)}`;
+            const whatsappURL = `https://wa.me/233533852891?text=${encodeURIComponent(message)}`;
             window.open(whatsappURL, '_blank');
             closePaymentOptionsModal();
         }
@@ -2029,43 +2029,139 @@ Please send me the payment prompt.`;
         // Send transfer proof via WhatsApp
         function sendTransferProof() {
             const message = `Jaynite Digital Solutions! I have made a bank transfer to your Stanbic Bank account. Please find the transfer receipt attached.`;
-            const whatsappURL = `https://wa.me/233249310509?text=${encodeURIComponent(message)}`;
+            const whatsappURL = `https://wa.me/233533852891?text=${encodeURIComponent(message)}`;
             window.open(whatsappURL, '_blank');
             closeBankModal();
         }
 
-        // Newsletter subscription
-        function subscribeNewsletter(event) {
-            event.preventDefault();
-            const email = event.target.querySelector('input[type="email"]').value;
-            const button = event.target.querySelector('button');
-            
-            // Change button to show success immediately
-            button.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
-            button.style.background = '#28a745'; // Green color
-            button.disabled = true; // Disable button temporarily
-            
-            // Show success message
-            alert('Thank you for subscribing to our newsletter!');
-            
-            // Send email to WhatsApp in background (they won't see this)
-            const message = `New Newsletter Subscription: ${email}`;
-            const whatsappURL = `https://wa.me/233249310509?text=${encodeURIComponent(message)}`;
-            
-            // Open WhatsApp in a small popup that closes automatically
-            const popup = window.open(whatsappURL, 'whatsapp', 'width=400,height=400');
-            setTimeout(() => {
-                if (popup) popup.close();
-            }, 2000); // Close popup after 2 seconds
-            
-            // Reset button after 3 seconds
-            setTimeout(() => {
-                button.innerHTML = '<i class="fas fa-paper-plane"></i> Subscribe';
-                button.style.background = ''; // Back to original color
-                button.disabled = false; // Re-enable button
-                event.target.reset(); // Clear the email input
-            }, 3000);
-        }
+       // Newsletter subscription
+function subscribeNewsletter(event) {
+    event.preventDefault();
+    const email = event.target.querySelector('input[type="email"]').value;
+    const button = event.target.querySelector('button');
+    
+    // Validate email
+    if (!email || !email.includes('@')) {
+        alert('Please enter a valid email address');
+        return;
+    }
+    
+    // Change button to show success
+    button.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
+    button.style.background = '#28a745';
+    button.disabled = true;
+    
+    // Show success message
+    alert('Thank you for subscribing to our newsletter!');
+    
+    // Store email in localStorage (completely hidden from customer)
+    const subscribers = JSON.parse(localStorage.getItem('newsletterSubscribers') || '[]');
+    const newSubscriber = {
+        email: email,
+        date: new Date().toISOString(),
+        dateFormatted: new Date().toLocaleDateString(),
+        timeFormatted: new Date().toLocaleTimeString()
+    };
+    
+    // Check if email already exists
+    if (!subscribers.find(sub => sub.email === email)) {
+        subscribers.push(newSubscriber);
+        localStorage.setItem('newsletterSubscribers', JSON.stringify(subscribers));
+    }
+    
+    // Reset button after 3 seconds
+    setTimeout(() => {
+        button.innerHTML = '<i class="fas fa-paper-plane"></i> Subscribe';
+        button.style.background = '';
+        button.disabled = false;
+        event.target.reset();
+    }, 3000);
+}
+
+// Add this function to check stored emails (you can call this anytime)
+function viewStoredEmails() {
+    const subscribers = JSON.parse(localStorage.getItem('newsletterSubscribers') || '[]');
+    
+    if (subscribers.length === 0) {
+        alert('No newsletter subscriptions yet.');
+        return;
+    }
+    
+    let emailList = `📧 NEWSLETTER SUBSCRIBERS (${subscribers.length})\n\n`;
+    subscribers.forEach((sub, index) => {
+        emailList += `${index + 1}. ${sub.email}\n   📅 ${sub.dateFormatted} at ${sub.timeFormatted}\n\n`;
+    });
+    
+    // Create a modal to show emails
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.8); display: flex; justify-content: center;
+        align-items: center; z-index: 1000;
+    `;
+    
+    modal.innerHTML = `
+        <div style="background: white; padding: 20px; border-radius: 10px; max-width: 500px; width: 90%; max-height: 70vh; overflow-y: auto;">
+            <h3>Newsletter Subscribers</h3>
+            <pre style="white-space: pre-wrap; font-family: Arial;">${emailList}</pre>
+            <div style="margin-top: 20px; text-align: center;">
+                <button onclick="copyEmailsToClipboard()" style="margin: 5px; padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    📋 Copy All Emails
+                </button>
+                <button onclick="sendEmailsToWhatsApp()" style="margin: 5px; padding: 10px 20px; background: #25d366; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    💬 Send to WhatsApp
+                </button>
+                <button onclick="clearAllEmails()" style="margin: 5px; padding: 10px 20px; background: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    🗑️ Clear All
+                </button>
+                <button onclick="this.parentElement.parentElement.parentElement.remove()" style="margin: 5px; padding: 10px 20px; background: #6c757d; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    ✖️ Close
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+}
+
+function sendEmailsToWhatsApp() {
+    const subscribers = JSON.parse(localStorage.getItem('newsletterSubscribers') || '[]');
+    let message = `📊 NEWSLETTER SUBSCRIBERS (${subscribers.length})\n\n`;
+    
+    subscribers.forEach((sub, index) => {
+        message += `${index + 1}. ${sub.email}\n   📅 ${sub.dateFormatted} at ${sub.timeFormatted}\n\n`;
+    });
+    
+    const whatsappURL = `https://wa.me/233533852891?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, '_blank');
+}
+
+function copyEmailsToClipboard() {
+    const subscribers = JSON.parse(localStorage.getItem('newsletterSubscribers') || '[]');
+    const emailAddresses = subscribers.map(sub => sub.email).join(', ');
+    
+    navigator.clipboard.writeText(emailAddresses).then(() => {
+        alert('Email addresses copied to clipboard!');
+    }).catch(() => {
+        // Fallback
+        const textArea = document.createElement('textarea');
+        textArea.value = emailAddresses;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert('Email addresses copied to clipboard!');
+    });
+}
+
+function clearAllEmails() {
+    if (confirm('Are you sure you want to clear all newsletter subscriptions?')) {
+        localStorage.removeItem('newsletterSubscribers');
+        alert('All newsletter subscriptions cleared!');
+        // Close modal
+        document.querySelector('[style*="position: fixed"]').remove();
+    }
+}
 
         // Mobile footer accordion functionality
         document.addEventListener('DOMContentLoaded', function() {
