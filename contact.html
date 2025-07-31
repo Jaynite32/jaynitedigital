@@ -352,7 +352,119 @@
             cursor: not-allowed;
             transform: none;
         }
+/* Message Styles */
+.message {
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+    border-left: 4px solid;
+    animation: slideInDown 0.3s ease-out;
+}
 
+.message-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.message-content i {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border-left-color: #28a745;
+}
+
+.message.success i {
+    color: #28a745;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left-color: #dc3545;
+}
+
+.message.error i {
+    color: #dc3545;
+}
+
+.message.warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border-left-color: #ffc107;
+}
+
+.message.warning i {
+    color: #ffc107;
+}
+
+/* WhatsApp Quick Contact Button Styles */
+.whatsapp-quick-contact {
+    background: var(--white);
+    border: 2px dashed #e1e5e9;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.whatsapp-direct-btn {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.whatsapp-direct-btn:hover {
+    background: #20b358;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-direct-btn i {
+    font-size: 1.1rem;
+}
+
+/* Animation */
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Loading state for submit button */
+.submit-btn .fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
         /* Contact Info */
         .contact-info {
             display: grid;
@@ -796,7 +908,7 @@
                                 <i class="fas fa-phone"></i>
                             </div>
                             <h3>Call Us</h3>
-                            <p><a href="tel:+233505638937">+233 50 563 8937</a><br>Available 24/7 for urgent matters</p>
+                            <p><a href="tel:+233533852891">+233 53 385 2891</a><br>Available 24/7 for urgent matters</p>
                         </div>
 
                         <div class="info-card">
@@ -908,46 +1020,140 @@
             }
         });
 
-        // Contact Form Handling
-        const contactForm = document.getElementById('contact-form');
-        const messageContainer = document.getElementById('message-container');
+       // Contact Form Handling - WhatsApp Integration
+const contactForm = document.getElementById('contact-form');
+const messageContainer = document.getElementById('message-container');
 
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const submitBtn = contactForm.querySelector('.submit-btn');
-            const formData = new FormData(contactForm);
-            
-            // Show loading state
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            
-            try {
-                // Simulate form submission (replace with actual endpoint)
-                await new Promise(resolve => setTimeout(resolve, 2000));
-                
-                // Show success message
-                showMessage('Thank you for your message! We\'ll get back to you within 24 hours.', 'success');
-                contactForm.reset();
-            } catch (error) {
-                // Show error message
-                showMessage('Sorry, there was an error sending your message. Please try again or contact us directly.', 'error');
-            } finally {
-                // Reset button state
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-            }
-        });
+contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const submitBtn = contactForm.querySelector('.submit-btn');
+    const formData = new FormData(contactForm);
+    
+    // Show loading state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing Message...';
+    
+    try {
+        // Get form data
+        const firstName = formData.get('firstName');
+        const lastName = formData.get('lastName');
+        const email = formData.get('email');
+        const phone = formData.get('phone') || 'Not provided';
+        const subject = formData.get('subject');
+        const service = formData.get('service') || 'Not specified';
+        const message = formData.get('message');
+        
+        // Format WhatsApp message
+        const whatsappMessage = `🔥 *NEW CONTACT FORM SUBMISSION* 🔥
 
-        function showMessage(text, type) {
-            messageContainer.innerHTML = `<div class="message ${type}">${text}</div>`;
-            messageContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            
-            // Auto-hide message after 5 seconds
-            setTimeout(() => {
-                messageContainer.innerHTML = '';
-            }, 5000);
-        }
+👤 *Name:* ${firstName} ${lastName}
+📧 *Email:* ${email}
+📱 *Phone:* ${phone}
+📝 *Subject:* ${subject}
+🛠️ *Service:* ${service}
+
+💬 *Message:*
+${message}
+
+---
+*Sent from Skills Savvy Contact Form*
+*Time:* ${new Date().toLocaleString()}`;
+
+        // Encode message for WhatsApp URL
+        const encodedMessage = encodeURIComponent(whatsappMessage);
+        const whatsappURL = `https://wa.me/233533852891?text=${encodedMessage}`;
+        
+        // Simulate a brief delay for better UX
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        // Open WhatsApp with pre-filled message
+        window.open(whatsappURL, '_blank');
+        
+        // Show success message
+        showMessage('WhatsApp is opening with your message pre-filled. Please send it to complete your inquiry!', 'success');
+        
+        // Clear form after successful submission
+        contactForm.reset();
+        
+    } catch (error) {
+        console.error('Error preparing WhatsApp message:', error);
+        
+        // Fallback: Create manual WhatsApp message
+        const fallbackMessage = `Hi! I submitted a contact form on your website. My name is ${formData.get('firstName')} ${formData.get('lastName')} and my email is ${formData.get('email')}. I'm interested in discussing: ${formData.get('subject')}`;
+        const fallbackURL = `https://wa.me/233533852891?text=${encodeURIComponent(fallbackMessage)}`;
+        
+        window.open(fallbackURL, '_blank');
+        
+        // Show fallback message
+        showMessage('WhatsApp is opening. Please send your message to complete your inquiry. If it doesn\'t open automatically, contact us at +233 53 385 2891', 'warning');
+        
+    } finally {
+        // Reset button state
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+    }
+});
+
+function showMessage(text, type) {
+    const messageHTML = `
+        <div class="message ${type}">
+            <div class="message-content">
+                <i class="fas ${getMessageIcon(type)}"></i>
+                <span>${text}</span>
+            </div>
+        </div>
+    `;
+    
+    messageContainer.innerHTML = messageHTML;
+    messageContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    
+    // Auto-hide message after 8 seconds
+    setTimeout(() => {
+        messageContainer.innerHTML = '';
+    }, 8000);
+}
+
+function getMessageIcon(type) {
+    switch(type) {
+        case 'success': return 'fa-check-circle';
+        case 'error': return 'fa-exclamation-circle';
+        case 'warning': return 'fa-exclamation-triangle';
+        default: return 'fa-info-circle';
+    }
+}
+
+// Optional: Add WhatsApp quick contact button
+function addWhatsAppQuickContact() {
+    const quickContactHTML = `
+        <div class="whatsapp-quick-contact">
+            <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem; text-align: center;">
+                <strong>Prefer instant messaging?</strong>
+            </p>
+            <button type="button" class="whatsapp-direct-btn" onclick="openDirectWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </button>
+        </div>
+    `;
+    
+    // Insert after the contact form
+    const formContainer = document.querySelector('.contact-form-container');
+    if (formContainer) {
+        formContainer.insertAdjacentHTML('afterend', quickContactHTML);
+    }
+}
+
+function openDirectWhatsApp() {
+    const directMessage = `Hi! I'm interested in your services at Skills Savvy. Can we discuss my project requirements?`;
+    const whatsappURL = `https://wa.me/233533852891?text=${encodeURIComponent(directMessage)}`;
+    window.open(whatsappURL, '_blank');
+}
+
+// Initialize quick contact button when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Uncomment the line below if you want to add the direct WhatsApp button
+    // addWhatsAppQuickContact();
+});
 
         // Header scroll effect
         window.addEventListener('scroll', () => {
