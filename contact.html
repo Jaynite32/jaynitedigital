@@ -352,120 +352,157 @@
             cursor: not-allowed;
             transform: none;
         }
-/* Message Styles */
-.message {
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    margin-bottom: 1.5rem;
-    border-left: 4px solid;
-    animation: slideInDown 0.3s ease-out;
-}
 
-.message-content {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
+        /* Message Styles */
+        .message {
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid;
+            animation: slideInDown 0.3s ease-out;
+        }
 
-.message-content i {
-    font-size: 1.25rem;
-    flex-shrink: 0;
-}
+        .message-content {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
 
-.message.success {
-    background-color: #d4edda;
-    color: #155724;
-    border-left-color: #28a745;
-}
+        .message-content i {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
 
-.message.success i {
-    color: #28a745;
-}
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border-left-color: #28a745;
+        }
 
-.message.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border-left-color: #dc3545;
-}
+        .message.success i {
+            color: #28a745;
+        }
 
-.message.error i {
-    color: #dc3545;
-}
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border-left-color: #dc3545;
+        }
 
-.message.warning {
-    background-color: #fff3cd;
-    color: #856404;
-    border-left-color: #ffc107;
-}
+        .message.error i {
+            color: #dc3545;
+        }
 
-.message.warning i {
-    color: #ffc107;
-}
+        .message.warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border-left-color: #ffc107;
+        }
 
-/* WhatsApp Quick Contact Button Styles */
-.whatsapp-quick-contact {
-    background: var(--white);
-    border: 2px dashed #e1e5e9;
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-    margin-top: 1.5rem;
-    text-align: center;
-}
+        .message.warning i {
+            color: #ffc107;
+        }
 
-.whatsapp-direct-btn {
-    background: #25D366;
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--border-radius);
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
+        /* WhatsApp Quick Contact Section */
+        .whatsapp-section {
+            background: linear-gradient(135deg, #25D366 0%, #20b358 100%);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            margin-top: 2rem;
+        }
 
-.whatsapp-direct-btn:hover {
-    background: #20b358;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-}
+        .whatsapp-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
 
-.whatsapp-direct-btn i {
-    font-size: 1.1rem;
-}
+        .whatsapp-section p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
 
-/* Animation */
-@keyframes slideInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        .whatsapp-direct-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 0.8rem 2rem;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
 
-/* Responsive Design */
-@media (min-width: 768px) {
-    .form-row {
-        grid-template-columns: 1fr 1fr;
-    }
-}
+        .whatsapp-direct-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
 
-/* Loading state for submit button */
-.submit-btn .fa-spinner {
-    animation: spin 1s linear infinite;
-}
+        /* FAQ Section */
+        .faq-section {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-light);
+            margin-top: 2rem;
+        }
 
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-        /* Contact Info */
+        .faq-section h3 {
+            font-size: 1.6rem;
+            color: var(--dark-blue);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e1e5e9;
+            padding: 1.2rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--dark-blue);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            color: var(--primary-orange);
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            padding-top: 1rem;
+            color: var(--charcoal);
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* Contact Info - Improved for laptop */
         .contact-info {
             display: grid;
             grid-template-columns: 1fr;
@@ -537,73 +574,89 @@
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
+            word-break: break-word;
         }
 
         .info-card a:hover {
             color: var(--dark-blue);
         }
 
-        /* Social Section */
-        .social-section {
-            background: var(--white);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            text-align: center;
-            box-shadow: var(--shadow-light);
-        }
+        /* Add this CSS to create proper spacing between sections */
 
-        .social-section h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--dark-blue);
-            margin-bottom: 1.5rem;
-        }
+/* Add margin to guarantee section to separate it from contact info above */
+.guarantee-section {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    margin-top: 3rem; /* Add space above guarantee section */
+    margin-bottom: 2rem; /* Add space below guarantee section */
+    clear: both;
+}
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
+/* Ensure proper spacing for the contact info section */
+.contact-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem; /* Add space below contact info */
+}
 
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            color: var(--white);
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
+/* Add spacing to FAQ section if it exists */
+.faq-section {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-light);
+    margin-top: 2rem;
+    margin-bottom: 2rem; /* Add space below FAQ */
+}
 
-        .social-link:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-medium);
-        }
+/* Add spacing to WhatsApp section */
+.whatsapp-section {
+    background: linear-gradient(135deg, #25D366 0%, #20b358 100%);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    text-align: center;
+    color: white;
+    margin-top: 2rem;
+    margin-bottom: 2rem; /* Add space below WhatsApp section */
+}
 
-        /* Success/Error Messages */
-        .message {
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
+/* Ensure footer has proper spacing */
+footer {
+    position: relative;
+    z-index: 2;
+    clear: both;
+    margin-top: 4rem; /* Increase top margin for footer */
+    width: 100%;
+    display: block;
+}
 
-        .message.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .message.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
+/* Mobile responsive spacing adjustments */
+@media (max-width: 767px) {
+    .guarantee-section {
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .contact-info {
+        margin-bottom: 1.5rem;
+    }
+    
+    .faq-section,
+    .whatsapp-section {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    footer {
+        margin-top: 3rem;
+    }
+}
 
         /* Footer */
         footer {
@@ -664,6 +717,39 @@
             opacity: 0.7;
         }
 
+        /* Animation */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Loading state for submit button */
+        .submit-btn .fa-spinner {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Form validation styles */
+        .form-control.error {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+        }
+        
+        .form-control.success {
+            border-color: #28a745;
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+        }
+
         /* Responsive Design */
         @media (min-width: 768px) {
             .nav-desktop {
@@ -683,12 +769,8 @@
             }
 
             .contact-content {
-                grid-template-columns: 2fr 1fr;
-                gap: 4rem;
-            }
-
-            .contact-info {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
             }
 
             .footer-content {
@@ -702,8 +784,21 @@
         }
 
         @media (min-width: 1024px) {
+            .contact-content {
+                grid-template-columns: 2fr 1fr;
+                gap: 4rem;
+            }
+
             .contact-info {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr;
+            }
+
+            /* Better email display on laptop */
+            .info-card a {
+                font-size: 0.9rem;
+                display: inline-block;
+                word-break: break-all;
+                max-width: 100%;
             }
         }
 
@@ -724,69 +819,64 @@
                 padding: 0 15px;
             }
         }
-        /* Add this to your existing CSS - Responsive Header Fix */
 
-/* iPhone XR and similar devices (414px width) */
-@media (max-width: 480px) and (min-width: 415px) {
-    .logo {
-        font-size: 1.4rem; /* Keep closer to original for iPhone XR */
-        white-space: nowrap;
-        overflow: hidden;
-    }
-}
+        /* Responsive Header Fix for mobile devices */
+        @media (max-width: 480px) and (min-width: 415px) {
+            .logo {
+                font-size: 1.4rem;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+        }
 
-/* Medium mobile screens (like iPhone XR at 414px) */
-@media (max-width: 414px) and (min-width: 390px) {
-    .logo {
-        font-size: 1.3rem; /* Slightly smaller but still good size */
-        white-space: nowrap;
-        overflow: hidden;
-    }
-    
-    .header-content {
-        padding: 0.8rem 0;
-    }
-    
-    .container {
-        padding: 0 15px;
-    }
-}
+        @media (max-width: 414px) and (min-width: 390px) {
+            .logo {
+                font-size: 1.3rem;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+            
+            .header-content {
+                padding: 0.8rem 0;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
 
-/* Your Infinix Hot 10 range (around 360-389px) */
-@media (max-width: 389px) and (min-width: 361px) {
-    .logo {
-        font-size: 1.1rem !important; /* Larger than before for better readability */
-        line-height: 1.2;
-    }
-    
-    .logo-img {
-        width: 35px;
-        height: 35px;
-    }
-}
+        @media (max-width: 389px) and (min-width: 361px) {
+            .logo {
+                font-size: 1.1rem !important;
+                line-height: 1.2;
+            }
+            
+            .logo-img {
+                width: 35px;
+                height: 35px;
+            }
+        }
 
-/* Very small screens */
-@media (max-width: 360px) {
-    .logo {
-        font-size: 1rem !important; /* Still readable but compact */
-    }
-    
-    .logo-img {
-        width: 32px;
-        height: 32px;
-        margin-right: 0.3rem;
-    }
-}
+        @media (max-width: 360px) {
+            .logo {
+                font-size: 1rem !important;
+            }
+            
+            .logo-img {
+                width: 32px;
+                height: 32px;
+                margin-right: 0.3rem;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
-         <header>
+    <header>
         <div class="container">
             <div class="header-content">
                 <a href="index.html" class="logo">
-                    <img src="images/logo.png" alt="SkillSavvy GH Logo" class="logo-img">
-                    <!-- <i class="fas fa-bolt"></i> -->
+                    <img src="images/logo.png" alt="Jaynite Digital Solutions Logo" class="logo-img">
                     Jaynite Digital Solutions
                 </a>
                 
@@ -831,67 +921,120 @@
 
     <!-- Main Content -->
     <main id="main-content">
-        <!-- Contact Section -->
         <section class="contact-section">
             <div class="container">
                 <div class="contact-content">
-                    <!-- Contact Form -->
-                    <div class="contact-form-container">
-                        <div class="contact-form">
-                            <h2>Send Us a Message</h2>
-                            <div id="message-container"></div>
-                            <form id="contact-form">
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="firstName">First Name *</label>
-                                        <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Your first name" required>
+                    <!-- Contact Form Section -->
+                    <div class="contact-form-section">
+                        <div class="contact-form-container">
+                            <div class="contact-form">
+                                <h2>Send Us a Message</h2>
+                                <div id="message-container"></div>
+                                <form id="contact-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="firstName">First Name *</label>
+                                            <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Your first name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lastName">Last Name *</label>
+                                            <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Your last name" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="email">Email Address *</label>
+                                            <input type="email" id="email" name="email" class="form-control" placeholder="your.email@example.com" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone">Phone Number</label>
+                                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="+233 XX XXX XXXX">
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="lastName">Last Name *</label>
-                                        <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Your last name" required>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="email">Email Address *</label>
-                                        <input type="email" id="email" name="email" class="form-control" placeholder="your.email@example.com" required>
+                                        <label for="subject">Subject *</label>
+                                        <input type="text" id="subject" name="subject" class="form-control" placeholder="What's this about?" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="phone">Phone Number</label>
-                                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="+233 XX XXX XXXX">
+                                        <label for="service">Service Interested In</label>
+                                        <select id="service" name="service" class="form-control">
+                                            <option value="">Select a service</option>
+                                            <option value="web-development">Web Development</option>
+                                            <option value="ui-ux-design">UI/UX Design</option>
+                                            <option value="cybersecurity">Cybersecurity</option>
+                                            <option value="digital-marketing">Digital Marketing</option>
+                                            <option value="print-publications">Print & Publications</option>
+                                            <option value="form-services">Form Services</option>
+                                            <option value="delivery-services">Delivery Services</option>
+                                            <option value="tutoring-services">Tutoring Services</option>
+                                            <option value="picture-frames">Picture Frames & Citations</option>
+                                            <option value="tickets-subtitles">Tickets & Subtitles</option>
+                                            <option value="other">Other</option>
+                                        </select>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="message">Message *</label>
+                                        <textarea id="message" name="message" class="form-control" placeholder="Tell us about your project, requirements, timeline, budget, or any questions you have..." required></textarea>
+                                    </div>
+                                    <button type="submit" class="submit-btn">
+                                        <i class="fas fa-paper-plane"></i> Send Message
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp Quick Contact Section -->
+                        <div class="whatsapp-section">
+                            <h3><i class="fab fa-whatsapp"></i> Prefer Instant Chat?</h3>
+                            <p>Get immediate response on WhatsApp for quick questions or urgent matters.</p>
+                            <button type="button" class="whatsapp-direct-btn" onclick="openDirectWhatsApp()">
+                                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                            </button>
+                        </div>
+
+                        <!-- FAQ Section -->
+                        <div class="faq-section">
+                            <h3>Frequently Asked Questions</h3>
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>What's your typical response time?</span>
+                                    <i class="fas fa-chevron-down"></i>
                                 </div>
-                                <div class="form-group">
-                                    <label for="subject">Subject *</label>
-                                    <input type="text" id="subject" name="subject" class="form-control" placeholder="What's this about?" required>
+                                <div class="faq-answer" style="display: none;">
+                                    We respond to all inquiries within 24 hours during business days. For urgent matters, contact us directly via WhatsApp for immediate assistance.
                                 </div>
-                                <div class="form-group">
-                                    <label for="service">Service Interested In</label>
-                                    <select id="service" name="service" class="form-control">
-                                        <option value="">Select a service</option>
-                                        <option value="web-development">Web Development</option>
-                                        <option value="ui-ux-design">UI/UX Design</option>
-                                        <option value="cybersecurity">Cybersecurity</option>
-                                        <option value="digital-marketing">Digital Marketing</option>
-                                        <option value="print-publications">Print & Publications</option>
-                                        <option value="form-services">Form Services</option>
-                                        <option value="delivery-services">Delivery Services</option>
-                                        <option value="tutoring-services">Tutoring Services</option>
-                                        <option value="picture-frames">Picture Frames & Citations</option>
-                                        <option value="tickets-subtitles">Tickets & Subtitles</option>
-                                        <option value="other">Other</option>
-                                    </select>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>Do you offer free consultations?</span>
+                                    <i class="fas fa-chevron-down"></i>
                                 </div>
-                                <div class="form-group">
-                                    <label for="message">Message *</label>
-                                    <textarea id="message" name="message" class="form-control" placeholder="Tell us about your project, requirements, timeline, budget, or any questions you have..." required></textarea>
+                                <div class="faq-answer" style="display: none;">
+                                    Yes! We provide free initial consultations to understand your project requirements and discuss the best solutions for your needs.
                                 </div>
-                                <button type="submit" class="submit-btn">
-                                    <i class="fas fa-paper-plane"></i> Send Message
-                                </button>
-                            </form>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>What information should I include in my message?</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="faq-answer" style="display: none;">
+                                    Please include: project type, timeline, budget range, specific requirements, and any reference materials. The more details you provide, the better we can assist you.
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>What payment methods do you accept?</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="faq-answer" style="display: none;">
+                                    We accept bank transfers, mobile money (MTN, Telecel, AirtelTigo), PayPal, and other secure payment methods. Payment terms will be discussed during project consultation.
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                  <!-- Replace the Contact Info and Service Guarantee sections with this corrected structure: -->
 
                     <!-- Contact Info -->
                     <div class="contact-info">
@@ -916,7 +1059,7 @@
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <h3>Email Us</h3>
-                            <p><a href="mailto:skillsavvygh@gmail.com">quamejaynite@gmail.com</a><br>We reply within 24 hours</p>
+                            <p><a href="mailto:quamejaynite@gmail.com">quamejaynite@gmail.com</a><br>We reply within 24 hours</p>
                         </div>
 
                         <div class="info-card">
@@ -926,27 +1069,28 @@
                             <h3>Business Hours</h3>
                             <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM<br>Sunday: Closed</p>
                         </div>
+                    </div>
+                </div>
 
-                        <!-- Social Section -->
-                        <div class="social-section">
-                            <h3>Connect With Us</h3>
-                            <div class="social-links">
-                                <a href="https://youtube.com/@skillsavvygh?si=VHCLWgZXM1sQSvXE" target="_blank" class="social-link" aria-label="YouTube">
-                                    <i class="fab fa-youtube"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" target="_blank" class="social-link" aria-label="LinkedIn">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                                <a href="https://wa.me/message/YCYBTUIO5ZD5J1" target="_blank" class="social-link" aria-label="WhatsApp">
-                                    <i class="fab fa-whatsapp"></i>
-                                </a>
-                                <a href="https://www.instagram.com/jaynite_official" target="_blank" class="social-link" aria-label="Instagram">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a href="https://education.github.com/pack" target="_blank" class="social-link" aria-label="GitHub">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
+                <!-- Service Guarantee Section -->
+                <div class="guarantee-section">
+                    <h3>Our Service Guarantee</h3>
+                    <div class="guarantee-items">
+                        <div class="guarantee-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>100% Satisfaction</span>
+                        </div>
+                        <div class="guarantee-item">
+                            <i class="fas fa-clock"></i>
+                            <span>On-Time Delivery</span>
+                        </div>
+                        <div class="guarantee-item">
+                            <i class="fas fa-headset"></i>
+                            <span>24/7 Support</span>
+                        </div>
+                        <div class="guarantee-item">
+                            <i class="fas fa-redo"></i>
+                            <span>Free Revisions</span>
                         </div>
                     </div>
                 </div>
@@ -1020,32 +1164,32 @@
             }
         });
 
-       // Contact Form Handling - WhatsApp Integration
-const contactForm = document.getElementById('contact-form');
-const messageContainer = document.getElementById('message-container');
+        // Contact Form Handling - WhatsApp Integration
+        const contactForm = document.getElementById('contact-form');
+        const messageContainer = document.getElementById('message-container');
 
-contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const submitBtn = contactForm.querySelector('.submit-btn');
-    const formData = new FormData(contactForm);
-    
-    // Show loading state
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing Message...';
-    
-    try {
-        // Get form data
-        const firstName = formData.get('firstName');
-        const lastName = formData.get('lastName');
-        const email = formData.get('email');
-        const phone = formData.get('phone') || 'Not provided';
-        const subject = formData.get('subject');
-        const service = formData.get('service') || 'Not specified';
-        const message = formData.get('message');
-        
-        // Format WhatsApp message
-        const whatsappMessage = `🔥 *NEW CONTACT FORM SUBMISSION* 🔥
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const formData = new FormData(contactForm);
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing Message...';
+            
+            try {
+                // Get form data
+                const firstName = formData.get('firstName');
+                const lastName = formData.get('lastName');
+                const email = formData.get('email');
+                const phone = formData.get('phone') || 'Not provided';
+                const subject = formData.get('subject');
+                const service = formData.get('service') || 'Not specified';
+                const message = formData.get('message');
+                
+                // Format WhatsApp message
+                const whatsappMessage = `🔥 *NEW CONTACT FORM SUBMISSION* 🔥
 
 👤 *Name:* ${firstName} ${lastName}
 📧 *Email:* ${email}
@@ -1057,103 +1201,105 @@ contactForm.addEventListener('submit', async (e) => {
 ${message}
 
 ---
-*Sent from Skills Savvy Contact Form*
+*Sent from Jaynite Digital Solutions Contact Form*
 *Time:* ${new Date().toLocaleString()}`;
 
-        // Encode message for WhatsApp URL
-        const encodedMessage = encodeURIComponent(whatsappMessage);
-        const whatsappURL = `https://wa.me/233533852891?text=${encodedMessage}`;
-        
-        // Simulate a brief delay for better UX
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        // Open WhatsApp with pre-filled message
-        window.open(whatsappURL, '_blank');
-        
-        // Show success message
-        showMessage('WhatsApp is opening with your message pre-filled. Please send it to complete your inquiry!', 'success');
-        
-        // Clear form after successful submission
-        contactForm.reset();
-        
-    } catch (error) {
-        console.error('Error preparing WhatsApp message:', error);
-        
-        // Fallback: Create manual WhatsApp message
-        const fallbackMessage = `Hi! I submitted a contact form on your website. My name is ${formData.get('firstName')} ${formData.get('lastName')} and my email is ${formData.get('email')}. I'm interested in discussing: ${formData.get('subject')}`;
-        const fallbackURL = `https://wa.me/233533852891?text=${encodeURIComponent(fallbackMessage)}`;
-        
-        window.open(fallbackURL, '_blank');
-        
-        // Show fallback message
-        showMessage('WhatsApp is opening. Please send your message to complete your inquiry. If it doesn\'t open automatically, contact us at +233 53 385 2891', 'warning');
-        
-    } finally {
-        // Reset button state
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-    }
-});
+                // Encode message for WhatsApp URL
+                const encodedMessage = encodeURIComponent(whatsappMessage);
+                const whatsappURL = `https://wa.me/233533852891?text=${encodedMessage}`;
+                
+                // Simulate a brief delay for better UX
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                // Open WhatsApp with pre-filled message
+                window.open(whatsappURL, '_blank');
+                
+                // Show success message
+                showMessage('WhatsApp is opening with your message pre-filled. Please send it to complete your inquiry!', 'success');
+                
+                // Clear form after successful submission
+                contactForm.reset();
+                
+            } catch (error) {
+                console.error('Error preparing WhatsApp message:', error);
+                
+                // Fallback: Create manual WhatsApp message
+                const fallbackMessage = `Hi! I submitted a contact form on your website. My name is ${formData.get('firstName')} ${formData.get('lastName')} and my email is ${formData.get('email')}. I'm interested in discussing: ${formData.get('subject')}`;
+                const fallbackURL = `https://wa.me/233533852891?text=${encodeURIComponent(fallbackMessage)}`;
+                
+                window.open(fallbackURL, '_blank');
+                
+                // Show fallback message
+                showMessage('WhatsApp is opening. Please send your message to complete your inquiry. If it doesn\'t open automatically, contact us at +233 53 385 2891', 'warning');
+                
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+            }
+        });
 
-function showMessage(text, type) {
-    const messageHTML = `
-        <div class="message ${type}">
-            <div class="message-content">
-                <i class="fas ${getMessageIcon(type)}"></i>
-                <span>${text}</span>
-            </div>
-        </div>
-    `;
-    
-    messageContainer.innerHTML = messageHTML;
-    messageContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    
-    // Auto-hide message after 8 seconds
-    setTimeout(() => {
-        messageContainer.innerHTML = '';
-    }, 8000);
-}
+        function showMessage(text, type) {
+            const messageHTML = `
+                <div class="message ${type}">
+                    <div class="message-content">
+                        <i class="fas ${getMessageIcon(type)}"></i>
+                        <span>${text}</span>
+                    </div>
+                </div>
+            `;
+            
+            messageContainer.innerHTML = messageHTML;
+            messageContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Auto-hide message after 8 seconds
+            setTimeout(() => {
+                messageContainer.innerHTML = '';
+            }, 8000);
+        }
 
-function getMessageIcon(type) {
-    switch(type) {
-        case 'success': return 'fa-check-circle';
-        case 'error': return 'fa-exclamation-circle';
-        case 'warning': return 'fa-exclamation-triangle';
-        default: return 'fa-info-circle';
-    }
-}
+        function getMessageIcon(type) {
+            switch(type) {
+                case 'success': return 'fa-check-circle';
+                case 'error': return 'fa-exclamation-circle';
+                case 'warning': return 'fa-exclamation-triangle';
+                default: return 'fa-info-circle';
+            }
+        }
 
-// Optional: Add WhatsApp quick contact button
-function addWhatsAppQuickContact() {
-    const quickContactHTML = `
-        <div class="whatsapp-quick-contact">
-            <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem; text-align: center;">
-                <strong>Prefer instant messaging?</strong>
-            </p>
-            <button type="button" class="whatsapp-direct-btn" onclick="openDirectWhatsApp()">
-                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-            </button>
-        </div>
-    `;
-    
-    // Insert after the contact form
-    const formContainer = document.querySelector('.contact-form-container');
-    if (formContainer) {
-        formContainer.insertAdjacentHTML('afterend', quickContactHTML);
-    }
-}
+        // Direct WhatsApp function
+        function openDirectWhatsApp() {
+            const directMessage = `Hi! I'm interested in your services at Jaynite Digital Solutions. Can we discuss my project requirements?`;
+            const whatsappURL = `https://wa.me/233533852891?text=${encodeURIComponent(directMessage)}`;
+            window.open(whatsappURL, '_blank');
+        }
 
-function openDirectWhatsApp() {
-    const directMessage = `Hi! I'm interested in your services at Skills Savvy. Can we discuss my project requirements?`;
-    const whatsappURL = `https://wa.me/233533852891?text=${encodeURIComponent(directMessage)}`;
-    window.open(whatsappURL, '_blank');
-}
-
-// Initialize quick contact button when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    // Uncomment the line below if you want to add the direct WhatsApp button
-    // addWhatsAppQuickContact();
-});
+        // FAQ Toggle Function
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const answer = faqItem.querySelector('.faq-answer');
+            const icon = element.querySelector('i');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-answer').style.display = 'none';
+                    item.querySelector('.faq-question i').style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // Toggle current FAQ item
+            if (faqItem.classList.contains('active')) {
+                faqItem.classList.remove('active');
+                answer.style.display = 'none';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                faqItem.classList.add('active');
+                answer.style.display = 'block';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
 
         // Header scroll effect
         window.addEventListener('scroll', () => {
@@ -1229,21 +1375,6 @@ document.addEventListener('DOMContentLoaded', function() {
             field.classList.remove('error', 'success');
         }
 
-        // Add CSS for form validation
-        const validationStyles = document.createElement('style');
-        validationStyles.textContent = `
-            .form-control.error {
-                border-color: #dc3545;
-                box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
-            }
-            
-            .form-control.success {
-                border-color: #28a745;
-                box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
-            }
-        `;
-        document.head.appendChild(validationStyles);
-
         // Animate elements on scroll
         const observerOptions = {
             threshold: 0.1,
@@ -1260,12 +1391,70 @@ document.addEventListener('DOMContentLoaded', function() {
         }, observerOptions);
 
         // Observe elements for animation
-        document.querySelectorAll('.info-card, .contact-form-container, .social-section').forEach(el => {
+        document.querySelectorAll('.info-card, .contact-form-container, .guarantee-section, .whatsapp-section, .faq-section').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
         });
+
+       const guaranteeStyles = document.createElement('style');
+guaranteeStyles.textContent = `
+    .guarantee-section {
+        background: var(--white);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--shadow-light);
+        text-align: center;
+    }
+
+    .guarantee-section h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--dark-blue);
+        margin-bottom: 1.5rem;
+    }
+
+    .guarantee-items {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .guarantee-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        background: var(--light-gray);
+        border-radius: 8px;
+        transition: var(--transition);
+    }
+
+    .guarantee-item:hover {
+        transform: translateY(-2px);
+        background: rgba(255, 107, 53, 0.1);
+    }
+
+    .guarantee-item i {
+        font-size: 1.5rem;
+        color: var(--primary-orange);
+        margin-bottom: 0.5rem;
+    }
+
+    .guarantee-item span {
+        font-weight: 600;
+        color: var(--dark-blue);
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 767px) {
+        .guarantee-items {
+            grid-template-columns: 1fr;
+        }
+    }
+`;
+document.head.appendChild(guaranteeStyles);
     </script>
 </body>
 </html>
