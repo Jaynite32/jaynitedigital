@@ -246,6 +246,12 @@
             grid-template-columns: 1fr;
             gap: 3rem;
         }
+        
+        .blog-main .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
         /* Featured Post */
         .featured-post {
@@ -575,8 +581,10 @@
             text-align: center;
             opacity: 0.7;
         }
-
-        /* Animations */
+        .footer-section a:hover {
+            color: var(--primary-orange) !important;
+        }
+                /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -624,7 +632,25 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-        /* Add this to your existing CSS - Responsive Header Fix */
+
+        /* Desktop responsive fixes */
+@media (min-width: 768px) {
+    .blog-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .blog-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
 
 /* iPhone XR and similar devices (414px width) */
 @media (max-width: 480px) and (min-width: 415px) {
@@ -924,16 +950,16 @@
                         <li style="margin-bottom: 0.5rem;"><a href="services.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease;">Services</a></li>
                         <li style="margin-bottom: 0.5rem;"><a href="about.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease;">About</a></li>
                         <li style="margin-bottom: 0.5rem;"><a href="portfolio.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease;">Portfolio</a></li>
-                        <li style="margin-bottom: 0.5rem;"><a href="blog.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease;">Blog</a></li>
+                        <li><a href="blog.html" style="color: var(--primary-orange); text-decoration: none; cursor: default;">Blog</a></li>
                         <li><a href="contact.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease;">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Contact Info</h3>
                     <p><i class="fas fa-map-marker-alt" style="color: var(--primary-orange); margin-right: 0.5rem;"></i> Sunyani, Bono Region, Ghana</p>
-                    <p><i class="fas fa-phone" style="color: var(--primary-orange); margin-right: 0.5rem;"></i> +233 50 563 8937</p>
-                    <p><i class="fas fa-envelope" style="color: var(--primary-orange); margin-right: 0.5rem;"></i> quamejaynite@gmail.com</p>
-                    <p><i class="fas fa-globe" style="color: var(--primary-orange); margin-right: 0.5rem;"></i> www.jaynite.tech</p>
+                    <p><i class="fas fa-phone" style="color: var(--primary-orange); margin-right: 0.5rem;"></i> +233 533 852 891</p>
+                    <p><i class="fas fa-envelope" style="color: var(--primary-orange); margin-right: 0.5rem;"></i> jaynitedigital@gmail.com</p>
+                    <p><i class="fas fa-globe" style="color: var(--primary-orange); margin-right: 0.5rem;"></i> https://jaynitedigital.me</p>
                 </div>
             </div>
             <div class="footer-bottom">
