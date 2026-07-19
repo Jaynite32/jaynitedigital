@@ -1672,20 +1672,20 @@
             <div class="bank-details">
                 <h4>Stanbic Bank Ghana Limited</h4>
                 <div class="detail-row">
-                    <span><strong>Account Name:</strong> Emmanuel Akomani</span>
-                    <button class="copy-btn" onclick="copyToClipboard('Emmanuel Akomani')">
+                    <span><strong>Account Name:</strong> Jaynite Digital</span>
+                    <button class="copy-btn" onclick="copyToClipboard('Jaynite Digital')">
                         <i class="fas fa-copy"></i>
                     </button>
                 </div>
                 <div class="detail-row">
-                    <span><strong>Account Number:</strong> 90400012121274</span>
-                    <button class="copy-btn" onclick="copyToClipboard('90400012121274')">
+                    <span><strong>Account Number:</strong> **************</span>
+                    <button class="copy-btn" onclick="copyToClipboard('**************')">
                         <i class="fas fa-copy"></i>
                     </button>
                 </div>
                 <div class="detail-row">
-                    <span><strong>Branch:</strong> Sunyani Branch</span>
-                    <button class="copy-btn" onclick="copyToClipboard('Sunyani Branch')">
+                    <span><strong>Branch:</strong> Kasoa Branch</span>
+                    <button class="copy-btn" onclick="copyToClipboard('Kasoa Branch')">
                         <i class="fas fa-copy"></i>
                     </button>
                 </div>
@@ -1865,12 +1865,12 @@ function getUSSDCode(network) {
 // Helper function to get the correct merchant number
 function getMerchantNumber(network) {
     const merchantNumbers = {
-        'mtn': '0533852891',
+        'mtn': '**********',
         'vodafone': '0201485621',
         'telecel': '0201485621',
         'airteltigo': '0201485621'
     };
-    return merchantNumbers[network.toLowerCase()] || '0533852891';
+    return merchantNumbers[network.toLowerCase()] || '**********';
 }
 
 // Option 1: Direct USSD initiation (works on mobile browsers)
@@ -1899,7 +1899,7 @@ function showUSSDGuide(network, amount) {
             steps: [
                 'Dial *170# on your phone',
                 'Select option 1 (Send Money)',
-                'Enter number: 0533852891',
+                'Enter number: **********',
                 `Enter amount: ${amount}`,
                 'Enter your PIN to complete'
             ],
@@ -1909,7 +1909,7 @@ function showUSSDGuide(network, amount) {
             steps: [
                 'Dial *110# on your phone',
                 'Select option 1 (Send Money)',
-                'Enter number: 0201485621',
+                'Enter number: **********',
                 `Enter amount: ${amount}`,
                 'Enter your PIN to complete'
             ],
@@ -1919,7 +1919,7 @@ function showUSSDGuide(network, amount) {
             steps: [
                 'Dial *110# on your phone',
                 'Select option 1 (Send Money)',
-                'Enter number: 0201485621',
+                'Enter number: **********',
                 `Enter amount: ${amount}`,
                 'Enter your PIN to complete'
             ],
@@ -1929,7 +1929,7 @@ function showUSSDGuide(network, amount) {
             steps: [
                 'Dial *110# on your phone',
                 'Select option 1 (Send Money)',
-                'Enter number: 0201485621',
+                'Enter number: **********',
                 `Enter amount: ${amount}`,
                 'Enter your PIN to complete'
             ],
@@ -2011,7 +2011,7 @@ Description: ${description}
 
 Please send me the payment prompt.`;
 
-            const whatsappURL = `https://wa.me/233533852891?text=${encodeURIComponent(message)}`;
+            const whatsappURL = `https://wa.me/233201485621?text=${encodeURIComponent(message)}`;
             window.open(whatsappURL, '_blank');
             closePaymentOptionsModal();
         }
@@ -2082,7 +2082,7 @@ Please send me the payment prompt.`;
         // Send transfer proof via WhatsApp
         function sendTransferProof() {
             const message = `Jaynite Digital Solutions! I have made a bank transfer to your Stanbic Bank account. Please find the transfer receipt attached.`;
-            const whatsappURL = `https://wa.me/233533852891?text=${encodeURIComponent(message)}`;
+            const whatsappURL = `https://wa.me/233201485621?text=${encodeURIComponent(message)}`;
             window.open(whatsappURL, '_blank');
             closeBankModal();
         }
@@ -2103,7 +2103,7 @@ Please send me the payment prompt.`;
             
             // Send email to WhatsApp in background (they won't see this)
             const message = `New Newsletter Subscription: ${email}`;
-            const whatsappURL = `https://wa.me/233533852891?text=${encodeURIComponent(message)}`;
+            const whatsappURL = `https://wa.me/233201485621?text=${encodeURIComponent(message)}`;
             
             // Open WhatsApp in a small popup that closes automatically
             const popup = window.open(whatsappURL, 'whatsapp', 'width=400,height=400');
