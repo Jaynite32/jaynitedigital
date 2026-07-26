@@ -38,17 +38,11 @@ img{max-width:100%;display:block}
 header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(247,245,240,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);transition:var(--ease)}
 header.scrolled{background:rgba(247,245,240,0.98);box-shadow:var(--shadow-sm)}
 .header-content{display:flex;justify-content:space-between;align-items:center;padding:.85rem 0}
-.logo{display:flex;flex-direction:column;align-items:flex-start;text-decoration:none;font-family:'Space Grotesk',sans-serif;color:var(--ink);line-height:1.2}
-.logo-img{width:36px;height:36px;border-radius:9px;object-fit:cover;flex-shrink:0;margin-bottom:.3rem}
-.logo-mark{width:36px;height:36px;border-radius:9px;background:var(--grad-orange);align-items:center;justify-content:center;color:#fff;font-size:1.05rem;flex-shrink:0;margin-bottom:.3rem}
-.logo-primary{font-weight:800;font-size:1.05rem}
-.logo-secondary{font-weight:600;font-size:.82rem;color:var(--ink-soft)}
-@media (min-width:768px){
-  .logo{flex-direction:row;align-items:center;gap:.6rem}
-  .logo-img,.logo-mark{margin-bottom:0}
-  .logo-primary{font-size:1.25rem}
-  .logo-secondary{font-size:1.25rem;font-weight:700;color:var(--ink)}
-}
+.logo{display:flex;align-items:center;gap:.5rem;text-decoration:none;font-family:'Space Grotesk',sans-serif;color:var(--ink);flex:1;min-width:0;margin-right:.75rem}
+.logo-img{width:34px;height:34px;border-radius:9px;object-fit:cover;flex-shrink:0}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:var(--grad-orange);align-items:center;justify-content:center;color:#fff;font-size:1rem;flex-shrink:0}
+.logo-text{font-weight:700;font-size:clamp(.82rem,3.6vw,1.25rem);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.15}
+@media (min-width:768px){ .logo{flex:none;margin-right:0} .logo-text{font-size:1.25rem} }
 
 .nav-desktop{display:none}
 .nav-desktop ul{display:flex;list-style:none;align-items:center;gap:1.9rem}
@@ -103,7 +97,11 @@ header.scrolled{background:rgba(247,245,240,0.98);box-shadow:var(--shadow-sm)}
 
 /* ===== Hero / Slideshow ===== */
 .hero{min-height:100svh;background:var(--grad-ink);position:relative;overflow:hidden;display:flex;align-items:center;padding-top:80px}
-.hero-noise{position:absolute;inset:0;background-image:radial-gradient(circle at 15% 20%,rgba(255,107,53,.18),transparent 40%),radial-gradient(circle at 85% 75%,rgba(14,165,160,.20),transparent 45%)}
+.hero-bg-layer{position:absolute;inset:0;z-index:0}
+.hero-bg-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease}
+.hero-bg-slide.active{opacity:.32}
+.hero-bg-scrim{position:absolute;inset:0;background:linear-gradient(105deg,rgba(15,32,56,.97) 0%,rgba(15,32,56,.88) 38%,rgba(15,32,56,.55) 68%,rgba(11,59,58,.45) 100%)}
+.hero-noise{position:absolute;inset:0;z-index:1;background-image:radial-gradient(circle at 15% 20%,rgba(255,107,53,.18),transparent 40%),radial-gradient(circle at 85% 75%,rgba(14,165,160,.20),transparent 45%)}
 .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center;padding-top:2.5rem;padding-bottom:3.5rem}
 .eyebrow{display:inline-flex;align-items:center;gap:.5rem;color:var(--orange);background:rgba(255,107,53,.12);border:1px solid rgba(255,107,53,.3);padding:.4rem .9rem;border-radius:30px;font-size:.78rem;font-weight:600;letter-spacing:.03em;margin-bottom:1.2rem}
 .slide{display:none}
@@ -121,7 +119,8 @@ header.scrolled{background:rgba(247,245,240,0.98);box-shadow:var(--shadow-sm)}
 .slide-dots button{width:28px;height:4px;border-radius:4px;border:none;background:rgba(255,255,255,.25);cursor:pointer;transition:var(--ease)}
 .slide-dots button.active{background:var(--orange);width:40px}
 
-.hero-visual{position:relative;height:320px;display:flex;align-items:center;justify-content:center}
+.hero-visual{position:relative;height:320px;display:none;align-items:center;justify-content:center}
+@media (min-width:768px){ .hero-visual{display:flex} }
 .hero-visual::before{content:'';position:absolute;width:260px;height:260px;background:radial-gradient(circle,rgba(255,107,53,.35),transparent 70%);filter:blur(10px);z-index:0}
 .hero-visual svg{width:100%;max-width:360px;height:auto;filter:drop-shadow(0 20px 40px rgba(0,0,0,.35));position:relative;z-index:1}
 .hero-photo{position:relative;z-index:1;width:100%;max-width:380px;aspect-ratio:4/5;border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.18);box-shadow:0 25px 50px rgba(0,0,0,.4)}
@@ -261,7 +260,7 @@ footer{background:var(--ink);color:#fff;padding:3.5rem 0 1.5rem}
     <a href="index.html" class="logo">
       <img src="images/logo.png" alt="Jaynite Digital Solutions logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
       <span class="logo-mark" style="display:none"><i class="fas fa-bolt"></i></span>
-      <span class="logo-primary">Jaynite</span><span class="logo-secondary">Digital Solutions</span>
+      <span class="logo-text">Jaynite Digital Solutions</span>
     </a>
 
     <nav class="nav-desktop">
@@ -335,6 +334,12 @@ footer{background:var(--ink);color:#fff;padding:3.5rem 0 1.5rem}
 
 <!-- Hero -->
 <section class="hero" id="home">
+  <div class="hero-bg-layer" id="heroBgLayer">
+    <div class="hero-bg-slide active" data-bg="0" style="background-image:url('images/hero-1.jpg')"></div>
+    <div class="hero-bg-slide" data-bg="1" style="background-image:url('images/hero-2.jpg')"></div>
+    <div class="hero-bg-slide" data-bg="2" style="background-image:url('images/hero-3.jpg')"></div>
+    <div class="hero-bg-scrim"></div>
+  </div>
   <div class="hero-noise"></div>
   <div class="container hero-grid">
     <div class="hero-text">
@@ -754,15 +759,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
 // Hero slideshow
 const slides = document.querySelectorAll('.slide');
 const visuals = document.querySelectorAll('.visual-slide');
+const bgSlides = document.querySelectorAll('.hero-bg-slide');
 const dots = document.querySelectorAll('.slide-dots button');
 let current = 0;
 let slideTimer;
 function goToSlide(i){
   slides.forEach(s=>s.classList.remove('active'));
   visuals.forEach(v=>v.classList.remove('active'));
+  bgSlides.forEach(b=>b.classList.remove('active'));
   dots.forEach(d=>d.classList.remove('active'));
   slides[i].classList.add('active');
   visuals[i].classList.add('active');
+  bgSlides[i].classList.add('active');
   dots[i].classList.add('active');
   current = i;
 }
