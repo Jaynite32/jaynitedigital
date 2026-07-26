@@ -38,9 +38,10 @@ img{max-width:100%;display:block}
 header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(247,245,240,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);transition:var(--ease)}
 header.scrolled{background:rgba(247,245,240,0.98);box-shadow:var(--shadow-sm)}
 .header-content{display:flex;justify-content:space-between;align-items:center;padding:.85rem 0}
-.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.25rem;color:var(--ink)}
-.logo-img{width:38px;height:38px;border-radius:9px;object-fit:cover}
-.logo-mark{width:38px;height:38px;border-radius:9px;background:var(--grad-orange);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.05rem}
+.logo{display:flex;align-items:center;gap:.55rem;text-decoration:none;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.02rem;line-height:1.15;color:var(--ink);max-width:180px}
+.logo-img{width:36px;height:36px;border-radius:9px;object-fit:cover;flex-shrink:0}
+.logo-mark{width:36px;height:36px;border-radius:9px;background:var(--grad-orange);align-items:center;justify-content:center;color:#fff;font-size:1.05rem;flex-shrink:0}
+@media (min-width:768px){ .logo{font-size:1.25rem;max-width:none} }
 
 .nav-desktop{display:none}
 .nav-desktop ul{display:flex;list-style:none;align-items:center;gap:1.9rem}
@@ -64,11 +65,14 @@ header.scrolled{background:rgba(247,245,240,0.98);box-shadow:var(--shadow-sm)}
 .header-cta a{display:inline-flex;align-items:center;gap:.5rem;background:var(--grad-orange);color:#fff;text-decoration:none;padding:.65rem 1.15rem;border-radius:30px;font-weight:600;font-size:.88rem;box-shadow:var(--shadow-sm);transition:var(--ease)}
 .header-cta a:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
 
-.menu-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;z-index:1001}
-.menu-toggle span{width:24px;height:2.5px;background:var(--ink);transition:var(--ease);transform-origin:center}
-.menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.menu-toggle{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:46px;height:46px;background:var(--white);border:1px solid var(--line);border-radius:12px;cursor:pointer;z-index:1001;box-shadow:var(--shadow-sm);transition:var(--ease)}
+.menu-toggle:hover{border-color:var(--orange)}
+.menu-toggle.active{background:var(--grad-orange);border-color:transparent}
+.menu-toggle span{width:20px;height:2.5px;border-radius:2px;background:var(--ink);transition:var(--ease);transform-origin:center}
+.menu-toggle.active span{background:#fff}
+.menu-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .menu-toggle.active span:nth-child(2){opacity:0}
-.menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.menu-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 .mobile-menu{position:fixed;top:0;right:0;width:88%;max-width:360px;height:100vh;background:var(--white);transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);z-index:999;padding:5.5rem 0 2rem;box-shadow:var(--shadow-lg);overflow-y:auto}
 .mobile-menu.active{transform:translateX(0)}
@@ -93,7 +97,7 @@ header.scrolled{background:rgba(247,245,240,0.98);box-shadow:var(--shadow-sm)}
 /* ===== Hero / Slideshow ===== */
 .hero{min-height:100svh;background:var(--grad-ink);position:relative;overflow:hidden;display:flex;align-items:center;padding-top:80px}
 .hero-noise{position:absolute;inset:0;background-image:radial-gradient(circle at 15% 20%,rgba(255,107,53,.18),transparent 40%),radial-gradient(circle at 85% 75%,rgba(14,165,160,.20),transparent 45%)}
-.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center;padding:2.5rem 0 3.5rem}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center;padding-top:2.5rem;padding-bottom:3.5rem}
 .eyebrow{display:inline-flex;align-items:center;gap:.5rem;color:var(--orange);background:rgba(255,107,53,.12);border:1px solid rgba(255,107,53,.3);padding:.4rem .9rem;border-radius:30px;font-size:.78rem;font-weight:600;letter-spacing:.03em;margin-bottom:1.2rem}
 .slide{display:none}
 .slide.active{display:block;animation:fadeUp .6s ease both}
@@ -139,7 +143,6 @@ header.scrolled{background:rgba(247,245,240,0.98);box-shadow:var(--shadow-sm)}
 .service-card{background:var(--white);border-radius:var(--radius);padding:1.8rem;box-shadow:var(--shadow-sm);border:1px solid var(--line);transition:var(--ease);position:relative}
 .service-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:transparent}
 .service-icon{width:52px;height:52px;border-radius:12px;background:var(--grad-orange);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem}
-.service-icon.alt{background:linear-gradient(135deg,#0EA5A0,#0B3B3A)}
 .service-icon i{color:#fff;font-size:1.3rem}
 .service-card h3{font-size:1.08rem;font-weight:700;color:var(--ink);margin-bottom:.55rem}
 .service-card p{color:var(--ink-soft);font-size:.9rem;margin-bottom:1.2rem}
@@ -244,8 +247,9 @@ footer{background:var(--ink);color:#fff;padding:3.5rem 0 1.5rem}
 <header id="siteHeader">
   <div class="container header-content">
     <a href="index.html" class="logo">
-      <span class="logo-mark"><i class="fas fa-bolt"></i></span>
-      Jaynite Digital
+      <img src="images/logo.png" alt="Jaynite Digital Solutions logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <span class="logo-mark" style="display:none"><i class="fas fa-bolt"></i></span>
+      Jaynite Digital Solutions
     </a>
 
     <nav class="nav-desktop">
@@ -264,7 +268,8 @@ footer{background:var(--ink);color:#fff;padding:3.5rem 0 1.5rem}
             <a href="services.html#tutoring"><i class="fas fa-chalkboard-teacher"></i> Home &amp; Online Tutoring</a>
             <div class="dropdown-divider"></div>
             <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener"><i class="fas fa-sim-card"></i> Buy Data Bundles <span class="ext">↗</span></a>
-            <a href="https://sellpincodes.com/" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i> BECE/WASSCE Checkers &amp; Forms <span class="ext">↗</span></a>
+            <a href="https://sellpincodes.com/" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i> BECE/WASSCE Results Checkers <span class="ext">↗</span></a>
+            <a href="https://wa.me/233201485621" target="_blank" rel="noopener"><i class="fas fa-file-signature"></i> University Forms (On Request)</a>
           </div>
         </li>
         <li><a href="about.html">About</a></li>
@@ -302,7 +307,8 @@ footer{background:var(--ink);color:#fff;padding:3.5rem 0 1.5rem}
         <li><a href="services.html#computers"><i class="fas fa-desktop"></i> Computers &amp; IT Accessories</a></li>
         <li><a href="services.html#tutoring"><i class="fas fa-chalkboard-teacher"></i> Home &amp; Online Tutoring</a></li>
         <li><a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener"><i class="fas fa-sim-card"></i> Buy Data Bundles</a></li>
-        <li><a href="https://sellpincodes.com/" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i> Results Checkers &amp; Forms</a></li>
+        <li><a href="https://sellpincodes.com/" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i> BECE/WASSCE Results Checkers</a></li>
+        <li><a href="https://wa.me/233201485621" target="_blank" rel="noopener"><i class="fas fa-file-signature"></i> University Forms (On Request)</a></li>
       </ul>
     </li>
     <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
@@ -442,13 +448,13 @@ footer{background:var(--ink);color:#fff;padding:3.5rem 0 1.5rem}
         <a href="services.html#uiux" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
-        <div class="service-icon alt"><i class="fas fa-shield-alt"></i></div>
+        <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
         <h3>Cybersecurity</h3>
         <p>Protecting digital assets with risk assessments and best-practice security implementation.</p>
         <a href="services.html#security" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
-        <div class="service-icon alt"><i class="fas fa-bullhorn"></i></div>
+        <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
         <h3>Digital Marketing</h3>
         <p>Strategic campaigns that boost your online presence and reach the right audience.</p>
         <a href="services.html#marketing" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
@@ -466,13 +472,13 @@ footer{background:var(--ink);color:#fff;padding:3.5rem 0 1.5rem}
         <a href="services.html#computers" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
-        <div class="service-icon alt"><i class="fas fa-chalkboard-teacher"></i></div>
+        <div class="service-icon"><i class="fas fa-chalkboard-teacher"></i></div>
         <h3>Home &amp; Online Tutoring</h3>
         <p>Professional tutoring in various subjects and technical skills, in person or online.</p>
         <a href="services.html#tutoring" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
-        <div class="service-icon alt"><i class="fas fa-sim-card"></i></div>
+        <div class="service-icon"><i class="fas fa-sim-card"></i></div>
         <h3>Data Bundles</h3>
         <p>Affordable MTN, Telecel and AirtelTigo data bundles, purchased instantly online.</p>
         <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener" class="service-btn">Buy Data <i class="fas fa-arrow-right"></i></a>
@@ -480,10 +486,16 @@ footer{background:var(--ink);color:#fff;padding:3.5rem 0 1.5rem}
       </div>
       <div class="service-card">
         <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
-        <h3>Forms &amp; Results Checkers</h3>
-        <p>University forms, BECE and WASSCE results checker pins, and online registrations.</p>
+        <h3>BECE/WASSCE Results Checkers</h3>
+        <p>Results checker pins for BECE and WASSCE, purchased instantly online.</p>
         <a href="https://sellpincodes.com/" target="_blank" rel="noopener" class="service-btn">Get Checker <i class="fas fa-arrow-right"></i></a>
         <span class="badge-external">External site</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-file-signature"></i></div>
+        <h3>University &amp; Institutional Forms</h3>
+        <p>Available on request — message us with the details and we'll purchase and deliver it for you.</p>
+        <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="service-btn">Request on WhatsApp <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </div>
