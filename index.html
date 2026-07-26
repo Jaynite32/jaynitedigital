@@ -1,2408 +1,804 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaynite Digital Solutions - Empowering Digital Innovation in Ghana</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-orange: #FF6B35;
-            --dark-blue: #1B365D;
-            --charcoal: #2D3436;
-            --light-gray: #F8F9FA;
-            --white: #FFFFFF;
-            --black: #000000;
-            --mtn-yellow: #FFCC00;
-            --telecel-red: #E53935;
-            --airteltigo-blue: #1976D2;
-            --gradient-primary: linear-gradient(135deg, #FF6B35 0%, #E55A2B 100%);
-            --gradient-secondary: linear-gradient(135deg, #1B365D 0%, #0F2A47 100%);
-            --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
-            --shadow-medium: 0 5px 25px rgba(0, 0, 0, 0.15);
-            --shadow-heavy: 0 10px 40px rgba(0, 0, 0, 0.2);
-            --transition: all 0.3s ease;
-            --border-radius: 12px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaynite Digital Solutions - Empowering Digital Innovation in Ghana</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0F2038;
+  --ink-soft:#3C4A63;
+  --paper:#F7F5F0;
+  --white:#FFFFFF;
+  --orange:#FF6B35;
+  --orange-deep:#E5501E;
+  --teal:#0EA5A0;
+  --line:rgba(15,32,56,0.10);
+  --grad-orange:linear-gradient(135deg,#FF6B35 0%,#E5501E 100%);
+  --grad-ink:linear-gradient(135deg,#0F2038 0%,#16304F 60%,#0B3B3A 100%);
+  --shadow-sm:0 2px 10px rgba(15,32,56,0.08);
+  --shadow-md:0 10px 30px rgba(15,32,56,0.12);
+  --shadow-lg:0 20px 50px rgba(15,32,56,0.20);
+  --radius:14px;
+  --ease:all .3s cubic-bezier(.4,0,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif}
+a{color:inherit}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* ===== Header ===== */
+header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(247,245,240,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);transition:var(--ease)}
+header.scrolled{background:rgba(247,245,240,0.98);box-shadow:var(--shadow-sm)}
+.header-content{display:flex;justify-content:space-between;align-items:center;padding:.85rem 0}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.25rem;color:var(--ink)}
+.logo-img{width:38px;height:38px;border-radius:9px;object-fit:cover}
+.logo-mark{width:38px;height:38px;border-radius:9px;background:var(--grad-orange);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.05rem}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--charcoal);
-            overflow-x: hidden;
-        }
+.nav-desktop{display:none}
+.nav-desktop ul{display:flex;list-style:none;align-items:center;gap:1.9rem}
+.nav-desktop>ul>li{position:relative}
+.nav-desktop a{text-decoration:none;color:var(--ink-soft);font-weight:500;font-size:.95rem;padding:.5rem 0;position:relative;transition:var(--ease)}
+.nav-desktop>ul>li>a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--orange);transition:var(--ease)}
+.nav-desktop>ul>li>a:hover::after,.nav-desktop>ul>li>a.active::after{width:100%}
+.nav-desktop a:hover,.nav-desktop a.active{color:var(--ink)}
+.has-dropdown>a i.fa-chevron-down{font-size:.65rem;margin-left:.35rem;transition:transform .25s}
+.has-dropdown:hover>a i.fa-chevron-down{transform:rotate(180deg)}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+.dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:300px;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:.6rem;opacity:0;visibility:hidden;transition:var(--ease);border:1px solid var(--line)}
+.has-dropdown:hover .dropdown,.has-dropdown:focus-within .dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.dropdown a{display:flex;align-items:center;gap:.7rem;padding:.65rem .75rem;border-radius:10px;font-size:.88rem;color:var(--ink-soft);font-weight:500}
+.dropdown a:hover{background:var(--paper);color:var(--orange)}
+.dropdown a i{width:18px;color:var(--orange);font-size:.95rem}
+.dropdown a .ext{margin-left:auto;font-size:.7rem;color:#9aa4b2}
+.dropdown-divider{height:1px;background:var(--line);margin:.4rem .5rem}
 
-        /* Header & Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            transition: var(--transition);
-        }
+.header-cta{display:none}
+.header-cta a{display:inline-flex;align-items:center;gap:.5rem;background:var(--grad-orange);color:#fff;text-decoration:none;padding:.65rem 1.15rem;border-radius:30px;font-weight:600;font-size:.88rem;box-shadow:var(--shadow-sm);transition:var(--ease)}
+.header-cta a:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
+.menu-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;z-index:1001}
+.menu-toggle span{width:24px;height:2.5px;background:var(--ink);transition:var(--ease);transform-origin:center}
+.menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.menu-toggle.active span:nth-child(2){opacity:0}
+.menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--dark-blue);
-            text-decoration: none;
-        }
+.mobile-menu{position:fixed;top:0;right:0;width:88%;max-width:360px;height:100vh;background:var(--white);transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);z-index:999;padding:5.5rem 0 2rem;box-shadow:var(--shadow-lg);overflow-y:auto}
+.mobile-menu.active{transform:translateX(0)}
+.mobile-menu ul{list-style:none;padding:0 1.25rem}
+.mobile-menu>ul>li{border-bottom:1px solid var(--line)}
+.mobile-menu a{text-decoration:none;color:var(--ink);font-size:1.02rem;font-weight:500;display:flex;align-items:center;gap:.9rem;padding:1rem 0}
+.mobile-menu a i:first-child{width:20px;color:var(--orange)}
+.mobile-menu .mm-toggle{width:100%;background:none;border:none;text-align:left;cursor:pointer;font-family:inherit}
+.mobile-menu .mm-toggle .caret{margin-left:auto;transition:transform .25s;color:#9aa4b2}
+.mobile-menu .mm-toggle.active .caret{transform:rotate(180deg);color:var(--orange)}
+.mobile-submenu{display:none;list-style:none;padding:0 0 .75rem 1.9rem;animation:slideDown .25s ease}
+.mobile-submenu.active{display:block}
+.mobile-submenu li a{padding:.65rem 0;font-size:.92rem;font-weight:500;color:var(--ink-soft)}
+.mobile-submenu li a i{color:var(--teal);font-size:.85rem}
+.mobile-menu-cta{margin:1.5rem 1.25rem 0;padding:1rem;background:var(--grad-orange);border-radius:var(--radius);text-align:center}
+.mobile-menu-cta a{justify-content:center;color:#fff;font-weight:600;padding:0}
+.menu-backdrop{position:fixed;inset:0;background:rgba(15,32,56,.5);z-index:998;opacity:0;visibility:hidden;transition:var(--ease)}
+.menu-backdrop.active{opacity:1;visibility:visible}
 
-        .logo-img {
-            width: 40px;
-            height: 40px;
-            margin-right: 0.5rem;
-            border-radius: 8px;
-            object-fit: cover;
-        }
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 
-       .logo i {
-    color: var(--primary-orange);
-    margin-right: 0.5rem;
-    font-size: 1.8rem;
-    display: none;
+/* ===== Hero / Slideshow ===== */
+.hero{min-height:100svh;background:var(--grad-ink);position:relative;overflow:hidden;display:flex;align-items:center;padding-top:80px}
+.hero-noise{position:absolute;inset:0;background-image:radial-gradient(circle at 15% 20%,rgba(255,107,53,.18),transparent 40%),radial-gradient(circle at 85% 75%,rgba(14,165,160,.20),transparent 45%)}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center;padding:2.5rem 0 3.5rem}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;color:var(--orange);background:rgba(255,107,53,.12);border:1px solid rgba(255,107,53,.3);padding:.4rem .9rem;border-radius:30px;font-size:.78rem;font-weight:600;letter-spacing:.03em;margin-bottom:1.2rem}
+.slide{display:none}
+.slide.active{display:block;animation:fadeUp .6s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.hero h1{color:#fff;font-size:2.1rem;font-weight:700;line-height:1.15;margin-bottom:1rem}
+.hero h1 span{color:var(--orange)}
+.hero .subtitle{color:rgba(255,255,255,.78);font-size:1.02rem;max-width:520px;margin-bottom:1.9rem}
+.hero-buttons{display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:2.2rem}
+.btn{display:inline-flex;align-items:center;gap:.55rem;padding:.9rem 1.6rem;background:var(--grad-orange);color:#fff;text-decoration:none;border-radius:30px;font-weight:600;font-size:.92rem;border:none;cursor:pointer;box-shadow:var(--shadow-sm);transition:var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.btn-ghost{background:transparent;border:1.5px solid rgba(255,255,255,.4);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.slide-dots{display:flex;gap:.5rem}
+.slide-dots button{width:28px;height:4px;border-radius:4px;border:none;background:rgba(255,255,255,.25);cursor:pointer;transition:var(--ease)}
+.slide-dots button.active{background:var(--orange);width:40px}
+
+.hero-visual{position:relative;height:280px;display:flex;align-items:center;justify-content:center}
+.hero-visual svg{width:100%;max-width:400px;height:auto;filter:drop-shadow(0 20px 40px rgba(0,0,0,.35))}
+.visual-slide{display:none;animation:fadeUp .7s ease both}
+.visual-slide.active{display:block}
+
+.trust-strip{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.12);padding:1.4rem 0}
+.trust-strip .container{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
+.trust-item{display:flex;align-items:center;gap:.6rem;color:rgba(255,255,255,.85);font-size:.85rem;font-weight:500}
+.trust-item i{color:var(--teal)}
+
+/* ===== Mission / Vision strip ===== */
+.mv-strip{background:var(--white);padding:3rem 0}
+.mv-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
+.mv-card{background:var(--paper);border-radius:var(--radius);padding:1.8rem;border:1px solid var(--line)}
+.mv-card h3{display:flex;align-items:center;gap:.6rem;color:var(--ink);font-size:1.1rem;margin-bottom:.6rem}
+.mv-card h3 i{color:var(--orange)}
+.mv-card p{color:var(--ink-soft);font-size:.92rem}
+
+/* ===== Services ===== */
+.section-header{text-align:center;max-width:620px;margin:0 auto 3rem}
+.section-header .eyebrow{background:rgba(14,165,160,.1);border-color:rgba(14,165,160,.3);color:var(--teal)}
+.section-header h2{font-size:1.9rem;font-weight:700;color:var(--ink);margin-bottom:.7rem}
+.section-header p{color:var(--ink-soft);font-size:1rem}
+
+.services{padding:4.5rem 0}
+.services-grid{display:grid;grid-template-columns:1fr;gap:1.4rem}
+.service-card{background:var(--white);border-radius:var(--radius);padding:1.8rem;box-shadow:var(--shadow-sm);border:1px solid var(--line);transition:var(--ease);position:relative}
+.service-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:transparent}
+.service-icon{width:52px;height:52px;border-radius:12px;background:var(--grad-orange);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem}
+.service-icon.alt{background:linear-gradient(135deg,#0EA5A0,#0B3B3A)}
+.service-icon i{color:#fff;font-size:1.3rem}
+.service-card h3{font-size:1.08rem;font-weight:700;color:var(--ink);margin-bottom:.55rem}
+.service-card p{color:var(--ink-soft);font-size:.9rem;margin-bottom:1.2rem}
+.service-btn{color:var(--orange);text-decoration:none;font-weight:600;font-size:.88rem;display:inline-flex;align-items:center;gap:.4rem}
+.service-btn i{transition:var(--ease);font-size:.8rem}
+.service-btn:hover i{transform:translateX(4px)}
+.badge-external{position:absolute;top:1.2rem;right:1.2rem;font-size:.68rem;color:#9aa4b2;background:var(--paper);padding:.2rem .5rem;border-radius:20px}
+
+/* ===== Toolkit / resources accordion ===== */
+.toolkit{padding:4.5rem 0;background:var(--white)}
+.toolkit-list{display:flex;flex-direction:column;gap:.75rem;max-width:760px;margin:0 auto}
+.toolkit-item{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--paper)}
+.toolkit-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.15rem 1.4rem;cursor:pointer;user-select:none}
+.toolkit-head .th-left{display:flex;align-items:center;gap:1rem}
+.toolkit-head i.tk-icon{width:40px;height:40px;border-radius:10px;background:var(--white);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--teal);flex-shrink:0}
+.toolkit-head h4{font-size:.98rem;font-weight:600;color:var(--ink)}
+.toolkit-head .plus{width:26px;height:26px;border-radius:50%;background:var(--white);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:var(--ease)}
+.toolkit-item.active .plus{background:var(--orange);border-color:var(--orange);color:#fff;transform:rotate(135deg)}
+.toolkit-body{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.toolkit-item.active .toolkit-body{max-height:200px}
+.toolkit-body-inner{padding:0 1.4rem 1.3rem 4.15rem}
+.toolkit-body-inner p{color:var(--ink-soft);font-size:.88rem;margin-bottom:.7rem}
+.toolkit-body-inner a{color:var(--orange);font-weight:600;font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem}
+
+/* ===== Testimonials ===== */
+.testimonials{padding:4.5rem 0;background:var(--paper)}
+.testimonials-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
+.testimonial-card{background:var(--white);border-radius:var(--radius);padding:1.8rem;border:1px solid var(--line);transition:var(--ease)}
+.testimonial-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.quote-icon{color:var(--orange);font-size:1.5rem;margin-bottom:.9rem}
+.testimonial-text{font-style:italic;color:var(--ink-soft);margin-bottom:1.6rem;font-size:.98rem}
+.testimonial-author{display:flex;align-items:center;gap:.9rem}
+.author-avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--orange)}
+.author-avatar-placeholder{width:52px;height:52px;border-radius:50%;background:var(--grad-orange);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+.author-info h4{font-size:.95rem;font-weight:600;color:var(--ink)}
+.author-info p{font-size:.82rem;color:var(--ink-soft)}
+
+/* ===== CTA strip ===== */
+.cta-strip{padding:3.5rem 0;background:var(--grad-ink);text-align:center}
+.cta-strip h2{color:#fff;font-size:1.6rem;margin-bottom:.7rem}
+.cta-strip p{color:rgba(255,255,255,.78);max-width:480px;margin:0 auto 1.7rem;font-size:.95rem}
+.cta-strip .btn-group{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* ===== Footer ===== */
+footer{background:var(--ink);color:#fff;padding:3.5rem 0 1.5rem}
+.footer-content{display:grid;grid-template-columns:1fr;gap:0}
+.footer-section{position:relative}
+.footer-section h3{color:var(--orange);font-size:1.05rem;font-weight:700;display:flex;align-items:center;justify-content:space-between;padding:.9rem 0;cursor:default}
+.footer-section p{opacity:.85;font-size:.9rem;margin-bottom:1.3rem}
+.footer-section ul{list-style:none}
+.footer-section ul li{margin:.6rem 0}
+.footer-section a{color:#fff;text-decoration:none;opacity:.82;display:inline-flex;align-items:center;gap:.6rem;font-size:.9rem;transition:var(--ease)}
+.footer-section a:hover{opacity:1;color:var(--orange)}
+.footer-section a i{width:16px;font-size:.85rem;color:var(--teal)}
+.social-icons{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.3rem}
+.social-icons a{width:42px;height:42px;background:rgba(255,255,255,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:var(--ease)}
+.social-icons a:hover{background:var(--grad-orange);transform:translateY(-3px)}
+.social-icons a i{color:#fff;font-size:1.05rem}
+.footer-bottom{text-align:center;padding-top:2rem;margin-top:2rem;border-top:1px solid rgba(255,255,255,.12);opacity:.65;font-size:.85rem}
+
+@media (max-width:768px){
+  .footer-section{border-bottom:1px solid rgba(255,255,255,.12);padding:.3rem 0}
+  .footer-section:first-child{border-top:1px solid rgba(255,255,255,.12)}
+  .footer-section:not(:first-child) h3{cursor:pointer;user-select:none}
+  .footer-section:not(:first-child) h3::after{content:'\f067';font-family:"Font Awesome 6 Free";font-weight:900;font-size:.8rem;transition:var(--ease)}
+  .footer-section:not(:first-child) h3.active::after{content:'\f068';transform:rotate(180deg)}
+  .footer-content-wrapper{display:none;padding-bottom:1.1rem;animation:slideDown .3s ease}
+  .footer-content-wrapper.active{display:block}
+  .footer-section:first-child .footer-content-wrapper{display:block;padding-bottom:1.1rem}
+  .footer-section:first-child h3{cursor:default}
 }
 
-        .nav-desktop {
-            display: none;
-        }
+/* WhatsApp floating button */
+.wa-float{position:fixed;bottom:22px;right:22px;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);z-index:900;text-decoration:none;animation:pulse 2.4s infinite}
+.wa-float i{color:#fff;font-size:1.6rem}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 
-        .nav-desktop ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-desktop a {
-            text-decoration: none;
-            color: var(--charcoal);
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        .nav-desktop a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-orange);
-            transition: var(--transition);
-        }
-
-        .nav-desktop a:hover::after,
-        .nav-desktop a.active::after {
-            width: 100%;
-        }
-
-        .nav-desktop a:hover,
-        .nav-desktop a.active {
-            color: var(--primary-orange);
-        }
-
-        .menu-toggle {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            width: 30px;
-            height: 30px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            z-index: 1001;
-            position: relative;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--charcoal);
-            margin: 3px 0;
-            transition: var(--transition);
-            transform-origin: center;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: var(--white);
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-            z-index: 999;
-            padding-top: 80px;
-            box-shadow: var(--shadow-heavy);
-        }
-
-        .mobile-menu.active {
-            transform: translateX(0);
-        }
-
-        .mobile-menu ul {
-            list-style: none;
-            padding: 2rem;
-        }
-
-        .mobile-menu li {
-            margin: 1.5rem 0;
-        }
-
-        .mobile-menu a {
-            text-decoration: none;
-            color: var(--charcoal);
-            font-size: 1.2rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-        }
-
-        .mobile-menu a:hover {
-            background: var(--light-gray);
-            color: var(--primary-orange);
-            transform: translateX(10px);
-        }
-
-        .mobile-menu i {
-            margin-right: 1rem;
-            width: 20px;
-            color: var(--primary-orange);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: var(--gradient-secondary);
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,107,53,0.1)" points="0,1000 1000,800 1000,1000"/></svg>');
-            background-size: cover;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            color: var(--white);
-            max-width: 600px;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            line-height: 1.1;
-        }
-
-        .hero .subtitle {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            font-weight: 300;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 1rem 2rem;
-            background: var(--gradient-primary);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            box-shadow: var(--shadow-light);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--white);
-            color: var(--white);
-        }
-
-        .btn-secondary:hover {
-            background: var(--white);
-            color: var(--dark-blue);
-        }
-
-        .btn i {
-            margin-right: 0.5rem;
-        }
-
-        /* Mission & Vision Cards */
-        .mission-vision {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .mission-card,
-        .vision-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            transition: var(--transition);
-        }
-
-        .mission-card:hover,
-        .vision-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .mission-card h3,
-        .vision-card h3 {
-            color: var(--primary-orange);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            font-size: 1.3rem;
-        }
-
-        .mission-card h3 i,
-        .vision-card h3 i {
-            margin-right: 0.5rem;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 5rem 0;
-            background: var(--light-gray);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--dark-blue);
-            margin-bottom: 1rem;
-        }
-
-        .section-header p {
-            font-size: 1.1rem;
-            color: var(--charcoal);
-            opacity: 0.8;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: var(--white);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            box-shadow: var(--shadow-light);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--gradient-primary);
-            transform: scaleY(0);
-            transition: var(--transition);
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .service-card:hover::before {
-            transform: scaleY(1);
-        }
-
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-
-        .service-icon i {
-            font-size: 1.5rem;
-            color: var(--white);
-        }
-
-        .service-card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--dark-blue);
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            margin-bottom: 1.5rem;
-            opacity: 0.8;
-        }
-
-        .service-btn {
-            color: var(--primary-orange);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            transition: var(--transition);
-        }
-
-        .service-btn i {
-            margin-left: 0.5rem;
-            transition: var(--transition);
-        }
-
-        .service-btn:hover i {
-            transform: translateX(5px);
-        }
-
-        /* Testimonials */
-.testimonials {
-    padding: 5rem 0;
-    background: var(--white);
+/* ===== Responsive ===== */
+@media (min-width:768px){
+  .nav-desktop{display:block}
+  .header-cta{display:block}
+  .menu-toggle{display:none}
+  .hero h1{font-size:3.1rem}
+  .hero .subtitle{font-size:1.1rem}
+  .hero-grid{grid-template-columns:1.1fr .9fr;gap:2rem}
+  .mv-grid{grid-template-columns:1fr 1fr}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .testimonials-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-content{grid-template-columns:repeat(4,1fr);gap:2.5rem}
+  .footer-section h3{cursor:default}
+  .footer-content-wrapper{display:block !important}
 }
-
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
+@media (min-width:1024px){
+  .hero h1{font-size:3.5rem}
+  .services-grid{grid-template-columns:repeat(3,1fr)}
 }
-
-.testimonial-card {
-    background: var(--light-gray);
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    position: relative;
-    transition: var(--transition);
-}
-
-.testimonial-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-medium);
-}
-
-.quote-icon {
-    font-size: 2rem;
-    color: var(--primary-orange);
-    margin-bottom: 1rem;
-}
-
-.testimonial-text {
-    font-style: italic;
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-}
-
-.testimonial-author {
-    display: flex;
-    align-items: center;
-    margin-top: 1.5rem;
-}
-
-.author-avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-right: 1rem;
-    object-fit: cover;
-    border: 3px solid var(--primary-orange);
-}
-
-.author-avatar-placeholder {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: var(--gradient-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    font-weight: 700;
-    margin-right: 1rem;
-}
-
-.author-info h4 {
-    font-weight: 600;
-    color: var(--dark-blue);
-}
-
-.author-info p {
-    font-size: 0.9rem;
-    opacity: 0.7;
-}
-       /* Payment Section */
-.payment {
-    padding: 5rem 0;
-    background: var(--dark-blue);
-    color: var(--white);
-}
-
-.payment .section-header h2,
-.payment .section-header p {
-    color: var(--white);
-}
-
-.payment-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.payment-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    text-align: center;
-    transition: var(--transition);
-    color: var(--white); /* Ensure card text is also white */
-}
-
-.payment-card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.payment-icon {
-    font-size: 3rem;
-    color: var(--primary-orange);
-    margin-bottom: 1rem;
-}
-        .payment-networks {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 1rem 0;
-            flex-wrap: wrap;
-        }
-
-        .network-badge {
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--white);
-        }
-
-        .network-badge.mtn {
-            background: var(--mtn-yellow);
-            color: var(--black);
-        }
-
-        .network-badge.telecel {
-            background: var(--telecel-red);
-        }
-
-        .network-badge.airteltigo {
-            background: var(--airteltigo-blue);
-        }
-
-        .bank-info {
-            margin: 1rem 0;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius);
-        }
-
-        /* Newsletter */
-        .newsletter {
-            padding: 3rem 0;
-            background: var(--light-gray);
-            text-align: center;
-        }
-
-        .newsletter-form {
-            display: flex;
-            max-width: 400px;
-            margin: 2rem auto 0;
-            gap: 1rem;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-        }
-
-        .newsletter-form button {
-            padding: 1rem 1.5rem;
-            background: var(--gradient-primary);
-            color: var(--white);
-            border: none;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .newsletter-form button:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Footer */
-        :root {
-            --charcoal: #2c3e50;
-            --primary-orange: #ff6b35;
-            --white: #ffffff;
-            --gradient-primary: linear-gradient(135deg, #ff6b35, #f7931e);
-            --transition: all 0.3s ease;
-            --light-gray: #f8f9fa;
-            --border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Main content for demo */
-        .main-content {
-            min-height: 50vh;
-            background: var(--light-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Footer Styles */
-        footer {
-            background: var(--charcoal);
-            color: var(--white);
-            padding: 3rem 0 1rem;
-            position: relative;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section {
-            position: relative;
-        }
-
-        .footer-section h3 {
-            color: var(--primary-orange);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid transparent;
-            transition: var(--transition);
-        }
-
-        .footer-section h3::after {
-            content: '';
-            display: none;
-        }
-
-        .footer-section p {
-            opacity: 0.9;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin: 0.75rem 0;
-            transition: var(--transition);
-        }
-
-        .footer-section ul li:hover {
-            transform: translateX(5px);
-        }
-
-        .footer-section a {
-            color: var(--white);
-            text-decoration: none;
-            opacity: 0.8;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .footer-section a:hover {
-            opacity: 1;
-            color: var(--primary-orange);
-        }
-
-        .footer-section a i {
-            width: 16px;
-            font-size: 0.9rem;
-        }
-
-        /* Social Icons */
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 1.5rem;
-        }
-
-        .social-icons a {
-            width: 45px;
-            height: 45px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-        }
-
-        .social-icons a:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
-        }
-
-        .social-icons a i {
-            font-size: 1.2rem;
-            color: var(--white);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-
-        /* Mobile Styles */
-        @media (max-width: 768px) {
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-
-            .footer-section {
-                border-bottom: 1px solid var(--border-color);
-                padding: 1rem 0;
-            }
-
-            .footer-section:last-child {
-                border-bottom: none;
-            }
-
-            /* About section stays open on mobile */
-            .footer-section:first-child h3 {
-                cursor: default;
-            }
-
-            .footer-section:first-child .footer-content-wrapper {
-                display: block !important;
-            }
-
-            /* Collapsible sections for other footer sections */
-            .footer-section:not(:first-child) h3 {
-                cursor: pointer;
-                user-select: none;
-                padding: 1rem 0;
-                border-bottom: 1px solid var(--border-color);
-            }
-
-            .footer-section:not(:first-child) h3::after {
-                content: '\f067';
-                font-family: "Font Awesome 6 Free";
-                font-weight: 900;
-                display: block;
-                font-size: 0.8rem;
-                transition: var(--transition);
-            }
-
-            .footer-section:not(:first-child) h3.active::after {
-                content: '\f068';
-                transform: rotate(180deg);
-            }
-
-            .footer-section:not(:first-child) .footer-content-wrapper {
-                display: none;
-                padding: 1rem 0 0.5rem;
-                animation: slideDown 0.3s ease;
-            }
-
-            .footer-section:not(:first-child) .footer-content-wrapper.active {
-                display: block;
-            }
-
-            @keyframes slideDown {
-                from {
-                    opacity: 0;
-                    transform: translateY(-10px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            .social-icons {
-                justify-content: center;
-                gap: 1.5rem;
-                margin: 2rem 0 1rem;
-            }
-
-            .social-icons a {
-                width: 50px;
-                height: 50px;
-            }
-
-            footer {
-                padding: 2rem 0 1rem;
-            }
-        }
-
-        /* Small mobile devices */
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
-            }
-
-            .footer-section h3 {
-                font-size: 1rem;
-            }
-
-            .footer-section ul li {
-                margin: 0.5rem 0;
-            }
-
-            .social-icons {
-                gap: 1rem;
-            }
-
-            .social-icons a {
-                width: 45px;
-                height: 45px;
-            }
-        }
-
-        /* Tablet styles */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-
-            .footer-section:first-child {
-                grid-column: 1 / -1;
-                text-align: center;
-                border-bottom: 1px solid var(--border-color);
-                padding-bottom: 2rem;
-                margin-bottom: 1rem;
-            }
-        }
-
-        /* Payment Modal Styles */
-        .payment-modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
-            background-color: var(--white);
-            margin: 5% auto;
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            width: 90%;
-            max-width: 500px;
-            position: relative;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .close {
-            color: var(--charcoal);
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            position: absolute;
-            right: 1rem;
-            top: 1rem;
-        }
-
-        .close:hover {
-            color: var(--primary-orange);
-        }
-
-        .modal-content h3 {
-            color: var(--dark-blue);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .modal-content h3 i {
-            margin-right: 0.5rem;
-            color: var(--primary-orange);
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--charcoal);
-        }
-
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 2px solid #e1e1e1;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--primary-orange);
-        }
-
-        .submit-payment {
-            width: 100%;
-            padding: 1rem;
-            background: var(--gradient-primary);
-            color: var(--white);
-            border: none;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .submit-payment:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .bank-details {
-            background: var(--light-gray);
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            margin-bottom: 1rem;
-        }
-
-        .detail-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding: 0.5rem;
-            background: var(--white);
-            border-radius: 8px;
-        }
-
-        .copy-btn {
-            background: var(--primary-orange);
-            color: var(--white);
-            border: none;
-            padding: 0.3rem 0.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8rem;
-        }
-
-        .whatsapp-btn {
-            width: 100%;
-            padding: 1rem;
-            background: #25D366;
-            color: var(--white);
-            border: none;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 1rem;
-        }
-
-        /* Responsive Design */
-        @media (min-width: 768px) {
-            .nav-desktop {
-                display: block;
-            }
-
-            .menu-toggle {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1.2rem;
-            }
-
-            .mission-vision {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .testimonials-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .payment-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .newsletter-form {
-                flex-direction: row;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .hero h1 {
-                font-size: 4rem;
-            }
-
-            .services-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .footer-content {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        @media (min-width: 1200px) {
-            .services-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        /* Mobile-specific improvements */
-        @media (max-width: 767px) {
-            .container {
-                padding: 0 15px;
-            }
-
-            .hero {
-                padding: 0 0 2rem 0;
-            }
-
-            .hero-content {
-                padding-top: 100px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-                padding: 1rem;
-            }
-
-            .mission-vision {
-                margin: 2rem 0;
-            }
-
-            .mission-card,
-            .vision-card {
-                padding: 1.5rem;
-            }
-
-            .services {
-                padding: 3rem 0;
-            }
-
-            .section-header h2 {
-                font-size: 2rem;
-            }
-
-            .service-card {
-                padding: 1.5rem;
-            }
-
-            .testimonials,
-            .payment {
-                padding: 3rem 0;
-            }
-
-            .payment-networks {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-            }
-
-            .newsletter-form input,
-            .newsletter-form button {
-                width: 100%;
-            }
-
-            .footer-content {
-                text-align: center;
-            }
-            
-
-            /* Mobile menu improvements */
-            .mobile-menu {
-                padding-top: 100px;
-            }
-
-            .mobile-menu ul {
-                padding: 1rem;
-            }
-
-            .mobile-menu a {
-                font-size: 1.1rem;
-                padding: 1rem 0.5rem;
-            }
-        }
-
-        /* Extra small devices */
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .section-header h2 {
-                font-size: 1.8rem;
-            }
-
-            .modal-content {
-                margin: 10% auto;
-                padding: 1.5rem;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-on-scroll {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* Focus styles */
-        .btn:focus,
-        .menu-toggle:focus,
-        .newsletter-form input:focus,
-        .newsletter-form button:focus {
-            outline: 2px solid var(--primary-orange);
-            outline-offset: 2px;
-        }
-        /* Add this to your existing CSS - Responsive Header Fix */
-
-/* iPhone XR and similar devices (414px width) */
-@media (max-width: 480px) and (min-width: 415px) {
-    .logo {
-        font-size: 1.4rem; /* Keep closer to original for iPhone XR */
-        white-space: nowrap;
-        overflow: hidden;
-    }
-}
-
-/* Medium mobile screens (like iPhone XR at 414px) */
-@media (max-width: 414px) and (min-width: 390px) {
-    .logo {
-        font-size: 1.3rem; /* Slightly smaller but still good size */
-        white-space: nowrap;
-        overflow: hidden;
-    }
-    
-    .header-content {
-        padding: 0.8rem 0;
-    }
-    
-    .container {
-        padding: 0 15px;
-    }
-}
-
-/* Your Infinix Hot 10 range (around 360-389px) */
-@media (max-width: 389px) and (min-width: 361px) {
-    .logo {
-        font-size: 1.1rem !important; /* Larger than before for better readability */
-        line-height: 1.2;
-    }
-    
-    .logo-img {
-        width: 35px;
-        height: 35px;
-    }
-}
-
-/* Very small screens */
-@media (max-width: 360px) {
-    .logo {
-        font-size: 1rem !important; /* Still readable but compact */
-    }
-    
-    .logo-img {
-        width: 32px;
-        height: 32px;
-        margin-right: 0.3rem;
-    }
-}
-    </style>
+</style>
 </head>
 <body>
-   <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">
-                    <!-- Replace with your actual logo -->
-                    <img src="images/logo.png" alt="SkillSavvy GH Logo" class="logo-img">
-                    <i class="fas fa-bolt"></i>
-                    Jaynite Digital Solutions
-                </a>
-                
-                <nav class="nav-desktop">
-                    <ul>
-                        <li><a href="index.html" class="active">Home</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </nav>
 
-                <button class="menu-toggle" id="menuToggle" aria-label="Toggle mobile menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
+<!-- Header -->
+<header id="siteHeader">
+  <div class="container header-content">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><i class="fas fa-bolt"></i></span>
+      Jaynite Digital
+    </a>
 
-        <div class="mobile-menu" id="mobileMenu">
-            <ul>
-                <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
-                <li><a href="services.html"><i class="fas fa-cogs"></i>Services</a></li>
-                <li><a href="about.html"><i class="fas fa-info-circle"></i>About</a></li>
-                <li><a href="portfolio.html"><i class="fas fa-briefcase"></i>Portfolio</a></li>
-                <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
-                <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
-            </ul>
-        </div>
-    </header>
+    <nav class="nav-desktop">
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li class="has-dropdown">
+          <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown">
+            <a href="services.html#web"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a>
+            <a href="services.html#uiux"><i class="fas fa-pen-nib"></i> UI/UX Design</a>
+            <a href="services.html#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
+            <a href="services.html#marketing"><i class="fas fa-bullhorn"></i> Digital Marketing</a>
+            <div class="dropdown-divider"></div>
+            <a href="services.html#printing"><i class="fas fa-print"></i> Printing, Flyers &amp; Banners</a>
+            <a href="services.html#computers"><i class="fas fa-desktop"></i> Computers &amp; IT Accessories</a>
+            <a href="services.html#tutoring"><i class="fas fa-chalkboard-teacher"></i> Home &amp; Online Tutoring</a>
+            <div class="dropdown-divider"></div>
+            <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener"><i class="fas fa-sim-card"></i> Buy Data Bundles <span class="ext">↗</span></a>
+            <a href="https://sellpincodes.com/" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i> BECE/WASSCE Checkers &amp; Forms <span class="ext">↗</span></a>
+          </div>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Empowering Digital Innovation</h1>
-                <p class="subtitle">Transforming businesses across Ghana with cutting-edge technology solutions, creative design, and strategic digital marketing.</p>
-                <div class="hero-buttons">
-                    <a href="services.html" class="btn">
-                        <i class="fas fa-rocket"></i>
-                        Get Started
-                    </a>
-                    <a href="contact.html" class="btn btn-secondary">
-                        <i class="fas fa-phone"></i>
-                        Contact Us
-                    </a>
-                </div>
-
-                <div class="mission-vision">
-                    <div class="mission-card">
-                        <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
-                        <p>To empower individuals and businesses in Ghana with cutting-edge digital solutions, fostering innovation and technological advancement across the nation.</p>
-                    </div>
-                    <div class="vision-card">
-                        <h3><i class="fas fa-eye"></i> Our Vision</h3>
-                        <p>To be Ghana's leading digital transformation partner, creating a future where technology bridges opportunities and drives sustainable growth.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Services</h2>
-                <p>Comprehensive digital solutions tailored for your success</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Web Development</h3>
-                    <p>Modern, responsive websites and web applications built with cutting-edge technologies for optimal performance and user experience.</p>
-                    <a href="services.html" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>UI/UX Design</h3>
-                    <p>User-centered design that creates memorable and engaging digital experiences across all devices and platforms.</p>
-                    <a href="services.html" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Cybersecurity</h3>
-                    <p>Protecting digital assets with comprehensive security solutions, risk assessments, and best practices implementation.</p>
-                    <a href="services.html" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3>Digital Marketing</h3>
-                    <p>Boost your online presence and reach your target audience effectively through strategic marketing campaigns.</p>
-                    <a href="services.html" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-print"></i>
-                    </div>
-                    <h3>Print & Publications</h3>
-                    <p>Professional printing services, photocopying, scanning, large format printing, and creative graphic designing solutions.</p>
-                    <a href="services.html" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <h3>Form Services</h3>
-                    <p>University forms, passport applications, WAEC checkers, results checking services & online registrations made easy.</p>
-                    <a href="services.html" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-truck"></i>
-                    </div>
-                    <h3>Delivery Services</h3>
-                    <p>Fast and reliable delivery of documents, prints, and other materials across Ghana.</p>
-                    <a href="services.html" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                    </div>
-                    <h3>Tutoring Services</h3>
-                    <p>Professional tutoring in various subjects and technical skills development for students and professionals.</p>
-                    <a href="services.html" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <h2>What Our Clients Say</h2>
-                <p>Real feedback from satisfied customers across Ghana</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="quote-icon">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <p class="testimonial-text">
-                        "Jaynite Digital Solutions transformed our business with their exceptional web development services. The team's professionalism and technical expertise exceeded our expectations."
-                    </p>
-                    <div class="testimonial-author">
-                        <img src="images/louisa.jpg" alt="Louisa Boateng" class="author-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="author-avatar-placeholder" style="display: none;">LB</div>
-                        <div class="author-info">
-                            <h4>Louisa Boateng</h4>
-                            <p>Co-Founder, LOUEL Cuisine</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="quote-icon">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <p class="testimonial-text">
-                        "Outstanding cybersecurity solutions that gave us peace of mind. Their expertise in protecting our digital assets is unmatched in Ghana."
-                    </p>
-                    <div class="testimonial-author">
-                        <img src="images/loveson.jpg" alt="Kpausah Loveson Snr" class="author-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="author-avatar-placeholder" style="display: none;">KL</div>
-                        <div class="author-info">
-                            <h4>Kpausah Loveson Snr</h4>
-                            <p>CEO, Destin Estate Ghana</p>
-                        </div>
-                    </div>
-                </div>
-        </div>
-    </section>
-
-    <!-- Payment Section -->
-    <section class="payment" id="payment">
-        <div class="container">
-            <div class="section-header">
-                <h2>Easy Payment Options</h2>
-                <p>We accept multiple payment methods for your convenience</p>
-            </div>
-            <div class="payment-grid">
-                <div class="payment-card">
-                    <div class="payment-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Mobile Money</h3>
-                    <p>Pay instantly with your mobile money account</p>
-                    <div class="payment-networks">
-                        <span class="network-badge mtn">MTN</span>
-                        <span class="network-badge telecel">Telecel</span>
-                        <span class="network-badge airteltigo">AirtelTigo</span>
-                    </div>
-                    <button class="btn" onclick="openMomoModal()" style="width: 100%; margin-top: 1rem;">
-                        <i class="fas fa-phone"></i> Pay with MoMo
-                    </button>
-                </div>
-                
-                <div class="payment-card">
-                    <div class="payment-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <h3>Bank Transfer</h3>
-                    <p>Secure bank transfers via Stanbic Bank</p>
-                    <div class="bank-info">
-                        <p><strong>Stanbic Bank Ghana</strong></p>
-                        <p>Account: Emmanuel Akomani</p>
-                    </div>
-                    <button class="btn" onclick="openBankModal()" style="width: 100%; margin-top: 1rem;">
-                        <i class="fas fa-credit-card"></i> Bank Transfer
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="newsletter">
-        <div class="container">
-            <h2>Stay Connected</h2>
-            <p>Subscribe to our newsletter for the latest updates on digital trends and exclusive tips.</p>
-            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
-                <input type="email" placeholder="Your Email Address" required aria-label="Email for newsletter">
-                <button type="submit">
-                    <i class="fas fa-paper-plane"></i> Subscribe
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Jaynite Digital Solutions</h3>
-                    <div class="footer-content-wrapper">
-                        <p>Empowering digital innovation in Ghana since 2020. Your trusted partner for web development, graphic design, and digital transformation services.</p>
-                       <div class="social-icons">
-                        <a href="https://youtube.com/@skillsavvygh?si=VHCLWgZXM1sQSvXE" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://wa.me/message/YCYBTUIO5ZD5J1" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.instagram.com/jaynite_official" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://education.github.com/pack" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-                    </div>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <div class="footer-content-wrapper">
-                        <ul>
-                            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                            <li><a href="services.html"><i class="fas fa-cogs"></i> Services</a></li>
-                            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
-                            <li><a href="#testimonials"><i class="fas fa-star"></i> Testimonials</a></li>
-                            <li><a href="#payment"><i class="fas fa-credit-card"></i> Payment</a></li>
-                            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Services</h3>
-                    <div class="footer-content-wrapper">
-                        <ul>
-                            <li><a href="services.html"><i class="fas fa-code"></i> Web Development</a></li>
-                            <li><a href="services.html"><i class="fas fa-paint-brush"></i> UI/UX Design</a></li>
-                            <li><a href="services.html"><i class="fas fa-shield-alt"></i> Cybersecurity</a></li>
-                            <li><a href="services.html"><i class="fas fa-bullhorn"></i> Digital Marketing</a></li>
-                            <li><a href="services.html"><i class="fas fa-print"></i> Print Services</a></li>
-                            <li><a href="services.html"><i class="fas fa-chalkboard-teacher"></i> Tutoring</a></li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Contact Info</h3>
-                    <div class="footer-content-wrapper">
-                        <ul>
-                            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Sunyani, Bono Region</a></li>
-                            <li><a href="tel:+233505638937"><i class="fas fa-phone"></i> +233533852891</a></li>
-                            <li><a href="mailto:skillsavvygh@gmail.com"><i class="fas fa-envelope"></i> jaynitedigital@gmail.com</a></li>
-                            <li><a href="https://www.skillsavvygh.com"><i class="fas fa-globe"></i> https://jaynitedigital.me</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 Jaynite Limited. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Payment Modals -->
-    <div id="momoModal" class="payment-modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeMomoModal()">&times;</span>
-            <h3><i class="fas fa-mobile-alt"></i> Mobile Money Payment</h3>
-            <form id="momoForm" onsubmit="processMomoPayment(event)">
-                <div class="form-group">
-                    <label for="network">Select Network:</label>
-                    <select id="network" name="network" required>
-                        <option value="">Choose Network</option>
-                        <option value="mtn">MTN Mobile Money</option>
-                        <option value="telecel">Telecel Cash</option>
-                        <option value="airteltigo">AirtelTigo Money</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="momoNumber">Mobile Number:</label>
-                    <input type="tel" id="momoNumber" name="momoNumber" placeholder="0XX XXX XXXX" required>
-                </div>
-                <div class="form-group">
-                    <label for="amount">Amount (GHS):</label>
-                    <input type="number" id="amount" name="amount" placeholder="0.00" min="1" step="0.01" required>
-                </div>
-                <div class="form-group">
-                    <label for="description">Description:</label>
-                    <input type="text" id="description" name="description" placeholder="Payment for services" required>
-                </div>
-                <button type="submit" class="submit-payment">
-                    <i class="fas fa-paper-plane"></i> Proceed to Payment
-                </button>
-            </form>
-        </div>
+    <div class="header-cta">
+      <a href="https://wa.me/233201485621" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
     </div>
 
-    <div id="bankModal" class="payment-modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeBankModal()">&times;</span>
-            <h3><i class="fas fa-university"></i> Bank Transfer Details</h3>
-            <div class="bank-details">
-                <h4>Stanbic Bank Ghana Limited</h4>
-                <div class="detail-row">
-                    <span><strong>Account Name:</strong> Jaynite Digital</span>
-                    <button class="copy-btn" onclick="copyToClipboard('Jaynite Digital')">
-                        <i class="fas fa-copy"></i>
-                    </button>
-                </div>
-                <div class="detail-row">
-                    <span><strong>Account Number:</strong> **************</span>
-                    <button class="copy-btn" onclick="copyToClipboard('**************')">
-                        <i class="fas fa-copy"></i>
-                    </button>
-                </div>
-                <div class="detail-row">
-                    <span><strong>Branch:</strong> Kasoa Branch</span>
-                    <button class="copy-btn" onclick="copyToClipboard('Kasoa Branch')">
-                        <i class="fas fa-copy"></i>
-                    </button>
-                </div>
-                <div class="detail-row">
-                    <span><strong>Swift Code:</strong> SBICGHAC</span>
-                    <button class="copy-btn" onclick="copyToClipboard('SBICGHAC')">
-                        <i class="fas fa-copy"></i>
-                    </button>
-                </div>
-                <button class="whatsapp-btn" onclick="sendTransferProof()">
-                    <i class="fab fa-whatsapp"></i> Send Transfer Proof
-                </button>
-            </div>
-        </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="menu-backdrop" id="menuBackdrop"></div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+    <li>
+      <button class="mm-toggle" id="mmServicesToggle" aria-expanded="false">
+        <i class="fas fa-cogs"></i> Services <i class="fas fa-chevron-down caret"></i>
+      </button>
+      <ul class="mobile-submenu" id="mmServicesSubmenu">
+        <li><a href="services.html#web"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a></li>
+        <li><a href="services.html#uiux"><i class="fas fa-pen-nib"></i> UI/UX Design</a></li>
+        <li><a href="services.html#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a></li>
+        <li><a href="services.html#marketing"><i class="fas fa-bullhorn"></i> Digital Marketing</a></li>
+        <li><a href="services.html#printing"><i class="fas fa-print"></i> Printing, Flyers &amp; Banners</a></li>
+        <li><a href="services.html#computers"><i class="fas fa-desktop"></i> Computers &amp; IT Accessories</a></li>
+        <li><a href="services.html#tutoring"><i class="fas fa-chalkboard-teacher"></i> Home &amp; Online Tutoring</a></li>
+        <li><a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener"><i class="fas fa-sim-card"></i> Buy Data Bundles</a></li>
+        <li><a href="https://sellpincodes.com/" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i> Results Checkers &amp; Forms</a></li>
+      </ul>
+    </li>
+    <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+    <li><a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+    <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
+    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+  </ul>
+  <div class="mobile-menu-cta">
+    <a href="https://wa.me/233201485621" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="hero-noise"></div>
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <div class="slide active" data-slide="0">
+        <span class="eyebrow"><i class="fas fa-bolt"></i> Web &amp; App Development</span>
+        <h1>Empowering <span>Digital Innovation</span> Across Ghana</h1>
+        <p class="subtitle">Modern websites, apps, UI/UX design, cybersecurity and digital marketing built for businesses that want to grow online.</p>
+      </div>
+      <div class="slide" data-slide="1">
+        <span class="eyebrow"><i class="fas fa-print"></i> Print &amp; Publications</span>
+        <h1>Print, Publish &amp; <span>Deliver</span>, Anywhere in Ghana</h1>
+        <p class="subtitle">Flyers, banners, picture frames, t-shirts, scanning and photocopying — walk in or have it delivered to your door.</p>
+      </div>
+      <div class="slide" data-slide="2">
+        <span class="eyebrow"><i class="fas fa-sim-card"></i> Data, Devices &amp; Learning</span>
+        <h1>Data Bundles, Computers &amp; <span>Tutoring</span>, Sorted</h1>
+        <p class="subtitle">Affordable data bundles, laptops and IT accessories, home &amp; online tutoring, university forms and results checkers.</p>
+      </div>
+
+      <div class="hero-buttons">
+        <a href="services.html" class="btn"><i class="fas fa-rocket"></i> Explore Services</a>
+        <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fab fa-whatsapp"></i> Talk to Us</a>
+      </div>
+
+      <div class="slide-dots" id="slideDots">
+        <button class="active" data-goto="0" aria-label="Slide 1"></button>
+        <button data-goto="1" aria-label="Slide 2"></button>
+        <button data-goto="2" aria-label="Slide 3"></button>
+      </div>
     </div>
-    
-    <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
 
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
-        });
+    <div class="hero-visual">
+      <div class="visual-slide active" data-visual="0">
+        <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="30" width="360" height="220" rx="16" fill="#12314F" stroke="#FF6B35" stroke-width="2"/>
+          <rect x="20" y="30" width="360" height="34" rx="16" fill="#0B2438"/>
+          <circle cx="42" cy="47" r="5" fill="#FF6B35"/><circle cx="60" cy="47" r="5" fill="#0EA5A0"/><circle cx="78" cy="47" r="5" fill="#F7F5F0"/>
+          <rect x="45" y="90" width="120" height="10" rx="5" fill="#FF6B35"/>
+          <rect x="45" y="112" width="220" height="8" rx="4" fill="#5B7799"/>
+          <rect x="45" y="130" width="180" height="8" rx="4" fill="#5B7799"/>
+          <rect x="45" y="160" width="90" height="34" rx="8" fill="#FF6B35"/>
+          <rect x="150" y="160" width="90" height="34" rx="8" fill="none" stroke="#0EA5A0" stroke-width="2"/>
+          <path d="M290 90 L340 90 M290 110 L330 110 M290 130 L345 130" stroke="#0EA5A0" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="320" cy="200" r="22" fill="#0EA5A0" opacity="0.85"/>
+          <path d="M312 200 l6 6 12 -14" stroke="#0B2438" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="visual-slide" data-visual="1">
+        <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+          <rect x="70" y="60" width="200" height="150" rx="10" fill="#12314F" stroke="#FF6B35" stroke-width="2"/>
+          <rect x="90" y="80" width="160" height="14" rx="3" fill="#FF6B35"/>
+          <rect x="90" y="104" width="120" height="8" rx="3" fill="#5B7799"/>
+          <rect x="90" y="120" width="140" height="8" rx="3" fill="#5B7799"/>
+          <rect x="90" y="150" width="160" height="45" rx="6" fill="#0EA5A0" opacity="0.25" stroke="#0EA5A0" stroke-width="1.5"/>
+          <rect x="60" y="210" width="220" height="16" rx="4" fill="#0B2438"/>
+          <rect x="50" y="226" width="240" height="8" rx="4" fill="#5B7799" opacity=".6"/>
+          <circle cx="320" cy="90" r="34" fill="#FF6B35" opacity=".9"/>
+          <path d="M305 90 h30 M320 75 v30" stroke="#0B2438" stroke-width="3" stroke-linecap="round"/>
+          <rect x="300" y="150" width="60" height="70" rx="8" fill="none" stroke="#0EA5A0" stroke-width="2.5"/>
+          <path d="M310 165 h40 M310 178 h40 M310 191 h26" stroke="#0EA5A0" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="visual-slide" data-visual="2">
+        <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+          <rect x="130" y="40" width="110" height="200" rx="18" fill="#12314F" stroke="#FF6B35" stroke-width="2"/>
+          <rect x="145" y="60" width="80" height="140" rx="6" fill="#0B2438"/>
+          <rect x="160" y="80" width="18" height="40" rx="3" fill="#FF6B35"/>
+          <rect x="184" y="65" width="18" height="55" rx="3" fill="#0EA5A0"/>
+          <rect x="160" y="130" width="42" height="8" rx="4" fill="#5B7799"/>
+          <rect x="160" y="145" width="30" height="8" rx="4" fill="#5B7799"/>
+          <circle cx="185" cy="222" r="8" fill="#FF6B35"/>
+          <circle cx="70" cy="120" r="26" fill="#0EA5A0" opacity=".85"/>
+          <path d="M58 120 h24 M70 108 v24" stroke="#0B2438" stroke-width="3" stroke-linecap="round"/>
+          <rect x="290" y="150" width="70" height="55" rx="8" fill="none" stroke="#FF6B35" stroke-width="2.5"/>
+          <path d="M300 165 h50 M300 178 h50 M300 191 h30" stroke="#FF6B35" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-        });
+  <div class="trust-strip">
+    <div class="container">
+      <div class="trust-item"><i class="fas fa-map-marker-alt"></i> Based in Sunyani, Bono Region</div>
+      <div class="trust-item"><i class="fas fa-truck"></i> Walk-in &amp; delivery service</div>
+      <div class="trust-item"><i class="fas fa-shield-alt"></i> Secure &amp; reliable digital solutions</div>
+    </div>
+  </div>
+</section>
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+<!-- Mission / Vision -->
+<section class="mv-strip">
+  <div class="container mv-grid">
+    <div class="mv-card">
+      <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+      <p>To empower individuals and businesses in Ghana with cutting-edge digital solutions, fostering innovation and technological advancement across the nation.</p>
+    </div>
+    <div class="mv-card">
+      <h3><i class="fas fa-eye"></i> Our Vision</h3>
+      <p>To be Ghana's leading digital transformation partner, creating a future where technology bridges opportunities and drives sustainable growth.</p>
+    </div>
+  </div>
+</section>
 
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = 'var(--shadow-medium)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = 'none';
-            }
-        });
+<!-- Services -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow"><i class="fas fa-layer-group"></i> What We Do</span>
+      <h2>One Team, Every Digital Need</h2>
+      <p>From software to store-front services — comprehensive solutions tailored for your success.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+        <h3>Web &amp; App Development</h3>
+        <p>Modern, responsive websites and software/app development built for performance and growth.</p>
+        <a href="services.html#web" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+        <h3>UI/UX Design</h3>
+        <p>User-centered design that creates memorable digital experiences across every device.</p>
+        <a href="services.html#uiux" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon alt"><i class="fas fa-shield-alt"></i></div>
+        <h3>Cybersecurity</h3>
+        <p>Protecting digital assets with risk assessments and best-practice security implementation.</p>
+        <a href="services.html#security" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon alt"><i class="fas fa-bullhorn"></i></div>
+        <h3>Digital Marketing</h3>
+        <p>Strategic campaigns that boost your online presence and reach the right audience.</p>
+        <a href="services.html#marketing" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-print"></i></div>
+        <h3>Printing &amp; Publications</h3>
+        <p>Flyers, banners, picture frames, t-shirts, scanning and photocopying — walk-in or delivered.</p>
+        <a href="services.html#printing" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-desktop"></i></div>
+        <h3>Computers &amp; IT Accessories</h3>
+        <p>Laptops, computers and IT accessories for home, school and office use.</p>
+        <a href="services.html#computers" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon alt"><i class="fas fa-chalkboard-teacher"></i></div>
+        <h3>Home &amp; Online Tutoring</h3>
+        <p>Professional tutoring in various subjects and technical skills, in person or online.</p>
+        <a href="services.html#tutoring" class="service-btn">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon alt"><i class="fas fa-sim-card"></i></div>
+        <h3>Data Bundles</h3>
+        <p>Affordable MTN, Telecel and AirtelTigo data bundles, purchased instantly online.</p>
+        <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener" class="service-btn">Buy Data <i class="fas fa-arrow-right"></i></a>
+        <span class="badge-external">External site</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Forms &amp; Results Checkers</h3>
+        <p>University forms, BECE and WASSCE results checker pins, and online registrations.</p>
+        <a href="https://sellpincodes.com/" target="_blank" rel="noopener" class="service-btn">Get Checker <i class="fas fa-arrow-right"></i></a>
+        <span class="badge-external">External site</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Payment Modal Functions
-        function openMomoModal() {
-            document.getElementById('momoModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMomoModal() {
-            document.getElementById('momoModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function openBankModal() {
-            document.getElementById('bankModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeBankModal() {
-            document.getElementById('bankModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close modals when clicking outside
-        window.addEventListener('click', (e) => {
-            const momoModal = document.getElementById('momoModal');
-            const bankModal = document.getElementById('bankModal');
-            
-            if (e.target === momoModal) {
-                closeMomoModal();
-            }
-            if (e.target === bankModal) {
-                closeBankModal();
-            }
-        });
-
-        // ENHANCED MOMO PAYMENT WITH USSD INTEGRATION
-        function processMomoPayment(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const network = formData.get('network');
-            const number = formData.get('momoNumber');
-            const amount = formData.get('amount');
-            const description = formData.get('description');
-
-            // Close the original modal first
-            closeMomoModal();
-            
-            // Show payment options modal
-            showPaymentOptionsModal(network, number, amount, description);
-        }
-
-        function showPaymentOptionsModal(network, number, amount, description) {
-    const modal = document.createElement('div');
-    modal.className = 'payment-options-modal';
-    modal.innerHTML = `
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Complete Your Payment</h3>
-                <span class="close-btn" onclick="closePaymentOptionsModal()">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="payment-summary">
-                    <p><strong>Network:</strong> ${network.toUpperCase()}</p>
-                    <p><strong>Amount:</strong> GHS ${amount}</p>
-                    <p><strong>Description:</strong> ${description}</p>
-                </div>
-                
-                <div class="payment-methods">
-                    <h4>Choose Payment Method:</h4>
-                    
-                    <!-- Option 1: Direct USSD Dial -->
-                    <button class="payment-btn ussd-btn" onclick="initiateUSSDPayment('${network}', '${number}', '${amount}')">
-                        <div class="btn-icon">📱</div>
-                        <div class="btn-text">
-                            <strong>Pay via USSD</strong>
-                            <small>Dial ${getUSSDCode(network)} directly</small>
-                        </div>
-                    </button>
-                    
-                    <!-- Option 2: Step-by-step USSD Guide -->
-                    <button class="payment-btn guide-btn" onclick="showUSSDGuide('${network}', '${amount}')">
-                        <div class="btn-icon">📋</div>
-                        <div class="btn-text">
-                            <strong>USSD Payment Guide</strong>
-                            <small>Step-by-step instructions</small>
-                        </div>
-                    </button>
-                    
-                    <!-- Option 3: WhatsApp (as backup) -->
-                    <button class="payment-btn whatsapp-btn" onclick="sendWhatsAppPayment('${network}', '${number}', '${amount}', '${description}')">
-                        <div class="btn-icon">💬</div>
-                        <div class="btn-text">
-                            <strong>Contact via WhatsApp</strong>
-                            <small>Get manual assistance</small>
-                        </div>
-                    </button>
-                </div>
-            </div>
+<!-- Digital Toolkit -->
+<section class="toolkit" id="toolkit">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow"><i class="fas fa-toolbox"></i> Free Resources</span>
+      <h2>Handy Tools We Recommend</h2>
+      <p>Quick links to trusted tools for everyday digital tasks — tap any item to open it.</p>
+    </div>
+    <div class="toolkit-list" id="toolkitList">
+      <div class="toolkit-item">
+        <div class="toolkit-head">
+          <div class="th-left"><i class="fas fa-file-word tk-icon"></i><h4>Convert PDF to Word</h4></div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
         </div>
-    `;
-    
-    document.body.appendChild(modal);
-}
-
-// Helper function to get the correct USSD code
-function getUSSDCode(network) {
-    const ussdCodes = {
-        'mtn': '*170#',
-        'vodafone': '*110#',
-        'telecel': '*110#',
-        'airteltigo': '*110#'
-    };
-    return ussdCodes[network.toLowerCase()] || '*170#';
-}
-
-// Helper function to get the correct merchant number
-function getMerchantNumber(network) {
-    const merchantNumbers = {
-        'mtn': '**********',
-        'vodafone': '0201485621',
-        'telecel': '0201485621',
-        'airteltigo': '0201485621'
-    };
-    return merchantNumbers[network.toLowerCase()] || '**********';
-}
-
-// Option 1: Direct USSD initiation (works on mobile browsers)
-function initiateUSSDPayment(network, number, amount) {
-    const ussdCode = getUSSDCode(network);
-    
-    // Try to initiate USSD call (works on some mobile browsers)
-    try {
-        window.location.href = `tel:${ussdCode}`;
-        closePaymentOptionsModal();
-    } catch (error) {
-        // Fallback to showing instructions - don't close modal yet
-        console.log('USSD dial failed, showing guide instead');
-        showUSSDGuide(network, amount);
-    }
-}
-
-// Option 2: Step-by-step USSD guide
-function showUSSDGuide(network, amount) {
-    const networkLower = network.toLowerCase();
-    const ussdCode = getUSSDCode(network);
-    const merchantNumber = getMerchantNumber(network);
-    
-    const guides = {
-        'mtn': {
-            steps: [
-                'Dial *170# on your phone',
-                'Select option 1 (Send Money)',
-                'Enter number: **********',
-                `Enter amount: ${amount}`,
-                'Enter your PIN to complete'
-            ],
-            note: 'MTN Mobile Money'
-        },
-        'vodafone': {
-            steps: [
-                'Dial *110# on your phone',
-                'Select option 1 (Send Money)',
-                'Enter number: **********',
-                `Enter amount: ${amount}`,
-                'Enter your PIN to complete'
-            ],
-            note: 'Vodafone Cash'
-        },
-        'telecel': {
-            steps: [
-                'Dial *110# on your phone',
-                'Select option 1 (Send Money)',
-                'Enter number: **********',
-                `Enter amount: ${amount}`,
-                'Enter your PIN to complete'
-            ],
-            note: 'Telecel Cash'
-        },
-        'airteltigo': {
-            steps: [
-                'Dial *110# on your phone',
-                'Select option 1 (Send Money)',
-                'Enter number: **********',
-                `Enter amount: ${amount}`,
-                'Enter your PIN to complete'
-            ],
-            note: 'AirtelTigo Money'
-        }
-    };
-    
-    const guide = guides[networkLower] || guides['mtn'];
-    
-    const guideModal = document.createElement('div');
-    guideModal.className = 'ussd-guide-modal';
-    guideModal.innerHTML = `
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>${guide.note} - Payment Steps</h3>
-                <span class="close-btn" onclick="closeUSSDGuide()">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="guide-steps">
-                    ${guide.steps.map((step, index) => `
-                        <div class="step">
-                            <div class="step-number">${index + 1}</div>
-                            <div class="step-text">${step}</div>
-                        </div>
-                    `).join('')}
-                </div>
-                
-                <div class="guide-actions">
-                    <button class="action-btn dial-btn" onclick="window.location.href='tel:${ussdCode}'">
-                        📱 Dial ${ussdCode}
-                    </button>
-                    <button class="action-btn confirm-btn" onclick="confirmPaymentSent()">
-                        ✅ I've Sent Payment
-                    </button>
-                </div>
-                
-                <div class="merchant-info">
-                    <p><strong>Name:</strong> Akomani Emmanuel</p>
-                    <p><strong>Number:</strong> ${merchantNumber}</p>
-                    <p><strong>Amount:</strong> GHS ${amount}</p>
-                </div>
-            </div>
+        <div class="toolkit-body"><div class="toolkit-body-inner">
+          <p>Turn a PDF into an editable Word document in seconds, free of charge.</p>
+          <a href="https://www.ilovepdf.com/pdf_to_word" target="_blank" rel="noopener">Open iLovePDF <i class="fas fa-arrow-up-right-from-square"></i></a>
+        </div></div>
+      </div>
+      <div class="toolkit-item">
+        <div class="toolkit-head">
+          <div class="th-left"><i class="fas fa-eraser tk-icon"></i><h4>Remove Image Background</h4></div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
         </div>
-    `;
-    
-    document.body.appendChild(guideModal);
-}
+        <div class="toolkit-body"><div class="toolkit-body-inner">
+          <p>Automatically remove the background from any photo — great for ID photos and product shots.</p>
+          <a href="https://www.remove.bg/" target="_blank" rel="noopener">Open remove.bg <i class="fas fa-arrow-up-right-from-square"></i></a>
+        </div></div>
+      </div>
+      <div class="toolkit-item">
+        <div class="toolkit-head">
+          <div class="th-left"><i class="fas fa-robot tk-icon"></i><h4>Ask an AI Assistant</h4></div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="toolkit-body"><div class="toolkit-body-inner">
+          <p>Use Claude to help write, research, summarise documents, or answer questions.</p>
+          <a href="https://claude.ai" target="_blank" rel="noopener">Open Claude <i class="fas fa-arrow-up-right-from-square"></i></a>
+        </div></div>
+      </div>
+      <div class="toolkit-item">
+        <div class="toolkit-head">
+          <div class="th-left"><i class="fas fa-compress tk-icon"></i><h4>Compress a File or Image</h4></div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="toolkit-body"><div class="toolkit-body-inner">
+          <p>Shrink large images or PDFs before uploading or sending them, without losing much quality.</p>
+          <a href="https://www.ilovepdf.com/compress_pdf" target="_blank" rel="noopener">Open iLovePDF Compress <i class="fas fa-arrow-up-right-from-square"></i></a>
+        </div></div>
+      </div>
+      <div class="toolkit-item">
+        <div class="toolkit-head">
+          <div class="th-left"><i class="fas fa-file-export tk-icon"></i><h4>Convert Between File Types</h4></div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="toolkit-body"><div class="toolkit-body-inner">
+          <p>Convert documents, images, audio and video between formats online.</p>
+          <a href="https://cloudconvert.com/" target="_blank" rel="noopener">Open CloudConvert <i class="fas fa-arrow-up-right-from-square"></i></a>
+        </div></div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:1.5rem;font-size:.85rem;color:var(--ink-soft)">Need help using any of these? <a href="https://wa.me/233201485621" target="_blank" rel="noopener" style="color:var(--orange);font-weight:600;text-decoration:none">Message us on WhatsApp</a> and we'll walk you through it.</p>
+  </div>
+</section>
 
-// Additional helper functions you'll need
-function closePaymentOptionsModal() {
-    const modal = document.querySelector('.payment-options-modal');
-    if (modal) {
-        modal.remove();
+<!-- Testimonials -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow"><i class="fas fa-comment-dots"></i> Client Stories</span>
+      <h2>What Our Clients Say</h2>
+      <p>Real feedback from satisfied customers across Ghana.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+        <p class="testimonial-text">Jaynite Digital Solutions transformed our business with their exceptional web development services. The team's professionalism and technical expertise exceeded our expectations.</p>
+        <div class="testimonial-author">
+          <img src="images/louisa.jpg" alt="Louisa Boateng" class="author-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="author-avatar-placeholder" style="display:none">LB</div>
+          <div class="author-info"><h4>Louisa Boateng</h4><p>Co-Founder, LOUEL Cuisine</p></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+        <p class="testimonial-text">Outstanding cybersecurity solutions that gave us peace of mind. Their expertise in protecting our digital assets is unmatched in Ghana.</p>
+        <div class="testimonial-author">
+          <img src="images/loveson.jpg" alt="Kpausah Loveson Snr" class="author-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="author-avatar-placeholder" style="display:none">KL</div>
+          <div class="author-info"><h4>Kpausah Loveson Snr</h4><p>CEO, Destin Estate Ghana</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+  <div class="container">
+    <h2>Ready to get started?</h2>
+    <p>Whatever you need — a website, a print job, data, or a laptop — we're one message away.</p>
+    <div class="btn-group">
+      <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+      <a href="contact.html" class="btn btn-ghost"><i class="fas fa-envelope"></i> Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Jaynite Digital Solutions</h3>
+        <div class="footer-content-wrapper">
+          <p>Empowering digital innovation in Ghana. Your trusted partner for web development, printing, devices, and digital services.</p>
+          <div class="social-icons">
+            <a href="https://youtube.com/@skillsavvygh?si=VHCLWgZXM1sQSvXE" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/233201485621" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/jaynite_official" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <div class="footer-content-wrapper">
+          <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="services.html"><i class="fas fa-cogs"></i> Services</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="#testimonials"><i class="fas fa-star"></i> Testimonials</a></li>
+            <li><a href="#toolkit"><i class="fas fa-toolbox"></i> Free Tools</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>Services</h3>
+        <div class="footer-content-wrapper">
+          <ul>
+            <li><a href="services.html#web"><i class="fas fa-code"></i> Web &amp; App Development</a></li>
+            <li><a href="services.html#printing"><i class="fas fa-print"></i> Printing &amp; Publications</a></li>
+            <li><a href="services.html#computers"><i class="fas fa-desktop"></i> Computers &amp; Accessories</a></li>
+            <li><a href="services.html#tutoring"><i class="fas fa-chalkboard-teacher"></i> Tutoring</a></li>
+            <li><a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener"><i class="fas fa-sim-card"></i> Data Bundles</a></li>
+            <li><a href="https://sellpincodes.com/" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i> Results Checkers</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contact Info</h3>
+        <div class="footer-content-wrapper">
+          <ul>
+            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Sunyani, Bono Region</a></li>
+            <li><a href="https://wa.me/233201485621" target="_blank"><i class="fab fa-whatsapp"></i> 0201 485 621</a></li>
+            <li><a href="mailto:jaynitedigital@gmail.com"><i class="fas fa-envelope"></i> jaynitedigital@gmail.com</a></li>
+            <li><a href="https://jaynitedigital.me"><i class="fas fa-globe"></i> jaynitedigital.me</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Jaynite Digital Solutions. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+// Mobile menu
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const menuBackdrop = document.getElementById('menuBackdrop');
+function closeMobileMenu(){
+  menuToggle.classList.remove('active');
+  mobileMenu.classList.remove('active');
+  menuBackdrop.classList.remove('active');
+  menuToggle.setAttribute('aria-expanded','false');
+  document.body.style.overflow='auto';
+}
+menuToggle.addEventListener('click',()=>{
+  const isActive = mobileMenu.classList.toggle('active');
+  menuToggle.classList.toggle('active');
+  menuBackdrop.classList.toggle('active');
+  menuToggle.setAttribute('aria-expanded', isActive ? 'true':'false');
+  document.body.style.overflow = isActive ? 'hidden':'auto';
+});
+menuBackdrop.addEventListener('click', closeMobileMenu);
+document.querySelectorAll('.mobile-menu > ul > li > a, .mobile-submenu a').forEach(link=>{
+  link.addEventListener('click', closeMobileMenu);
+});
+
+// Mobile services submenu (+ style toggle)
+const mmToggle = document.getElementById('mmServicesToggle');
+const mmSubmenu = document.getElementById('mmServicesSubmenu');
+mmToggle.addEventListener('click', ()=>{
+  const active = mmSubmenu.classList.toggle('active');
+  mmToggle.classList.toggle('active', active);
+  mmToggle.setAttribute('aria-expanded', active ? 'true':'false');
+});
+
+// Header scroll shadow
+const siteHeader = document.getElementById('siteHeader');
+window.addEventListener('scroll', ()=>{
+  siteHeader.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Smooth scroll for in-page anchors
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+  anchor.addEventListener('click', function(e){
+    const id = this.getAttribute('href');
+    if(id.length>1){
+      const target = document.querySelector(id);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
     }
+  });
+});
+
+// Hero slideshow
+const slides = document.querySelectorAll('.slide');
+const visuals = document.querySelectorAll('.visual-slide');
+const dots = document.querySelectorAll('.slide-dots button');
+let current = 0;
+let slideTimer;
+function goToSlide(i){
+  slides.forEach(s=>s.classList.remove('active'));
+  visuals.forEach(v=>v.classList.remove('active'));
+  dots.forEach(d=>d.classList.remove('active'));
+  slides[i].classList.add('active');
+  visuals[i].classList.add('active');
+  dots[i].classList.add('active');
+  current = i;
 }
+function nextSlide(){ goToSlide((current+1) % slides.length); }
+function startSlideshow(){ slideTimer = setInterval(nextSlide, 5500); }
+function stopSlideshow(){ clearInterval(slideTimer); }
+dots.forEach(dot=>{
+  dot.addEventListener('click', ()=>{
+    stopSlideshow();
+    goToSlide(parseInt(dot.dataset.goto));
+    startSlideshow();
+  });
+});
+const heroEl = document.querySelector('.hero');
+heroEl.addEventListener('mouseenter', stopSlideshow);
+heroEl.addEventListener('mouseleave', startSlideshow);
+startSlideshow();
 
-function closeUSSDGuide() {
-    const modal = document.querySelector('.ussd-guide-modal');
-    if (modal) {
-        modal.remove();
-    }
+// Footer accordion (mobile only)
+function initFooterAccordion(){
+  const sections = document.querySelectorAll('.footer-section');
+  if(window.innerWidth <= 768){
+    sections.forEach((section, index)=>{
+      if(index === 0) return;
+      const header = section.querySelector('h3');
+      const wrapper = section.querySelector('.footer-content-wrapper');
+      if(!header.dataset.bound){
+        header.dataset.bound = 'true';
+        header.setAttribute('tabindex','0');
+        header.addEventListener('click', function(){
+          const isActive = this.classList.contains('active');
+          sections.forEach((s,i)=>{
+            if(i===0) return;
+            const h = s.querySelector('h3');
+            const w = s.querySelector('.footer-content-wrapper');
+            h.classList.remove('active');
+            w.classList.remove('active');
+          });
+          if(!isActive){
+            this.classList.add('active');
+            wrapper.classList.add('active');
+          }
+        });
+        header.addEventListener('keydown', function(e){
+          if(e.key==='Enter' || e.key===' '){ e.preventDefault(); this.click(); }
+        });
+      }
+    });
+  }
 }
+initFooterAccordion();
+let footerResizeTimer;
+window.addEventListener('resize', ()=>{
+  clearTimeout(footerResizeTimer);
+  footerResizeTimer = setTimeout(initFooterAccordion, 250);
+});
 
-function confirmPaymentSent() {
-    // Add your confirmation logic here
-    alert('Thank you! We will verify your payment shortly.');
-    closeUSSDGuide();
-    closePaymentOptionsModal();
-};
-    
+// Toolkit accordion (+ reveal)
+document.querySelectorAll('.toolkit-head').forEach(head=>{
+  head.addEventListener('click', ()=>{
+    const item = head.closest('.toolkit-item');
+    item.classList.toggle('active');
+  });
+});
 
-        // Option 3: WhatsApp fallback (your current method)
-        function sendWhatsAppPayment(network, number, amount, description) {
-            const message = `Hello Jaynite Digital Solutions! I want to make a Mobile Money payment:
-Network: ${network.toUpperCase()}
-Number: ${number}
-Amount: GHS ${amount}
-Description: ${description}
-
-Please send me the payment prompt.`;
-
-            const whatsappURL = `https://wa.me/233201485621?text=${encodeURIComponent(message)}`;
-            window.open(whatsappURL, '_blank');
-            closePaymentOptionsModal();
-        }
-
-        // Confirmation functions
-        function confirmPaymentSent() {
-            closeUSSDGuide();
-            showPaymentConfirmation();
-        }
-
-        function showPaymentConfirmation() {
-            const confirmModal = document.createElement('div');
-            confirmModal.className = 'confirmation-modal';
-            confirmModal.innerHTML = `
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3>Payment Confirmation</h3>
-                    </div>
-                    <div class="modal-body">
-                        <div class="success-icon">✅</div>
-                        <p>Thank you! We'll verify your payment and process your order shortly.</p>
-                        <p>You'll receive a confirmation message once verified.</p>
-                        <button class="action-btn" onclick="closeConfirmationModal()">Done</button>
-                    </div>
-                </div>
-            `;
-            
-            document.body.appendChild(confirmModal);
-            
-            // Auto close after 5 seconds
-            setTimeout(() => {
-                closeConfirmationModal();
-            }, 5000);
-        }
-
-        // Modal control functions for USSD payment
-        function closePaymentOptionsModal() {
-            const modal = document.querySelector('.payment-options-modal');
-            if (modal) modal.remove();
-        }
-
-        function closeUSSDGuide() {
-            const modal = document.querySelector('.ussd-guide-modal');
-            if (modal) modal.remove();
-        }
-
-        function closeConfirmationModal() {
-            const modal = document.querySelector('.confirmation-modal');
-            if (modal) modal.remove();
-        }
-
-        // Copy to clipboard function
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Copied to clipboard!');
-            }).catch(() => {
-                // Fallback for older browsers
-                const textArea = document.createElement('textarea');
-                textArea.value = text;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                alert('Copied to clipboard!');
-            });
-        }
-
-        // Send transfer proof via WhatsApp
-        function sendTransferProof() {
-            const message = `Jaynite Digital Solutions! I have made a bank transfer to your Stanbic Bank account. Please find the transfer receipt attached.`;
-            const whatsappURL = `https://wa.me/233201485621?text=${encodeURIComponent(message)}`;
-            window.open(whatsappURL, '_blank');
-            closeBankModal();
-        }
-
-        // Newsletter subscription
-        function subscribeNewsletter(event) {
-            event.preventDefault();
-            const email = event.target.querySelector('input[type="email"]').value;
-            const button = event.target.querySelector('button');
-            
-            // Change button to show success immediately
-            button.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
-            button.style.background = '#28a745'; // Green color
-            button.disabled = true; // Disable button temporarily
-            
-            // Show success message
-            alert('Thank you for subscribing to our newsletter!');
-            
-            // Send email to WhatsApp in background (they won't see this)
-            const message = `New Newsletter Subscription: ${email}`;
-            const whatsappURL = `https://wa.me/233201485621?text=${encodeURIComponent(message)}`;
-            
-            // Open WhatsApp in a small popup that closes automatically
-            const popup = window.open(whatsappURL, 'whatsapp', 'width=400,height=400');
-            setTimeout(() => {
-                if (popup) popup.close();
-            }, 2000); // Close popup after 2 seconds
-            
-            // Reset button after 3 seconds
-            setTimeout(() => {
-                button.innerHTML = '<i class="fas fa-paper-plane"></i> Subscribe';
-                button.style.background = ''; // Back to original color
-                button.disabled = false; // Re-enable button
-                event.target.reset(); // Clear the email input
-            }, 3000);
-        }
-
-        // Mobile footer accordion functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Only run on mobile/tablet devices
-            function initAccordion() {
-                if (window.innerWidth <= 768) {
-                    const footerSections = document.querySelectorAll('.footer-section');
-                    
-                    // Remove any existing event listeners first
-                    footerSections.forEach(section => {
-                        const header = section.querySelector('h3');
-                        if (header) {
-                            // Create a new header element to remove old listeners
-                            const newHeader = header.cloneNode(true);
-                            header.parentNode.replaceChild(newHeader, header);
-                        }
-                    });
-                    
-                    // Skip the first section (About section)
-                    for (let i = 1; i < footerSections.length; i++) {
-                        const header = footerSections[i].querySelector('h3');
-                        const contentWrapper = footerSections[i].querySelector('.footer-content-wrapper');
-                        
-                        if (header && contentWrapper) {
-                            // Add click event listener
-                            header.addEventListener('click', function(e) {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                
-                                const isActive = this.classList.contains('active');
-                                
-                                // Close all other sections
-                                footerSections.forEach((section, index) => {
-                                    if (index > 0) { // Skip About section
-                                        const otherHeader = section.querySelector('h3');
-                                        const otherContent = section.querySelector('.footer-content-wrapper');
-                                        
-                                        if (otherHeader && otherContent) {
-                                            otherHeader.classList.remove('active');
-                                            otherContent.classList.remove('active');
-                                        }
-                                    }
-                                });
-                                
-                                // Toggle current section
-                                if (!isActive) {
-                                    this.classList.add('active');
-                                    contentWrapper.classList.add('active');
-                                }
-                            });
-                            
-                            // Make header focusable and add keyboard support
-                            header.setAttribute('tabindex', '0');
-                            header.addEventListener('keydown', function(e) {
-                                if (e.key === 'Enter' || e.key === ' ') {
-                                    e.preventDefault();
-                                    this.click();
-                                }
-                            });
-                        }
-                    }
-                } else {
-                    // On desktop, remove all active classes and event listeners
-                    const footerSections = document.querySelectorAll('.footer-section');
-                    footerSections.forEach(section => {
-                        const header = section.querySelector('h3');
-                        const contentWrapper = section.querySelector('.footer-content-wrapper');
-                        
-                        if (header) {
-                            header.classList.remove('active');
-                            header.removeAttribute('tabindex');
-                        }
-                        if (contentWrapper) {
-                            contentWrapper.classList.remove('active');
-                        }
-                    });
-                }
-            }
-            
-            // Initialize accordion
-            initAccordion();
-            
-            // Re-initialize on window resize with debounce
-            let resizeTimer;
-            window.addEventListener('resize', function() {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(() => {
-                    initAccordion();
-                }, 250);
-            });
-
-            // Inject CSS styles for USSD payment modals
-            const modalStyles = `
-            .payment-options-modal, .ussd-guide-modal, .confirmation-modal {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.8);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 1000;
-            }
-
-            .payment-options-modal .modal-content,
-            .ussd-guide-modal .modal-content,
-            .confirmation-modal .modal-content {
-                background: white;
-                border-radius: 12px;
-                padding: 0;
-                max-width: 400px;
-                width: 90%;
-                max-height: 90vh;
-                overflow-y: auto;
-            }
-
-            .payment-options-modal .modal-header,
-            .ussd-guide-modal .modal-header,
-            .confirmation-modal .modal-header {
-                padding: 20px;
-                border-bottom: 1px solid #eee;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .payment-options-modal .modal-body,
-            .ussd-guide-modal .modal-body,
-            .confirmation-modal .modal-body {
-                padding: 20px;
-            }
-
-            .payment-btn {
-                width: 100%;
-                padding: 15px;
-                margin: 10px 0;
-                border: 2px solid #ddd;
-                border-radius: 8px;
-                background: white;
-                display: flex;
-                align-items: center;
-                cursor: pointer;
-                transition: all 0.3s;
-            }
-
-            .payment-btn:hover {
-                border-color: #007bff;
-                background: #f8f9fa;
-            }
-
-            .btn-icon {
-                font-size: 24px;
-                margin-right: 15px;
-            }
-
-            .btn-text strong {
-                display: block;
-                margin-bottom: 5px;
-            }
-
-            .btn-text small {
-                color: #666;
-            }
-
-            .guide-steps {
-                margin: 20px 0;
-            }
-
-            .step {
-                display: flex;
-                align-items: center;
-                margin: 15px 0;
-                padding: 10px;
-                background: #f8f9fa;
-                border-radius: 8px;
-            }
-
-            .step-number {
-                background: #007bff;
-                color: white;
-                width: 30px;
-                height: 30px;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-right: 15px;
-                font-weight: bold;
-            }
-
-            .guide-actions {
-                display: flex;
-                gap: 10px;
-                margin: 20px 0;
-            }
-
-            .action-btn {
-                flex: 1;
-                padding: 12px;
-                border: none;
-                border-radius: 8px;
-                background: #007bff;
-                color: white;
-                cursor: pointer;
-                font-weight: bold;
-            }
-
-            .dial-btn {
-                background: #28a745;
-            }
-
-            .merchant-info {
-                background: #f8f9fa;
-                padding: 15px;
-                border-radius: 8px;
-                margin-top: 20px;
-            }
-
-            .success-icon {
-                font-size: 48px;
-                text-align: center;
-                margin: 20px 0;
-            }
-
-            .confirmation-modal .modal-body {
-                text-align: center;
-            }
-
-            .close-btn {
-                font-size: 24px;
-                cursor: pointer;
-                color: #666;
-            }
-
-            .close-btn:hover {
-                color: #000;
-            }
-
-            .payment-summary {
-                background: #f8f9fa;
-                padding: 15px;
-                border-radius: 8px;
-                margin-bottom: 20px;
-            }
-
-            .payment-summary p {
-                margin: 5px 0;
-            }
-
-            .payment-methods h4 {
-                margin-bottom: 15px;
-                color: #333;
-            }
-            `;
-
-            // Inject styles if not already present
-            if (!document.querySelector('#payment-modal-styles')) {
-                const styleSheet = document.createElement('style');
-                styleSheet.id = 'payment-modal-styles';
-                styleSheet.textContent = modalStyles;
-                document.head.appendChild(styleSheet);
-            }
-        });
-
-        // Animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-on-scroll');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all service cards and testimonial cards
-        document.querySelectorAll('.service-card, .testimonial-card, .mission-card, .vision-card').forEach(card => {
-            observer.observe(card);
-        });
-    </script>
+// Scroll-in animation
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting) entry.target.style.opacity = 1;
+  });
+},{threshold:0.1});
+document.querySelectorAll('.service-card, .testimonial-card, .mv-card').forEach(card=>observer.observe(card));
+</script>
 </body>
 </html>
