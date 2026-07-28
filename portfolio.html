@@ -1,1577 +1,759 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Jaynite Digital Solutions</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-orange: #FF6B35;
-            --dark-blue: #1B365D;
-            --charcoal: #2D3436;
-            --light-gray: #F8F9FA;
-            --white: #FFFFFF;
-            --black: #000000;
-            --gradient-primary: linear-gradient(135deg, #FF6B35 0%, #E55A2B 100%);
-            --gradient-secondary: linear-gradient(135deg, #1B365D 0%, #0F2A47 100%);
-            --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
-            --shadow-medium: 0 5px 25px rgba(0, 0, 0, 0.15);
-            --shadow-heavy: 0 10px 40px rgba(0, 0, 0, 0.2);
-            --transition: all 0.3s ease;
-            --border-radius: 12px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--charcoal);
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header & Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            transition: var(--transition);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--dark-blue);
-            text-decoration: none;
-        }
-
-        .logo-img {
-            width: 40px;
-            height: 40px;
-            margin-right: 0.5rem;
-            border-radius: 8px;
-            object-fit: cover;
-        }
-
-        .logo i {
-            color: var(--primary-orange);
-            margin-right: 0.5rem;
-            font-size: 1.8rem;
-            display: none;
-        }
-
-        .nav-desktop {
-            display: none;
-        }
-
-        .nav-desktop ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-desktop a {
-            text-decoration: none;
-            color: var(--charcoal);
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        .nav-desktop a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-orange);
-            transition: var(--transition);
-        }
-
-        .nav-desktop a:hover::after,
-        .nav-desktop a.active::after {
-            width: 100%;
-        }
-
-        .nav-desktop a:hover,
-        .nav-desktop a.active {
-            color: var(--primary-orange);
-        }
-
-        .menu-toggle {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            width: 30px;
-            height: 30px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            z-index: 1001;
-            position: relative;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--charcoal);
-            margin: 3px 0;
-            transition: var(--transition);
-            transform-origin: center;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: var(--white);
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-            z-index: 999;
-            padding-top: 80px;
-            box-shadow: var(--shadow-heavy);
-        }
-
-        .mobile-menu.active {
-            transform: translateX(0);
-        }
-
-        .mobile-menu ul {
-            list-style: none;
-            padding: 2rem;
-        }
-
-        .mobile-menu li {
-            margin: 1.5rem 0;
-        }
-
-        .mobile-menu a {
-            text-decoration: none;
-            color: var(--charcoal);
-            font-size: 1.2rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-        }
-
-        .mobile-menu a:hover {
-            background: var(--light-gray);
-            color: var(--primary-orange);
-            transform: translateX(10px);
-        }
-
-        .mobile-menu i {
-            margin-right: 1rem;
-            width: 20px;
-            color: var(--primary-orange);
-        }
-
-        /* Portfolio Hero Section */
-        .portfolio-hero {
-            background: var(--gradient-secondary);
-            padding: 8rem 0 4rem;
-            color: var(--white);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .portfolio-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,107,53,0.1)" points="0,1000 1000,800 1000,1000"/></svg>');
-            background-size: cover;
-        }
-
-        .portfolio-hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .portfolio-hero h1 {
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-        }
-
-        .portfolio-hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Experience Timeline */
-        .experience-section {
-            padding: 5rem 0;
-            background: var(--light-gray);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--dark-blue);
-            margin-bottom: 1rem;
-        }
-
-        .section-header p {
-            font-size: 1.1rem;
-            color: var(--charcoal);
-            opacity: 0.8;
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--primary-orange);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-            padding-left: 60px;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 11px;
-            top: 10px;
-            width: 20px;
-            height: 20px;
-            background: var(--primary-orange);
-            border-radius: 50%;
-            border: 4px solid var(--white);
-            box-shadow: 0 0 0 4px var(--primary-orange);
-        }
-
-        .timeline-content {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-light);
-            transition: var(--transition);
-        }
-
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .timeline-role {
-            color: var(--primary-orange);
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-company {
-            color: var(--dark-blue);
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-description {
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .timeline-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background: var(--light-gray);
-            color: var(--charcoal);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        /* Portfolio Grid */
-        .portfolio-section {
-            padding: 5rem 0;
-            background: var(--white);
-        }
-
-        .portfolio-filters {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        .filter-btn {
-            background: transparent;
-            border: 2px solid var(--primary-orange);
-            color: var(--primary-orange);
-            padding: 0.8rem 1.5rem;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
-        }
-
-        .filter-btn.active,
-        .filter-btn:hover {
-            background: var(--primary-orange);
-            color: var(--white);
-            transform: translateY(-2px);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .portfolio-item {
-            background: var(--white);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-light);
-            transition: var(--transition);
-            opacity: 1;
-        }
-
-        .portfolio-item.hidden {
-            opacity: 0;
-            transform: scale(0.8);
-            pointer-events: none;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-heavy);
-        }
-
-        .portfolio-image {
-            height: 250px;
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .portfolio-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255,107,53,0.8), rgba(27,54,93,0.8));
-            z-index: 1;
-        }
-
-        .portfolio-image i {
-            position: relative;
-            z-index: 2;
-        }
-
-        .portfolio-content {
-            padding: 2rem;
-        }
-
-        .portfolio-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--dark-blue);
-            margin-bottom: 0.5rem;
-        }
-
-        .portfolio-category {
-            color: var(--primary-orange);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .portfolio-description {
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .portfolio-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-tag {
-            background: var(--light-gray);
-            color: var(--charcoal);
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .portfolio-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .portfolio-link {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.8rem 1.5rem;
-            background: var(--gradient-primary);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .portfolio-link:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .portfolio-link i {
-            margin-right: 0.5rem;
-        }
-
-        .portfolio-link.secondary {
-            background: transparent;
-            color: var(--primary-orange);
-            border: 2px solid var(--primary-orange);
-        }
-
-        .portfolio-link.secondary:hover {
-            background: var(--primary-orange);
-            color: var(--white);
-        }
-
-        /* Skills Section */
-        .skills-section {
-            padding: 5rem 0;
-            background: var(--light-gray);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-light);
-            transition: var(--transition);
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .skill-category h3 {
-            color: var(--dark-blue);
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .skill-category h3 i {
-            color: var(--primary-orange);
-            margin-right: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .skill-item {
-            background: var(--light-gray);
-            color: var(--charcoal);
-            padding: 0.6rem 1.2rem;
-            border-radius: 25px;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .skill-item:hover {
-            background: var(--primary-orange);
-            color: var(--white);
-            transform: translateY(-2px);
-        }
-
-        /* Contact CTA */
-        .contact-cta {
-            background: var(--gradient-secondary);
-            padding: 4rem 0;
-            text-align: center;
-            color: var(--white);
-        }
-
-        .contact-cta h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .contact-cta p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 1rem 2rem;
-            background: var(--gradient-primary);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--white);
-            color: var(--white);
-        }
-
-        .btn-secondary:hover {
-            background: var(--white);
-            color: var(--dark-blue);
-        }
-
-        .btn i {
-            margin-right: 0.5rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark-blue);
-            color: var(--white);
-            padding: 3rem 0 2rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .footer-section h3 {
-            color: var(--primary-orange);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .footer-section p {
-            opacity: 0.8;
-            margin-bottom: 1rem;
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .social-icons a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 107, 53, 0.1);
-            border: 2px solid var(--primary-orange);
-            border-radius: 50%;
-            color: var(--primary-orange);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .social-icons a:hover {
-            background: var(--primary-orange);
-            color: var(--white);
-            transform: translateY(-2px);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 2rem;
-            padding-top: 2rem;
-            text-align: center;
-            opacity: 0.7;
-        }
-
-        /* Responsive Design */
-        @media (min-width: 768px) {
-            .nav-desktop {
-                display: block;
-            }
-
-            .menu-toggle {
-                display: none;
-            }
-
-            .mobile-menu {
-                display: none;
-            }
-
-            .portfolio-hero h1 {
-                font-size: 4rem;
-            }
-
-            .timeline::before {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            .timeline-item {
-                width: 50%;
-                padding-left: 0;
-                padding-right: 2rem;
-            }
-
-            .timeline-item:nth-child(even) {
-                left: 50%;
-                padding-left: 2rem;
-                padding-right: 0;
-            }
-
-            .timeline-item::before {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            .portfolio-grid {
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            }
-
-            .footer-content {
-                grid-template-columns: repeat(3, 1fr);
-                text-align: left;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .portfolio-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        /* Add this to your existing CSS - Responsive Header Fix */
-
-/* iPhone XR and similar devices (414px width) */
-@media (max-width: 480px) and (min-width: 415px) {
-    .logo {
-        font-size: 1.4rem; /* Keep closer to original for iPhone XR */
-        white-space: nowrap;
-        overflow: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio - Jaynite Digital Solutions</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0F2038;
+  --ink-soft:#3C4A63;
+  --paper:#F7F5F0;
+  --white:#FFFFFF;
+  --orange:#FF6B35;
+  --orange-deep:#E5501E;
+  --teal:#0EA5A0;
+  --line:rgba(15,32,56,0.10);
+  --grad-orange:linear-gradient(135deg,#FF6B35 0%,#E5501E 100%);
+  --grad-ink:linear-gradient(135deg,#0F2038 0%,#16304F 60%,#0B3B3A 100%);
+  --shadow-sm:0 2px 10px rgba(15,32,56,0.08);
+  --shadow-md:0 10px 30px rgba(15,32,56,0.12);
+  --shadow-lg:0 20px 50px rgba(15,32,56,0.20);
+  --radius:14px;
+  --ease:all .3s cubic-bezier(.4,0,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif}
+a{color:inherit}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+
+/* ===== Header (shared) ===== */
+header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(247,245,240,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);transition:var(--ease)}
+header.scrolled{background:rgba(247,245,240,0.98);box-shadow:var(--shadow-sm)}
+.header-content{display:flex;justify-content:space-between;align-items:center;padding:.85rem 0}
+.logo{display:flex;align-items:center;gap:.5rem;text-decoration:none;font-family:'Space Grotesk',sans-serif;color:var(--ink);flex:1;min-width:0;margin-right:.75rem}
+.logo-img{width:34px;height:34px;border-radius:9px;object-fit:cover;flex-shrink:0}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:var(--grad-orange);align-items:center;justify-content:center;color:#fff;font-size:1rem;flex-shrink:0}
+.logo-text{font-weight:700;font-size:clamp(.82rem,3.6vw,1.25rem);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.15}
+@media (min-width:768px){ .logo{flex:none;margin-right:0} .logo-text{font-size:1.25rem} }
+
+.nav-desktop{display:none}
+.nav-desktop ul{display:flex;list-style:none;align-items:center;gap:1.9rem}
+.nav-desktop>ul>li{position:relative}
+.nav-desktop a{text-decoration:none;color:var(--ink-soft);font-weight:500;font-size:.95rem;padding:.5rem 0;position:relative;transition:var(--ease)}
+.nav-desktop>ul>li>a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--orange);transition:var(--ease)}
+.nav-desktop>ul>li>a:hover::after,.nav-desktop>ul>li>a.active::after{width:100%}
+.nav-desktop a:hover,.nav-desktop a.active{color:var(--ink)}
+.has-dropdown>a i.fa-chevron-down{font-size:.65rem;margin-left:.35rem;transition:transform .25s}
+.has-dropdown:hover>a i.fa-chevron-down{transform:rotate(180deg)}
+
+.dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:300px;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:.6rem;opacity:0;visibility:hidden;transition:var(--ease);border:1px solid var(--line)}
+.has-dropdown:hover .dropdown,.has-dropdown:focus-within .dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.dropdown a{display:flex;align-items:center;gap:.7rem;padding:.65rem .75rem;border-radius:10px;font-size:.88rem;color:var(--ink-soft);font-weight:500}
+.dropdown a:hover{background:var(--paper);color:var(--orange)}
+.dropdown a i{width:18px;color:var(--orange);font-size:.95rem}
+.dropdown a .ext{margin-left:auto;font-size:.7rem;color:#9aa4b2}
+.dropdown-divider{height:1px;background:var(--line);margin:.4rem .5rem}
+
+.header-cta{display:none}
+.header-cta a{display:inline-flex;align-items:center;gap:.5rem;background:var(--grad-orange);color:#fff;text-decoration:none;padding:.65rem 1.15rem;border-radius:30px;font-weight:600;font-size:.88rem;box-shadow:var(--shadow-sm);transition:var(--ease)}
+.header-cta a:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+
+.menu-toggle{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:46px;height:46px;background:var(--white);border:1px solid var(--line);border-radius:12px;cursor:pointer;z-index:1001;box-shadow:var(--shadow-sm);transition:var(--ease)}
+.menu-toggle:hover{border-color:var(--orange)}
+.menu-toggle.active{background:var(--grad-orange);border-color:transparent}
+.menu-toggle span{width:20px;height:2.5px;border-radius:2px;background:var(--ink);transition:var(--ease);transform-origin:center}
+.menu-toggle.active span{background:#fff}
+.menu-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle.active span:nth-child(2){opacity:0}
+.menu-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.mobile-menu{position:fixed;top:0;right:0;width:88%;max-width:360px;height:100vh;background:var(--white);transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);z-index:999;padding:5.5rem 0 2rem;box-shadow:var(--shadow-lg);overflow-y:auto}
+.mobile-menu.active{transform:translateX(0)}
+.mobile-menu ul{list-style:none;padding:0 1.25rem}
+.mobile-menu>ul>li{border-bottom:1px solid var(--line)}
+.mobile-menu a{text-decoration:none;color:var(--ink);font-size:1.02rem;font-weight:500;display:flex;align-items:center;gap:.9rem;padding:1rem 0}
+.mobile-menu a i:first-child{width:20px;color:var(--orange)}
+.mobile-menu .mm-toggle{width:100%;background:none;border:none;text-align:left;cursor:pointer;font-family:inherit}
+.mobile-menu .mm-toggle .caret{margin-left:auto;transition:transform .25s;color:#9aa4b2}
+.mobile-menu .mm-toggle.active .caret{transform:rotate(180deg);color:var(--orange)}
+.mobile-submenu{display:none;list-style:none;padding:0 0 .75rem 1.9rem;animation:slideDown .25s ease}
+.mobile-submenu.active{display:block}
+.mobile-submenu li a{padding:.65rem 0;font-size:.92rem;font-weight:500;color:var(--ink-soft)}
+.mobile-submenu li a i{color:var(--teal);font-size:.85rem}
+.mobile-menu-cta{margin:1.5rem 1.25rem 0;padding:1rem;background:var(--grad-orange);border-radius:var(--radius);text-align:center}
+.mobile-menu-cta a{justify-content:center;color:#fff;font-weight:600;padding:0}
+.menu-backdrop{position:fixed;inset:0;background:rgba(15,32,56,.5);z-index:998;opacity:0;visibility:hidden;transition:var(--ease)}
+.menu-backdrop.active{opacity:1;visibility:visible}
+
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== Page header + breadcrumb (shared) ===== */
+.page-header{background:var(--grad-ink);position:relative;overflow:hidden;padding:6.5rem 0 3rem}
+.page-header-noise{position:absolute;inset:0;background-image:radial-gradient(circle at 12% 15%,rgba(255,107,53,.20),transparent 42%),radial-gradient(circle at 88% 80%,rgba(14,165,160,.22),transparent 46%)}
+.page-header .container{position:relative;z-index:1}
+.breadcrumb{display:flex;align-items:center;flex-wrap:wrap;gap:.55rem;font-size:.85rem;margin-bottom:1.3rem}
+.breadcrumb a{color:rgba(255,255,255,.62);text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;font-weight:500;transition:var(--ease)}
+.breadcrumb a:hover{color:#fff}
+.breadcrumb .sep{color:rgba(255,255,255,.3);font-size:.65rem}
+.breadcrumb .current{display:inline-flex;align-items:center;gap:.4rem;color:var(--orange);font-weight:700;background:rgba(255,107,53,.14);border:1px solid rgba(255,107,53,.35);padding:.25rem .75rem;border-radius:20px}
+.page-header h1{color:#fff;font-size:2.1rem;font-weight:700;margin-bottom:.7rem}
+.page-header h1 span{color:var(--orange)}
+.page-header p{color:rgba(255,255,255,.78);max-width:560px;font-size:1rem}
+@media (min-width:768px){ .page-header h1{font-size:2.9rem} }
+
+/* ===== Section header (shared) ===== */
+.section-header{text-align:center;max-width:640px;margin:0 auto 3rem}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;color:var(--orange);background:rgba(255,107,53,.12);border:1px solid rgba(255,107,53,.3);padding:.4rem .9rem;border-radius:30px;font-size:.78rem;font-weight:600;letter-spacing:.03em;margin-bottom:1.2rem}
+.section-header.teal .eyebrow{background:rgba(14,165,160,.1);border-color:rgba(14,165,160,.3);color:var(--teal)}
+.section-header h2{font-size:1.85rem;font-weight:700;color:var(--ink);margin-bottom:.7rem}
+.section-header p{color:var(--ink-soft);font-size:1rem}
+
+/* ===== Timeline & Projects (accordion sections) ===== */
+.timeline-section{padding:4.5rem 0}
+.tag-pill{font-size:.74rem;font-weight:600;color:var(--teal);background:rgba(14,165,160,.1);padding:.3rem .7rem;border-radius:20px}
+
+/* ===== Projects ===== */
+.projects-section{padding:4.5rem 0;background:var(--white)}
+
+/* ===== Skills accordion ===== */
+.skills-section{padding:4.5rem 0}
+.acc-list{display:flex;flex-direction:column;gap:.75rem;max-width:820px;margin:0 auto}
+.acc-item{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--white)}
+.acc-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.15rem 1.4rem;cursor:pointer;user-select:none}
+.acc-head .ah-left{display:flex;align-items:center;gap:1rem;min-width:0}
+.acc-head i.acc-icon{width:42px;height:42px;border-radius:10px;background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--orange);flex-shrink:0;font-size:1.05rem}
+.acc-head h4{font-size:1rem;font-weight:700;color:var(--ink)}
+.acc-head .ah-sub{font-size:.8rem;color:var(--ink-soft);margin-top:.1rem;font-weight:500}
+.acc-head .plus{width:28px;height:28px;border-radius:50%;background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:var(--ease)}
+.acc-item.active .plus{background:var(--orange);border-color:var(--orange);color:#fff;transform:rotate(135deg)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.acc-item.active .acc-body{max-height:500px}
+.acc-body-inner{padding:0 1.4rem 1.3rem 4.15rem;display:flex;flex-wrap:wrap;gap:.5rem}
+.acc-body-inner-text{padding:0 1.4rem 1.3rem 4.15rem}
+.acc-body-inner-text p{color:var(--ink-soft);font-size:.9rem;margin-bottom:.7rem}
+.timeline-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.tag-pill{font-size:.74rem;font-weight:600;color:var(--teal);background:rgba(14,165,160,.1);padding:.3rem .7rem;border-radius:20px}
+
+/* ===== CTA strip ===== */
+.cta-strip{padding:3.5rem 0;background:var(--grad-ink);text-align:center}
+.cta-strip h2{color:#fff;font-size:1.6rem;margin-bottom:.7rem}
+.cta-strip p{color:rgba(255,255,255,.78);max-width:520px;margin:0 auto 1.7rem;font-size:.95rem}
+.cta-strip .btn-group{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.55rem;padding:.9rem 1.6rem;background:var(--grad-orange);color:#fff;text-decoration:none;border-radius:30px;font-weight:600;font-size:.92rem;border:none;cursor:pointer;box-shadow:var(--shadow-sm);transition:var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.btn-ghost{background:transparent;border:1.5px solid rgba(255,255,255,.4);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+
+/* ===== Footer (shared) ===== */
+footer{background:var(--ink);color:#fff;padding:3.5rem 0 1.5rem}
+.footer-content{display:grid;grid-template-columns:1fr;gap:0}
+.footer-section{position:relative}
+.footer-section h3{color:var(--orange);font-size:1.05rem;font-weight:700;display:flex;align-items:center;justify-content:space-between;padding:.9rem 0;cursor:default}
+.footer-section p{opacity:.85;font-size:.9rem;margin-bottom:1.3rem}
+.footer-section ul{list-style:none}
+.footer-section ul li{margin:.6rem 0}
+.footer-section a{color:#fff;text-decoration:none;opacity:.82;display:inline-flex;align-items:center;gap:.6rem;font-size:.9rem;transition:var(--ease)}
+.footer-section a:hover{opacity:1;color:var(--orange)}
+.footer-section a i{width:16px;font-size:.85rem;color:var(--teal)}
+.social-icons{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.3rem}
+.social-icons a{width:42px;height:42px;background:rgba(255,255,255,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:var(--ease)}
+.social-icons a:hover{background:var(--grad-orange);transform:translateY(-3px)}
+.social-icons a i{color:#fff;font-size:1.05rem}
+.footer-bottom{text-align:center;padding-top:2rem;margin-top:2rem;border-top:1px solid rgba(255,255,255,.12);opacity:.65;font-size:.85rem}
+
+@media (max-width:768px){
+  .footer-section{border-bottom:1px solid rgba(255,255,255,.12);padding:.3rem 0}
+  .footer-section:first-child{border-top:1px solid rgba(255,255,255,.12)}
+  .footer-section:not(:first-child) h3{cursor:pointer;user-select:none}
+  .footer-section:not(:first-child) h3::after{content:'\f067';font-family:"Font Awesome 6 Free";font-weight:900;font-size:.8rem;transition:var(--ease)}
+  .footer-section:not(:first-child) h3.active::after{content:'\f068';transform:rotate(180deg)}
+  .footer-content-wrapper{display:none;padding-bottom:1.1rem;animation:slideDown .3s ease}
+  .footer-content-wrapper.active{display:block}
+  .footer-section:first-child .footer-content-wrapper{display:block;padding-bottom:1.1rem}
+  .footer-section:first-child h3{cursor:default}
 }
 
-/* Medium mobile screens (like iPhone XR at 414px) */
-@media (max-width: 414px) and (min-width: 390px) {
-    .logo {
-        font-size: 1.3rem; /* Slightly smaller but still good size */
-        white-space: nowrap;
-        overflow: hidden;
-    }
-    
-    .header-content {
-        padding: 0.8rem 0;
-    }
-    
-    .container {
-        padding: 0 15px;
-    }
-}
+.wa-float{position:fixed;bottom:22px;right:22px;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);z-index:900;text-decoration:none;animation:pulse 2.4s infinite}
+.wa-float i{color:#fff;font-size:1.6rem}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 
-/* Your Infinix Hot 10 range (around 360-389px) */
-@media (max-width: 389px) and (min-width: 361px) {
-    .logo {
-        font-size: 1.1rem !important; /* Larger than before for better readability */
-        line-height: 1.2;
-    }
-    
-    .logo-img {
-        width: 35px;
-        height: 35px;
-    }
+@media (min-width:768px){
+  .nav-desktop{display:block}
+  .header-cta{display:block}
+  .menu-toggle{display:none}
+  .footer-content{grid-template-columns:repeat(4,1fr);gap:2.5rem}
+  .footer-section h3{cursor:default}
+  .footer-content-wrapper{display:block !important}
 }
-
-/* Very small screens */
-@media (max-width: 360px) {
-    .logo {
-        font-size: 1rem !important; /* Still readable but compact */
-    }
-    
-    .logo-img {
-        width: 32px;
-        height: 32px;
-        margin-right: 0.3rem;
-    }
-}
-    </style>
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">
-                    <img src="images/logo.png" alt="SkillSavvy GH Logo" class="logo-img">
-                    <i class="fas fa-bolt"></i>
-                    Jaynite Digital Solutions
-                </a>
-                
-                <nav class="nav-desktop">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="portfolio.html" class="active">Portfolio</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </nav>
 
-                <button class="menu-toggle" id="menuToggle" aria-label="Toggle mobile menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
+<!-- Header -->
+<header id="siteHeader">
+  <div class="container header-content">
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="Jaynite Digital Solutions logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <span class="logo-mark" style="display:none"><i class="fas fa-bolt"></i></span>
+      <span class="logo-text">Jaynite Digital Solutions</span>
+    </a>
 
-        <div class="mobile-menu" id="mobileMenu">
-            <ul>
-                <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
-                <li><a href="services.html"><i class="fas fa-cogs"></i>Services</a></li>
-                <li><a href="about.html"><i class="fas fa-info-circle"></i>About</a></li>
-                <li><a href="portfolio.html"><i class="fas fa-briefcase"></i>Portfolio</a></li>
-                <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
-                <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
-            </ul>
-        </div>
-    </header>
+    <nav class="nav-desktop">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="has-dropdown">
+          <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown">
+            <a href="services.html#web"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a>
+            <a href="services.html#uiux"><i class="fas fa-pen-nib"></i> UI/UX Design</a>
+            <a href="services.html#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
+            <a href="services.html#marketing"><i class="fas fa-bullhorn"></i> Digital Marketing</a>
+            <div class="dropdown-divider"></div>
+            <a href="services.html#printing"><i class="fas fa-print"></i> Printing, Flyers &amp; Banners</a>
+            <a href="services.html#computers"><i class="fas fa-desktop"></i> Computers &amp; IT Accessories</a>
+            <a href="services.html#tutoring"><i class="fas fa-chalkboard-teacher"></i> Home &amp; Online Tutoring</a>
+            <div class="dropdown-divider"></div>
+            <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener"><i class="fas fa-sim-card"></i> Buy Data Bundles <span class="ext">↗</span></a>
+            <a href="services.html#checkers"><i class="fas fa-graduation-cap"></i> BECE/WASSCE Results Checkers</a>
+            <a href="services.html#forms"><i class="fas fa-file-signature"></i> University Forms (On Request)</a>
+          </div>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html" class="active">Portfolio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
 
-    <!-- Portfolio Hero -->
-    <section class="portfolio-hero">
-        <div class="container">
-            <div class="portfolio-hero-content">
-                <h1>My Portfolio</h1>
-                <p>Showcasing years of experience in digital innovation, tech leadership, and creative solutions across various industries in Ghana and beyond.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Timeline -->
-    <section class="experience-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Professional Journey</h2>
-                <p>A timeline of my career highlights and achievements</p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-role">Founder & CEO</div>
-                        <div class="timeline-company">Jaynite Digital Solutions</div>
-                        <div class="timeline-description">
-                            Leading Ghana's premier digital solutions company, specializing in web development, cybersecurity, UI/UX design, and comprehensive digital transformation services.
-                        </div>
-                        <div class="timeline-skills">
-                            <span class="skill-tag">Leadership</span>
-                            <span class="skill-tag">Business Strategy</span>
-                            <span class="skill-tag">Team Management</span>
-                            <span class="skill-tag">Digital Innovation</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-    <div class="timeline-content">
-        <div class="timeline-role">Co-Founder</div>
-        <div class="timeline-company">LOUEL Cuisine</div>
-        <div class="timeline-description">
-            Enjoy a delicious variety of authentic Ghanaian meals, carefully prepared to satisfy your taste buds. From hearty traditional soups to flavorful rice dishes, each meal is made with love and local ingredients.
-        </div>
-        <div class="timeline-skills">
-            <span class="skill-tag">Fufu & Groundnut Soup</span>
-            <span class="skill-tag">Jollof Rice with Chicken</span>
-            <span class="skill-tag">Waakye</span>
-            <span class="skill-tag">Banku & Tilapia</span>
-            <span class="skill-tag">Kelewele & Fried Yam</span>
-        </div>
+    <div class="header-cta">
+      <a href="https://wa.me/233201485621" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
     </div>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="menu-backdrop" id="menuBackdrop"></div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+    <li>
+      <button class="mm-toggle" id="mmServicesToggle" aria-expanded="false">
+        <i class="fas fa-cogs"></i> Services <i class="fas fa-chevron-down caret"></i>
+      </button>
+      <ul class="mobile-submenu" id="mmServicesSubmenu">
+        <li><a href="services.html#web"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a></li>
+        <li><a href="services.html#uiux"><i class="fas fa-pen-nib"></i> UI/UX Design</a></li>
+        <li><a href="services.html#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a></li>
+        <li><a href="services.html#marketing"><i class="fas fa-bullhorn"></i> Digital Marketing</a></li>
+        <li><a href="services.html#printing"><i class="fas fa-print"></i> Printing, Flyers &amp; Banners</a></li>
+        <li><a href="services.html#computers"><i class="fas fa-desktop"></i> Computers &amp; IT Accessories</a></li>
+        <li><a href="services.html#tutoring"><i class="fas fa-chalkboard-teacher"></i> Home &amp; Online Tutoring</a></li>
+        <li><a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener"><i class="fas fa-sim-card"></i> Buy Data Bundles</a></li>
+        <li><a href="services.html#checkers"><i class="fas fa-graduation-cap"></i> BECE/WASSCE Results Checkers</a></li>
+        <li><a href="services.html#forms"><i class="fas fa-file-signature"></i> University Forms (On Request)</a></li>
+      </ul>
+    </li>
+    <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+    <li><a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+    <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
+    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+  </ul>
+  <div class="mobile-menu-cta">
+    <a href="https://wa.me/233201485621" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+  </div>
 </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-role">Digital & Graphics Specialist</div>
-                        <div class="timeline-company">Groupeania Ltd</div>
-                        <div class="timeline-description">
-                            Handled complete branding overhaul, printing services, training of Interns, installation of softwares etc.
-                        </div>
-                        <div class="timeline-skills">
-                            <span class="skill-tag">Graphics Design</span>
-                            <span class="skill-tag">Web Development</span>
-                            <span class="skill-tag">Online Registrations</span>
-                            <span class="skill-tag">Thesis & Corporate Printing</span>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-role">IT Manager</div>
-                        <div class="timeline-company">Chachas Internet Café & Design House</div>
-                        <div class="timeline-description">
-                            Managed comprehensive tech operations including customer IT support, printing services, design projects, and hardware troubleshooting.
-                        </div>
-                        <div class="timeline-skills">
-                            <span class="skill-tag">IT Management</span>
-                            <span class="skill-tag">Typing and records keeping</span>
-                            <span class="skill-tag">Design, Print & Brand</span>
-                            <span class="skill-tag">Used Konica Minolta 360, Canon 5051 & HP for book printing</span>
-                        </div>
-                    </div>
-                </div>
+<!-- Page header -->
+<section class="page-header">
+  <div class="page-header-noise"></div>
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <span class="sep"><i class="fas fa-chevron-right"></i></span>
+      <span class="current"><i class="fas fa-briefcase"></i> Portfolio</span>
+    </nav>
+    <h1>Work Built on <span>Real Experience</span></h1>
+    <p>A look at the roles, projects, and skills behind Jaynite Digital Solutions — years of hands-on experience across Ghana's tech and creative industries.</p>
+  </div>
+</section>
 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-role">IT Coordinator</div>
-                        <div class="timeline-company">Nnarawia Grains Ltd</div>
-                        <div class="timeline-description">
-                            Served as the primary IT specialist, managing company digital records, implementing digital tools, coordinating tech-related projects, and streamlining operations that improved overall productivity.
-                        </div>
-                        <div class="timeline-skills">
-                            <span class="skill-tag">Project Coordination</span>
-                            <span class="skill-tag">Digital Records</span>
-                            <span class="skill-tag">Process Optimization</span>
-                            <span class="skill-tag">Technical Support</span>
-                        </div>
-                    </div>
-                </div>
+<!-- Professional Journey -->
+<section class="timeline-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow"><i class="fas fa-route"></i> Professional Journey</span>
+      <h2>Roles &amp; Growth Over the Years</h2>
+      <p>Tap a role to read more.</p>
+    </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-role">Manager</div>
-                        <div class="timeline-company">Mindcraft Multimedia</div>
-                        <div class="timeline-description">
-                            Led operations in a creative multimedia environment, overseeing diverse client projects involving graphic design, printing services, and comprehensive digital solutions for local businesses.
-                        </div>
-                        <div class="timeline-skills">
-                            <span class="skill-tag">Operations Management</span>
-                            <span class="skill-tag">Creative Direction</span>
-                            <span class="skill-tag">Client Relations</span>
-                            <span class="skill-tag">Quality Control</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="acc-list">
+      <div class="acc-item active">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-star acc-icon"></i>
+            <div class="ah-titles"><h4>Founder &amp; CEO</h4><div class="ah-sub">Jaynite Digital Solutions</div></div>
+          </div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
         </div>
-    </section>
+        <div class="acc-body"><div class="acc-body-inner-text">
+          <p>Leading Ghana's digital solutions company, specializing in web development, cybersecurity, UI/UX design, and comprehensive digital transformation services.</p>
+          <div class="timeline-tags"><span class="tag-pill">Leadership</span><span class="tag-pill">Business Strategy</span><span class="tag-pill">Team Management</span></div>
+        </div></div>
+      </div>
 
-    <!-- Portfolio Projects -->
-    <section class="portfolio-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Featured Projects</h2>
-                <p>A showcase of my recent work and achievements</p>
-            </div>
-
-            <div class="portfolio-filters">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="web">Web Development</button>
-                <button class="filter-btn" data-filter="design">Design & Branding</button>
-                <button class="filter-btn" data-filter="security">Cybersecurity</button>
-                <button class="filter-btn" data-filter="consulting">IT Consulting</button>
-            </div>
-
-            <div class="portfolio-grid">
-                <div class="portfolio-item" data-category="web">
-                    <div class="portfolio-image">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Groupeania Ltd Corporate Website</h3>
-                        <div class="portfolio-category">Web Development</div>
-                        <p class="portfolio-description">
-                            Complete website design and development for Groupeania Ltd, featuring modern responsive design, content management system, and integrated business solutions.
-                        </p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Responsive Design</span>
-                            <span class="tech-tag">CMS</span>
-                            </div>
-                        <div class="portfolio-links">
-                            <a href="#" class="portfolio-link">
-                                <i class="fas fa-external-link-alt"></i>
-                                Coming Soon
-                            </a>
-                            <a href="#" class="portfolio-link secondary">
-                                <i class="fab fa-github"></i>
-                                Restricted Access
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="design">
-                    <div class="portfolio-image">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Corporate Brand Identity Suite</h3>
-                        <div class="portfolio-category">Design & Branding</div>
-                        <p class="portfolio-description">
-                            Complete brand overhaul including logo design, business cards, letterheads, brochures, and digital assets for multiple local businesses and organizations.
-                        </p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">Adobe Creative Suite</span>
-                            <span class="tech-tag">Brand Strategy</span>
-                            <span class="tech-tag">Print Design</span>
-                            <span class="tech-tag">Digital Assets</span>
-                        </div>
-                        <div class="portfolio-links">
-                            <a href="#" class="portfolio-link">
-                                <i class="fas fa-eye"></i>
-                                Launching Soon
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="security">
-                    <div class="portfolio-image">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Enterprise Security Implementation</h3>
-                        <div class="portfolio-category">Cybersecurity</div>
-                        <p class="portfolio-description">
-                            Comprehensive cybersecurity audit and implementation for multiple businesses, including firewall setup, employee training, and security protocol development.
-                        </p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">Network Security</span>
-                            <span class="tech-tag">Vulnerability Assessment</span>
-                            <span class="tech-tag">Security Training</span>
-                            <span class="tech-tag">Compliance</span>
-                        </div>
-                        <div class="portfolio-links">
-                            <a href="#" class="portfolio-link">
-                                <i class="fas fa-lock"></i>
-                                Details Coming Soon
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="web">
-                    <div class="portfolio-image">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">E-Commerce Platform Development</h3>
-                        <div class="portfolio-category">Web Development</div>
-                        <p class="portfolio-description">
-                            Full-featured e-commerce platform with payment integration, inventory management, and customer portal for local retail businesses.
-                        </p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">Payment Gateway</span>
-                            <span class="tech-tag">Mobile Responsive</span>
-                        </div>          
-                            <a href="#" class="portfolio-link secondary">
-                                <i class="fas fa-code"></i>
-                                Details not yet published
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="consulting">
-                    <div class="portfolio-image">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Digital Transformation Strategy</h3>
-                        <div class="portfolio-category">IT Consulting</div>
-                        <p class="portfolio-description">
-                            Led digital transformation initiatives for traditional businesses, implementing modern workflows, cloud solutions, and staff training programs.
-                        </p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">Cloud Migration</span>
-                            <span class="tech-tag">Process Optimization</span>
-                            <span class="tech-tag">Staff Training</span>
-                            <span class="tech-tag">Digital Strategy</span>
-                        </div>
-                        <div class="portfolio-links">
-                            <a href="#" class="portfolio-link">
-                                <i class="fas fa-file-alt"></i>
-                                Launching Soon
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="design">
-                    <div class="portfolio-image">
-                        <i class="fas fa-print"></i>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Print & Publication Design</h3>
-                        <div class="portfolio-category">Design & Branding</div>
-                        <p class="portfolio-description">
-                            Professional design services for magazines, brochures, flyers, posters, and corporate materials for various organizations and events.
-                        </p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">Print Design</span>
-                            <span class="tech-tag">Typography</span>
-                            <span class="tech-tag">Layout Design</span>
-                            <span class="tech-tag">Publication</span>
-                        </div>
-                        <div class="portfolio-links">
-                            <a href="#" class="portfolio-link">
-                                <i class="fas fa-images"></i>
-                                Gallery In Progress
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="web">
-                    <div class="portfolio-image">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Educational Management System</h3>
-                        <div class="portfolio-category">Web Development</div>
-                        <p class="portfolio-description">
-                            Comprehensive school management system with student records, grade tracking, attendance management, and parent portal functionality.
-                        </p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">Full-Stack Development</span>
-                            <span class="tech-tag">Database Design</span>
-                            <span class="tech-tag">User Management</span>
-                            <span class="tech-tag">Reporting</span>
-                        </div>
-                        <div class="portfolio-links">
-                            <a href="#" class="portfolio-link">
-                                <i class="fas fa-external-link-alt"></i>
-                                System Launching Soon
-                            </a>
-                            <a href="#" class="portfolio-link secondary">
-                                <i class="fas fa-info-circle"></i>
-                                Under Review
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="security">
-                    <div class="portfolio-image">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Network Infrastructure Setup</h3>
-                        <div class="portfolio-category">Cybersecurity</div>
-                        <p class="portfolio-description">
-                            Complete network infrastructure design and implementation for small to medium businesses, including security protocols and monitoring systems.
-                        </p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">Network Design</span>
-                            <span class="tech-tag">Server Setup</span>
-                            <span class="tech-tag">Security Protocols</span>
-                            <span class="tech-tag">Monitoring</span>
-                        </div>
-                        <div class="portfolio-links">
-                            <a href="#" class="portfolio-link">
-                                <i class="fas fa-network-wired"></i>
-                                Setup Coming Soon
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="consulting">
-                    <div class="portfolio-image">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">IT Training & Workshops</h3>
-                        <div class="portfolio-category">IT Consulting</div>
-                        <p class="portfolio-description">
-                            Conducted comprehensive IT training sessions and workshops for businesses and individuals, covering digital literacy, cybersecurity awareness, and software proficiency.
-                        </p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">Training Development</span>
-                            <span class="tech-tag">Workshop Facilitation</span>
-                            <span class="tech-tag">Curriculum Design</span>
-                            <span class="tech-tag">Skills Assessment</span>
-                        </div>
-                        <div class="portfolio-links">
-                            <a href="#" class="portfolio-link">
-                                <i class="fas fa-certificate"></i>
-                                Programs Launching Soon
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-utensils acc-icon"></i>
+            <div class="ah-titles"><h4>Secretary</h4><div class="ah-sub">Nnarawia Foundation LBG</div></div>
+          </div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
         </div>
-    </section>
+        <div class="acc-body"><div class="acc-body-inner-text">
+          <p>Empowering communities through humanitarian support, education, healthcare initiatives, youth development, and sustainable livelihoods.</p>
+          <div class="timeline-tags"><span class="tag-pill">Community Development</span><span class="tag-pill">Education</span><span class="tag-pill">Healthcare</span></div>
+        </div></div>
+      </div>
 
-    <!-- Skills Section -->
-    <section class="skills-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Technical Skills & Expertise</h2>
-                <p>A comprehensive overview of my technical capabilities and areas of expertise</p>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i>Web Development</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">HTML5</span>
-                        <span class="skill-item">CSS3</span>
-                        <span class="skill-item">JavaScript</span>
-                        <span class="skill-item">PHP</span>
-                        <span class="skill-item">MySQL</span>
-                        <span class="skill-item">WordPress</span>
-                        <span class="skill-item">Bootstrap</span>
-                        <span class="skill-item">Responsive Design</span>
-                        <span class="skill-item">CMS Development</span>
-                        <span class="skill-item">E-commerce</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-palette"></i>Design & Graphics</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Adobe Photoshop</span>
-                        <span class="skill-item">Adobe Illustrator</span>
-                        <span class="skill-item">Adobe InDesign</span>
-                        <span class="skill-item">CorelDRAW</span>
-                        <span class="skill-item">UI/UX Design</span>
-                        <span class="skill-item">Logo Design</span>
-                        <span class="skill-item">Brand Identity</span>
-                        <span class="skill-item">Print Design</span>
-                        <span class="skill-item">Typography</span>
-                        <span class="skill-item">Color Theory</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-shield-alt"></i>Cybersecurity</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Network Security</span>
-                        <span class="skill-item">Vulnerability Assessment</span>
-                        <span class="skill-item">Penetration Testing</span>
-                        <span class="skill-item">Firewall Configuration</span>
-                        <span class="skill-item">Security Auditing</span>
-                        <span class="skill-item">Risk Assessment</span>
-                        <span class="skill-item">Incident Response</span>
-                        <span class="skill-item">Security Training</span>
-                        <span class="skill-item">Compliance</span>
-                        <span class="skill-item">Data Protection</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-cogs"></i>IT Management</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">System Administration</span>
-                        <span class="skill-item">Network Setup</span>
-                        <span class="skill-item">Hardware Troubleshooting</span>
-                        <span class="skill-item">Software Installation</span>
-                        <span class="skill-item">Cloud Services</span>
-                        <span class="skill-item">Database Management</span>
-                        <span class="skill-item">Server Management</span>
-                        <span class="skill-item">IT Support</span>
-                        <span class="skill-item">System Optimization</span>
-                        <span class="skill-item">Backup Solutions</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-bullhorn"></i>Digital Marketing</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">SEO Optimization</span>
-                        <span class="skill-item">Social Media Marketing</span>
-                        <span class="skill-item">Content Marketing</span>
-                        <span class="skill-item">Email Marketing</span>
-                        <span class="skill-item">Google Analytics</span>
-                        <span class="skill-item">PPC Campaigns</span>
-                        <span class="skill-item">Brand Strategy</span>
-                        <span class="skill-item">Digital Advertising</span>
-                        <span class="skill-item">Marketing Automation</span>
-                        <span class="skill-item">Conversion Optimization</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-users"></i>Leadership & Management</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Team Leadership</span>
-                        <span class="skill-item">Project Management</span>
-                        <span class="skill-item">Client Relations</span>
-                        <span class="skill-item">Business Strategy</span>
-                        <span class="skill-item">Staff Training</span>
-                        <span class="skill-item">Process Optimization</span>
-                        <span class="skill-item">Quality Control</span>
-                        <span class="skill-item">Budget Management</span>
-                        <span class="skill-item">Strategic Planning</span>
-                        <span class="skill-item">Innovation Management</span>
-                    </div>
-                </div>
-            </div>
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-pen-nib acc-icon"></i>
+            <div class="ah-titles"><h4>Digital &amp; Graphics Specialist</h4><div class="ah-sub">Groupeania Ltd</div></div>
+          </div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
         </div>
-    </section>
+        <div class="acc-body"><div class="acc-body-inner-text">
+          <p>Handled a complete branding overhaul, printing services, training of interns, and software installation.</p>
+          <div class="timeline-tags"><span class="tag-pill">Graphics Design</span><span class="tag-pill">Web Development</span><span class="tag-pill">Corporate Printing</span></div>
+        </div></div>
+      </div>
 
-    <!-- Contact CTA -->
-    <section class="contact-cta">
-        <div class="container">
-            <h2>Ready to Start Your Next Project?</h2>
-            <p>Let's collaborate to bring your digital vision to life with innovative solutions and expert execution.</p>
-            <div class="cta-buttons">
-                <a href="contact.html" class="btn">
-                    <i class="fas fa-envelope"></i>
-                    Get In Touch
-                </a>
-                <a href="services.html" class="btn btn-secondary">
-                    <i class="fas fa-list"></i>
-                    View Services
-                </a>
-            </div>
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-desktop acc-icon"></i>
+            <div class="ah-titles"><h4>IT Manager</h4><div class="ah-sub">Chachas Internet Caf&eacute; &amp; Design House</div></div>
+          </div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
         </div>
-    </section>
+        <div class="acc-body"><div class="acc-body-inner-text">
+          <p>Managed comprehensive tech operations including customer IT support, printing services, design projects, and hardware troubleshooting.</p>
+          <div class="timeline-tags"><span class="tag-pill">IT Management</span><span class="tag-pill">Design, Print &amp; Brand</span></div>
+        </div></div>
+      </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section about">
-                    <h3>About Jaynite Digital Solutions</h3>
-                    <p>Empowering digital innovation in Ghana since 2020. Your trusted partner for web development, graphic design, cybersecurity, and comprehensive digital transformation services.</p>
-                    <div class="social-icons">
-                        <a href="https://youtube.com/@skillsavvygh?si=VHCLWgZXM1sQSvXE" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://wa.me/message/YCYBTUIO5ZD5J1" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.instagram.com/jaynite_official" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://education.github.com/pack" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul style="list-style: none; padding: 0;">
-                <li style="margin-bottom: 0.5rem;"><a href="index.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease;">Home</a></li>
-                <li style="margin-bottom: 0.5rem;"><a href="services.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease;">Services</a></li>
-                <li style="margin-bottom: 0.5rem;"><a href="about.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease;">About</a></li>
-                <li style="margin-bottom: 0.5rem;"><a href="portfolio.html" style="color: var(--primary-orange); text-decoration: none; cursor: default;">Portfolio</a></li>
-                <li style="margin-bottom: 0.5rem;"><a href="blog.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease;">Blog</a></li>
-                <li><a href="contact.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease;">Contact</a></li>
-            </ul>
-                            </div>
-                <div class="footer-section">
-                    <h3>Contact Info</h3>
-                    <p><i class="fas fa-map-marker-alt" style="color: var(--primary-orange); margin-right: 0.5rem;"></i> Sunyani, Bono Region, Ghana</p>
-                    <p><i class="fas fa-phone" style="color: var(--primary-orange); margin-right: 0.5rem;"></i> +233 533 852 891</p>
-                    <p><i class="fas fa-envelope" style="color: var(--primary-orange); margin-right: 0.5rem;"></i> jaynitedigital@gmail.com</p>
-                    <p><i class="fas fa-globe" style="color: var(--primary-orange); margin-right: 0.5rem;"></i> https://jaynitedigital.me</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Jaynite Limited. All rights reserved.</p>
-            </div>
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-seedling acc-icon"></i>
+            <div class="ah-titles"><h4>IT Coordinator</h4><div class="ah-sub">Nnarawia Grains Ltd</div></div>
+          </div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
         </div>
-    </footer>
+        <div class="acc-body"><div class="acc-body-inner-text">
+          <p>Primary IT specialist managing company digital records, implementing digital tools, coordinating tech projects, and streamlining operations.</p>
+          <div class="timeline-tags"><span class="tag-pill">Digital Records</span><span class="tag-pill">Process Optimization</span></div>
+        </div></div>
+      </div>
 
-    <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-photo-film acc-icon"></i>
+            <div class="ah-titles"><h4>Manager</h4><div class="ah-sub">Mindcraft Multimedia</div></div>
+          </div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner-text">
+          <p>Led operations in a creative multimedia environment, overseeing client projects involving graphic design, printing, and digital solutions.</p>
+          <div class="timeline-tags"><span class="tag-pill">Operations Management</span><span class="tag-pill">Client Relations</span></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Projects -->
+<section class="projects-section">
+  <div class="container">
+    <div class="section-header teal">
+      <span class="eyebrow"><i class="fas fa-diagram-project"></i> Featured Projects</span>
+      <h2>A Look at the Work</h2>
+      <p>Tap a project to see what it involved.</p>
+    </div>
+
+    <div class="acc-list">
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-laptop-code acc-icon"></i>
+            <div class="ah-titles"><h4>Groupeania Ltd Corporate Website</h4><div class="ah-sub">Web Development</div></div>
+          </div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner-text">
+          <p>Complete website design and development featuring modern responsive design, a content management system, and integrated business solutions.</p>
+          <div class="timeline-tags"><span class="tag-pill">HTML5</span><span class="tag-pill">CSS3</span><span class="tag-pill">JavaScript</span><span class="tag-pill">CMS</span></div>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-palette acc-icon"></i>
+            <div class="ah-titles"><h4>Corporate Brand Identity Suite</h4><div class="ah-sub">Design &amp; Branding</div></div>
+          </div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner-text">
+          <p>Complete brand overhaul including logo design, business cards, letterheads, brochures, and digital assets for local businesses.</p>
+          <div class="timeline-tags"><span class="tag-pill">Brand Strategy</span><span class="tag-pill">Print Design</span></div>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-shield-alt acc-icon"></i>
+            <div class="ah-titles"><h4>Enterprise Security Implementation</h4><div class="ah-sub">Cybersecurity</div></div>
+          </div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner-text">
+          <p>Comprehensive cybersecurity audit and implementation, including firewall setup, employee training, and security protocol development.</p>
+          <div class="timeline-tags"><span class="tag-pill">Network Security</span><span class="tag-pill">Compliance</span></div>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-cart-shopping acc-icon"></i>
+            <div class="ah-titles"><h4>E-Commerce Platform Development</h4><div class="ah-sub">Web Development</div></div>
+          </div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner-text">
+          <p>Full-featured e-commerce platform with payment integration, inventory management, and a customer portal for local retail businesses.</p>
+          <div class="timeline-tags"><span class="tag-pill">PHP</span><span class="tag-pill">MySQL</span><span class="tag-pill">Payment Gateway</span></div>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-cloud acc-icon"></i>
+            <div class="ah-titles"><h4>Digital Transformation Strategy</h4><div class="ah-sub">IT Consulting</div></div>
+          </div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner-text">
+          <p>Led digital transformation initiatives for traditional businesses — modern workflows, cloud solutions, and staff training programs.</p>
+          <div class="timeline-tags"><span class="tag-pill">Cloud Migration</span><span class="tag-pill">Staff Training</span></div>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-print acc-icon"></i>
+            <div class="ah-titles"><h4>Print &amp; Publication Design</h4><div class="ah-sub">Design &amp; Branding</div></div>
+          </div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner-text">
+          <p>Professional design for magazines, brochures, flyers, posters, and corporate materials for various organizations and events.</p>
+          <div class="timeline-tags"><span class="tag-pill">Print Design</span><span class="tag-pill">Typography</span></div>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-school acc-icon"></i>
+            <div class="ah-titles"><h4>Educational Management System</h4><div class="ah-sub">Web Development</div></div>
+          </div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner-text">
+          <p>Comprehensive school management system with student records, grade tracking, attendance management, and a parent portal.</p>
+          <div class="timeline-tags"><span class="tag-pill">Full-Stack</span><span class="tag-pill">Database Design</span></div>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-network-wired acc-icon"></i>
+            <div class="ah-titles"><h4>Network Infrastructure Setup</h4><div class="ah-sub">Cybersecurity</div></div>
+          </div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner-text">
+          <p>Complete network infrastructure design and implementation for small to medium businesses, including security protocols and monitoring.</p>
+          <div class="timeline-tags"><span class="tag-pill">Network Design</span><span class="tag-pill">Monitoring</span></div>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-chalkboard-teacher acc-icon"></i>
+            <div class="ah-titles"><h4>IT Training &amp; Workshops</h4><div class="ah-sub">IT Consulting</div></div>
+          </div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner-text">
+          <p>Comprehensive IT training sessions and workshops for businesses and individuals, covering digital literacy and cybersecurity awareness.</p>
+          <div class="timeline-tags"><span class="tag-pill">Workshop Facilitation</span><span class="tag-pill">Skills Assessment</span></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section class="skills-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow"><i class="fas fa-brain"></i> Technical Skills</span>
+      <h2>Areas of Expertise</h2>
+      <p>Tap a category to see the specific tools and skills involved.</p>
+    </div>
+    <div class="acc-list">
+      <div class="acc-item active">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-laptop-code acc-icon"></i><h4>Web Development</h4></div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner">
+          <span class="tag-pill">HTML5</span><span class="tag-pill">CSS3</span><span class="tag-pill">JavaScript</span><span class="tag-pill">PHP</span><span class="tag-pill">MySQL</span><span class="tag-pill">WordPress</span><span class="tag-pill">Bootstrap</span><span class="tag-pill">Responsive Design</span><span class="tag-pill">CMS Development</span><span class="tag-pill">E-commerce</span>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-palette acc-icon"></i><h4>Design &amp; Graphics</h4></div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner">
+          <span class="tag-pill">Adobe Photoshop</span><span class="tag-pill">Adobe Illustrator</span><span class="tag-pill">Adobe InDesign</span><span class="tag-pill">CorelDRAW</span><span class="tag-pill">UI/UX Design</span><span class="tag-pill">Logo Design</span><span class="tag-pill">Brand Identity</span><span class="tag-pill">Print Design</span><span class="tag-pill">Typography</span>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-shield-alt acc-icon"></i><h4>Cybersecurity</h4></div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner">
+          <span class="tag-pill">Network Security</span><span class="tag-pill">Vulnerability Assessment</span><span class="tag-pill">Penetration Testing</span><span class="tag-pill">Firewall Configuration</span><span class="tag-pill">Security Auditing</span><span class="tag-pill">Risk Assessment</span><span class="tag-pill">Incident Response</span><span class="tag-pill">Compliance</span>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-server acc-icon"></i><h4>IT Management</h4></div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner">
+          <span class="tag-pill">System Administration</span><span class="tag-pill">Network Setup</span><span class="tag-pill">Hardware Troubleshooting</span><span class="tag-pill">Software Installation</span><span class="tag-pill">Cloud Services</span><span class="tag-pill">Database Management</span><span class="tag-pill">Server Management</span><span class="tag-pill">Backup Solutions</span>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-bullhorn acc-icon"></i><h4>Digital Marketing</h4></div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner">
+          <span class="tag-pill">SEO Optimization</span><span class="tag-pill">Social Media Marketing</span><span class="tag-pill">Content Marketing</span><span class="tag-pill">Email Marketing</span><span class="tag-pill">Google Analytics</span><span class="tag-pill">PPC Campaigns</span><span class="tag-pill">Brand Strategy</span>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="ah-left"><i class="fas fa-users acc-icon"></i><h4>Leadership &amp; Management</h4></div>
+          <span class="plus"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner">
+          <span class="tag-pill">Team Leadership</span><span class="tag-pill">Project Management</span><span class="tag-pill">Client Relations</span><span class="tag-pill">Business Strategy</span><span class="tag-pill">Staff Training</span><span class="tag-pill">Process Optimization</span><span class="tag-pill">Strategic Planning</span>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+  <div class="container">
+    <h2>Ready to Start Your Next Project?</h2>
+    <p>Let's collaborate to bring your digital vision to life with practical solutions and hands-on execution.</p>
+    <div class="btn-group">
+      <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn"><i class="fab fa-whatsapp"></i> Get In Touch</a>
+      <a href="services.html" class="btn btn-ghost"><i class="fas fa-cogs"></i> View Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Jaynite Digital Solutions</h3>
+        <div class="footer-content-wrapper">
+          <p>Empowering digital innovation in Ghana since 2020. Your trusted partner for web development, printing, devices, and digital services.</p>
+          <div class="social-icons">
+            <a href="https://youtube.com/@skillsavvygh?si=VHCLWgZXM1sQSvXE" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/233201485621" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/jaynite_official" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <div class="footer-content-wrapper">
+          <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="services.html"><i class="fas fa-cogs"></i> Services</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="index.html#testimonials"><i class="fas fa-star"></i> Testimonials</a></li>
+            <li><a href="index.html#toolkit"><i class="fas fa-toolbox"></i> Free Tools</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>Services</h3>
+        <div class="footer-content-wrapper">
+          <ul>
+            <li><a href="services.html#web"><i class="fas fa-code"></i> Web &amp; App Development</a></li>
+            <li><a href="services.html#printing"><i class="fas fa-print"></i> Printing &amp; Publications</a></li>
+            <li><a href="services.html#computers"><i class="fas fa-desktop"></i> Computers &amp; Accessories</a></li>
+            <li><a href="services.html#tutoring"><i class="fas fa-chalkboard-teacher"></i> Tutoring</a></li>
+            <li><a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener"><i class="fas fa-sim-card"></i> Data Bundles</a></li>
+            <li><a href="services.html#checkers"><i class="fas fa-graduation-cap"></i> Results Checkers</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contact Info</h3>
+        <div class="footer-content-wrapper">
+          <ul>
+            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Sunyani, Bono Region</a></li>
+            <li><a href="https://wa.me/233201485621" target="_blank"><i class="fab fa-whatsapp"></i> 0201 485 621</a></li>
+            <li><a href="mailto:jaynitedigital@gmail.com"><i class="fas fa-envelope"></i> jaynitedigital@gmail.com</a></li>
+            <li><a href="https://jaynitedigital.me"><i class="fas fa-globe"></i> jaynitedigital.me</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Jaynite Digital Solutions. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+// Mobile menu
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const menuBackdrop = document.getElementById('menuBackdrop');
+function closeMobileMenu(){
+  menuToggle.classList.remove('active');
+  mobileMenu.classList.remove('active');
+  menuBackdrop.classList.remove('active');
+  menuToggle.setAttribute('aria-expanded','false');
+  document.body.style.overflow='auto';
+}
+menuToggle.addEventListener('click',()=>{
+  const isActive = mobileMenu.classList.toggle('active');
+  menuToggle.classList.toggle('active');
+  menuBackdrop.classList.toggle('active');
+  menuToggle.setAttribute('aria-expanded', isActive ? 'true':'false');
+  document.body.style.overflow = isActive ? 'hidden':'auto';
+});
+menuBackdrop.addEventListener('click', closeMobileMenu);
+document.querySelectorAll('.mobile-menu > ul > li > a, .mobile-submenu a').forEach(link=>{
+  link.addEventListener('click', closeMobileMenu);
+});
+
+// Mobile services submenu (+ style toggle)
+const mmToggle = document.getElementById('mmServicesToggle');
+const mmSubmenu = document.getElementById('mmServicesSubmenu');
+mmToggle.addEventListener('click', ()=>{
+  const active = mmSubmenu.classList.toggle('active');
+  mmToggle.classList.toggle('active', active);
+  mmToggle.setAttribute('aria-expanded', active ? 'true':'false');
+});
+
+// Header scroll shadow
+const siteHeader = document.getElementById('siteHeader');
+window.addEventListener('scroll', ()=>{
+  siteHeader.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Smooth scroll for in-page anchors
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+  anchor.addEventListener('click', function(e){
+    const id = this.getAttribute('href');
+    if(id.length>1){
+      const target = document.querySelector(id);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    }
+  });
+});
+
+// Footer accordion (mobile only)
+function initFooterAccordion(){
+  const sections = document.querySelectorAll('.footer-section');
+  if(window.innerWidth <= 768){
+    sections.forEach((section, index)=>{
+      if(index === 0) return;
+      const header = section.querySelector('h3');
+      const wrapper = section.querySelector('.footer-content-wrapper');
+      if(!header.dataset.bound){
+        header.dataset.bound = 'true';
+        header.setAttribute('tabindex','0');
+        header.addEventListener('click', function(){
+          const isActive = this.classList.contains('active');
+          sections.forEach((s,i)=>{
+            if(i===0) return;
+            const h = s.querySelector('h3');
+            const w = s.querySelector('.footer-content-wrapper');
+            h.classList.remove('active');
+            w.classList.remove('active');
+          });
+          if(!isActive){
+            this.classList.add('active');
+            wrapper.classList.add('active');
+          }
         });
-
-        // Close mobile menu when clicking on a link
-        const mobileLinks = document.querySelectorAll('.mobile-menu a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
-            });
+        header.addEventListener('keydown', function(e){
+          if(e.key==='Enter' || e.key===' '){ e.preventDefault(); this.click(); }
         });
+      }
+    });
+  }
+}
+initFooterAccordion();
+let footerResizeTimer;
+window.addEventListener('resize', ()=>{
+  clearTimeout(footerResizeTimer);
+  footerResizeTimer = setTimeout(initFooterAccordion, 250);
+});
 
-        // Portfolio Filter Functionality
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterBtns.forEach(button => button.classList.remove('active'));
-                // Add active class to clicked button
-                btn.classList.add('active');
-
-                const filter = btn.getAttribute('data-filter');
-
-                portfolioItems.forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                        item.classList.remove('hidden');
-                    } else {
-                        item.classList.add('hidden');
-                    }
-                });
-            });
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = 'none';
-            }
-        });
-
-        // Animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe portfolio items and timeline items
-        document.querySelectorAll('.portfolio-item, .timeline-item, .skill-category').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-
-        // Counter animation for stats (if you want to add stats)
-        function animateCounter(element, target, duration = 2000) {
-            const start = 0;
-            const increment = target / (duration / 16);
-            let current = start;
-
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                element.textContent = Math.floor(current);
-            }, 16);
-        }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add any initialization code here
-            console.log('Portfolio page loaded successfully');
-            
-            // Optional: Add typing animation to hero text
-            const heroTitle = document.querySelector('.portfolio-hero h1');
-            if (heroTitle) {
-                heroTitle.style.opacity = '0';
-                setTimeout(() => {
-                    heroTitle.style.opacity = '1';
-                    heroTitle.style.animation = 'fadeInUp 1s ease forwards';
-                }, 500);
-            }
-        });
-    </script>
-
-    <style>
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Additional hover effects for portfolio links */
-        .footer-section a:hover {
-            color: var(--primary-orange) !important;
-        }
-
-        /* Loading animation for images */
-        .portfolio-image {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .portfolio-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .portfolio-item:hover .portfolio-image::after {
-            left: 100%;
-        }
-
-        /* Improved button animations */
-        .btn, .portfolio-link, .filter-btn {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before, .portfolio-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn:hover::before, .portfolio-link:hover::before {
-            left: 100%;
-        }
-    </style>
+// Generic accordion (Skills)
+document.querySelectorAll('.acc-head').forEach(head=>{
+  head.addEventListener('click', ()=>{
+    const item = head.closest('.acc-item');
+    item.classList.toggle('active');
+  });
+});
+</script>
 </body>
 </html>
