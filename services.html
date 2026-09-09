@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services - Jaynite Digital Solutions</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+:root {
+  --bg-dark: #050811;
+  --bg-card: rgba(13, 22, 41, 0.75);
+  --bg-card-hover: rgba(22, 36, 66, 0.85);
+  --border-glow: rgba(0, 229, 255, 0.18);
+  --border-glow-active: rgba(0, 229, 255, 0.5);
+
+  --cyan-glow: #00e5ff;
+  --electric-blue: #2979ff;
+  --neon-orange: #ff6e40;
+  --text-main: #f0f4f8;
+  --text-muted: #8a99ad;
+
+  --glass-bg: rgba(7, 13, 26, 0.65);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(16px);
+  --shadow-glow: 0 0 30px rgba(0, 229, 255, 0.12);
+  --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 122px; }
+@media (min-width: 900px) { section[id] { scroll-margin-top: 88px; } }
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(41, 121, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 60%, rgba(0, 229, 255, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 50% 90%, rgba(255, 110, 64, 0.05) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+.container { max-width: 1240px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.85rem 1.6rem; border-radius: 8px; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: var(--transition); position: relative; overflow: hidden; z-index: 1; border: none; }
+.btn-cyan { background: linear-gradient(135deg, var(--cyan-glow), var(--electric-blue)); color: #030a16; box-shadow: 0 0 20px rgba(0, 229, 255, 0.3); }
+.btn-cyan:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(0, 229, 255, 0.5); color: #000; }
+.btn-orange { background: linear-gradient(135deg, var(--neon-orange), #d84315); color: #fff; box-shadow: 0 0 20px rgba(255, 110, 64, 0.3); }
+.btn-orange:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(255, 110, 64, 0.5); }
+.btn-outline { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.2); color: var(--text-main); backdrop-filter: var(--glass-blur); }
+.btn-outline:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--cyan-glow); color: var(--cyan-glow); }
+.btn-block { width: 100%; justify-content: center; }
+
+/* Header */
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border-bottom: var(--glass-border); transition: var(--transition); }
+.header-utility { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 0.85rem 20px; }
+.header-utility .menu-toggle { justify-self: start; }
+.header-utility > a { justify-self: center; }
+.site-logo { height: 40px; width: auto; max-width: 150px; object-fit: contain; border-radius: 8px; border: 1px solid var(--border-glow); background: #fff; padding: 3px 8px; }
+.logo-mark { width: 42px; height: 42px; background: linear-gradient(135deg, var(--cyan-glow), var(--electric-blue)); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #000; font-size: 1.2rem; }
+
+.brand-strip { display: flex; align-items: center; justify-content: center; gap: 0.6rem; padding: 0.55rem 20px; border-top: 1px solid rgba(255,255,255,0.05); background: rgba(0, 229, 255, 0.03); }
+.brand-strip span { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; color: var(--cyan-glow); text-transform: uppercase; }
+.brand-strip i { color: var(--cyan-glow); font-size: 0.5rem; }
+
+.header-desktop { display: none; }
+
+@media (min-width: 900px) {
+  .header-utility { display: none; }
+  .brand-strip { display: none; }
+  .header-desktop { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 0; }
+  .brand-lockup { display: flex; align-items: center; text-decoration: none; }
+  .brand-lockup .site-logo { height: 46px; max-width: 190px; }
+
+  .nav-desktop ul { display: flex; list-style: none; align-items: center; gap: 2rem; }
+  .nav-desktop a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.04em; text-transform: uppercase; transition: var(--transition); }
+  .nav-desktop a.active, .nav-desktop a:hover { color: var(--cyan-glow); text-shadow: 0 0 10px rgba(0, 229, 255, 0.5); }
+
+  .nav-desktop li.has-dropdown { position: relative; }
+  .dropdown { position: absolute; top: 100%; left: -10px; min-width: 290px; background: rgba(7, 13, 26, 0.95); backdrop-filter: var(--glass-blur); border: var(--glass-border); border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6), var(--shadow-glow); padding: 0.6rem 0; opacity: 0; visibility: hidden; transform: translateY(12px); transition: var(--transition); z-index: 100; }
+  .has-dropdown:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .dropdown a { display: flex; align-items: center; gap: 0.8rem; padding: 0.7rem 1.2rem; font-size: 0.82rem; text-transform: none; letter-spacing: 0; color: var(--text-muted); }
+  .dropdown a:hover { background: rgba(0, 229, 255, 0.08); color: var(--cyan-glow); }
+  .dropdown a i { width: 18px; color: var(--cyan-glow); }
+  .dropdown-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 0.4rem 1rem; }
+}
+
+.menu-toggle { display: flex; flex-direction: column; gap: 6px; width: 26px; background: none; border: none; cursor: pointer; }
+.menu-toggle span { width: 100%; height: 2px; background: var(--cyan-glow); box-shadow: 0 0 8px var(--cyan-glow); }
+
+.mobile-menu { position: fixed; inset: 0; background: rgba(5, 8, 17, 0.98); backdrop-filter: var(--glass-blur); transform: translateY(-100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 2000; display: flex; flex-direction: column; overflow-y: auto; }
+.mobile-menu.active { transform: translateY(0); }
+.mm-top { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 20px; border-bottom: var(--glass-border); }
+.mm-close { background: none; border: none; font-size: 2rem; color: var(--cyan-glow); cursor: pointer; }
+.mm-body { flex: 1; padding: 1rem 0; }
+.mm-list { list-style: none; }
+.mm-list>li { border-bottom: 1px solid rgba(255,255,255,0.04); }
+.mm-list>li>a, .mm-list>li>.mm-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 1.1rem 20px; background: none; border: none; text-align: left; }
+.mm-submenu { display: none; list-style: none; background: rgba(0,0,0,0.3); }
+.mm-submenu.active { display: block; }
+.mm-submenu li a { display: flex; align-items: center; gap: 0.8rem; padding: 0.8rem 20px 0.8rem 2.5rem; font-size: 0.88rem; color: var(--text-muted); text-decoration: none; }
+
+/* Section label */
+.section-label { text-align: center; max-width: 650px; margin: 0 auto 3rem; }
+.section-label .kicker { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--cyan-glow); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.8rem; }
+.section-label.orange .kicker { color: var(--neon-orange); }
+.section-label h2 { font-size: 2.1rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+.section-label p { color: var(--text-muted); font-size: 0.95rem; margin-top: 0.8rem; }
+
+/* ===== Video Hero ===== */
+.svc-hero { position: relative; overflow: hidden; padding: 8.5rem 0 3rem; border-bottom: var(--glass-border); min-height: 460px; display: flex; align-items: flex-end; }
+.svc-hero-media { position: absolute; inset: 0; z-index: 0; background: linear-gradient(160deg, #071022, #0a1830 60%, #051018); }
+.svc-hero-media video { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; }
+.svc-hero-scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,8,17,0.55) 0%, rgba(5,8,17,0.75) 60%, rgba(5,8,17,0.96) 100%); }
+.svc-hero .container { position: relative; z-index: 1; }
+.breadcrumb { display: flex; align-items: center; flex-wrap: wrap; gap: 0.6rem; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; margin-bottom: 1.4rem; }
+.breadcrumb a { color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: var(--transition); }
+.breadcrumb a:hover { color: var(--cyan-glow); }
+.breadcrumb .sep { color: rgba(255,255,255,0.2); font-size: 0.65rem; }
+.breadcrumb .current { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--cyan-glow); font-weight: 700; background: rgba(0, 229, 255, 0.08); border: 1px solid rgba(0, 229, 255, 0.3); padding: 0.3rem 0.85rem; border-radius: 20px; }
+.svc-hero h1 { color: #fff; font-size: 2.15rem; font-weight: 800; margin-bottom: 0.8rem; letter-spacing: -0.02em; max-width: 680px; }
+.svc-hero h1 span { background: linear-gradient(135deg, var(--cyan-glow), var(--electric-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.svc-hero > .container > p { color: var(--text-muted); max-width: 560px; font-size: 1rem; margin-bottom: 2.2rem; }
+@media (min-width: 768px) { .svc-hero h1 { font-size: 3rem; } }
+
+/* Search + filter */
+.svc-search-wrap { max-width: 640px; }
+.svc-search-box { display: flex; align-items: center; gap: 0.8rem; background: rgba(7,13,26,0.85); border: 1px solid var(--border-glow-active); border-radius: 14px; padding: 0.95rem 1.3rem; backdrop-filter: var(--glass-blur); box-shadow: var(--shadow-glow); }
+.svc-search-box i.fa-magnifying-glass { color: var(--cyan-glow); font-size: 1.05rem; flex-shrink: 0; }
+.svc-search-box input { flex: 1; background: none; border: none; outline: none; color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.98rem; }
+.svc-search-box input::placeholder { color: var(--text-muted); }
+.svc-search-box .clear-btn { display: none; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1rem; padding: 0.2rem; }
+.svc-search-box .clear-btn.show { display: block; }
+.search-hint { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.7rem; font-family: 'JetBrains Mono', monospace; }
+
+.filter-bar { padding: 1.6rem 0; border-bottom: var(--glass-border); position: sticky; top: 0; z-index: 50; background: rgba(5,8,17,0.92); backdrop-filter: var(--glass-blur); }
+@media (min-width: 900px) { .filter-bar { top: 79px; } }
+@media (max-width: 899px) { .filter-bar { top: 112px; } }
+.filter-pills { display: flex; gap: 0.6rem; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.filter-pills::-webkit-scrollbar { display: none; }
+.filter-pill { flex: 0 0 auto; white-space: nowrap; background: var(--bg-card); border: 1px solid var(--border-glow); color: var(--text-muted); padding: 0.55rem 1.1rem; border-radius: 30px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: var(--transition); font-family: 'JetBrains Mono', monospace; }
+.filter-pill:hover { border-color: var(--border-glow-active); color: #fff; }
+.filter-pill.active { background: linear-gradient(135deg, var(--cyan-glow), var(--electric-blue)); color: #030a16; border-color: transparent; }
+.no-results { display: none; text-align: center; padding: 3rem 1rem; color: var(--text-muted); font-size: 0.95rem; }
+.no-results.show { display: block; }
+.no-results i { font-size: 2rem; color: var(--cyan-glow); margin-bottom: 1rem; display: block; opacity: 0.6; }
+
+/* ===== Featured Quick-Earn cards ===== */
+.quick-earn { padding: 4.5rem 0 2rem; }
+.qe-grid { display: grid; grid-template-columns: 1fr; gap: 1.6rem; }
+@media (min-width: 900px) { .qe-grid { grid-template-columns: repeat(2, 1fr); } }
+.qe-card { position: relative; background: var(--bg-card); border: 1.5px solid rgba(255, 110, 64, 0.35); border-radius: 20px; overflow: hidden; backdrop-filter: var(--glass-blur); transition: var(--transition); box-shadow: 0 0 30px rgba(255, 110, 64, 0.08); scroll-margin-top: 160px; }
+.qe-card:hover { border-color: var(--neon-orange); transform: translateY(-6px); box-shadow: 0 0 40px rgba(255, 110, 64, 0.25); }
+.qe-badge { position: absolute; top: 16px; left: 16px; z-index: 3; background: linear-gradient(135deg, var(--neon-orange), #d84315); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.4rem 0.85rem; border-radius: 20px; display: flex; align-items: center; gap: 0.4rem; box-shadow: 0 4px 15px rgba(255,110,64,0.4); }
+.qe-slideshow { position: relative; height: 190px; overflow: hidden; background: linear-gradient(135deg, rgba(255,110,64,0.1), rgba(0,229,255,0.05)); }
+.qe-slideshow img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease; filter: brightness(0.75) contrast(1.05); }
+.qe-slideshow img.active { opacity: 1; }
+.qe-fallback-icon { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--neon-orange); font-size: 3rem; opacity: 0.5; }
+.qe-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 3; }
+.qe-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.35); transition: var(--transition); }
+.qe-dots span.active { background: var(--neon-orange); width: 18px; border-radius: 4px; }
+.qe-body { padding: 1.6rem 1.6rem 1.8rem; }
+.qe-body h3 { font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem; }
+.qe-body > p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.qe-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.3rem; }
+.qe-tag { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.72rem; font-weight: 600; color: var(--cyan-glow); background: rgba(0,229,255,0.08); border: 1px solid var(--border-glow); padding: 0.3rem 0.7rem; border-radius: 20px; }
+.qe-tag i { font-size: 0.68rem; }
+
+/* ===== Service groups w/ photo cards ===== */
+.svc-section { padding: 4.5rem 0; }
+.svc-group { }
+.svc-group + .svc-group { margin-top: 3.5rem; }
+.svc-group-head { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.6rem; }
+.svc-group-head i { color: var(--cyan-glow); font-size: 1.1rem; }
+.svc-group-head h3 { font-size: 1.3rem; font-weight: 800; color: #fff; }
+.svc-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 640px) { .svc-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .svc-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.svc-card { background: var(--bg-card); border: 1px solid var(--border-glow); border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: var(--transition); backdrop-filter: var(--glass-blur); position: relative; scroll-margin-top: 160px; }
+.svc-card:hover { background: var(--bg-card-hover); border-color: var(--border-glow-active); transform: translateY(-6px); box-shadow: var(--shadow-glow); }
+.svc-photo { position: relative; height: 170px; overflow: hidden; }
+.svc-photo img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7) contrast(1.1); transition: var(--transition); }
+.svc-card:hover .svc-photo img { transform: scale(1.08); filter: brightness(0.9); }
+.svc-fallback-icon { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(13, 22, 41, 0.9); color: var(--cyan-glow); font-size: 2.6rem; }
+.svc-body { padding: 1.4rem 1.4rem 1.6rem; flex: 1; display: flex; flex-direction: column; }
+.svc-body h3 { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+.svc-body > p { color: var(--text-muted); font-size: 0.86rem; margin-bottom: 1rem; }
+.svc-feats { list-style: none; margin-bottom: 1.2rem; flex: 1; }
+.svc-feats li { display: flex; align-items: flex-start; gap: 0.55rem; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+.svc-feats li i { color: var(--cyan-glow); margin-top: 0.2rem; font-size: 0.72rem; flex-shrink: 0; }
+.svc-cta { color: var(--cyan-glow); text-decoration: none; font-weight: 700; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 0.4rem; }
+.svc-cta i { transition: var(--transition); font-size: 0.75rem; }
+.svc-card:hover .svc-cta i { transform: translateX(4px); }
+
+/* On-request card (no photo) */
+.request-card { background: var(--bg-card); border: 1px dashed var(--border-glow-active); border-radius: 16px; padding: 1.6rem; backdrop-filter: var(--glass-blur); transition: var(--transition); scroll-margin-top: 160px; }
+.request-card:hover { border-color: var(--cyan-glow); transform: translateY(-4px); }
+.request-card .ri { width: 48px; height: 48px; border-radius: 10px; background: rgba(0,229,255,0.08); border: 1px solid var(--border-glow); display: flex; align-items: center; justify-content: center; color: var(--cyan-glow); font-size: 1.2rem; margin-bottom: 1rem; }
+.request-card h3 { font-size: 1.02rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+.request-card p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem; }
+
+/* Process */
+.process { padding: 4.5rem 0; border-top: var(--glass-border); }
+.process-grid { display: grid; grid-template-columns: 1fr; gap: 1.8rem; }
+@media (min-width: 768px) { .process-grid { grid-template-columns: repeat(4, 1fr); } }
+.process-step { text-align: center; padding: 0 0.5rem; position: relative; }
+.process-num { width: 54px; height: 54px; border-radius: 50%; background: var(--bg-card); border: 1.5px solid var(--border-glow-active); color: var(--cyan-glow); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.15rem; margin: 0 auto 1rem; box-shadow: var(--shadow-glow); }
+.process-step h4 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+.process-step p { font-size: 0.85rem; color: var(--text-muted); }
+
+/* Stats */
+.stat-band { padding: 3rem 0; border-top: var(--glass-border); border-bottom: var(--glass-border); }
+.stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.stat-card { background: var(--bg-card); border: 1px solid var(--border-glow); padding: 1.5rem; border-radius: 12px; backdrop-filter: var(--glass-blur); text-align: center; transition: var(--transition); }
+.stat-card:hover { border-color: var(--cyan-glow); transform: translateY(-4px); box-shadow: var(--shadow-glow); }
+.stat-num { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 700; color: var(--cyan-glow); text-shadow: 0 0 20px rgba(0, 229, 255, 0.4); }
+.stat-lbl { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 0.04em; }
+@media (min-width: 768px) { .stat-grid { grid-template-columns: repeat(4, 1fr); } .stat-num { font-size: 2.5rem; } }
+
+/* CTA */
+.cta { padding: 6rem 0; }
+.cta-box { background: linear-gradient(135deg, rgba(13, 22, 41, 0.9), rgba(5, 8, 17, 0.95)); border: 1px solid var(--border-glow-active); border-radius: 24px; padding: 3.5rem 2rem; text-align: center; position: relative; overflow: hidden; box-shadow: var(--shadow-glow); }
+.cta-box h2 { font-size: 2rem; color: #fff; margin-bottom: 0.8rem; }
+.cta-box p { color: var(--text-muted); max-width: 520px; margin: 0 auto 2rem; font-size: 0.98rem; }
+.cta-box .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* Footer */
+footer { background: #02040a; border-top: var(--glass-border); color: var(--text-muted); padding: 4rem 0 2rem; font-size: 0.88rem; }
+.footer-content { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+@media (min-width: 768px) { .footer-content { grid-template-columns: repeat(4, 1fr); } }
+.footer-section h3 { color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 1.2rem; letter-spacing: 0.02em; }
+.footer-section h3 .f-plus { display: none; }
+.footer-section ul { list-style: none; }
+.footer-section ul li { margin-bottom: 0.6rem; }
+.footer-section a { color: var(--text-muted); text-decoration: none; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.6rem; }
+.footer-section a:hover { color: var(--cyan-glow); }
+.footer-section a i { color: var(--cyan-glow); font-size: 0.8rem; }
+.social-icons { display: flex; gap: 0.8rem; margin-top: 1.2rem; }
+.social-icons a { width: 38px; height: 38px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-main); }
+.social-icons a:hover { background: var(--cyan-glow); color: #000; border-color: var(--cyan-glow); box-shadow: 0 0 15px var(--cyan-glow); }
+.footer-bottom { text-align: center; padding-top: 2rem; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+@media (max-width: 767px) {
+  .footer-section.collapsible h3 { cursor: pointer; display: flex; align-items: center; justify-content: space-between; margin-bottom: 0; padding: 1rem 0; }
+  .footer-section.collapsible .f-plus { display: inline-flex; color: var(--cyan-glow); transition: var(--transition); font-size: 0.85rem; }
+  .footer-section.collapsible.active .f-plus { transform: rotate(135deg); color: var(--neon-orange); }
+  .footer-section.collapsible .footer-section-body { max-height: 0; padding-bottom: 0; overflow: hidden; transition: max-height 0.3s ease, padding-bottom 0.3s ease; }
+  .footer-section.collapsible.active .footer-section-body { max-height: 600px; padding-bottom: 1rem; }
+}
+
+.wa-float { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(37, 211, 102, 0.4); z-index: 900; text-decoration: none; transition: var(--transition); }
+.wa-float:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(37, 211, 102, 0.7); }
+.wa-float i { color: #fff; font-size: 1.6rem; }
+
+/* Scroll reveal */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+html:not(.js) .reveal { opacity: 1; transform: none; }
+.reveal.in-view { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header id="siteHeader">
+  <div class="header-utility">
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html">
+      <img src="images/logo.png" alt="Jaynite Digital Solutions" class="site-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <span class="logo-mark" style="display:none"><i class="fas fa-bolt"></i></span>
+    </a>
+  </div>
+
+  <div class="brand-strip"><i class="fas fa-diamond"></i><span>Jaynite Digital Solutions</span><i class="fas fa-diamond"></i></div>
+
+  <div class="container header-desktop">
+    <a href="index.html" class="brand-lockup">
+      <img src="images/logo.png" alt="Jaynite Digital Solutions" class="site-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <span class="logo-mark" style="display:none"><i class="fas fa-bolt"></i></span>
+    </a>
+    <nav class="nav-desktop">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="has-dropdown">
+          <a href="services.html" class="active">Services <i class="fas fa-chevron-down caret"></i></a>
+          <div class="dropdown">
+            <a href="#web"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a>
+            <a href="#uiux"><i class="fas fa-pen-nib"></i> UI/UX Design</a>
+            <a href="#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
+            <a href="#cloud"><i class="fas fa-cloud"></i> Cloud Computing</a>
+            <a href="#marketing"><i class="fas fa-bullhorn"></i> Digital Marketing</a>
+            <div class="dropdown-divider"></div>
+            <a href="#printing"><i class="fas fa-print"></i> Printing, Flyers &amp; Banners</a>
+            <a href="#computers"><i class="fas fa-desktop"></i> Computers &amp; IT Accessories</a>
+            <a href="#tutoring"><i class="fas fa-chalkboard-teacher"></i> Home &amp; Online Tutoring</a>
+            <div class="dropdown-divider"></div>
+            <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener"><i class="fas fa-sim-card"></i> Buy Data Bundles ↗</a>
+            <a href="#checkers"><i class="fas fa-graduation-cap"></i> Results Checkers</a>
+          </div>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn btn-orange"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mm-top">
+    <img src="images/logo.png" alt="Jaynite Digital Solutions" class="site-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <span class="logo-mark" style="display:none"><i class="fas fa-bolt"></i></span>
+    <button class="mm-close" id="mmClose" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="mm-body">
+    <ul class="mm-list">
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <button class="mm-toggle" id="mmServicesToggle">
+          Services <i class="fas fa-chevron-down caret"></i>
+        </button>
+        <ul class="mm-submenu active" id="mmServicesSubmenu">
+          <li><a href="#web"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a></li>
+          <li><a href="#uiux"><i class="fas fa-pen-nib"></i> UI/UX Design</a></li>
+          <li><a href="#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a></li>
+          <li><a href="#cloud"><i class="fas fa-cloud"></i> Cloud Computing</a></li>
+          <li><a href="#marketing"><i class="fas fa-bullhorn"></i> Digital Marketing</a></li>
+          <li><a href="#printing"><i class="fas fa-print"></i> Printing &amp; Publications</a></li>
+          <li><a href="#computers"><i class="fas fa-desktop"></i> Computers &amp; Accessories</a></li>
+          <li><a href="#tutoring"><i class="fas fa-chalkboard-teacher"></i> Tutoring</a></li>
+          <li><a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener"><i class="fas fa-sim-card"></i> Buy Data Bundles</a></li>
+          <li><a href="#checkers"><i class="fas fa-graduation-cap"></i> Results Checkers</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn btn-orange" style="margin:20px; text-align:center; justify-content:center"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+</div>
+
+<!-- Video Hero -->
+<section class="svc-hero">
+  <div class="svc-hero-media">
+    <video autoplay muted loop playsinline poster="images/services-hero-poster.jpg">
+      <source src="images/services-hero.mp4" type="video/mp4">
+    </video>
+    <div class="svc-hero-scrim"></div>
+  </div>
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html"><i class="fas fa-house"></i> Home</a>
+      <span class="sep"><i class="fas fa-chevron-right"></i></span>
+      <span class="current"><i class="fas fa-layer-group"></i> Services</span>
+    </nav>
+    <h1>Everything You Need, <span>Under One Roof</span></h1>
+    <p>From web development to walk-in printing — explore every service Jaynite Digital Solutions offers, and reach us directly on WhatsApp whenever you're ready.</p>
+
+    <div class="svc-search-wrap">
+      <div class="svc-search-box">
+        <i class="fas fa-magnifying-glass"></i>
+        <input type="text" id="svcSearch" placeholder="Search services — e.g. 'website', 'data', 'checker', 'frame'...">
+        <button class="clear-btn" id="svcClear" aria-label="Clear search"><i class="fas fa-xmark"></i></button>
+      </div>
+      <p class="search-hint">Try: web design · data bundles · results checker · printing · tutoring</p>
+    </div>
+  </div>
+</section>
+
+<!-- Filter Pills -->
+<div class="filter-bar">
+  <div class="container">
+    <div class="filter-pills">
+      <button class="filter-pill active" data-filter="all">All Services</button>
+      <button class="filter-pill" data-filter="quick">⚡ Quick Earn</button>
+      <button class="filter-pill" data-filter="digital">Digital &amp; Software</button>
+      <button class="filter-pill" data-filter="ground">Print &amp; Devices</button>
+      <button class="filter-pill" data-filter="forms">Forms &amp; Registrations</button>
+    </div>
+  </div>
+</div>
+
+<!-- Featured Quick-Earn: Data Bundles + Checkers -->
+<section class="quick-earn" id="quick-earn">
+  <div class="container">
+    <div class="section-label orange reveal">
+      <span class="kicker"><i class="fas fa-bolt"></i> Available Right Now</span>
+      <h2>Skip the Wait — Instant Purchase</h2>
+      <p>No appointment, no back-and-forth. These two are live 24/7 and ready to serve you this second.</p>
+    </div>
+
+    <div class="qe-grid">
+      <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener" class="qe-card reveal" id="data" data-search="data bundle mtn telecel airteltigo internet data buy cheap fast instant" data-category="quick">
+        <span class="qe-badge"><i class="fas fa-bolt"></i> Instant</span>
+        <div class="qe-slideshow">
+          <img src="images/databundle-1.jpg" alt="Buy data bundles" class="active" onerror="handleSlideError(this)">
+          <img src="images/databundle-2.jpg" alt="Data bundle options" onerror="handleSlideError(this)">
+          <div class="qe-fallback-icon" style="display:none"><i class="fas fa-sim-card"></i></div>
+          <div class="qe-dots"><span class="active"></span><span></span></div>
+        </div>
+        <div class="qe-body">
+          <h3>Buy Data Bundles</h3>
+          <p>Affordable MTN, Telecel &amp; AirtelTigo data — delivered to your number in minutes, any time of day.</p>
+          <div class="qe-tags">
+            <span class="qe-tag"><i class="fas fa-shield-halved"></i> Secure Checkout</span>
+            <span class="qe-tag"><i class="fas fa-clock"></i> 24/7 Available</span>
+          </div>
+          <span class="btn btn-orange btn-block">Buy Data Now <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc/checkers" target="_blank" rel="noopener" class="qe-card reveal" id="checkers" data-search="results checker wassce bece waec cssps voucher pin exam results" data-category="quick">
+        <span class="qe-badge"><i class="fas fa-bolt"></i> Instant</span>
+        <div class="qe-slideshow">
+          <img src="images/checker-1.jpg" alt="WASSCE BECE results checker" class="active" onerror="handleSlideError(this)">
+          <img src="images/checker-2.jpg" alt="Checker pin purchase" onerror="handleSlideError(this)">
+          <div class="qe-fallback-icon" style="display:none"><i class="fas fa-graduation-cap"></i></div>
+          <div class="qe-dots"><span class="active"></span><span></span></div>
+        </div>
+        <div class="qe-body">
+          <h3>WASSCE &amp; BECE Results Checkers</h3>
+          <p>Get your checker PIN instantly — no waiting in line. WAEC &amp; CSSPS vouchers delivered digitally.</p>
+          <div class="qe-tags">
+            <span class="qe-tag"><i class="fas fa-shield-halved"></i> Secure Checkout</span>
+            <span class="qe-tag"><i class="fas fa-clock"></i> 24/7 Available</span>
+          </div>
+          <span class="btn btn-orange btn-block">Get Your Checker <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stat-band">
+  <div class="container stat-grid">
+    <div class="stat-card reveal">
+      <div class="stat-num" data-target="50" data-suffix="+">0</div>
+      <div class="stat-lbl">Projects Completed</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="stat-num" data-target="200" data-suffix="+">0</div>
+      <div class="stat-lbl">Happy Clients</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="stat-num" data-target="5" data-suffix="+">0</div>
+      <div class="stat-lbl">Years Experience</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="stat-num" data-target="24" data-suffix="/7">0</div>
+      <div class="stat-lbl">Support Available</div>
+    </div>
+  </div>
+</section>
+
+<!-- Digital & On-the-ground Services -->
+<section class="svc-section">
+  <div class="container">
+
+    <div class="svc-group" id="digital-group">
+      <div class="svc-group-head reveal">
+        <i class="fas fa-code"></i>
+        <h3>Digital &amp; Software Services</h3>
+      </div>
+      <div class="svc-grid">
+        <a href="#web" class="svc-card reveal" id="web" data-search="web app development website software programming build" data-category="digital">
+          <div class="svc-photo">
+            <img src="images/service-web.jpg" alt="Web and app development" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="svc-fallback-icon" style="display:none"><i class="fas fa-laptop-code"></i></div>
+          </div>
+          <div class="svc-body">
+            <h3>Web &amp; App Development</h3>
+            <p>Modern, responsive websites and software built for performance and growth.</p>
+            <ul class="svc-feats">
+              <li><i class="fas fa-check"></i> Custom business websites &amp; e-commerce</li>
+              <li><i class="fas fa-check"></i> Mobile &amp; web app development</li>
+              <li><i class="fas fa-check"></i> Ongoing maintenance &amp; support</li>
+            </ul>
+            <span class="svc-cta">Discuss Your Project <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="#uiux" class="svc-card reveal" id="uiux" data-search="ui ux design wireframe prototype interface user experience" data-category="digital">
+          <div class="svc-photo">
+            <img src="images/service-uiux.jpg" alt="UI UX design" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="svc-fallback-icon" style="display:none"><i class="fas fa-pen-nib"></i></div>
+          </div>
+          <div class="svc-body">
+            <h3>UI/UX Design</h3>
+            <p>User-centered design that creates memorable digital experiences.</p>
+            <ul class="svc-feats">
+              <li><i class="fas fa-check"></i> Wireframing &amp; user research</li>
+              <li><i class="fas fa-check"></i> Mobile-first responsive interfaces</li>
+              <li><i class="fas fa-check"></i> Prototyping &amp; usability testing</li>
+            </ul>
+            <span class="svc-cta">Discuss Your Project <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="#security" class="svc-card reveal" id="security" data-search="cybersecurity security audit malware protection backup" data-category="digital">
+          <div class="svc-photo">
+            <img src="images/service-security.jpg" alt="Cybersecurity" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="svc-fallback-icon" style="display:none"><i class="fas fa-shield-alt"></i></div>
+          </div>
+          <div class="svc-body">
+            <h3>Cybersecurity</h3>
+            <p>Protecting digital assets with risk assessments and best-practice security.</p>
+            <ul class="svc-feats">
+              <li><i class="fas fa-check"></i> Security audits &amp; risk assessments</li>
+              <li><i class="fas fa-check"></i> Malware &amp; vulnerability protection</li>
+              <li><i class="fas fa-check"></i> Secure backup &amp; recovery planning</li>
+            </ul>
+            <span class="svc-cta">Discuss Your Project <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="#cloud" class="svc-card reveal" id="cloud" data-search="cloud computing aws firebase deployment migration hosting" data-category="digital">
+          <div class="svc-photo">
+            <img src="images/service-cloud.jpg" alt="Cloud computing" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="svc-fallback-icon" style="display:none"><i class="fas fa-cloud"></i></div>
+          </div>
+          <div class="svc-body">
+            <h3>Cloud Computing</h3>
+            <p>AWS/Firebase deployment, architecture migration, and automated backups.</p>
+            <ul class="svc-feats">
+              <li><i class="fas fa-check"></i> Cloud infrastructure setup</li>
+              <li><i class="fas fa-check"></i> Migration from legacy systems</li>
+              <li><i class="fas fa-check"></i> Automated backup solutions</li>
+            </ul>
+            <span class="svc-cta">Discuss Your Project <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="#marketing" class="svc-card reveal" id="marketing" data-search="digital marketing social media seo ads content strategy" data-category="digital">
+          <div class="svc-photo">
+            <img src="images/service-marketing.jpg" alt="Digital marketing" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="svc-fallback-icon" style="display:none"><i class="fas fa-bullhorn"></i></div>
+          </div>
+          <div class="svc-body">
+            <h3>Digital Marketing</h3>
+            <p>Strategic campaigns that boost your online presence and reach.</p>
+            <ul class="svc-feats">
+              <li><i class="fas fa-check"></i> Social media management</li>
+              <li><i class="fas fa-check"></i> SEO &amp; content strategy</li>
+              <li><i class="fas fa-check"></i> Paid ad campaigns &amp; reporting</li>
+            </ul>
+            <span class="svc-cta">Discuss Your Project <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="svc-group" id="ground-group">
+      <div class="svc-group-head reveal">
+        <i class="fas fa-store"></i>
+        <h3>Print, Devices &amp; Learning</h3>
+      </div>
+      <div class="svc-grid">
+        <a href="#printing" class="svc-card reveal" id="printing" data-search="printing flyers banners frames t-shirts scanning photocopying publications" data-category="ground">
+          <div class="svc-photo">
+            <img src="images/service-printing.jpg" alt="Printing and publications" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="svc-fallback-icon" style="display:none"><i class="fas fa-print"></i></div>
+          </div>
+          <div class="svc-body">
+            <h3>Printing &amp; Publications</h3>
+            <p>Flyers, banners, frames, t-shirts, scanning and photocopying — walk-in or delivered.</p>
+            <ul class="svc-feats">
+              <li><i class="fas fa-check"></i> Flyers, posters &amp; banners</li>
+              <li><i class="fas fa-check"></i> Picture frames &amp; custom t-shirts</li>
+              <li><i class="fas fa-check"></i> Document scanning &amp; photocopying</li>
+            </ul>
+            <span class="svc-cta">Place an Order <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="#computers" class="svc-card reveal" id="computers" data-search="computers laptops accessories chargers mice keyboards it hardware" data-category="ground">
+          <div class="svc-photo">
+            <img src="images/service-computers.jpg" alt="Computers and accessories" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="svc-fallback-icon" style="display:none"><i class="fas fa-desktop"></i></div>
+          </div>
+          <div class="svc-body">
+            <h3>Computers &amp; IT Accessories</h3>
+            <p>Laptops, computers and IT accessories for home, school and office use.</p>
+            <ul class="svc-feats">
+              <li><i class="fas fa-check"></i> New &amp; quality pre-owned laptops</li>
+              <li><i class="fas fa-check"></i> Chargers, mice, keyboards &amp; more</li>
+              <li><i class="fas fa-check"></i> Device setup &amp; software install</li>
+            </ul>
+            <span class="svc-cta">Ask What's Available <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="#tutoring" class="svc-card reveal" id="tutoring" data-search="tutoring lessons ict computer literacy training home online" data-category="ground">
+          <div class="svc-photo">
+            <img src="images/service-tutoring.jpg" alt="Home and online tutoring" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="svc-fallback-icon" style="display:none"><i class="fas fa-chalkboard-teacher"></i></div>
+          </div>
+          <div class="svc-body">
+            <h3>Home &amp; Online Tutoring</h3>
+            <p>Professional tutoring in various subjects and technical skills, in-person or online.</p>
+            <ul class="svc-feats">
+              <li><i class="fas fa-check"></i> One-on-one &amp; group sessions</li>
+              <li><i class="fas fa-check"></i> In-person (home) or fully online</li>
+              <li><i class="fas fa-check"></i> ICT &amp; computer literacy training</li>
+            </ul>
+            <span class="svc-cta">Book a Session <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="svc-group" id="forms-group">
+      <div class="svc-group-head reveal">
+        <i class="fas fa-file-signature"></i>
+        <h3>Forms &amp; Institutional Registrations</h3>
+      </div>
+      <div class="svc-grid">
+        <div class="request-card reveal" id="forms" data-search="university forms admission application institutional on request" data-category="forms">
+          <div class="ri"><i class="fas fa-file-signature"></i></div>
+          <h3>University &amp; Institutional Forms</h3>
+          <p>Available on request — message us with the details and we'll purchase and guide you through it.</p>
+          <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="svc-cta">Request on WhatsApp <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="request-card reveal" id="registrations" data-search="ssnit gra ghana card nia dvla rgd nmc business registration government" data-category="forms">
+          <div class="ri"><i class="fas fa-landmark"></i></div>
+          <h3>Government &amp; Institutional Registrations</h3>
+          <p>SSNIT, GRA, Ghana Card, DVLA, business registration &amp; more — we guide you through every field.</p>
+          <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="svc-cta">Ask What We Can Handle <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="no-results" id="noResults">
+  <i class="fas fa-magnifying-glass"></i>
+  <p>No services match your search. Try a different term, or <a href="https://wa.me/233201485621" target="_blank" rel="noopener" style="color:var(--cyan-glow)">ask us on WhatsApp</a> — we probably still do it.</p>
+</div>
+
+<!-- Process -->
+<section class="process">
+  <div class="container">
+    <div class="section-label reveal">
+      <span class="kicker">How It Works</span>
+      <h2>Simple, From Message to Delivery</h2>
+      <p>No long forms — just tell us what you need.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <div class="process-num">1</div>
+        <h4>Message Us</h4>
+        <p>Reach out on WhatsApp with what you need.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">2</div>
+        <h4>We Discuss Details</h4>
+        <p>We understand your requirements and timeline.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">3</div>
+        <h4>We Get to Work</h4>
+        <p>Your project, order, or request is handled promptly.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">4</div>
+        <h4>Delivery</h4>
+        <p>Pick up, walk-in collect, or have it delivered to you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <div class="cta-box reveal">
+      <h2>Not Sure Where to Start?</h2>
+      <p>Tell us what you're trying to do and we'll point you to the right service.</p>
+      <div class="btn-group">
+        <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn btn-orange"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+        <a href="index.html" class="btn btn-outline"><i class="fas fa-house"></i> Back to Home</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Jaynite Digital Solutions</h3>
+        <p style="margin-bottom: 1rem; color: var(--text-muted);">Empowering digital innovation in Ghana with cutting-edge web design, publication media, and IT support services.</p>
+        <div class="social-icons">
+          <a href="https://youtube.com/@jaynitedigital" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://wa.me/233201485621" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/jaynite_digital" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-section collapsible">
+        <h3>Quick Links <span class="f-plus"><i class="fas fa-plus"></i></span></h3>
+        <div class="footer-section-body">
+        <ul>
+          <li><a href="index.html"><i class="fas fa-angle-right"></i> Home</a></li>
+          <li><a href="services.html"><i class="fas fa-angle-right"></i> Services</a></li>
+          <li><a href="about.html"><i class="fas fa-angle-right"></i> About</a></li>
+          <li><a href="index.html#institutions"><i class="fas fa-angle-right"></i> Institutions We Support</a></li>
+          <li><a href="index.html#payments"><i class="fas fa-angle-right"></i> Payment Options</a></li>
+          <li><a href="index.html#toolkit"><i class="fas fa-angle-right"></i> Free Tools</a></li>
+          <li><a href="contact.html"><i class="fas fa-angle-right"></i> Contact</a></li>
+        </ul>
+        </div>
+      </div>
+      <div class="footer-section collapsible">
+        <h3>Services <span class="f-plus"><i class="fas fa-plus"></i></span></h3>
+        <div class="footer-section-body">
+        <ul>
+          <li><a href="#web"><i class="fas fa-angle-right"></i> Web &amp; App Development</a></li>
+          <li><a href="#printing"><i class="fas fa-angle-right"></i> Printing &amp; Publications</a></li>
+          <li><a href="#computers"><i class="fas fa-angle-right"></i> Computers &amp; Accessories</a></li>
+          <li><a href="#tutoring"><i class="fas fa-angle-right"></i> Tutoring Services</a></li>
+          <li><a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener"><i class="fas fa-angle-right"></i> Buy Data Bundles</a></li>
+          <li><a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc/checkers" target="_blank" rel="noopener"><i class="fas fa-angle-right"></i> Results Checkers</a></li>
+        </ul>
+        </div>
+      </div>
+      <div class="footer-section collapsible">
+        <h3>Contact Info <span class="f-plus"><i class="fas fa-plus"></i></span></h3>
+        <div class="footer-section-body">
+        <ul>
+          <li><a href="#"><i class="fas fa-location-dot"></i> Sunyani, Bono Region, Ghana</a></li>
+          <li><a href="https://wa.me/233201485621" target="_blank"><i class="fab fa-whatsapp"></i> +233 20 148 5621</a></li>
+          <li><a href="mailto:jaynitedigital@gmail.com"><i class="fas fa-envelope"></i> jaynitedigital@gmail.com</a></li>
+          <li><a href="https://jaynitedigital.me"><i class="fas fa-globe"></i> jaynitedigital.me</a></li>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Jaynite Digital Solutions. Engineered with High-Tech Aesthetics.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+// Mobile menu toggle
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const mmClose = document.getElementById('mmClose');
+
+function openMenu(){ mobileMenu.classList.add('active'); document.body.style.overflow='hidden'; }
+function closeMenu(){ mobileMenu.classList.remove('active'); document.body.style.overflow='auto'; }
+
+menuToggle.addEventListener('click', openMenu);
+mmClose.addEventListener('click', closeMenu);
+document.querySelectorAll('.mm-list > li > a, .mm-submenu a').forEach(l=>l.addEventListener('click', closeMenu));
+
+const mmToggle = document.getElementById('mmServicesToggle');
+const mmSubmenu = document.getElementById('mmServicesSubmenu');
+mmToggle.addEventListener('click', ()=>{ mmSubmenu.classList.toggle('active'); });
+
+// Footer Accordion (mobile only)
+document.querySelectorAll('.footer-section.collapsible > h3').forEach(h=>{
+  h.addEventListener('click', ()=> h.closest('.footer-section').classList.toggle('active'));
+});
+
+// Animated stat counters
+const statNumbers = document.querySelectorAll('.stat-num');
+const statObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting && !entry.target.dataset.done){
+      entry.target.dataset.done = 'true';
+      const target = parseInt(entry.target.dataset.target, 10);
+      const suffix = entry.target.dataset.suffix || '';
+      const duration = 1400;
+      const start = performance.now();
+      function tick(now){
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        entry.target.textContent = Math.round(eased * target) + suffix;
+        if(progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+  });
+},{threshold:0.4});
+statNumbers.forEach(el=>statObserver.observe(el));
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){ entry.target.classList.add('in-view'); revealObserver.unobserve(entry.target); }
+  });
+},{threshold:0.12});
+revealEls.forEach(el=>revealObserver.observe(el));
+
+// Quick-earn slideshow (handles missing images gracefully)
+function handleSlideError(img){
+  img.style.display = 'none';
+  const container = img.closest('.qe-slideshow');
+  const remaining = container.querySelectorAll('img:not([style*="display: none"])');
+  if(remaining.length === 0){
+    container.querySelector('.qe-fallback-icon').style.display = 'flex';
+    container.querySelector('.qe-dots').style.display = 'none';
+  }
+}
+document.querySelectorAll('.qe-slideshow').forEach(container=>{
+  const imgs = Array.from(container.querySelectorAll('img'));
+  const dots = Array.from(container.querySelectorAll('.qe-dots span'));
+  let idx = 0;
+  setInterval(()=>{
+    const visible = imgs.filter(i=>i.style.display !== 'none');
+    if(visible.length < 2) return;
+    imgs[idx].classList.remove('active');
+    dots[idx] && dots[idx].classList.remove('active');
+    idx = (idx + 1) % imgs.length;
+    imgs[idx].classList.add('active');
+    dots[idx] && dots[idx].classList.add('active');
+  }, 3200);
+});
+
+// Search + Filter
+const searchInput = document.getElementById('svcSearch');
+const clearBtn = document.getElementById('svcClear');
+const filterPills = document.querySelectorAll('.filter-pill');
+const allCards = document.querySelectorAll('[data-search]');
+const noResults = document.getElementById('noResults');
+let activeCategory = 'all';
+
+function applyFilters(){
+  const q = searchInput.value.trim().toLowerCase();
+  clearBtn.classList.toggle('show', q.length > 0);
+  let visibleCount = 0;
+
+  allCards.forEach(card=>{
+    const matchesSearch = !q || card.dataset.search.includes(q);
+    const matchesCategory = activeCategory === 'all' || card.dataset.category === activeCategory;
+    const show = matchesSearch && matchesCategory;
+    card.style.display = show ? '' : 'none';
+    if(show) visibleCount++;
+  });
+
+  document.querySelectorAll('.svc-group').forEach(group=>{
+    const cards = group.querySelectorAll('[data-search]');
+    const anyVisible = Array.from(cards).some(c=>c.style.display !== 'none');
+    group.style.display = anyVisible ? '' : 'none';
+  });
+
+  document.getElementById('quick-earn').style.display =
+    Array.from(document.querySelectorAll('#quick-earn [data-search]')).some(c=>c.style.display !== 'none') ? '' : 'none';
+
+  noResults.classList.toggle('show', visibleCount === 0);
+}
+
+searchInput.addEventListener('input', applyFilters);
+clearBtn.addEventListener('click', ()=>{ searchInput.value=''; applyFilters(); searchInput.focus(); });
+filterPills.forEach(pill=>{
+  pill.addEventListener('click', ()=>{
+    filterPills.forEach(p=>p.classList.remove('active'));
+    pill.classList.add('active');
+    activeCategory = pill.dataset.filter;
+    applyFilters();
+  });
+});
+</script>
+</body>
+</html>
