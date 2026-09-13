@@ -119,9 +119,8 @@ header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: 
 /* Section label */
 .section-label { text-align: center; max-width: 650px; margin: 0 auto 3rem; }
 .section-label .kicker { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--cyan-glow); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.8rem; }
-.section-label.orange .kicker { color: var(--neon-orange); }
-.section-label h2 { font-size: 2.1rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
 .section-label p { color: var(--text-muted); font-size: 0.95rem; margin-top: 0.8rem; }
+.section-label h2 { font-size: 2.1rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
 
 /* ===== Video Hero ===== */
 .svc-hero { position: relative; overflow: hidden; padding: 8.5rem 0 3rem; border-bottom: var(--glass-border); min-height: 460px; display: flex; align-items: flex-end; }
@@ -149,9 +148,7 @@ header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: 
 .svc-search-box .clear-btn.show { display: block; }
 .search-hint { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.7rem; font-family: 'JetBrains Mono', monospace; }
 
-.filter-bar { padding: 1.6rem 0; border-bottom: var(--glass-border); position: sticky; top: 0; z-index: 50; background: rgba(5,8,17,0.92); backdrop-filter: var(--glass-blur); }
-@media (min-width: 900px) { .filter-bar { top: 79px; } }
-@media (max-width: 899px) { .filter-bar { top: 112px; } }
+.filter-bar { padding: 1.6rem 0; border-bottom: var(--glass-border); background: rgba(5,8,17,0.5); }
 .filter-pills { display: flex; gap: 0.6rem; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
 .filter-pills::-webkit-scrollbar { display: none; }
 .filter-pill { flex: 0 0 auto; white-space: nowrap; background: var(--bg-card); border: 1px solid var(--border-glow); color: var(--text-muted); padding: 0.55rem 1.1rem; border-radius: 30px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: var(--transition); font-family: 'JetBrains Mono', monospace; }
@@ -161,26 +158,33 @@ header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: 
 .no-results.show { display: block; }
 .no-results i { font-size: 2rem; color: var(--cyan-glow); margin-bottom: 1rem; display: block; opacity: 0.6; }
 
-/* ===== Featured Quick-Earn cards ===== */
-.quick-earn { padding: 4.5rem 0 2rem; }
+/* ===== Featured: Data Bundles + Checkers — light section, deliberate break from the dark page ===== */
+.quick-earn { padding: 4.5rem 0 3.5rem; background: linear-gradient(180deg, #eef8fb 0%, #ffffff 55%, #eef8fb 100%); position: relative; z-index: 2; }
+.quick-earn .kicker { color: #0a7ea8; }
+.quick-earn .section-label h2 { color: #0a1626; }
+.quick-earn .section-label p { color: #4a5c6e; }
 .qe-grid { display: grid; grid-template-columns: 1fr; gap: 1.6rem; }
 @media (min-width: 900px) { .qe-grid { grid-template-columns: repeat(2, 1fr); } }
-.qe-card { position: relative; background: var(--bg-card); border: 1.5px solid rgba(255, 110, 64, 0.35); border-radius: 20px; overflow: hidden; backdrop-filter: var(--glass-blur); transition: var(--transition); box-shadow: 0 0 30px rgba(255, 110, 64, 0.08); scroll-margin-top: 160px; }
-.qe-card:hover { border-color: var(--neon-orange); transform: translateY(-6px); box-shadow: 0 0 40px rgba(255, 110, 64, 0.25); }
-.qe-badge { position: absolute; top: 16px; left: 16px; z-index: 3; background: linear-gradient(135deg, var(--neon-orange), #d84315); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.4rem 0.85rem; border-radius: 20px; display: flex; align-items: center; gap: 0.4rem; box-shadow: 0 4px 15px rgba(255,110,64,0.4); }
-.qe-slideshow { position: relative; height: 190px; overflow: hidden; background: linear-gradient(135deg, rgba(255,110,64,0.1), rgba(0,229,255,0.05)); }
-.qe-slideshow img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease; filter: brightness(0.75) contrast(1.05); }
+.qe-card { position: relative; background: #fff; border: 1px solid rgba(10, 126, 168, 0.18); border-radius: 20px; overflow: hidden; transition: var(--transition); box-shadow: 0 10px 34px rgba(10, 40, 60, 0.08); scroll-margin-top: 160px; }
+.qe-card:hover { border-color: var(--cyan-glow); transform: translateY(-6px); box-shadow: 0 16px 40px rgba(10, 40, 60, 0.14); }
+.qe-badge { position: absolute; top: 16px; left: 16px; z-index: 3; background: linear-gradient(135deg, var(--cyan-glow), var(--electric-blue)); color: #030a16; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.4rem 0.85rem; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,229,255,0.35); }
+.qe-slideshow { position: relative; height: 190px; overflow: hidden; background: linear-gradient(135deg, #dff1f7, #eef8fb); }
+.qe-slideshow img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease; }
 .qe-slideshow img.active { opacity: 1; }
-.qe-fallback-icon { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--neon-orange); font-size: 3rem; opacity: 0.5; }
+.qe-fallback-icon { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #0a7ea8; font-size: 3rem; opacity: 0.45; }
 .qe-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 3; }
-.qe-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.35); transition: var(--transition); }
-.qe-dots span.active { background: var(--neon-orange); width: 18px; border-radius: 4px; }
+.qe-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.6); transition: var(--transition); }
+.qe-dots span.active { background: var(--cyan-glow); width: 18px; border-radius: 4px; }
 .qe-body { padding: 1.6rem 1.6rem 1.8rem; }
-.qe-body h3 { font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem; }
-.qe-body > p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.qe-body h3 { font-size: 1.25rem; font-weight: 800; color: #0a1626; margin-bottom: 0.5rem; }
+.qe-body > p { color: #55677a; font-size: 0.9rem; margin-bottom: 1rem; }
 .qe-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.3rem; }
-.qe-tag { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.72rem; font-weight: 600; color: var(--cyan-glow); background: rgba(0,229,255,0.08); border: 1px solid var(--border-glow); padding: 0.3rem 0.7rem; border-radius: 20px; }
+.qe-tag { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.72rem; font-weight: 600; color: #0a7ea8; background: rgba(10, 126, 168, 0.08); border: 1px solid rgba(10, 126, 168, 0.2); padding: 0.3rem 0.7rem; border-radius: 20px; }
 .qe-tag i { font-size: 0.68rem; }
+.qe-store-link { text-align: center; margin-top: 2.2rem; font-size: 0.9rem; color: #55677a; }
+.qe-store-link a { color: #0a7ea8; font-weight: 700; text-decoration: none; }
+.qe-store-link a:hover { text-decoration: underline; }
+.qe-store-link i { font-size: 0.75rem; }
 
 /* ===== Service groups w/ photo cards ===== */
 .svc-section { padding: 4.5rem 0; }
@@ -315,9 +319,10 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
             <a href="#checkers"><i class="fas fa-graduation-cap"></i> Results Checkers</a>
           </div>
         </li>
+        <li><a href="store.html">Store</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="resource.html">Resources</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="blog.html">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
@@ -352,9 +357,10 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
           <li><a href="#checkers"><i class="fas fa-graduation-cap"></i> Results Checkers</a></li>
         </ul>
       </li>
+      <li><a href="store.html">Store</a></li>
+      <li><a href="project.html">Projects</a></li>
+      <li><a href="resource.html">Resources</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="blog.html">Blog</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </div>
@@ -381,10 +387,9 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
     <div class="svc-search-wrap">
       <div class="svc-search-box">
         <i class="fas fa-magnifying-glass"></i>
-        <input type="text" id="svcSearch" placeholder="Search services — e.g. 'website', 'data', 'checker', 'frame'...">
+        <input type="text" id="svcSearch" placeholder="Search services">
         <button class="clear-btn" id="svcClear" aria-label="Clear search"><i class="fas fa-xmark"></i></button>
       </div>
-      <p class="search-hint">Try: web design · data bundles · results checker · printing · tutoring</p>
     </div>
   </div>
 </section>
@@ -394,7 +399,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
   <div class="container">
     <div class="filter-pills">
       <button class="filter-pill active" data-filter="all">All Services</button>
-      <button class="filter-pill" data-filter="quick">Data Bundles & Checkers</button>
+      <button class="filter-pill" data-filter="quick">Data Bundles &amp; Checkers</button>
       <button class="filter-pill" data-filter="digital">Digital &amp; Software</button>
       <button class="filter-pill" data-filter="ground">Print &amp; Devices</button>
       <button class="filter-pill" data-filter="forms">Forms &amp; Registrations</button>
@@ -402,18 +407,18 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
   </div>
 </div>
 
-<!-- Featured Quick-Earn: Data Bundles + Checkers -->
+<!-- Featured: Data Bundles + Checkers (light section — deliberate contrast from the rest of the page) -->
 <section class="quick-earn" id="quick-earn">
   <div class="container">
-    <div class="section-label orange reveal">
-      <span class="kicker"><i class="fas fa-bolt"></i> Available Right Now</span>
-      <h2>Skip the Wait — Instant Purchase</h2>
-      <p>No appointment, no back-and-forth. These two are live 24/7 and ready to serve you this second.</p>
+    <div class="section-label reveal">
+      <span class="kicker">Available Right Now</span>
+      <h2>Instant Purchase</h2>
+      <p>Two services you can complete right now, without waiting for a reply.</p>
     </div>
 
     <div class="qe-grid">
       <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener" class="qe-card reveal" id="data" data-search="data bundle mtn telecel airteltigo internet data buy cheap fast instant" data-category="quick">
-        <span class="qe-badge"><i class="fas fa-bolt"></i> Instant</span>
+        <span class="qe-badge">Instant</span>
         <div class="qe-slideshow">
           <img src="images/databundle-1.jpg" alt="Buy data bundles" class="active" onerror="handleSlideError(this)">
           <img src="images/databundle-2.jpg" alt="Data bundle options" onerror="handleSlideError(this)">
@@ -422,17 +427,17 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
         </div>
         <div class="qe-body">
           <h3>Buy Data Bundles</h3>
-          <p>Affordable MTN, Telecel &amp; AirtelTigo data — delivered to your number in minutes, any time of day.</p>
+          <p>MTN, Telecel &amp; AirtelTigo data, delivered to your number in minutes.</p>
           <div class="qe-tags">
             <span class="qe-tag"><i class="fas fa-shield-halved"></i> Secure Checkout</span>
             <span class="qe-tag"><i class="fas fa-clock"></i> 24/7 Available</span>
           </div>
-          <span class="btn btn-orange btn-block">Buy Data Now <i class="fas fa-arrow-right"></i></span>
+          <span class="btn btn-cyan btn-block">Buy Data Now <i class="fas fa-arrow-right"></i></span>
         </div>
       </a>
 
       <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc/checkers" target="_blank" rel="noopener" class="qe-card reveal" id="checkers" data-search="results checker wassce bece waec cssps voucher pin exam results" data-category="quick">
-        <span class="qe-badge"><i class="fas fa-bolt"></i> Instant</span>
+        <span class="qe-badge">Instant</span>
         <div class="qe-slideshow">
           <img src="images/checker-1.jpg" alt="WASSCE BECE results checker" class="active" onerror="handleSlideError(this)">
           <img src="images/checker-2.jpg" alt="Checker pin purchase" onerror="handleSlideError(this)">
@@ -441,15 +446,17 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
         </div>
         <div class="qe-body">
           <h3>WASSCE &amp; BECE Results Checkers</h3>
-          <p>Get your checker PIN instantly — no waiting in line. WAEC &amp; Coupon vouchers delivered digitally.</p>
+          <p>WAEC &amp; CSSPS checker PINs, delivered digitally — no walk-in required.</p>
           <div class="qe-tags">
             <span class="qe-tag"><i class="fas fa-shield-halved"></i> Secure Checkout</span>
             <span class="qe-tag"><i class="fas fa-clock"></i> 24/7 Available</span>
           </div>
-          <span class="btn btn-orange btn-block">Get Your Checker <i class="fas fa-arrow-right"></i></span>
+          <span class="btn btn-cyan btn-block">Get Your Checker <i class="fas fa-arrow-right"></i></span>
         </div>
       </a>
     </div>
+
+    <p class="qe-store-link reveal">Looking for more? <a href="store.html">Browse the full Store <i class="fas fa-arrow-right"></i></a></p>
   </div>
 </section>
 
@@ -485,7 +492,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
         <h3>Digital &amp; Software Services</h3>
       </div>
       <div class="svc-grid">
-        <a href="#web" class="svc-card reveal" id="web" data-search="web app development website software programming build" data-category="digital">
+        <a href="contact.html" class="svc-card reveal" id="web" data-search="web app development website software programming build" data-category="digital">
           <div class="svc-photo">
             <img src="images/service-web.jpg" alt="Web and app development" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="svc-fallback-icon" style="display:none"><i class="fas fa-laptop-code"></i></div>
@@ -502,7 +509,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
           </div>
         </a>
 
-        <a href="#uiux" class="svc-card reveal" id="uiux" data-search="ui ux design wireframe prototype interface user experience" data-category="digital">
+        <a href="contact.html" class="svc-card reveal" id="uiux" data-search="ui ux design wireframe prototype interface user experience" data-category="digital">
           <div class="svc-photo">
             <img src="images/service-uiux.jpg" alt="UI UX design" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="svc-fallback-icon" style="display:none"><i class="fas fa-pen-nib"></i></div>
@@ -519,7 +526,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
           </div>
         </a>
 
-        <a href="#security" class="svc-card reveal" id="security" data-search="cybersecurity security audit malware protection backup" data-category="digital">
+        <a href="contact.html" class="svc-card reveal" id="security" data-search="cybersecurity security audit malware protection backup" data-category="digital">
           <div class="svc-photo">
             <img src="images/service-security.jpg" alt="Cybersecurity" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="svc-fallback-icon" style="display:none"><i class="fas fa-shield-alt"></i></div>
@@ -536,7 +543,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
           </div>
         </a>
 
-        <a href="#cloud" class="svc-card reveal" id="cloud" data-search="cloud computing aws firebase deployment migration hosting" data-category="digital">
+        <a href="contact.html" class="svc-card reveal" id="cloud" data-search="cloud computing aws firebase deployment migration hosting" data-category="digital">
           <div class="svc-photo">
             <img src="images/service-cloud.jpg" alt="Cloud computing" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="svc-fallback-icon" style="display:none"><i class="fas fa-cloud"></i></div>
@@ -553,7 +560,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
           </div>
         </a>
 
-        <a href="#marketing" class="svc-card reveal" id="marketing" data-search="digital marketing social media seo ads content strategy" data-category="digital">
+        <a href="contact.html" class="svc-card reveal" id="marketing" data-search="digital marketing social media seo ads content strategy" data-category="digital">
           <div class="svc-photo">
             <img src="images/service-marketing.jpg" alt="Digital marketing" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="svc-fallback-icon" style="display:none"><i class="fas fa-bullhorn"></i></div>
@@ -578,7 +585,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
         <h3>Print, Devices &amp; Learning</h3>
       </div>
       <div class="svc-grid">
-        <a href="#printing" class="svc-card reveal" id="printing" data-search="printing flyers banners frames t-shirts scanning photocopying publications" data-category="ground">
+        <a href="contact.html" class="svc-card reveal" id="printing" data-search="printing flyers banners frames t-shirts scanning photocopying publications" data-category="ground">
           <div class="svc-photo">
             <img src="images/service-printing.jpg" alt="Printing and publications" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="svc-fallback-icon" style="display:none"><i class="fas fa-print"></i></div>
@@ -595,7 +602,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
           </div>
         </a>
 
-        <a href="#computers" class="svc-card reveal" id="computers" data-search="computers laptops accessories chargers mice keyboards it hardware" data-category="ground">
+        <a href="contact.html" class="svc-card reveal" id="computers" data-search="computers laptops accessories chargers mice keyboards it hardware" data-category="ground">
           <div class="svc-photo">
             <img src="images/service-computers.jpg" alt="Computers and accessories" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="svc-fallback-icon" style="display:none"><i class="fas fa-desktop"></i></div>
@@ -612,7 +619,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
           </div>
         </a>
 
-        <a href="#tutoring" class="svc-card reveal" id="tutoring" data-search="tutoring lessons ict computer literacy training home online" data-category="ground">
+        <a href="contact.html" class="svc-card reveal" id="tutoring" data-search="tutoring lessons ict computer literacy training home online" data-category="ground">
           <div class="svc-photo">
             <img src="images/service-tutoring.jpg" alt="Home and online tutoring" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="svc-fallback-icon" style="display:none"><i class="fas fa-chalkboard-teacher"></i></div>
@@ -641,13 +648,13 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
           <div class="ri"><i class="fas fa-file-signature"></i></div>
           <h3>University &amp; Institutional Forms</h3>
           <p>Available on request — message us with the details and we'll purchase and guide you through it.</p>
-          <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="svc-cta">Request on WhatsApp <i class="fas fa-arrow-right"></i></a>
+          <a href="contact.html" class="svc-cta">Request This <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="request-card reveal" id="registrations" data-search="ssnit gra ghana card nia dvla rgd nmc business registration government" data-category="forms">
           <div class="ri"><i class="fas fa-landmark"></i></div>
           <h3>Government &amp; Institutional Registrations</h3>
           <p>SSNIT, GRA, Ghana Card, DVLA, business registration &amp; more — we guide you through every field.</p>
-          <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="svc-cta">Ask What We Can Handle <i class="fas fa-arrow-right"></i></a>
+          <a href="contact.html" class="svc-cta">Ask What We Can Handle <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -727,10 +734,10 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
         <ul>
           <li><a href="index.html"><i class="fas fa-angle-right"></i> Home</a></li>
           <li><a href="services.html"><i class="fas fa-angle-right"></i> Services</a></li>
+          <li><a href="store.html"><i class="fas fa-angle-right"></i> Store</a></li>
+          <li><a href="project.html"><i class="fas fa-angle-right"></i> Projects</a></li>
+          <li><a href="resource.html"><i class="fas fa-angle-right"></i> Resources</a></li>
           <li><a href="about.html"><i class="fas fa-angle-right"></i> About</a></li>
-          <li><a href="index.html#institutions"><i class="fas fa-angle-right"></i> Institutions We Support</a></li>
-          <li><a href="index.html#payments"><i class="fas fa-angle-right"></i> Payment Options</a></li>
-          <li><a href="index.html#toolkit"><i class="fas fa-angle-right"></i> Free Tools</a></li>
           <li><a href="contact.html"><i class="fas fa-angle-right"></i> Contact</a></li>
         </ul>
         </div>
@@ -743,8 +750,8 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
           <li><a href="#printing"><i class="fas fa-angle-right"></i> Printing &amp; Publications</a></li>
           <li><a href="#computers"><i class="fas fa-angle-right"></i> Computers &amp; Accessories</a></li>
           <li><a href="#tutoring"><i class="fas fa-angle-right"></i> Tutoring Services</a></li>
-          <li><a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener"><i class="fas fa-angle-right"></i> Buy Data Bundles</a></li>
-          <li><a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc/checkers" target="_blank" rel="noopener"><i class="fas fa-angle-right"></i> Results Checkers</a></li>
+          <li><a href="store.html#data"><i class="fas fa-angle-right"></i> Buy Data Bundles</a></li>
+          <li><a href="store.html#checkers"><i class="fas fa-angle-right"></i> Results Checkers</a></li>
         </ul>
         </div>
       </div>
