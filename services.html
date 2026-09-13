@@ -124,8 +124,10 @@ header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: 
 
 /* ===== Video Hero ===== */
 .svc-hero { position: relative; overflow: hidden; padding: 8.5rem 0 3rem; border-bottom: var(--glass-border); min-height: 460px; display: flex; align-items: flex-end; }
-.svc-hero-media { position: absolute; inset: 0; z-index: 0; background: linear-gradient(160deg, #071022, #0a1830 60%, #051018); }
-.svc-hero-media video { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; }
+.svc-hero-media { position: absolute; inset: 0; z-index: 0; background: linear-gradient(160deg, #071022, #0a1830 60%, #051018); overflow: hidden; }
+.svc-hero-media video { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; animation: svcHeroZoom 20s ease-in-out infinite alternate; }
+@keyframes svcHeroZoom { from { transform: scale(1); } to { transform: scale(1.1); } }
+@media (prefers-reduced-motion: reduce) { .svc-hero-media video { animation: none; } }
 .svc-hero-scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,8,17,0.55) 0%, rgba(5,8,17,0.75) 60%, rgba(5,8,17,0.96) 100%); }
 .svc-hero .container { position: relative; z-index: 1; }
 .breadcrumb { display: flex; align-items: center; flex-wrap: wrap; gap: 0.6rem; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; margin-bottom: 1.4rem; }
@@ -159,29 +161,40 @@ header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: 
 .no-results i { font-size: 2rem; color: var(--cyan-glow); margin-bottom: 1rem; display: block; opacity: 0.6; }
 
 /* ===== Featured: Data Bundles + Checkers — light section, deliberate break from the dark page ===== */
-.quick-earn { padding: 4.5rem 0 3.5rem; background: linear-gradient(180deg, #eef8fb 0%, #ffffff 55%, #eef8fb 100%); position: relative; z-index: 2; }
+.quick-earn { padding: 5rem 0 3.5rem; background: linear-gradient(180deg, #eef8fb 0%, #ffffff 55%, #eef8fb 100%); position: relative; z-index: 2; overflow: hidden; }
+.quick-earn::before, .quick-earn::after { content: ''; position: absolute; border-radius: 50%; filter: blur(60px); z-index: 0; pointer-events: none; }
+.quick-earn::before { width: 340px; height: 340px; background: radial-gradient(circle, rgba(0,229,255,0.18), transparent 70%); top: -80px; left: -100px; }
+.quick-earn::after { width: 380px; height: 380px; background: radial-gradient(circle, rgba(41,121,255,0.14), transparent 70%); bottom: -120px; right: -120px; }
+.quick-earn .container { position: relative; z-index: 1; }
 .quick-earn .kicker { color: #0a7ea8; }
 .quick-earn .section-label h2 { color: #0a1626; }
 .quick-earn .section-label p { color: #4a5c6e; }
-.qe-grid { display: grid; grid-template-columns: 1fr; gap: 1.6rem; }
+.qe-grid { display: grid; grid-template-columns: 1fr; gap: 1.8rem; }
 @media (min-width: 900px) { .qe-grid { grid-template-columns: repeat(2, 1fr); } }
-.qe-card { position: relative; background: #fff; border: 1px solid rgba(10, 126, 168, 0.18); border-radius: 20px; overflow: hidden; transition: var(--transition); box-shadow: 0 10px 34px rgba(10, 40, 60, 0.08); scroll-margin-top: 160px; }
-.qe-card:hover { border-color: var(--cyan-glow); transform: translateY(-6px); box-shadow: 0 16px 40px rgba(10, 40, 60, 0.14); }
-.qe-badge { position: absolute; top: 16px; left: 16px; z-index: 3; background: linear-gradient(135deg, var(--cyan-glow), var(--electric-blue)); color: #030a16; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.4rem 0.85rem; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,229,255,0.35); }
-.qe-slideshow { position: relative; height: 190px; overflow: hidden; background: linear-gradient(135deg, #dff1f7, #eef8fb); }
+.qe-card { position: relative; background: #fff; border-radius: 22px; overflow: hidden; transition: var(--transition); box-shadow: 0 10px 34px rgba(10, 40, 60, 0.08); scroll-margin-top: 160px; }
+.qe-card::before { content: ''; position: absolute; inset: 0; border-radius: 22px; padding: 1.5px; background: linear-gradient(135deg, rgba(0,229,255,0.5), rgba(41,121,255,0.15) 40%, transparent 70%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; z-index: 2; transition: var(--transition); }
+.qe-card:hover { transform: translateY(-6px); box-shadow: 0 20px 46px rgba(10, 40, 60, 0.16); }
+.qe-card:hover::before { padding: 2px; background: linear-gradient(135deg, var(--cyan-glow), var(--electric-blue) 50%, rgba(0,229,255,0.4)); }
+.qe-num { position: absolute; top: 14px; right: 18px; z-index: 3; font-family: 'JetBrains Mono', monospace; font-size: 2.4rem; font-weight: 700; color: rgba(10, 22, 38, 0.08); line-height: 1; }
+.qe-slideshow { position: relative; height: 200px; overflow: hidden; background: linear-gradient(135deg, #dff1f7, #eef8fb); }
 .qe-slideshow img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease; }
 .qe-slideshow img.active { opacity: 1; }
+.qe-slideshow::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 46px; background: linear-gradient(180deg, transparent, #fff); z-index: 2; pointer-events: none; }
 .qe-fallback-icon { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #0a7ea8; font-size: 3rem; opacity: 0.45; }
-.qe-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 3; }
-.qe-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.6); transition: var(--transition); }
+.qe-dots { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 3; }
+.qe-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.7); transition: var(--transition); box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
 .qe-dots span.active { background: var(--cyan-glow); width: 18px; border-radius: 4px; }
-.qe-body { padding: 1.6rem 1.6rem 1.8rem; }
-.qe-body h3 { font-size: 1.25rem; font-weight: 800; color: #0a1626; margin-bottom: 0.5rem; }
-.qe-body > p { color: #55677a; font-size: 0.9rem; margin-bottom: 1rem; }
-.qe-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.3rem; }
-.qe-tag { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.72rem; font-weight: 600; color: #0a7ea8; background: rgba(10, 126, 168, 0.08); border: 1px solid rgba(10, 126, 168, 0.2); padding: 0.3rem 0.7rem; border-radius: 20px; }
+.qe-body { padding: 0.6rem 1.7rem 1.9rem; position: relative; z-index: 1; }
+.qe-eyebrow { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #0a7ea8; margin-bottom: 0.4rem; }
+.qe-body h3 { font-size: 1.3rem; font-weight: 800; color: #0a1626; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+.qe-body > p { color: #55677a; font-size: 0.9rem; margin-bottom: 1.1rem; }
+.qe-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.4rem; }
+.qe-tag { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.72rem; font-weight: 600; color: #0a7ea8; background: rgba(10, 126, 168, 0.08); border: 1px solid rgba(10, 126, 168, 0.2); padding: 0.32rem 0.75rem; border-radius: 20px; }
 .qe-tag i { font-size: 0.68rem; }
-.qe-store-link { text-align: center; margin-top: 2.2rem; font-size: 0.9rem; color: #55677a; }
+.qe-card .btn-cyan { position: relative; overflow: hidden; }
+.qe-card .btn-cyan i { transition: transform 0.3s ease; }
+.qe-card:hover .btn-cyan i { transform: translateX(5px); }
+.qe-store-link { text-align: center; margin-top: 2.4rem; font-size: 0.9rem; color: #55677a; position: relative; z-index: 1; }
 .qe-store-link a { color: #0a7ea8; font-weight: 700; text-decoration: none; }
 .qe-store-link a:hover { text-decoration: underline; }
 .qe-store-link i { font-size: 0.75rem; }
@@ -310,6 +323,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
             <a href="#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
             <a href="#cloud"><i class="fas fa-cloud"></i> Cloud Computing</a>
             <a href="#marketing"><i class="fas fa-bullhorn"></i> Digital Marketing</a>
+            <a href="#graphics"><i class="fas fa-palette"></i> Graphic Design</a>
             <div class="dropdown-divider"></div>
             <a href="#printing"><i class="fas fa-print"></i> Printing, Flyers &amp; Banners</a>
             <a href="#computers"><i class="fas fa-desktop"></i> Computers &amp; IT Accessories</a>
@@ -350,6 +364,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
           <li><a href="#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a></li>
           <li><a href="#cloud"><i class="fas fa-cloud"></i> Cloud Computing</a></li>
           <li><a href="#marketing"><i class="fas fa-bullhorn"></i> Digital Marketing</a></li>
+          <li><a href="#graphics"><i class="fas fa-palette"></i> Graphic Design</a></li>
           <li><a href="#printing"><i class="fas fa-print"></i> Printing &amp; Publications</a></li>
           <li><a href="#computers"><i class="fas fa-desktop"></i> Computers &amp; Accessories</a></li>
           <li><a href="#tutoring"><i class="fas fa-chalkboard-teacher"></i> Tutoring</a></li>
@@ -418,6 +433,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
 
     <div class="qe-grid">
       <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener" class="qe-card reveal" id="data" data-search="data bundle mtn telecel airteltigo internet data buy cheap fast instant" data-category="quick">
+        <span class="qe-num">01</span>
         <div class="qe-slideshow">
           <img src="images/databundle-1.jpg" alt="Buy data bundles" class="active" onerror="handleSlideError(this)">
           <img src="images/databundle-2.jpg" alt="Data bundle options" onerror="handleSlideError(this)">
@@ -425,17 +441,20 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
           <div class="qe-dots"><span class="active"></span><span></span></div>
         </div>
         <div class="qe-body">
+          <span class="qe-eyebrow">All Networks</span>
           <h3>Buy Data Bundles</h3>
           <p>MTN, Telecel &amp; AirtelTigo data, delivered to your number in minutes.</p>
           <div class="qe-tags">
+            <span class="qe-tag"><i class="fas fa-tag"></i> From GH₵5</span>
+            <span class="qe-tag"><i class="fas fa-clock"></i> 10 min – 1 hr delivery</span>
             <span class="qe-tag"><i class="fas fa-shield-halved"></i> Secure Checkout</span>
-            <span class="qe-tag"><i class="fas fa-clock"></i> 24/7 Available</span>
           </div>
           <span class="btn btn-cyan btn-block">Buy Data Now <i class="fas fa-arrow-right"></i></span>
         </div>
       </a>
 
       <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc/checkers" target="_blank" rel="noopener" class="qe-card reveal" id="checkers" data-search="results checker wassce bece waec cssps voucher pin exam results" data-category="quick">
+        <span class="qe-num">02</span>
         <div class="qe-slideshow">
           <img src="images/checker-1.jpg" alt="WASSCE BECE results checker" class="active" onerror="handleSlideError(this)">
           <img src="images/checker-2.jpg" alt="Checker pin purchase" onerror="handleSlideError(this)">
@@ -443,11 +462,13 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
           <div class="qe-dots"><span class="active"></span><span></span></div>
         </div>
         <div class="qe-body">
+          <span class="qe-eyebrow">WAEC &amp; CSSPS</span>
           <h3>WASSCE &amp; BECE Results Checkers</h3>
-          <p>WAEC &amp; CSSPS checker PINs, delivered digitally — no walk-in required.</p>
+          <p>Checker PINs delivered digitally — no walk-in required.</p>
           <div class="qe-tags">
-            <span class="qe-tag"><i class="fas fa-shield-halved"></i> Secure Checkout</span>
-            <span class="qe-tag"><i class="fas fa-clock"></i> 24/7 Available</span>
+            <span class="qe-tag"><i class="fas fa-bolt"></i> Fast &amp; Reliable</span>
+            <span class="qe-tag"><i class="fas fa-lock"></i> Safe &amp; Secure</span>
+            <span class="qe-tag"><i class="fas fa-mobile-screen"></i> Works on All Devices</span>
           </div>
           <span class="btn btn-cyan btn-block">Get Your Checker <i class="fas fa-arrow-right"></i></span>
         </div>
@@ -574,6 +595,23 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
             <span class="svc-cta">Discuss Your Project <i class="fas fa-arrow-right"></i></span>
           </div>
         </a>
+
+        <a href="contact.html" class="svc-card reveal" id="graphics" data-search="graphic design logo branding poster flyer artwork illustration" data-category="digital">
+          <div class="svc-photo">
+            <img src="images/service-graphics.jpg" alt="Graphic design" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="svc-fallback-icon" style="display:none"><i class="fas fa-palette"></i></div>
+          </div>
+          <div class="svc-body">
+            <h3>Graphic Design</h3>
+            <p>Logos, branding and digital artwork that make your business memorable.</p>
+            <ul class="svc-feats">
+              <li><i class="fas fa-check"></i> Logo &amp; brand identity design</li>
+              <li><i class="fas fa-check"></i> Social media &amp; ad graphics</li>
+              <li><i class="fas fa-check"></i> Posters, flyers &amp; digital artwork</li>
+            </ul>
+            <span class="svc-cta">Discuss Your Project <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
       </div>
     </div>
 
@@ -653,6 +691,12 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
           <h3>Government &amp; Institutional Registrations</h3>
           <p>SSNIT, GRA, Ghana Card, DVLA, business registration &amp; more — we guide you through every field.</p>
           <a href="contact.html" class="svc-cta">Ask What We Can Handle <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="request-card reveal" id="passport" data-search="passport application travel visa immigration documentation" data-category="forms">
+          <div class="ri"><i class="fas fa-passport"></i></div>
+          <h3>Passport &amp; Travel Applications</h3>
+          <p>Passport application support and travel documentation — we help you get every detail right the first time.</p>
+          <a href="contact.html" class="svc-cta">Request This <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
