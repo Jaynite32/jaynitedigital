@@ -160,42 +160,35 @@ header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: 
 .no-results.show { display: block; }
 .no-results i { font-size: 2rem; color: var(--cyan-glow); margin-bottom: 1rem; display: block; opacity: 0.6; }
 
-/* ===== Featured: Data Bundles + Checkers — light section, deliberate break from the dark page ===== */
-.quick-earn { padding: 5rem 0 3.5rem; background: linear-gradient(180deg, #eef8fb 0%, #ffffff 55%, #eef8fb 100%); position: relative; z-index: 2; overflow: hidden; }
-.quick-earn::before, .quick-earn::after { content: ''; position: absolute; border-radius: 50%; filter: blur(60px); z-index: 0; pointer-events: none; }
-.quick-earn::before { width: 340px; height: 340px; background: radial-gradient(circle, rgba(0,229,255,0.18), transparent 70%); top: -80px; left: -100px; }
-.quick-earn::after { width: 380px; height: 380px; background: radial-gradient(circle, rgba(41,121,255,0.14), transparent 70%); bottom: -120px; right: -120px; }
-.quick-earn .container { position: relative; z-index: 1; }
-.quick-earn .kicker { color: #0a7ea8; }
-.quick-earn .section-label h2 { color: #0a1626; }
-.quick-earn .section-label p { color: #4a5c6e; }
-.qe-grid { display: grid; grid-template-columns: 1fr; gap: 1.8rem; }
-@media (min-width: 900px) { .qe-grid { grid-template-columns: repeat(2, 1fr); } }
-.qe-card { position: relative; background: #fff; border-radius: 22px; overflow: hidden; transition: var(--transition); box-shadow: 0 10px 34px rgba(10, 40, 60, 0.08); scroll-margin-top: 160px; }
-.qe-card::before { content: ''; position: absolute; inset: 0; border-radius: 22px; padding: 1.5px; background: linear-gradient(135deg, rgba(0,229,255,0.5), rgba(41,121,255,0.15) 40%, transparent 70%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; z-index: 2; transition: var(--transition); }
-.qe-card:hover { transform: translateY(-6px); box-shadow: 0 20px 46px rgba(10, 40, 60, 0.16); }
-.qe-card:hover::before { padding: 2px; background: linear-gradient(135deg, var(--cyan-glow), var(--electric-blue) 50%, rgba(0,229,255,0.4)); }
-.qe-num { position: absolute; top: 14px; right: 18px; z-index: 3; font-family: 'JetBrains Mono', monospace; font-size: 2.4rem; font-weight: 700; color: rgba(10, 22, 38, 0.08); line-height: 1; }
-.qe-slideshow { position: relative; height: 200px; overflow: hidden; background: linear-gradient(135deg, #dff1f7, #eef8fb); }
-.qe-slideshow img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease; }
-.qe-slideshow img.active { opacity: 1; }
-.qe-slideshow::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 46px; background: linear-gradient(180deg, transparent, #fff); z-index: 2; pointer-events: none; }
-.qe-fallback-icon { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #0a7ea8; font-size: 3rem; opacity: 0.45; }
-.qe-dots { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 3; }
-.qe-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.7); transition: var(--transition); box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
-.qe-dots span.active { background: var(--cyan-glow); width: 18px; border-radius: 4px; }
-.qe-body { padding: 0.6rem 1.7rem 1.9rem; position: relative; z-index: 1; }
-.qe-eyebrow { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #0a7ea8; margin-bottom: 0.4rem; }
-.qe-body h3 { font-size: 1.3rem; font-weight: 800; color: #0a1626; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
-.qe-body > p { color: #55677a; font-size: 0.9rem; margin-bottom: 1.1rem; }
-.qe-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.4rem; }
-.qe-tag { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.72rem; font-weight: 600; color: #0a7ea8; background: rgba(10, 126, 168, 0.08); border: 1px solid rgba(10, 126, 168, 0.2); padding: 0.32rem 0.75rem; border-radius: 20px; }
-.qe-tag i { font-size: 0.68rem; }
-.qe-card .btn-cyan { position: relative; overflow: hidden; }
-.qe-card .btn-cyan i { transition: transform 0.3s ease; }
-.qe-card:hover .btn-cyan i { transform: translateX(5px); }
-.qe-store-link { text-align: center; margin-top: 2.4rem; font-size: 0.9rem; color: #55677a; position: relative; z-index: 1; }
-.qe-store-link a { color: #0a7ea8; font-weight: 700; text-decoration: none; }
+/* ===== Featured: Data Bundles + Checkers — bold full-bleed feature tiles ===== */
+.quick-earn { padding: 5rem 0; }
+.quick-earn .section-label { text-align: left; margin: 0 0 2.2rem; max-width: none; }
+.feat-grid { display: grid; grid-template-columns: 1fr; gap: 1.6rem; }
+@media (min-width: 900px) { .feat-grid { grid-template-columns: repeat(2, 1fr); } }
+.feat-tile { position: relative; display: block; height: 420px; border-radius: 20px; overflow: hidden; text-decoration: none; color: #fff; border: 1px solid var(--border-glow); transition: var(--transition); scroll-margin-top: 160px; }
+.feat-tile:hover { transform: translateY(-6px); border-color: var(--border-glow-active); box-shadow: 0 24px 55px rgba(0,0,0,0.5), var(--shadow-glow); }
+.feat-media { position: absolute; inset: 0; }
+.feat-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.2s ease, transform 6s ease; transform: scale(1.06); }
+.feat-media img.active { opacity: 1; }
+.feat-tile:hover .feat-media img.active { transform: scale(1.16); }
+.feat-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: var(--cyan-glow); opacity: 0.22; background: linear-gradient(160deg, #0c1a32, #050811); }
+.feat-scrim { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(2,4,10,0.96) 0%, rgba(2,4,10,0.72) 35%, rgba(2,4,10,0.18) 62%, rgba(2,4,10,0.4) 100%); z-index: 1; }
+.feat-ribbon { position: absolute; top: 20px; left: -42px; transform: rotate(-45deg); width: 170px; text-align: center; padding: 0.42rem 0; background: linear-gradient(135deg, var(--neon-orange), #d84315); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; z-index: 3; box-shadow: 0 4px 14px rgba(0,0,0,0.35); }
+.feat-tile.cyan-ribbon .feat-ribbon { background: linear-gradient(135deg, var(--cyan-glow), var(--electric-blue)); color: #030a16; }
+.feat-content { position: absolute; left: 0; right: 0; bottom: 0; padding: 1.9rem; z-index: 2; }
+.feat-eyebrow { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan-glow); margin-bottom: 0.5rem; }
+.feat-content h3 { font-size: 1.55rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+.feat-content p { color: rgba(255,255,255,0.78); font-size: 0.9rem; margin-bottom: 1.3rem; max-width: 360px; }
+.feat-footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.feat-price { font-family: 'JetBrains Mono', monospace; }
+.feat-price b { display: block; font-size: 1.15rem; font-weight: 700; color: #fff; }
+.feat-price span { font-size: 0.7rem; color: rgba(255,255,255,0.6); }
+.feat-dots { position: absolute; bottom: 1.9rem; right: 1.9rem; z-index: 3; display: flex; gap: 6px; }
+.feat-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.4); transition: var(--transition); }
+.feat-dots span.active { background: var(--cyan-glow); width: 18px; border-radius: 4px; }
+
+.qe-store-link { text-align: center; margin-top: 2.4rem; font-size: 0.9rem; color: var(--text-muted); position: relative; z-index: 1; }
+.qe-store-link a { color: var(--cyan-glow); font-weight: 700; text-decoration: none; }
 .qe-store-link a:hover { text-decoration: underline; }
 .qe-store-link i { font-size: 0.75rem; }
 
@@ -431,46 +424,44 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
       <p>Two services you can complete right now, without waiting for a reply.</p>
     </div>
 
-    <div class="qe-grid">
-      <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener" class="qe-card reveal" id="data" data-search="data bundle mtn telecel airteltigo internet data buy cheap fast instant" data-category="quick">
-        <span class="qe-num">01</span>
-        <div class="qe-slideshow">
+    <div class="feat-grid">
+      <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener" class="feat-tile reveal" id="data" data-search="data bundle mtn telecel airteltigo internet data buy cheap fast instant" data-category="quick">
+        <div class="feat-media">
           <img src="images/databundle-1.jpg" alt="Buy data bundles" class="active" onerror="handleSlideError(this)">
           <img src="images/databundle-2.jpg" alt="Data bundle options" onerror="handleSlideError(this)">
-          <div class="qe-fallback-icon" style="display:none"><i class="fas fa-sim-card"></i></div>
-          <div class="qe-dots"><span class="active"></span><span></span></div>
+          <div class="feat-fallback" style="display:none"><i class="fas fa-sim-card"></i></div>
         </div>
-        <div class="qe-body">
-          <span class="qe-eyebrow">All Networks</span>
+        <div class="feat-scrim"></div>
+        <span class="feat-ribbon">Instant</span>
+        <div class="feat-dots"><span class="active"></span><span></span></div>
+        <div class="feat-content">
+          <span class="feat-eyebrow">All Networks</span>
           <h3>Buy Data Bundles</h3>
           <p>MTN, Telecel &amp; AirtelTigo data, delivered to your number in minutes.</p>
-          <div class="qe-tags">
-            <span class="qe-tag"><i class="fas fa-tag"></i> From GH₵5</span>
-            <span class="qe-tag"><i class="fas fa-clock"></i> 10 min – 1 hr delivery</span>
-            <span class="qe-tag"><i class="fas fa-shield-halved"></i> Secure Checkout</span>
+          <div class="feat-footer">
+            <span class="feat-price"><b>From GH₵5</b><span>10 min – 1 hr delivery</span></span>
+            <span class="btn btn-cyan">Buy Now <i class="fas fa-arrow-right"></i></span>
           </div>
-          <span class="btn btn-cyan btn-block">Buy Data Now <i class="fas fa-arrow-right"></i></span>
         </div>
       </a>
 
-      <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc/checkers" target="_blank" rel="noopener" class="qe-card reveal" id="checkers" data-search="results checker wassce bece waec cssps voucher pin exam results" data-category="quick">
-        <span class="qe-num">02</span>
-        <div class="qe-slideshow">
+      <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc/checkers" target="_blank" rel="noopener" class="feat-tile cyan-ribbon reveal" id="checkers" data-search="results checker wassce bece waec cssps voucher pin exam results" data-category="quick">
+        <div class="feat-media">
           <img src="images/checker-1.jpg" alt="WASSCE BECE results checker" class="active" onerror="handleSlideError(this)">
           <img src="images/checker-2.jpg" alt="Checker pin purchase" onerror="handleSlideError(this)">
-          <div class="qe-fallback-icon" style="display:none"><i class="fas fa-graduation-cap"></i></div>
-          <div class="qe-dots"><span class="active"></span><span></span></div>
+          <div class="feat-fallback" style="display:none"><i class="fas fa-graduation-cap"></i></div>
         </div>
-        <div class="qe-body">
-          <span class="qe-eyebrow">WAEC &amp; CSSPS</span>
+        <div class="feat-scrim"></div>
+        <span class="feat-ribbon">Instant</span>
+        <div class="feat-dots"><span class="active"></span><span></span></div>
+        <div class="feat-content">
+          <span class="feat-eyebrow">WAEC &amp; CSSPS</span>
           <h3>WASSCE &amp; BECE Results Checkers</h3>
           <p>Checker PINs delivered digitally — no walk-in required.</p>
-          <div class="qe-tags">
-            <span class="qe-tag"><i class="fas fa-bolt"></i> Fast &amp; Reliable</span>
-            <span class="qe-tag"><i class="fas fa-lock"></i> Safe &amp; Secure</span>
-            <span class="qe-tag"><i class="fas fa-mobile-screen"></i> Works on All Devices</span>
+          <div class="feat-footer">
+            <span class="feat-price"><b>Fast &amp; Secure</b><span>Works on all devices</span></span>
+            <span class="btn btn-cyan">Buy Now <i class="fas fa-arrow-right"></i></span>
           </div>
-          <span class="btn btn-cyan btn-block">Get Your Checker <i class="fas fa-arrow-right"></i></span>
         </div>
       </a>
     </div>
@@ -870,19 +861,20 @@ const revealObserver = new IntersectionObserver((entries)=>{
 },{threshold:0.12});
 revealEls.forEach(el=>revealObserver.observe(el));
 
-// Quick-earn slideshow (handles missing images gracefully)
+// Feature-tile slideshow (handles missing images gracefully)
 function handleSlideError(img){
   img.style.display = 'none';
-  const container = img.closest('.qe-slideshow');
+  const container = img.closest('.feat-media');
   const remaining = container.querySelectorAll('img:not([style*="display: none"])');
   if(remaining.length === 0){
-    container.querySelector('.qe-fallback-icon').style.display = 'flex';
-    container.querySelector('.qe-dots').style.display = 'none';
+    container.querySelector('.feat-fallback').style.display = 'flex';
+    const dots = container.closest('.feat-tile').querySelector('.feat-dots');
+    if(dots) dots.style.display = 'none';
   }
 }
-document.querySelectorAll('.qe-slideshow').forEach(container=>{
+document.querySelectorAll('.feat-media').forEach(container=>{
   const imgs = Array.from(container.querySelectorAll('img'));
-  const dots = Array.from(container.querySelectorAll('.qe-dots span'));
+  const dots = Array.from(container.closest('.feat-tile').querySelectorAll('.feat-dots span'));
   let idx = 0;
   setInterval(()=>{
     const visible = imgs.filter(i=>i.style.display !== 'none');
