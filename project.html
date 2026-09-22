@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects - Jaynite Digital Solutions</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0a0b;
+  --ink-soft: #6b6f76;
+  --paper: #ffffff;
+  --line: rgba(10,10,11,0.1);
+  --line-soft: rgba(10,10,11,0.06);
+  --wa-green: #25D366;
+  --ease: all 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--paper); line-height: 1.6; }
+img { max-width: 100%; display: block; }
+.container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+/* Header */
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
+.logo-lockup { display: flex; align-items: center; text-decoration: none; }
+.logo-lockup img { height: 34px; width: auto; }
+.nav-desktop { display: none; }
+@media (min-width: 900px) {
+  .nav-desktop { display: flex; list-style: none; align-items: center; gap: 2.2rem; }
+  .nav-desktop a { text-decoration: none; color: var(--ink-soft); font-weight: 500; font-size: 0.92rem; transition: var(--ease); }
+  .nav-desktop a.active, .nav-desktop a:hover { color: var(--ink); }
+  .nav-desktop li.has-dropdown { position: relative; }
+  .dropdown { position: absolute; top: 130%; left: -10px; min-width: 260px; background: #fff; border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); padding: 0.5rem; opacity: 0; visibility: hidden; transform: translateY(8px); transition: var(--ease); }
+  .has-dropdown:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .dropdown a { display: flex; align-items: center; gap: 0.7rem; padding: 0.6rem 0.7rem; border-radius: 7px; font-size: 0.86rem; color: var(--ink-soft); }
+  .dropdown a:hover { background: #f5f5f5; color: var(--ink); }
+  .dropdown a i { width: 16px; color: var(--ink-soft); font-size: 0.85rem; }
+}
+.header-actions { display: flex; align-items: center; gap: 1rem; }
+.btn-ink { display: inline-flex; align-items: center; gap: 0.55rem; background: var(--ink); color: #fff; text-decoration: none; padding: 0.7rem 1.3rem; border-radius: 999px; font-weight: 600; font-size: 0.85rem; transition: var(--ease); }
+.btn-ink:hover { background: #2a2a2c; transform: translateY(-1px); }
+.menu-toggle { display: flex; flex-direction: column; gap: 5px; width: 24px; background: none; border: none; cursor: pointer; }
+.menu-toggle span { width: 100%; height: 1.5px; background: var(--ink); }
+@media (min-width: 900px) { .menu-toggle { display: none; } }
+
+.mobile-menu { position: fixed; inset: 0; background: #fff; transform: translateY(-100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); z-index: 2000; display: flex; flex-direction: column; overflow-y: auto; }
+.mobile-menu.active { transform: translateY(0); }
+.mm-top { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 24px; border-bottom: 1px solid var(--line); }
+.mm-close { background: none; border: none; font-size: 1.8rem; color: var(--ink); cursor: pointer; }
+.mm-body { flex: 1; padding: 0.5rem 0; }
+.mm-list { list-style: none; }
+.mm-list > li { border-bottom: 1px solid var(--line-soft); }
+.mm-list > li > a, .mm-list > li > .mm-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; text-decoration: none; color: var(--ink); font-weight: 600; font-size: 1.05rem; padding: 1.05rem 24px; background: none; border: none; text-align: left; }
+.mm-submenu { display: none; list-style: none; background: #fafafa; }
+.mm-submenu.active { display: block; }
+.mm-submenu li a { display: flex; align-items: center; gap: 0.7rem; padding: 0.75rem 24px 0.75rem 2.4rem; font-size: 0.88rem; color: var(--ink-soft); text-decoration: none; }
+
+/* Hero */
+.p-hero { padding: 9rem 0 4rem; border-bottom: 1px solid var(--line); }
+.breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--ink-soft); margin-bottom: 2rem; }
+.breadcrumb a { color: var(--ink-soft); text-decoration: none; }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb .current { color: var(--ink); font-weight: 600; }
+.hero-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; align-items: end; }
+@media (min-width: 800px) { .hero-grid { grid-template-columns: auto 1fr; gap: 3rem; } }
+.p-hero h1 { font-size: 3rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+@media (min-width: 800px) { .p-hero h1 { font-size: 4.6rem; } }
+.p-hero .lede { color: var(--ink-soft); font-size: 1.02rem; max-width: 380px; padding-bottom: 0.4rem; }
+
+/* Filters */
+.filter-row { display: flex; gap: 1.8rem; padding: 1.6rem 0; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--line); }
+.filter-row::-webkit-scrollbar { display: none; }
+.filter-btn { flex: 0 0 auto; background: none; border: none; font-family: inherit; font-size: 0.92rem; font-weight: 500; color: var(--ink-soft); padding: 0.3rem 0; cursor: pointer; position: relative; white-space: nowrap; }
+.filter-btn::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1.65rem; height: 2px; background: var(--ink); transform: scaleX(0); transition: transform 0.25s ease; }
+.filter-btn.active { color: var(--ink); font-weight: 700; }
+.filter-btn.active::after { transform: scaleX(1); }
+
+/* Project grid */
+.proj-section { padding: 3.5rem 0 5rem; }
+.proj-grid { display: grid; grid-template-columns: 1fr; gap: 2.6rem 2rem; }
+@media (min-width: 720px) { .proj-grid { grid-template-columns: repeat(2, 1fr); } }
+.proj-card { text-decoration: none; color: inherit; display: block; }
+.proj-photo { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 10px; background: #f2f2f2; margin-bottom: 1.1rem; }
+.proj-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+.proj-card:hover .proj-photo img { transform: scale(1.04); }
+.proj-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: rgba(10,10,11,0.18); font-size: 2.6rem; }
+.proj-tag { position: absolute; top: 14px; left: 14px; background: #fff; color: var(--ink); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.32rem 0.75rem; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.proj-card h3 { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.35rem; }
+.proj-card p { color: var(--ink-soft); font-size: 0.9rem; margin-bottom: 0.6rem; }
+.proj-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.proj-meta span { font-size: 0.76rem; color: var(--ink-soft); }
+.proj-meta span:not(:last-child)::after { content: '·'; margin-left: 0.4rem; color: var(--line); }
+
+/* Experience */
+.exp-section { padding: 5rem 0; border-top: 1px solid var(--line); background: #fafafa; }
+.exp-head { display: grid; grid-template-columns: 1fr; gap: 0.8rem; margin-bottom: 2.5rem; }
+@media (min-width: 800px) { .exp-head { grid-template-columns: 1fr 1fr; align-items: end; } }
+.exp-head h2 { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; }
+.exp-head p { color: var(--ink-soft); font-size: 0.95rem; }
+.exp-list { display: flex; flex-direction: column; }
+.exp-row { display: grid; grid-template-columns: 1fr; gap: 0.3rem; padding: 1.6rem 0; border-bottom: 1px solid var(--line); }
+@media (min-width: 720px) { .exp-row { grid-template-columns: 200px 1fr 220px; gap: 1.5rem; align-items: baseline; } }
+.exp-years { font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.exp-role h4 { font-size: 1.05rem; font-weight: 700; }
+.exp-role .company { color: var(--ink-soft); font-size: 0.88rem; font-weight: 500; }
+.exp-desc { color: var(--ink-soft); font-size: 0.88rem; }
+@media (min-width: 720px) { .exp-desc { text-align: right; } }
+
+/* Skills */
+.skills-section { padding: 5rem 0; }
+.skills-section h2 { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 2.2rem; }
+.skill-group { margin-bottom: 1.8rem; }
+.skill-group h4 { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin-bottom: 0.9rem; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+.skill-tag { border: 1px solid var(--line); border-radius: 999px; padding: 0.45rem 1rem; font-size: 0.84rem; color: var(--ink); }
+
+/* CTA */
+.p-cta { padding: 5.5rem 0; border-top: 1px solid var(--line); text-align: center; }
+.p-cta h2 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.8rem; }
+.p-cta p { color: var(--ink-soft); max-width: 460px; margin: 0 auto 2rem; }
+.cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-outline-ink { display: inline-flex; align-items: center; gap: 0.55rem; background: none; color: var(--ink); text-decoration: none; padding: 0.7rem 1.3rem; border-radius: 999px; font-weight: 600; font-size: 0.85rem; border: 1px solid var(--line); transition: var(--ease); }
+.btn-outline-ink:hover { border-color: var(--ink); }
+
+/* Footer */
+footer { border-top: 1px solid var(--line); padding: 3.5rem 0 2rem; }
+.footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.2rem; margin-bottom: 2.5rem; }
+@media (min-width: 800px) { .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
+.footer-grid h3 { font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem; }
+.footer-grid p { color: var(--ink-soft); font-size: 0.86rem; margin-bottom: 1rem; }
+.footer-grid ul { list-style: none; }
+.footer-grid ul li { margin-bottom: 0.55rem; }
+.footer-grid a { color: var(--ink-soft); text-decoration: none; font-size: 0.86rem; }
+.footer-grid a:hover { color: var(--ink); }
+.footer-social { display: flex; gap: 0.7rem; }
+.footer-social a { width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ink); }
+.footer-social a:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+.footer-bottom { border-top: 1px solid var(--line); padding-top: 1.6rem; text-align: center; font-size: 0.8rem; color: var(--ink-soft); }
+
+.wa-float { position: fixed; bottom: 24px; right: 24px; width: 54px; height: 54px; background: var(--wa-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(37,211,102,0.35); z-index: 900; text-decoration: none; transition: var(--ease); }
+.wa-float:hover { transform: scale(1.08); }
+.wa-float i { color: #fff; font-size: 1.5rem; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="container header-inner">
+    <a href="index.html" class="logo-lockup">
+      <img src="images/logo.png" alt="Jaynite Digital Solutions" onerror="this.style.display='none'">
+    </a>
+    <nav>
+      <ul class="nav-desktop">
+        <li><a href="index.html">Home</a></li>
+        <li class="has-dropdown">
+          <a href="services.html">Services</a>
+          <div class="dropdown">
+            <a href="services.html#web"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a>
+            <a href="services.html#uiux"><i class="fas fa-pen-nib"></i> UI/UX Design</a>
+            <a href="services.html#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
+            <a href="services.html#printing"><i class="fas fa-print"></i> Printing &amp; Publications</a>
+            <a href="services.html#computers"><i class="fas fa-desktop"></i> Computers &amp; Accessories</a>
+          </div>
+        </li>
+        <li><a href="store.html">Store</a></li>
+        <li><a href="project.html" class="active">Projects</a></li>
+        <li><a href="resource.html">Resources</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn-ink"><i class="fab fa-whatsapp"></i> Let's Talk</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mm-top">
+    <img src="images/logo.png" alt="Jaynite Digital Solutions" style="height:30px" onerror="this.style.display='none'">
+    <button class="mm-close" id="mmClose" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="mm-body">
+    <ul class="mm-list">
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <button class="mm-toggle" id="mmServicesToggle">Services <i class="fas fa-chevron-down"></i></button>
+        <ul class="mm-submenu" id="mmServicesSubmenu">
+          <li><a href="services.html#web"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a></li>
+          <li><a href="services.html#uiux"><i class="fas fa-pen-nib"></i> UI/UX Design</a></li>
+          <li><a href="services.html#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a></li>
+          <li><a href="services.html#printing"><i class="fas fa-print"></i> Printing &amp; Publications</a></li>
+        </ul>
+      </li>
+      <li><a href="store.html">Store</a></li>
+      <li><a href="project.html">Projects</a></li>
+      <li><a href="resource.html">Resources</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="p-hero">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span><span class="current">Projects</span>
+    </nav>
+    <div class="hero-grid">
+      <h1>Selected<br>Work</h1>
+      <p class="lede">A record of what's actually been built — websites, brand work, and IT projects delivered across Ghana.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Filters -->
+<div class="container">
+  <div class="filter-row" id="filterRow">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="web">Web Development</button>
+    <button class="filter-btn" data-filter="design">Design &amp; Branding</button>
+    <button class="filter-btn" data-filter="it">IT &amp; Security</button>
+  </div>
+</div>
+
+<!-- Projects -->
+<section class="proj-section">
+  <div class="container">
+    <div class="proj-grid" id="projGrid">
+
+      <a href="contact.html" class="proj-card" data-cat="web">
+        <div class="proj-photo">
+          <span class="proj-tag">Web Development</span>
+          <img src="images/project-groupeania.jpg" alt="Groupeania Ltd corporate website" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="proj-fallback" style="display:none"><i class="fas fa-laptop-code"></i></div>
+        </div>
+        <h3>Groupeania Ltd — Corporate Website</h3>
+        <p>A responsive company site with an integrated content management system.</p>
+        <div class="proj-meta"><span>HTML5</span><span>CSS3</span><span>CMS</span></div>
+      </a>
+
+      <a href="contact.html" class="proj-card" data-cat="design">
+        <div class="proj-photo">
+          <span class="proj-tag">Design &amp; Branding</span>
+          <img src="images/project-branding.jpg" alt="Corporate brand identity suite" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="proj-fallback" style="display:none"><i class="fas fa-palette"></i></div>
+        </div>
+        <h3>Corporate Brand Identity Suite</h3>
+        <p>Logo, business cards, letterheads and brochures for a local business.</p>
+        <div class="proj-meta"><span>Brand Strategy</span><span>Print Design</span></div>
+      </a>
+
+      <a href="contact.html" class="proj-card" data-cat="web">
+        <div class="proj-photo">
+          <span class="proj-tag">Web Development</span>
+          <img src="images/project-ecommerce.jpg" alt="E-commerce platform" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="proj-fallback" style="display:none"><i class="fas fa-cart-shopping"></i></div>
+        </div>
+        <h3>E-Commerce Platform</h3>
+        <p>Payment integration, inventory and a customer portal for a retail business.</p>
+        <div class="proj-meta"><span>PHP</span><span>MySQL</span><span>Payments</span></div>
+      </a>
+
+      <a href="contact.html" class="proj-card" data-cat="web">
+        <div class="proj-photo">
+          <span class="proj-tag">Web Development</span>
+          <img src="images/project-school-system.jpg" alt="School management system" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="proj-fallback" style="display:none"><i class="fas fa-graduation-cap"></i></div>
+        </div>
+        <h3>School Management System</h3>
+        <p>Student records, grading, attendance and a parent portal in one dashboard.</p>
+        <div class="proj-meta"><span>Full-Stack</span><span>Database Design</span></div>
+      </a>
+
+      <a href="contact.html" class="proj-card" data-cat="design">
+        <div class="proj-photo">
+          <span class="proj-tag">Design &amp; Branding</span>
+          <img src="images/project-print.jpg" alt="Print and publication design" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="proj-fallback" style="display:none"><i class="fas fa-print"></i></div>
+        </div>
+        <h3>Print &amp; Publication Design</h3>
+        <p>Magazines, brochures, flyers and posters for local organizations and events.</p>
+        <div class="proj-meta"><span>Print Design</span><span>Typography</span></div>
+      </a>
+
+      <a href="contact.html" class="proj-card" data-cat="it">
+        <div class="proj-photo">
+          <span class="proj-tag">IT &amp; Security</span>
+          <img src="images/project-network.jpg" alt="Network infrastructure setup" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="proj-fallback" style="display:none"><i class="fas fa-network-wired"></i></div>
+        </div>
+        <h3>Network Infrastructure Setup</h3>
+        <p>Full network design and monitoring for a growing small business.</p>
+        <div class="proj-meta"><span>Network Design</span><span>Monitoring</span></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section class="exp-section">
+  <div class="container">
+    <div class="exp-head">
+      <h2>Experience</h2>
+      <p>Roles held across Ghana's tech and creative industry, leading up to Jaynite.</p>
+    </div>
+    <div class="exp-list">
+      <div class="exp-row">
+        <div class="exp-years">2020 — Present</div>
+        <div class="exp-role"><h4>Founder &amp; CEO</h4><div class="company">Jaynite Digital Solutions</div></div>
+        <div class="exp-desc">Web development, cybersecurity, UI/UX and digital transformation for Ghanaian businesses.</div>
+      </div>
+      <div class="exp-row">
+        <div class="exp-years">2022 — Present</div>
+        <div class="exp-role"><h4>Secretary</h4><div class="company">Nnarawia Foundation LBG</div></div>
+        <div class="exp-desc">Community support through education, healthcare and youth development initiatives.</div>
+      </div>
+      <div class="exp-row">
+        <div class="exp-years">2021 — 2022</div>
+        <div class="exp-role"><h4>Digital &amp; Graphics Specialist</h4><div class="company">Groupeania Ltd</div></div>
+        <div class="exp-desc">Full branding overhaul, corporate printing, and intern training.</div>
+      </div>
+      <div class="exp-row">
+        <div class="exp-years">2020 — 2021</div>
+        <div class="exp-role"><h4>IT Manager</h4><div class="company">Chachas Internet Caf&eacute; &amp; Design House</div></div>
+        <div class="exp-desc">Customer IT support, printing services, and hardware troubleshooting.</div>
+      </div>
+      <div class="exp-row">
+        <div class="exp-years">2019 — 2020</div>
+        <div class="exp-role"><h4>IT Coordinator</h4><div class="company">Nnarawia Grains Ltd</div></div>
+        <div class="exp-desc">Digital records management and process optimization.</div>
+      </div>
+      <div class="exp-row">
+        <div class="exp-years">2018 — 2019</div>
+        <div class="exp-role"><h4>Manager</h4><div class="company">Mindcraft Multimedia</div></div>
+        <div class="exp-desc">Client projects in graphic design, printing and digital solutions.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section class="skills-section">
+  <div class="container">
+    <h2>Areas of Expertise</h2>
+    <div class="skill-group">
+      <h4>Web Development</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span class="skill-tag">JavaScript</span><span class="skill-tag">PHP</span><span class="skill-tag">MySQL</span><span class="skill-tag">WordPress</span><span class="skill-tag">Responsive Design</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Design &amp; Graphics</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Photoshop</span><span class="skill-tag">Illustrator</span><span class="skill-tag">InDesign</span><span class="skill-tag">UI/UX Design</span><span class="skill-tag">Brand Identity</span><span class="skill-tag">Print Design</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Cybersecurity &amp; IT</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Network Security</span><span class="skill-tag">Vulnerability Assessment</span><span class="skill-tag">Firewall Configuration</span><span class="skill-tag">System Administration</span><span class="skill-tag">Cloud Services</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="p-cta">
+  <div class="container">
+    <h2>Have something to build?</h2>
+    <p>Tell us what you're working on — we'll tell you honestly if it's a fit.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn-ink"><i class="fab fa-whatsapp"></i> Start a Conversation</a>
+      <a href="services.html" class="btn-outline-ink">View Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3>Jaynite Digital Solutions</h3>
+        <p>Digital innovation in Ghana — web design, publication media, and IT support.</p>
+        <div class="footer-social">
+          <a href="https://youtube.com/@jaynitedigital" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://wa.me/233201485621" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/jaynite_digital" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="store.html">Store</a></li>
+          <li><a href="resource.html">Resources</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Store</h3>
+        <ul>
+          <li><a href="store.html#data">Data Bundles</a></li>
+          <li><a href="store.html#checkers">Results Checkers</a></li>
+          <li><a href="store.html#packages">Website Packages</a></li>
+          <li><a href="store.html#systems">Management Systems</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="#">Sunyani, Bono Region, Ghana</a></li>
+          <li><a href="https://wa.me/233201485621" target="_blank">+233 20 148 5621</a></li>
+          <li><a href="mailto:jaynitedigital@gmail.com">jaynitedigital@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 Jaynite Digital Solutions.</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const mmClose = document.getElementById('mmClose');
+menuToggle.addEventListener('click', ()=>{ mobileMenu.classList.add('active'); document.body.style.overflow='hidden'; });
+mmClose.addEventListener('click', ()=>{ mobileMenu.classList.remove('active'); document.body.style.overflow='auto'; });
+document.querySelectorAll('.mm-list > li > a, .mm-submenu a').forEach(l=>l.addEventListener('click', ()=>{ mobileMenu.classList.remove('active'); document.body.style.overflow='auto'; }));
+document.getElementById('mmServicesToggle').addEventListener('click', ()=>{ document.getElementById('mmServicesSubmenu').classList.toggle('active'); });
+
+// Filter
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.proj-card');
+filterBtns.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    filterBtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    cards.forEach(c=>{
+      c.style.display = (f === 'all' || c.dataset.cat === f) ? '' : 'none';
+    });
+  });
+});
+</script>
+</body>
+</html>
