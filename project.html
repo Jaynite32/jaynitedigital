@@ -3,343 +3,506 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects - Jaynite Digital Solutions</title>
+<title>Projects &amp; Portfolio – Jaynite Digital Solutions</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;0,800;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root {
-  --ink: #0a0a0b;
-  --ink-soft: #6b6f76;
-  --paper: #ffffff;
-  --line: rgba(10,10,11,0.1);
-  --line-soft: rgba(10,10,11,0.06);
-  --wa-green: #25D366;
-  --ease: all 0.25s cubic-bezier(0.4,0,0.2,1);
-}
-* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-html { scroll-behavior: smooth; }
-body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--paper); line-height: 1.6; }
-img { max-width: 100%; display: block; }
-.container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy-deep:  #050811;
+    --navy-mid:   #0d1830;
+    --ink:        #0a0e1a;
+    --ink-soft:   #5b6472;
+    --ink-mute:   #8a94a3;
+    --cyan:       #009cb8;
+    --cyan-deep:  #007a91;
+    --cyan-glow:  #00e5ff;
+    --blue:       #2979ff;
+    --paper:      #ffffff;
+    --cream:      #f6fbfc;
+    --pale:       #e4f6fa;
+    --line:       rgba(10,14,26,0.1);
+    --line-soft:  rgba(10,14,26,0.06);
+    --shadow:     0 8px 40px rgba(10,20,40,0.1);
+    --shadow-lg:  0 20px 60px rgba(10,20,40,0.16);
+    --radius:     12px;
+    --radius-lg:  20px;
+    --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--cream); overflow-x: hidden; line-height: 1.6; }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-/* Header */
-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
-.header-inner { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
-.logo-lockup { display: flex; align-items: center; text-decoration: none; }
-.logo-lockup img { height: 34px; width: auto; }
-.nav-desktop { display: none; }
-@media (min-width: 900px) {
-  .nav-desktop { display: flex; list-style: none; align-items: center; gap: 2.2rem; }
-  .nav-desktop a { text-decoration: none; color: var(--ink-soft); font-weight: 500; font-size: 0.92rem; transition: var(--ease); }
-  .nav-desktop a.active, .nav-desktop a:hover { color: var(--ink); }
-  .nav-desktop li.has-dropdown { position: relative; }
-  .dropdown { position: absolute; top: 130%; left: -10px; min-width: 260px; background: #fff; border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); padding: 0.5rem; opacity: 0; visibility: hidden; transform: translateY(8px); transition: var(--ease); }
-  .has-dropdown:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
-  .dropdown a { display: flex; align-items: center; gap: 0.7rem; padding: 0.6rem 0.7rem; border-radius: 7px; font-size: 0.86rem; color: var(--ink-soft); }
-  .dropdown a:hover { background: #f5f5f5; color: var(--ink); }
-  .dropdown a i { width: 16px; color: var(--ink-soft); font-size: 0.85rem; }
-}
-.header-actions { display: flex; align-items: center; gap: 1rem; }
-.btn-ink { display: inline-flex; align-items: center; gap: 0.55rem; background: var(--ink); color: #fff; text-decoration: none; padding: 0.7rem 1.3rem; border-radius: 999px; font-weight: 600; font-size: 0.85rem; transition: var(--ease); }
-.btn-ink:hover { background: #2a2a2c; transform: translateY(-1px); }
-.menu-toggle { display: flex; flex-direction: column; gap: 5px; width: 24px; background: none; border: none; cursor: pointer; }
-.menu-toggle span { width: 100%; height: 1.5px; background: var(--ink); }
-@media (min-width: 900px) { .menu-toggle { display: none; } }
+  .section-label { font-weight: 700; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--cyan-deep); margin-bottom: 12px; }
+  .section-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 42px); color: var(--ink); line-height: 1.15; margin-bottom: 16px; font-weight: 700; }
+  .section-desc { font-size: 16px; line-height: 1.8; color: var(--ink-soft); max-width: 600px; }
+  .divider-rule { width: 36px; height: 3px; background: linear-gradient(90deg, var(--cyan), var(--blue)); border-radius: 2px; }
 
-.mobile-menu { position: fixed; inset: 0; background: #fff; transform: translateY(-100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); z-index: 2000; display: flex; flex-direction: column; overflow-y: auto; }
-.mobile-menu.active { transform: translateY(0); }
-.mm-top { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 24px; border-bottom: 1px solid var(--line); }
-.mm-close { background: none; border: none; font-size: 1.8rem; color: var(--ink); cursor: pointer; }
-.mm-body { flex: 1; padding: 0.5rem 0; }
-.mm-list { list-style: none; }
-.mm-list > li { border-bottom: 1px solid var(--line-soft); }
-.mm-list > li > a, .mm-list > li > .mm-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; text-decoration: none; color: var(--ink); font-weight: 600; font-size: 1.05rem; padding: 1.05rem 24px; background: none; border: none; text-align: left; }
-.mm-submenu { display: none; list-style: none; background: #fafafa; }
-.mm-submenu.active { display: block; }
-.mm-submenu li a { display: flex; align-items: center; gap: 0.7rem; padding: 0.75rem 24px 0.75rem 2.4rem; font-size: 0.88rem; color: var(--ink-soft); text-decoration: none; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 50px; font-size: 14px; font-weight: 700; cursor: pointer; transition: var(--transition); border: 2px solid transparent; white-space: nowrap; font-family: inherit; }
+  .btn-primary { background: linear-gradient(135deg, var(--cyan), var(--blue)); color: #fff; box-shadow: 0 4px 20px rgba(0,156,184,0.3); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,156,184,0.45); }
+  .btn-outline-white { background: transparent; color: #fff; border-color: rgba(255,255,255,0.55); }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: #fff; transform: translateY(-2px); }
+  .btn-outline-ink { background: transparent; color: var(--ink); border-color: var(--line); }
+  .btn-outline-ink:hover { border-color: var(--ink); transform: translateY(-2px); }
 
-/* Hero */
-.p-hero { padding: 9rem 0 4rem; border-bottom: 1px solid var(--line); }
-.breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--ink-soft); margin-bottom: 2rem; }
-.breadcrumb a { color: var(--ink-soft); text-decoration: none; }
-.breadcrumb a:hover { color: var(--ink); }
-.breadcrumb .current { color: var(--ink); font-weight: 600; }
-.hero-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; align-items: end; }
-@media (min-width: 800px) { .hero-grid { grid-template-columns: auto 1fr; gap: 3rem; } }
-.p-hero h1 { font-size: 3rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
-@media (min-width: 800px) { .p-hero h1 { font-size: 4.6rem; } }
-.p-hero .lede { color: var(--ink-soft); font-size: 1.02rem; max-width: 380px; padding-bottom: 0.4rem; }
+  /* ===== Top bar ===== */
+  .topbar { background: var(--navy-deep); color: rgba(255,255,255,0.75); font-size: 12.5px; padding: 8px 0; }
+  .topbar .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .topbar-contacts { display: flex; gap: 22px; flex-wrap: wrap; }
+  .topbar-contacts a { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.75); transition: var(--transition); }
+  .topbar-contacts a:hover { color: var(--cyan-glow); }
+  .topbar-right { display: flex; align-items: center; gap: 16px; }
+  .topbar-social { display: flex; gap: 8px; margin-left: 4px; }
+  .topbar-social a { display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.08); color: #fff; font-size: 11px; transition: var(--transition); }
+  .topbar-social a:hover { background: var(--cyan); }
+  @media (max-width: 768px) { .topbar { display: none; } }
 
-/* Filters */
-.filter-row { display: flex; gap: 1.8rem; padding: 1.6rem 0; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--line); }
-.filter-row::-webkit-scrollbar { display: none; }
-.filter-btn { flex: 0 0 auto; background: none; border: none; font-family: inherit; font-size: 0.92rem; font-weight: 500; color: var(--ink-soft); padding: 0.3rem 0; cursor: pointer; position: relative; white-space: nowrap; }
-.filter-btn::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1.65rem; height: 2px; background: var(--ink); transform: scaleX(0); transition: transform 0.25s ease; }
-.filter-btn.active { color: var(--ink); font-weight: 700; }
-.filter-btn.active::after { transform: scaleX(1); }
+  /* ===== Navbar ===== */
+  .navbar { background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(10,20,40,0.06); position: sticky; top: 0; z-index: 1000; transition: var(--transition); }
+  .navbar .container { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-img-wrap { width: 44px; height: 44px; border-radius: 10px; overflow: hidden; flex-shrink: 0; background: #fff; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; }
+  .logo-img-wrap img { width: 100%; height: 100%; object-fit: contain; }
+  .logo-text { display: flex; flex-direction: column; }
+  .logo-name { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.1; }
+  .logo-tagline { font-size: 9.5px; color: var(--cyan-deep); font-weight: 600; letter-spacing: 0.3px; line-height: 1.4; }
 
-/* Project grid */
-.proj-section { padding: 3.5rem 0 5rem; }
-.proj-grid { display: grid; grid-template-columns: 1fr; gap: 2.6rem 2rem; }
-@media (min-width: 720px) { .proj-grid { grid-template-columns: repeat(2, 1fr); } }
-.proj-card { text-decoration: none; color: inherit; display: block; }
-.proj-photo { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 10px; background: #f2f2f2; margin-bottom: 1.1rem; }
-.proj-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
-.proj-card:hover .proj-photo img { transform: scale(1.04); }
-.proj-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: rgba(10,10,11,0.18); font-size: 2.6rem; }
-.proj-tag { position: absolute; top: 14px; left: 14px; background: #fff; color: var(--ink); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.32rem 0.75rem; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-.proj-card h3 { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.35rem; }
-.proj-card p { color: var(--ink-soft); font-size: 0.9rem; margin-bottom: 0.6rem; }
-.proj-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.proj-meta span { font-size: 0.76rem; color: var(--ink-soft); }
-.proj-meta span:not(:last-child)::after { content: '·'; margin-left: 0.4rem; color: var(--line); }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  @media (min-width: 900px) {
+    .nav-links { display: flex; align-items: center; gap: 3px; }
+    .nav-links a { padding: 8px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; color: var(--ink); transition: var(--transition); position: relative; }
+    .nav-links a:hover, .nav-links a.active { color: var(--cyan-deep); background: rgba(0,156,184,0.07); }
+    .nav-links a.active::after { content: ''; position: absolute; bottom: 1px; left: 50%; transform: translateX(-50%); width: 18px; height: 2px; background: var(--cyan); border-radius: 2px; }
+    .nav-item { position: relative; display: flex; align-items: center; }
+    .nav-dropdown { position: absolute; top: calc(100% + 8px); left: 0; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-lg); border: 1px solid var(--line); min-width: 230px; padding: 8px; opacity: 0; visibility: hidden; transform: translateY(8px); transition: var(--transition); z-index: 1000; }
+    .nav-item:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown a { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; font-size: 13.5px; font-weight: 500; color: var(--ink); }
+    .nav-dropdown a:hover { background: rgba(0,156,184,0.07); color: var(--cyan-deep); }
+    .nav-dropdown a i { width: 15px; color: var(--cyan); font-size: 0.85rem; }
+    .nav-cta { display: flex; align-items: center; }
+  }
 
-/* Experience */
-.exp-section { padding: 5rem 0; border-top: 1px solid var(--line); background: #fafafa; }
-.exp-head { display: grid; grid-template-columns: 1fr; gap: 0.8rem; margin-bottom: 2.5rem; }
-@media (min-width: 800px) { .exp-head { grid-template-columns: 1fr 1fr; align-items: end; } }
-.exp-head h2 { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; }
-.exp-head p { color: var(--ink-soft); font-size: 0.95rem; }
-.exp-list { display: flex; flex-direction: column; }
-.exp-row { display: grid; grid-template-columns: 1fr; gap: 0.3rem; padding: 1.6rem 0; border-bottom: 1px solid var(--line); }
-@media (min-width: 720px) { .exp-row { grid-template-columns: 200px 1fr 220px; gap: 1.5rem; align-items: baseline; } }
-.exp-years { font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-.exp-role h4 { font-size: 1.05rem; font-weight: 700; }
-.exp-role .company { color: var(--ink-soft); font-size: 0.88rem; font-weight: 500; }
-.exp-desc { color: var(--ink-soft); font-size: 0.88rem; }
-@media (min-width: 720px) { .exp-desc { text-align: right; } }
+  .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); }
+  .hamburger span { width: 22px; height: 2px; background: var(--ink); border-radius: 2px; display: block; }
+  @media (min-width: 900px) { .hamburger { display: none; } }
+  @media (max-width: 899px) {
+    .navbar .container { justify-content: center; position: relative; height: 72px; }
+    .logo-text { display: none; }
+  }
 
-/* Skills */
-.skills-section { padding: 5rem 0; }
-.skills-section h2 { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 2.2rem; }
-.skill-group { margin-bottom: 1.8rem; }
-.skill-group h4 { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin-bottom: 0.9rem; }
-.skill-tags { display: flex; flex-wrap: wrap; gap: 0.55rem; }
-.skill-tag { border: 1px solid var(--line); border-radius: 999px; padding: 0.45rem 1rem; font-size: 0.84rem; color: var(--ink); }
+  /* ===== Mobile menu ===== */
+  .mobile-menu { display: none; position: fixed; inset: 0; background: var(--navy-deep); z-index: 2000; flex-direction: column; overflow-y: auto; }
+  .mobile-menu.open { display: flex; }
+  .mmh-top-row { display: flex; align-items: center; justify-content: space-between; padding: 22px 24px 0; }
+  .mmh-logo-icon { width: 56px; height: 56px; background: #fff; border-radius: 12px; padding: 7px; box-shadow: 0 4px 16px rgba(0,0,0,0.3); flex-shrink: 0; }
+  .mmh-logo-icon img { width: 100%; height: 100%; object-fit: contain; }
+  .mobile-close { background: none; border: none; color: #fff; font-size: 26px; cursor: pointer; }
+  .mmh-brand-bar { margin: 18px 24px 8px; background: linear-gradient(135deg, rgba(0,156,184,0.14), rgba(41,121,255,0.1)); border: 1px solid rgba(0,229,255,0.2); border-radius: var(--radius); padding: 14px 18px; }
+  .mmh-brand-name { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: #fff; line-height: 1.2; }
+  .mmh-brand-tagline { font-size: 10.5px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; margin-top: 4px; color: var(--cyan-glow); display: block; }
+  .mobile-nav { padding: 8px 24px 0; }
+  .mobile-nav-item { border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .mobile-nav > a { display: block; font-family: 'Fraunces', serif; font-size: 24px; font-weight: 700; color: #fff; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08); transition: var(--transition); }
+  .mobile-nav > a:hover { color: var(--cyan-glow); }
+  .mobile-dropdown-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; background: none; border: none; cursor: pointer; font-family: 'Fraunces', serif; font-size: 24px; font-weight: 700; color: #fff; padding: 14px 0; }
+  .mobile-dropdown-toggle .caret { font-size: 13px; color: var(--navy-deep); transition: var(--transition); flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--cyan-glow); display: inline-flex; align-items: center; justify-content: center; }
+  .mobile-nav-item.open .mobile-dropdown-toggle .caret { transform: rotate(180deg); }
+  .mobile-sub-nav { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+  .mobile-nav-item.open .mobile-sub-nav { max-height: 400px; padding-bottom: 10px; }
+  .mobile-sub-nav a { display: flex; align-items: center; gap: 10px; font-size: 14.5px; font-weight: 500; color: rgba(255,255,255,0.7); padding: 8px 0 8px 6px; }
+  .mobile-sub-nav a:hover { color: var(--cyan-glow); }
+  .mobile-sub-nav a i { color: var(--cyan-glow); width: 16px; font-size: 0.82em; }
+  .mobile-menu-footer { padding: 24px; margin-top: auto; }
+  .mobile-menu-footer p { color: rgba(255,255,255,0.45); font-size: 12.5px; text-align: center; }
 
-/* CTA */
-.p-cta { padding: 5.5rem 0; border-top: 1px solid var(--line); text-align: center; }
-.p-cta h2 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.8rem; }
-.p-cta p { color: var(--ink-soft); max-width: 460px; margin: 0 auto 2rem; }
-.cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-.btn-outline-ink { display: inline-flex; align-items: center; gap: 0.55rem; background: none; color: var(--ink); text-decoration: none; padding: 0.7rem 1.3rem; border-radius: 999px; font-weight: 600; font-size: 0.85rem; border: 1px solid var(--line); transition: var(--ease); }
-.btn-outline-ink:hover { border-color: var(--ink); }
+  /* ===== Page header ===== */
+  .page-header { background: radial-gradient(circle at 20% 20%, rgba(0,229,255,0.12), transparent 45%), radial-gradient(circle at 85% 70%, rgba(41,121,255,0.12), transparent 45%), linear-gradient(160deg, var(--navy-deep), var(--navy-mid)); padding: 6.5rem 0 4.5rem; position: relative; overflow: hidden; text-align: center; }
+  .page-header .container { position: relative; z-index: 1; }
+  .hero-brand-mark { width: 84px; height: 84px; background: #fff; border-radius: var(--radius-lg); padding: 13px; margin: 0 auto 22px; box-shadow: var(--shadow-lg); display: flex; align-items: center; justify-content: center; }
+  .hero-brand-mark img { width: 100%; height: 100%; object-fit: contain; }
+  .page-header .section-label { color: var(--cyan-glow); justify-content: center; display: flex; }
+  .page-header h1 { font-family: 'Fraunces', serif; font-size: clamp(34px, 5.5vw, 54px); color: #fff; line-height: 1.12; margin-bottom: 16px; font-weight: 700; }
+  .page-header p { color: rgba(255,255,255,0.72); font-size: 16px; max-width: 600px; margin: 0 auto; line-height: 1.7; }
 
-/* Footer */
-footer { border-top: 1px solid var(--line); padding: 3.5rem 0 2rem; }
-.footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.2rem; margin-bottom: 2.5rem; }
-@media (min-width: 800px) { .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
-.footer-grid h3 { font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem; }
-.footer-grid p { color: var(--ink-soft); font-size: 0.86rem; margin-bottom: 1rem; }
-.footer-grid ul { list-style: none; }
-.footer-grid ul li { margin-bottom: 0.55rem; }
-.footer-grid a { color: var(--ink-soft); text-decoration: none; font-size: 0.86rem; }
-.footer-grid a:hover { color: var(--ink); }
-.footer-social { display: flex; gap: 0.7rem; }
-.footer-social a { width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ink); }
-.footer-social a:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
-.footer-bottom { border-top: 1px solid var(--line); padding-top: 1.6rem; text-align: center; font-size: 0.8rem; color: var(--ink-soft); }
+  /* ===== Section nav ===== */
+  .section-nav { background: var(--paper); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 500; }
+  @media (min-width: 900px) { .section-nav { top: 76px; } }
+  .section-nav-inner { display: flex; gap: 6px; overflow-x: auto; padding: 13px 0; scrollbar-width: none; }
+  .section-nav-inner::-webkit-scrollbar { display: none; }
+  .section-nav a { white-space: nowrap; font-size: 13px; font-weight: 600; color: var(--ink-soft); padding: 8px 15px; border-radius: 50px; border: 1px solid var(--line); transition: var(--transition); flex-shrink: 0; }
+  .section-nav a:hover, .section-nav a.active { background: var(--navy-deep); color: #fff; border-color: var(--navy-deep); }
 
-.wa-float { position: fixed; bottom: 24px; right: 24px; width: 54px; height: 54px; background: var(--wa-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(37,211,102,0.35); z-index: 900; text-decoration: none; transition: var(--ease); }
-.wa-float:hover { transform: scale(1.08); }
-.wa-float i { color: #fff; font-size: 1.5rem; }
+  /* ===== Logo showcase divider ===== */
+  .logo-showcase { background: var(--paper); padding: 20px 0; text-align: center; border-bottom: 1px solid var(--line); }
+  .logo-showcase-mark { display: inline-flex; width: 46px; height: 46px; align-items: center; justify-content: center; opacity: 0.85; }
+  .logo-showcase-mark img { width: 100%; height: 100%; object-fit: contain; }
+
+  /* ===== Generic section ===== */
+  .p-section { padding: 4.5rem 0; }
+  .p-section.alt { background: var(--paper); }
+  section[id] { scroll-margin-top: 140px; }
+
+  /* ===== Project grid ===== */
+  .proj-grid { display: grid; grid-template-columns: 1fr; gap: 28px; margin-top: 36px; }
+  @media (min-width: 640px) { .proj-grid { grid-template-columns: repeat(2, 1fr); } }
+  .proj-card { background: var(--paper); border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); transition: var(--transition); text-decoration: none; color: inherit; display: block; }
+  .proj-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(0,156,184,0.35); }
+  .proj-img-wrap { position: relative; height: 190px; background: var(--navy-deep); overflow: hidden; }
+  .proj-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+  .proj-card:hover .proj-img-wrap img { transform: scale(1.05); }
+  .proj-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.18); font-size: 2.4rem; }
+  .proj-tag { position: absolute; top: 14px; left: 14px; background: var(--cyan); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 50px; }
+  .proj-info { padding: 20px 22px 24px; }
+  .proj-info h3 { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+  .proj-info p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.7; margin: 10px 0 12px; }
+  .proj-meta { display: flex; flex-wrap: wrap; gap: 4px; }
+  .proj-meta span { font-size: 12px; color: var(--ink-mute); }
+  .proj-meta span:not(:last-child)::after { content: '·'; margin-left: 6px; color: var(--line); }
+
+  /* ===== Experience (accordion on mobile) ===== */
+  .exp-section { background: var(--navy-deep); padding: 4.5rem 0; position: relative; overflow: hidden; }
+  .exp-section::before { content: ''; position: absolute; top: -120px; right: -120px; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(0,229,255,0.08), transparent 70%); }
+  .exp-section .container { position: relative; z-index: 1; }
+  .exp-section .section-label { color: var(--cyan-glow); }
+  .exp-section .section-title { color: #fff; }
+  .exp-section .section-desc { color: rgba(255,255,255,0.65); }
+  .exp-list { margin-top: 32px; }
+  .exp-row { display: grid; grid-template-columns: 1fr; gap: 4px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  @media (min-width: 720px) { .exp-row { grid-template-columns: 160px 1fr 240px; gap: 20px; align-items: baseline; } }
+  .exp-years { font-size: 12.5px; color: var(--cyan-glow); font-weight: 600; letter-spacing: 0.3px; }
+  .exp-role h4 { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: #fff; }
+  .exp-role .company { color: rgba(255,255,255,0.55); font-size: 13.5px; font-weight: 500; }
+  .exp-desc { color: rgba(255,255,255,0.55); font-size: 13.5px; }
+  @media (min-width: 720px) { .exp-desc { text-align: right; } }
+
+  @media (max-width: 719px) {
+    .exp-row { cursor: pointer; }
+    .exp-desc { display: none; padding-top: 6px; }
+    .exp-row.open .exp-desc { display: block; }
+    .exp-role { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+    .exp-role::after { content: '+'; color: var(--cyan-glow); font-size: 18px; font-weight: 700; flex-shrink: 0; transition: var(--transition); }
+    .exp-row.open .exp-role::after { content: '\2212'; }
+  }
+
+  /* ===== Skills ===== */
+  .skills-section { padding: 4.5rem 0; }
+  .skill-group { margin-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .skill-group-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+  .skill-group-head h4 { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: var(--ink); }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 18px; }
+  .skill-tag { border: 1px solid var(--line); background: var(--cream); border-radius: 999px; padding: 7px 15px; font-size: 13px; color: var(--ink); font-weight: 500; }
+  @media (min-width: 720px) {
+    .skill-group-head { cursor: default; }
+  }
+  @media (max-width: 719px) {
+    .skill-group-head { cursor: pointer; }
+    .skill-tags { display: none; }
+    .skill-group.open .skill-tags { display: flex; }
+    .skill-caret { color: var(--cyan-deep); font-size: 18px; font-weight: 700; transition: var(--transition); }
+    .skill-group.open .skill-caret { transform: rotate(45deg); }
+  }
+
+  /* ===== CTA ===== */
+  .cta-section { padding: 6rem 0; background: linear-gradient(160deg, var(--navy-deep), var(--navy-mid)); position: relative; overflow: hidden; }
+  .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 25% 30%, rgba(0,229,255,0.1), transparent 45%), radial-gradient(circle at 80% 75%, rgba(41,121,255,0.1), transparent 45%); }
+  .cta-inner { text-align: center; position: relative; z-index: 1; }
+  .cta-section .section-label { color: var(--cyan-glow); justify-content: center; display: flex; }
+  .cta-section .section-title { color: #fff; }
+  .cta-desc { color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.7; margin: 0 auto 36px; max-width: 480px; }
+  .cta-buttons { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+  /* ===== Footer ===== */
+  footer { background: #030509; color: rgba(255,255,255,0.65); }
+  .footer-main { padding: 4.2rem 0 2.6rem; }
+  .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.2rem; }
+  @media (min-width: 800px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1.2fr; } }
+  .footer-brand .logo-name { color: #fff; font-size: 18px; }
+  .footer-brand .logo-tagline { color: var(--cyan-glow); }
+  .footer-brand .logo-img-wrap { background: #fff; }
+  .footer-about { font-size: 13.5px; line-height: 1.8; margin: 16px 0; color: rgba(255,255,255,0.5); }
+  .footer-social { display: flex; gap: 9px; margin-top: 6px; }
+  .footer-social a { width: 34px; height: 34px; background: rgba(255,255,255,0.06); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: rgba(255,255,255,0.7); transition: var(--transition); }
+  .footer-social a:hover { background: var(--cyan); color: #fff; }
+  .footer-col h3 { font-family: 'Fraunces', serif; color: #fff; font-size: 15.5px; margin-bottom: 1.1rem; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,0.08); font-weight: 700; }
+  .footer-col.collapsible h3 .f-plus { display: none; }
+  .footer-links { display: flex; flex-direction: column; gap: 9px; }
+  .footer-links a { font-size: 13.5px; color: rgba(255,255,255,0.55); display: flex; align-items: center; gap: 6px; transition: var(--transition); }
+  .footer-links a:hover { color: var(--cyan-glow); padding-left: 3px; }
+  .footer-links a i { color: var(--cyan-glow); font-size: 0.78em; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding: 20px 0; text-align: center; font-size: 12.5px; color: rgba(255,255,255,0.4); }
+
+  @media (max-width: 767px) {
+    .footer-col.collapsible h3 { cursor: pointer; display: flex; align-items: center; justify-content: space-between; margin-bottom: 0; padding: 14px 0; border-bottom: none; }
+    .footer-col.collapsible h3 .f-plus { display: inline-flex; color: var(--cyan-glow); transition: var(--transition); font-size: 0.82rem; }
+    .footer-col.collapsible.open h3 .f-plus { transform: rotate(45deg); }
+    .footer-col.collapsible .footer-section-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding-bottom 0.3s ease; padding-bottom: 0; }
+    .footer-col.collapsible.open .footer-section-body { max-height: 500px; padding-bottom: 14px; }
+    .footer-col.collapsible { border-bottom: 1px solid rgba(255,255,255,0.08); }
+  }
+
+  .wa-float { position: fixed; bottom: 24px; right: 24px; width: 54px; height: 54px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(37,211,102,0.35); z-index: 900; transition: var(--transition); }
+  .wa-float:hover { transform: scale(1.08); }
+  .wa-float i { color: #fff; font-size: 1.5rem; }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 
-<!-- Header -->
-<header>
-  <div class="container header-inner">
-    <a href="index.html" class="logo-lockup">
-      <img src="images/logo.png" alt="Jaynite Digital Solutions" onerror="this.style.display='none'">
-    </a>
-    <nav>
-      <ul class="nav-desktop">
-        <li><a href="index.html">Home</a></li>
-        <li class="has-dropdown">
-          <a href="services.html">Services</a>
-          <div class="dropdown">
-            <a href="services.html#web"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a>
-            <a href="services.html#uiux"><i class="fas fa-pen-nib"></i> UI/UX Design</a>
-            <a href="services.html#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
-            <a href="services.html#printing"><i class="fas fa-print"></i> Printing &amp; Publications</a>
-            <a href="services.html#computers"><i class="fas fa-desktop"></i> Computers &amp; Accessories</a>
-          </div>
-        </li>
-        <li><a href="store.html">Store</a></li>
-        <li><a href="project.html" class="active">Projects</a></li>
-        <li><a href="resource.html">Resources</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="header-actions">
-      <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn-ink"><i class="fab fa-whatsapp"></i> Let's Talk</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-contacts">
+      <a href="mailto:jaynitedigital@gmail.com"><i class="fas fa-envelope"></i>&nbsp;jaynitedigital@gmail.com</a>
+      <a href="tel:+233201485621"><i class="fas fa-phone"></i>&nbsp;0201 485 621</a>
+      <span style="color:rgba(255,255,255,0.3)">|</span>
+      <span>Sunyani, Bono Region, Ghana</span>
     </div>
-  </div>
-</header>
-
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mm-top">
-    <img src="images/logo.png" alt="Jaynite Digital Solutions" style="height:30px" onerror="this.style.display='none'">
-    <button class="mm-close" id="mmClose" aria-label="Close menu">&times;</button>
-  </div>
-  <div class="mm-body">
-    <ul class="mm-list">
-      <li><a href="index.html">Home</a></li>
-      <li>
-        <button class="mm-toggle" id="mmServicesToggle">Services <i class="fas fa-chevron-down"></i></button>
-        <ul class="mm-submenu" id="mmServicesSubmenu">
-          <li><a href="services.html#web"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a></li>
-          <li><a href="services.html#uiux"><i class="fas fa-pen-nib"></i> UI/UX Design</a></li>
-          <li><a href="services.html#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a></li>
-          <li><a href="services.html#printing"><i class="fas fa-print"></i> Printing &amp; Publications</a></li>
-        </ul>
-      </li>
-      <li><a href="store.html">Store</a></li>
-      <li><a href="project.html">Projects</a></li>
-      <li><a href="resource.html">Resources</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+    <div class="topbar-right">
+      <span>Mon – Fri: 8am – 6pm</span>
+      <div class="topbar-social">
+        <a href="https://www.instagram.com/jaynite_digital" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@jaynitedigital" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- Hero -->
-<section class="p-hero">
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
   <div class="container">
-    <nav class="breadcrumb">
-      <a href="index.html">Home</a><span>/</span><span class="current">Projects</span>
-    </nav>
-    <div class="hero-grid">
-      <h1>Selected<br>Work</h1>
-      <p class="lede">A record of what's actually been built — websites, brand work, and IT projects delivered across Ghana.</p>
+    <a href="index.html" class="logo">
+      <div class="logo-img-wrap"><img src="images/logo.png" alt="Jaynite Digital Solutions" onerror="this.style.display='none'"></div>
+      <div class="logo-text">
+        <span class="logo-name">Jaynite Digital</span>
+        <span class="logo-tagline">Empowering Digital Innovation</span>
+      </div>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <div class="nav-item">
+        <a href="services.html">Services</a>
+        <div class="nav-dropdown">
+          <a href="services.html#web"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a>
+          <a href="services.html#uiux"><i class="fas fa-pen-nib"></i> UI/UX Design</a>
+          <a href="services.html#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
+          <a href="services.html#printing"><i class="fas fa-print"></i> Printing &amp; Publications</a>
+          <a href="services.html#computers"><i class="fas fa-desktop"></i> Computers &amp; Accessories</a>
+        </div>
+      </div>
+      <a href="store.html">Store</a>
+      <a href="project.html" class="active">Projects</a>
+      <a href="resource.html">Resources</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </div>
+
+    <div class="nav-cta">
+      <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn btn-primary">Let's Talk &rarr;</a>
+    </div>
+
+    <button class="hamburger" onclick="openMobileMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mmh-top-row">
+    <div class="mmh-logo-icon"><img src="images/logo.png" alt="Jaynite Digital Solutions" onerror="this.parentElement.style.display='none'"></div>
+    <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">&#10005;</button>
+  </div>
+  <div class="mmh-brand-bar">
+    <span class="mmh-brand-name">Jaynite Digital Solutions</span>
+    <span class="mmh-brand-tagline">Empowering Digital Innovation</span>
+  </div>
+  <nav class="mobile-nav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <div class="mobile-nav-item" id="mobileServicesItem">
+      <button class="mobile-dropdown-toggle" onclick="toggleMobileDropdown()">Services <span class="caret">&#9662;</span></button>
+      <div class="mobile-sub-nav">
+        <a href="services.html#web" onclick="closeMobileMenu()"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a>
+        <a href="services.html#uiux" onclick="closeMobileMenu()"><i class="fas fa-pen-nib"></i> UI/UX Design</a>
+        <a href="services.html#security" onclick="closeMobileMenu()"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
+        <a href="services.html#printing" onclick="closeMobileMenu()"><i class="fas fa-print"></i> Printing &amp; Publications</a>
+        <a href="services.html#computers" onclick="closeMobileMenu()"><i class="fas fa-desktop"></i> Computers &amp; Accessories</a>
+      </div>
+    </div>
+    <a href="store.html" onclick="closeMobileMenu()">Store</a>
+    <a href="project.html" onclick="closeMobileMenu()">Projects</a>
+    <a href="resource.html" onclick="closeMobileMenu()">Resources</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+  </nav>
+  <div class="mobile-menu-footer">
+    <p>&copy; 2026 Jaynite Digital Solutions</p>
+  </div>
+</div>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="container">
+    <div class="hero-brand-mark"><img src="images/logo.png" alt="Jaynite Digital Solutions" onerror="this.parentElement.style.display='none'"></div>
+    <p class="section-label">Selected Work</p>
+    <h1>Projects &amp; Portfolio</h1>
+    <p>A record of what's actually been built — websites, brand work, and IT projects delivered across Ghana.</p>
   </div>
 </section>
 
-<!-- Filters -->
-<div class="container">
-  <div class="filter-row" id="filterRow">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="web">Web Development</button>
-    <button class="filter-btn" data-filter="design">Design &amp; Branding</button>
-    <button class="filter-btn" data-filter="it">IT &amp; Security</button>
+<!-- SECTION NAV -->
+<div class="section-nav">
+  <div class="container">
+    <div class="section-nav-inner">
+      <a href="#our-work">Our Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#start">Start a Project</a>
+    </div>
   </div>
 </div>
 
-<!-- Projects -->
-<section class="proj-section">
-  <div class="container">
-    <div class="proj-grid" id="projGrid">
+<!-- LOGO SHOWCASE -->
+<div class="logo-showcase"><div class="logo-showcase-mark"><img src="images/logo.png" alt="" onerror="this.parentElement.style.display='none'"></div></div>
 
-      <a href="contact.html" class="proj-card" data-cat="web">
-        <div class="proj-photo">
+<!-- PROJECTS -->
+<section class="p-section" id="our-work">
+  <div class="container">
+    <p class="section-label">Our Work</p>
+    <h2 class="section-title">Real Projects, Real Delivery</h2>
+    <p class="section-desc">A mix of web builds, brand identity work, and IT infrastructure — each one solving a real problem for a real business.</p>
+
+    <div class="proj-grid" id="projGrid">
+      <a href="contact.html" class="proj-card reveal" data-cat="web">
+        <div class="proj-img-wrap">
           <span class="proj-tag">Web Development</span>
           <img src="images/project-groupeania.jpg" alt="Groupeania Ltd corporate website" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="proj-fallback" style="display:none"><i class="fas fa-laptop-code"></i></div>
         </div>
-        <h3>Groupeania Ltd — Corporate Website</h3>
-        <p>A responsive company site with an integrated content management system.</p>
-        <div class="proj-meta"><span>HTML5</span><span>CSS3</span><span>CMS</span></div>
+        <div class="proj-info">
+          <h3>Groupeania Ltd</h3>
+          <div class="divider-rule"></div>
+          <p>A responsive corporate website with an integrated content management system.</p>
+          <div class="proj-meta"><span>HTML5</span><span>CSS3</span><span>CMS</span></div>
+        </div>
       </a>
 
-      <a href="contact.html" class="proj-card" data-cat="design">
-        <div class="proj-photo">
+      <a href="contact.html" class="proj-card reveal" data-cat="design">
+        <div class="proj-img-wrap">
           <span class="proj-tag">Design &amp; Branding</span>
           <img src="images/project-branding.jpg" alt="Corporate brand identity suite" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="proj-fallback" style="display:none"><i class="fas fa-palette"></i></div>
         </div>
-        <h3>Corporate Brand Identity Suite</h3>
-        <p>Logo, business cards, letterheads and brochures for a local business.</p>
-        <div class="proj-meta"><span>Brand Strategy</span><span>Print Design</span></div>
+        <div class="proj-info">
+          <h3>Corporate Brand Identity Suite</h3>
+          <div class="divider-rule"></div>
+          <p>Logo, business cards, letterheads and brochures for a local business.</p>
+          <div class="proj-meta"><span>Brand Strategy</span><span>Print Design</span></div>
+        </div>
       </a>
 
-      <a href="contact.html" class="proj-card" data-cat="web">
-        <div class="proj-photo">
+      <a href="contact.html" class="proj-card reveal" data-cat="web">
+        <div class="proj-img-wrap">
           <span class="proj-tag">Web Development</span>
           <img src="images/project-ecommerce.jpg" alt="E-commerce platform" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="proj-fallback" style="display:none"><i class="fas fa-cart-shopping"></i></div>
         </div>
-        <h3>E-Commerce Platform</h3>
-        <p>Payment integration, inventory and a customer portal for a retail business.</p>
-        <div class="proj-meta"><span>PHP</span><span>MySQL</span><span>Payments</span></div>
+        <div class="proj-info">
+          <h3>E-Commerce Platform</h3>
+          <div class="divider-rule"></div>
+          <p>Payment integration, inventory and a customer portal for a retail business.</p>
+          <div class="proj-meta"><span>PHP</span><span>MySQL</span><span>Payments</span></div>
+        </div>
       </a>
 
-      <a href="contact.html" class="proj-card" data-cat="web">
-        <div class="proj-photo">
+      <a href="contact.html" class="proj-card reveal" data-cat="web">
+        <div class="proj-img-wrap">
           <span class="proj-tag">Web Development</span>
           <img src="images/project-school-system.jpg" alt="School management system" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="proj-fallback" style="display:none"><i class="fas fa-graduation-cap"></i></div>
         </div>
-        <h3>School Management System</h3>
-        <p>Student records, grading, attendance and a parent portal in one dashboard.</p>
-        <div class="proj-meta"><span>Full-Stack</span><span>Database Design</span></div>
+        <div class="proj-info">
+          <h3>School Management System</h3>
+          <div class="divider-rule"></div>
+          <p>Student records, grading, attendance and a parent portal in one dashboard.</p>
+          <div class="proj-meta"><span>Full-Stack</span><span>Database Design</span></div>
+        </div>
       </a>
 
-      <a href="contact.html" class="proj-card" data-cat="design">
-        <div class="proj-photo">
+      <a href="contact.html" class="proj-card reveal" data-cat="design">
+        <div class="proj-img-wrap">
           <span class="proj-tag">Design &amp; Branding</span>
           <img src="images/project-print.jpg" alt="Print and publication design" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="proj-fallback" style="display:none"><i class="fas fa-print"></i></div>
         </div>
-        <h3>Print &amp; Publication Design</h3>
-        <p>Magazines, brochures, flyers and posters for local organizations and events.</p>
-        <div class="proj-meta"><span>Print Design</span><span>Typography</span></div>
+        <div class="proj-info">
+          <h3>Print &amp; Publication Design</h3>
+          <div class="divider-rule"></div>
+          <p>Magazines, brochures, flyers and posters for local organizations and events.</p>
+          <div class="proj-meta"><span>Print Design</span><span>Typography</span></div>
+        </div>
       </a>
 
-      <a href="contact.html" class="proj-card" data-cat="it">
-        <div class="proj-photo">
+      <a href="contact.html" class="proj-card reveal" data-cat="it">
+        <div class="proj-img-wrap">
           <span class="proj-tag">IT &amp; Security</span>
           <img src="images/project-network.jpg" alt="Network infrastructure setup" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="proj-fallback" style="display:none"><i class="fas fa-network-wired"></i></div>
         </div>
-        <h3>Network Infrastructure Setup</h3>
-        <p>Full network design and monitoring for a growing small business.</p>
-        <div class="proj-meta"><span>Network Design</span><span>Monitoring</span></div>
+        <div class="proj-info">
+          <h3>Network Infrastructure Setup</h3>
+          <div class="divider-rule"></div>
+          <p>Full network design and monitoring for a growing small business.</p>
+          <div class="proj-meta"><span>Network Design</span><span>Monitoring</span></div>
+        </div>
       </a>
-
     </div>
   </div>
 </section>
 
-<!-- Experience -->
-<section class="exp-section">
+<div class="logo-showcase"><div class="logo-showcase-mark"><img src="images/logo.png" alt="" onerror="this.parentElement.style.display='none'"></div></div>
+
+<!-- EXPERIENCE -->
+<section class="exp-section" id="experience">
   <div class="container">
-    <div class="exp-head">
-      <h2>Experience</h2>
-      <p>Roles held across Ghana's tech and creative industry, leading up to Jaynite.</p>
-    </div>
+    <p class="section-label">Experience</p>
+    <h2 class="section-title">Roles Along the Way</h2>
+    <p class="section-desc">Positions held across Ghana's tech and creative industry, leading up to Jaynite. Tap a row on mobile to see more.</p>
+
     <div class="exp-list">
-      <div class="exp-row">
+      <div class="exp-row open" onclick="this.classList.toggle('open')">
         <div class="exp-years">2020 — Present</div>
         <div class="exp-role"><h4>Founder &amp; CEO</h4><div class="company">Jaynite Digital Solutions</div></div>
         <div class="exp-desc">Web development, cybersecurity, UI/UX and digital transformation for Ghanaian businesses.</div>
       </div>
-      <div class="exp-row">
+      <div class="exp-row" onclick="this.classList.toggle('open')">
         <div class="exp-years">2022 — Present</div>
         <div class="exp-role"><h4>Secretary</h4><div class="company">Nnarawia Foundation LBG</div></div>
         <div class="exp-desc">Community support through education, healthcare and youth development initiatives.</div>
       </div>
-      <div class="exp-row">
+      <div class="exp-row" onclick="this.classList.toggle('open')">
         <div class="exp-years">2021 — 2022</div>
         <div class="exp-role"><h4>Digital &amp; Graphics Specialist</h4><div class="company">Groupeania Ltd</div></div>
         <div class="exp-desc">Full branding overhaul, corporate printing, and intern training.</div>
       </div>
-      <div class="exp-row">
+      <div class="exp-row" onclick="this.classList.toggle('open')">
         <div class="exp-years">2020 — 2021</div>
         <div class="exp-role"><h4>IT Manager</h4><div class="company">Chachas Internet Caf&eacute; &amp; Design House</div></div>
         <div class="exp-desc">Customer IT support, printing services, and hardware troubleshooting.</div>
       </div>
-      <div class="exp-row">
+      <div class="exp-row" onclick="this.classList.toggle('open')">
         <div class="exp-years">2019 — 2020</div>
         <div class="exp-role"><h4>IT Coordinator</h4><div class="company">Nnarawia Grains Ltd</div></div>
         <div class="exp-desc">Digital records management and process optimization.</div>
       </div>
-      <div class="exp-row">
+      <div class="exp-row" onclick="this.classList.toggle('open')">
         <div class="exp-years">2018 — 2019</div>
         <div class="exp-role"><h4>Manager</h4><div class="company">Mindcraft Multimedia</div></div>
         <div class="exp-desc">Client projects in graphic design, printing and digital solutions.</div>
@@ -348,24 +511,26 @@ footer { border-top: 1px solid var(--line); padding: 3.5rem 0 2rem; }
   </div>
 </section>
 
-<!-- Skills -->
-<section class="skills-section">
+<!-- SKILLS -->
+<section class="skills-section" id="expertise">
   <div class="container">
-    <h2>Areas of Expertise</h2>
-    <div class="skill-group">
-      <h4>Web Development</h4>
+    <p class="section-label">Expertise</p>
+    <h2 class="section-title">Areas of Expertise</h2>
+
+    <div class="skill-group open" onclick="if(window.innerWidth<720) this.classList.toggle('open')">
+      <div class="skill-group-head"><h4>Web Development</h4><span class="skill-caret">+</span></div>
       <div class="skill-tags">
         <span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span class="skill-tag">JavaScript</span><span class="skill-tag">PHP</span><span class="skill-tag">MySQL</span><span class="skill-tag">WordPress</span><span class="skill-tag">Responsive Design</span>
       </div>
     </div>
-    <div class="skill-group">
-      <h4>Design &amp; Graphics</h4>
+    <div class="skill-group" onclick="if(window.innerWidth<720) this.classList.toggle('open')">
+      <div class="skill-group-head"><h4>Design &amp; Graphics</h4><span class="skill-caret">+</span></div>
       <div class="skill-tags">
         <span class="skill-tag">Photoshop</span><span class="skill-tag">Illustrator</span><span class="skill-tag">InDesign</span><span class="skill-tag">UI/UX Design</span><span class="skill-tag">Brand Identity</span><span class="skill-tag">Print Design</span>
       </div>
     </div>
-    <div class="skill-group">
-      <h4>Cybersecurity &amp; IT</h4>
+    <div class="skill-group" onclick="if(window.innerWidth<720) this.classList.toggle('open')">
+      <div class="skill-group-head"><h4>Cybersecurity &amp; IT</h4><span class="skill-caret">+</span></div>
       <div class="skill-tags">
         <span class="skill-tag">Network Security</span><span class="skill-tag">Vulnerability Assessment</span><span class="skill-tag">Firewall Configuration</span><span class="skill-tag">System Administration</span><span class="skill-tag">Cloud Services</span>
       </div>
@@ -374,59 +539,79 @@ footer { border-top: 1px solid var(--line); padding: 3.5rem 0 2rem; }
 </section>
 
 <!-- CTA -->
-<section class="p-cta">
-  <div class="container">
-    <h2>Have something to build?</h2>
-    <p>Tell us what you're working on — we'll tell you honestly if it's a fit.</p>
-    <div class="cta-actions">
-      <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn-ink"><i class="fab fa-whatsapp"></i> Start a Conversation</a>
-      <a href="services.html" class="btn-outline-ink">View Services</a>
+<section class="cta-section" id="start">
+  <div class="container cta-inner">
+    <p class="section-label">Start a Project</p>
+    <h2 class="section-title">Have Something to Build?</h2>
+    <p class="cta-desc">Tell us what you're working on — we'll tell you honestly if it's a fit.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Start a Conversation</a>
+      <a href="services.html" class="btn btn-outline-white">View Services</a>
     </div>
   </div>
 </section>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h3>Jaynite Digital Solutions</h3>
-        <p>Digital innovation in Ghana — web design, publication media, and IT support.</p>
-        <div class="footer-social">
-          <a href="https://youtube.com/@jaynitedigital" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://wa.me/233201485621" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://www.instagram.com/jaynite_digital" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="margin-bottom:14px">
+            <div class="logo-img-wrap"><img src="images/logo.png" alt="Jaynite Digital Solutions" onerror="this.style.display='none'"></div>
+            <div class="logo-text">
+              <span class="logo-name">Jaynite Digital Solutions</span>
+              <span class="logo-tagline">Empowering Digital Innovation</span>
+            </div>
+          </div>
+          <p class="footer-about">Digital innovation in Ghana — web design, publication media, and IT support.</p>
+          <div class="footer-social">
+            <a href="https://youtube.com/@jaynitedigital" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/233201485621" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/jaynite_digital" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col collapsible">
+          <h3>Site <span class="f-plus"><i class="fas fa-plus"></i></span></h3>
+          <div class="footer-section-body">
+            <div class="footer-links">
+              <a href="index.html">&rsaquo; Home</a>
+              <a href="services.html">&rsaquo; Services</a>
+              <a href="store.html">&rsaquo; Store</a>
+              <a href="resource.html">&rsaquo; Resources</a>
+              <a href="about.html">&rsaquo; About</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-col collapsible">
+          <h3>Store <span class="f-plus"><i class="fas fa-plus"></i></span></h3>
+          <div class="footer-section-body">
+            <div class="footer-links">
+              <a href="store.html#data">&rsaquo; Data Bundles</a>
+              <a href="store.html#checkers">&rsaquo; Results Checkers</a>
+              <a href="store.html#packages">&rsaquo; Website Packages</a>
+              <a href="store.html#systems">&rsaquo; Management Systems</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-col collapsible">
+          <h3>Contact <span class="f-plus"><i class="fas fa-plus"></i></span></h3>
+          <div class="footer-section-body">
+            <div class="footer-links">
+              <a href="#">Sunyani, Bono Region, Ghana</a>
+              <a href="https://wa.me/233201485621" target="_blank">+233 20 148 5621</a>
+              <a href="mailto:jaynitedigital@gmail.com">jaynitedigital@gmail.com</a>
+            </div>
+          </div>
         </div>
       </div>
-      <div>
-        <h3>Site</h3>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="store.html">Store</a></li>
-          <li><a href="resource.html">Resources</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Store</h3>
-        <ul>
-          <li><a href="store.html#data">Data Bundles</a></li>
-          <li><a href="store.html#checkers">Results Checkers</a></li>
-          <li><a href="store.html#packages">Website Packages</a></li>
-          <li><a href="store.html#systems">Management Systems</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Contact</h3>
-        <ul>
-          <li><a href="#">Sunyani, Bono Region, Ghana</a></li>
-          <li><a href="https://wa.me/233201485621" target="_blank">+233 20 148 5621</a></li>
-          <li><a href="mailto:jaynitedigital@gmail.com">jaynitedigital@gmail.com</a></li>
-        </ul>
-      </div>
     </div>
+  </div>
+  <div class="container">
     <div class="footer-bottom">&copy; 2026 Jaynite Digital Solutions.</div>
   </div>
 </footer>
@@ -434,26 +619,30 @@ footer { border-top: 1px solid var(--line); padding: 3.5rem 0 2rem; }
 <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
 <script>
-const menuToggle = document.getElementById('menuToggle');
-const mobileMenu = document.getElementById('mobileMenu');
-const mmClose = document.getElementById('mmClose');
-menuToggle.addEventListener('click', ()=>{ mobileMenu.classList.add('active'); document.body.style.overflow='hidden'; });
-mmClose.addEventListener('click', ()=>{ mobileMenu.classList.remove('active'); document.body.style.overflow='auto'; });
-document.querySelectorAll('.mm-list > li > a, .mm-submenu a').forEach(l=>l.addEventListener('click', ()=>{ mobileMenu.classList.remove('active'); document.body.style.overflow='auto'; }));
-document.getElementById('mmServicesToggle').addEventListener('click', ()=>{ document.getElementById('mmServicesSubmenu').classList.toggle('active'); });
+function openMobileMenu(){ document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeMobileMenu(){ document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow=''; }
+function toggleMobileDropdown(){ document.getElementById('mobileServicesItem').classList.toggle('open'); }
 
-// Filter
-const filterBtns = document.querySelectorAll('.filter-btn');
-const cards = document.querySelectorAll('.proj-card');
-filterBtns.forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    filterBtns.forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const f = btn.dataset.filter;
-    cards.forEach(c=>{
-      c.style.display = (f === 'all' || c.dataset.cat === f) ? '' : 'none';
-    });
+// Footer mobile accordion
+document.querySelectorAll('.footer-col.collapsible > h3').forEach(h=>{
+  h.addEventListener('click', ()=> h.closest('.footer-col').classList.toggle('open'));
+});
+
+// Reveal on scroll
+var observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if (entry.isIntersecting) entry.target.classList.add('in-view');
   });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
+
+// Section nav active state
+const sectionNavLinks = document.querySelectorAll('.section-nav a');
+const navSections = Array.from(sectionNavLinks).map(a => document.querySelector(a.getAttribute('href')));
+window.addEventListener('scroll', function(){
+  let current = navSections[0];
+  navSections.forEach(sec => { if (sec && window.scrollY >= sec.offsetTop - 160) current = sec; });
+  sectionNavLinks.forEach(a => a.classList.toggle('active', document.querySelector(a.getAttribute('href')) === current));
 });
 </script>
 </body>
