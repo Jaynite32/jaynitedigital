@@ -6,7 +6,7 @@
 <title>Projects &amp; Portfolio – Jaynite Digital Solutions</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;0,800;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -31,14 +31,14 @@
     --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
   }
   html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--cream); overflow-x: hidden; line-height: 1.6; }
+  body { font-family: 'Raleway', sans-serif; color: var(--ink); background: var(--cream); overflow-x: hidden; line-height: 1.6; }
   img { max-width: 100%; display: block; }
   a { text-decoration: none; color: inherit; }
   ul { list-style: none; }
   .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
   .section-label { font-weight: 700; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--cyan-deep); margin-bottom: 12px; }
-  .section-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 42px); color: var(--ink); line-height: 1.15; margin-bottom: 16px; font-weight: 700; }
+  .section-title { font-family: 'Montserrat', sans-serif; font-size: clamp(28px, 4vw, 42px); color: var(--ink); line-height: 1.15; margin-bottom: 16px; font-weight: 700; }
   .section-desc { font-size: 16px; line-height: 1.8; color: var(--ink-soft); max-width: 600px; }
   .divider-rule { width: 36px; height: 3px; background: linear-gradient(90deg, var(--cyan), var(--blue)); border-radius: 2px; }
 
@@ -66,10 +66,10 @@
   .navbar { background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(10,20,40,0.06); position: sticky; top: 0; z-index: 1000; transition: var(--transition); }
   .navbar .container { display: flex; align-items: center; justify-content: space-between; height: 76px; }
   .logo { display: flex; align-items: center; gap: 12px; }
-  .logo-img-wrap { width: 44px; height: 44px; border-radius: 10px; overflow: hidden; flex-shrink: 0; background: #fff; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; }
+  .logo-img-wrap { width: 58px; height: 58px; border-radius: 50%; padding: 4px; overflow: hidden; flex-shrink: 0; background: #fff; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; }
   .logo-img-wrap img { width: 100%; height: 100%; object-fit: contain; }
   .logo-text { display: flex; flex-direction: column; }
-  .logo-name { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.1; }
+  .logo-name { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.1; }
   .logo-tagline { font-size: 9.5px; color: var(--cyan-deep); font-weight: 600; letter-spacing: 0.3px; line-height: 1.4; }
 
   .nav-links { display: none; }
@@ -96,38 +96,45 @@
     .logo-text { display: none; }
   }
 
-  /* ===== Mobile menu ===== */
-  .mobile-menu { display: none; position: fixed; inset: 0; background: var(--navy-deep); z-index: 2000; flex-direction: column; overflow-y: auto; }
-  .mobile-menu.open { display: flex; }
-  .mmh-top-row { display: flex; align-items: center; justify-content: space-between; padding: 22px 24px 0; }
-  .mmh-logo-icon { width: 56px; height: 56px; background: #fff; border-radius: 12px; padding: 7px; box-shadow: 0 4px 16px rgba(0,0,0,0.3); flex-shrink: 0; }
-  .mmh-logo-icon img { width: 100%; height: 100%; object-fit: contain; }
-  .mobile-close { background: none; border: none; color: #fff; font-size: 26px; cursor: pointer; }
-  .mmh-brand-bar { margin: 18px 24px 8px; background: linear-gradient(135deg, rgba(0,156,184,0.14), rgba(41,121,255,0.1)); border: 1px solid rgba(0,229,255,0.2); border-radius: var(--radius); padding: 14px 18px; }
-  .mmh-brand-name { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: #fff; line-height: 1.2; }
-  .mmh-brand-tagline { font-size: 10.5px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; margin-top: 4px; color: var(--cyan-glow); display: block; }
-  .mobile-nav { padding: 8px 24px 0; }
-  .mobile-nav-item { border-bottom: 1px solid rgba(255,255,255,0.08); }
-  .mobile-nav > a { display: block; font-family: 'Fraunces', serif; font-size: 24px; font-weight: 700; color: #fff; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08); transition: var(--transition); }
-  .mobile-nav > a:hover { color: var(--cyan-glow); }
-  .mobile-dropdown-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; background: none; border: none; cursor: pointer; font-family: 'Fraunces', serif; font-size: 24px; font-weight: 700; color: #fff; padding: 14px 0; }
-  .mobile-dropdown-toggle .caret { font-size: 13px; color: var(--navy-deep); transition: var(--transition); flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--cyan-glow); display: inline-flex; align-items: center; justify-content: center; }
-  .mobile-nav-item.open .mobile-dropdown-toggle .caret { transform: rotate(180deg); }
-  .mobile-sub-nav { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-  .mobile-nav-item.open .mobile-sub-nav { max-height: 400px; padding-bottom: 10px; }
-  .mobile-sub-nav a { display: flex; align-items: center; gap: 10px; font-size: 14.5px; font-weight: 500; color: rgba(255,255,255,0.7); padding: 8px 0 8px 6px; }
-  .mobile-sub-nav a:hover { color: var(--cyan-glow); }
-  .mobile-sub-nav a i { color: var(--cyan-glow); width: 16px; font-size: 0.82em; }
-  .mobile-menu-footer { padding: 24px; margin-top: auto; }
-  .mobile-menu-footer p { color: rgba(255,255,255,0.45); font-size: 12.5px; text-align: center; }
+  /* ===== Mobile menu (slide-in drawer) ===== */
+  .mm-scrim { position: fixed; inset: 0; background: rgba(5,8,17,0.55); backdrop-filter: blur(2px); opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; z-index: 1999; }
+  .mm-scrim.open { opacity: 1; visibility: visible; }
+  .mobile-menu { position: fixed; top: 0; left: 0; bottom: 0; width: min(86vw, 360px); background: #fff; z-index: 2000; display: flex; flex-direction: column; overflow-y: auto; transform: translateX(-100%); visibility: hidden; transition: transform .35s cubic-bezier(.4,0,.2,1), visibility .35s; box-shadow: 12px 0 40px rgba(5,8,17,.25); }
+  .mobile-menu.open { transform: none; visibility: visible; }
+  .mm-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--line-soft); }
+  .mm-brand { display: flex; align-items: center; gap: 10px; }
+  .mm-brand img { width: 52px; height: 52px; border-radius: 50%; padding: 3px; background: #fff; border: 1px solid var(--line); object-fit: contain; }
+  .mm-brand b { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; color: var(--ink); display: block; line-height: 1.15; }
+  .mm-brand small { font-size: 10px; color: var(--cyan-deep); font-weight: 600; letter-spacing: .3px; }
+  .mobile-close { background: var(--pale); border: none; color: var(--ink); width: 36px; height: 36px; border-radius: 50%; font-size: 16px; cursor: pointer; }
+  .mobile-nav { padding: 6px 0; }
+  .mobile-nav a, .mobile-dropdown-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; background: none; border: none; border-left: 3px solid transparent; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 13.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); padding: 17px 22px; text-align: left; transition: var(--transition); }
+  .mobile-nav a:hover, .mobile-dropdown-toggle:hover { background: var(--cream); color: var(--cyan-deep); }
+  .mobile-nav a.active { color: var(--cyan-deep); border-left-color: var(--cyan); background: var(--cream); }
+  .mobile-nav-item { border-top: 1px solid var(--line-soft); }
+  .mobile-nav-item.first { border-top: none; }
+  .mobile-nav > a { border-top: 1px solid var(--line-soft); }
+  .mobile-nav > a:first-child { border-top: none; }
+  .caret { font-size: 11px; color: var(--cyan-deep); transition: var(--transition); }
+  .mobile-nav-item.open .caret { transform: rotate(180deg); }
+  .mobile-sub-nav { max-height: 0; overflow: hidden; transition: max-height .35s ease; background: var(--cream); }
+  .mobile-nav-item.open .mobile-sub-nav { max-height: 400px; }
+  .mobile-nav .mobile-sub-nav a { justify-content: flex-start; gap: 12px; font-size: 12.5px; font-weight: 500; letter-spacing: .02em; text-transform: none; padding: 13px 22px 13px 34px; border-top: none; color: var(--ink-soft); }
+  .mobile-sub-nav a i { color: var(--cyan); width: 16px; text-align: center; }
+  .mm-cta { display: block; margin: 12px 20px 0; padding: 16px; text-align: center; background: var(--cyan); color: #fff; font-family: 'Montserrat', sans-serif; font-size: 12.5px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+  .mm-cta:hover { background: var(--cyan-deep); }
+  .mobile-menu-footer { margin-top: auto; padding: 22px; font-size: 12px; color: var(--ink-mute); }
+  .mobile-menu-footer a { display: block; color: var(--ink-soft); padding: 4px 0; }
+  .mobile-menu-footer a i { color: var(--cyan); width: 18px; }
+  .mobile-menu-footer p { margin-top: 10px; }
 
   /* ===== Page header ===== */
   .page-header { background: radial-gradient(circle at 20% 20%, rgba(0,229,255,0.12), transparent 45%), radial-gradient(circle at 85% 70%, rgba(41,121,255,0.12), transparent 45%), linear-gradient(160deg, var(--navy-deep), var(--navy-mid)); padding: 6.5rem 0 4.5rem; position: relative; overflow: hidden; text-align: center; }
   .page-header .container { position: relative; z-index: 1; }
-  .hero-brand-mark { width: 84px; height: 84px; background: #fff; border-radius: var(--radius-lg); padding: 13px; margin: 0 auto 22px; box-shadow: var(--shadow-lg); display: flex; align-items: center; justify-content: center; }
+  .hero-brand-mark { width: 112px; height: 112px; background: #fff; border-radius: 50%; padding: 12px; margin: 0 auto 22px; box-shadow: var(--shadow-lg); display: flex; align-items: center; justify-content: center; }
   .hero-brand-mark img { width: 100%; height: 100%; object-fit: contain; }
   .page-header .section-label { color: var(--cyan-glow); justify-content: center; display: flex; }
-  .page-header h1 { font-family: 'Fraunces', serif; font-size: clamp(34px, 5.5vw, 54px); color: #fff; line-height: 1.12; margin-bottom: 16px; font-weight: 700; }
+  .page-header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(34px, 5.5vw, 54px); color: #fff; line-height: 1.12; margin-bottom: 16px; font-weight: 700; }
   .page-header p { color: rgba(255,255,255,0.72); font-size: 16px; max-width: 600px; margin: 0 auto; line-height: 1.7; }
 
   /* ===== Section nav ===== */
@@ -137,11 +144,6 @@
   .section-nav-inner::-webkit-scrollbar { display: none; }
   .section-nav a { white-space: nowrap; font-size: 13px; font-weight: 600; color: var(--ink-soft); padding: 8px 15px; border-radius: 50px; border: 1px solid var(--line); transition: var(--transition); flex-shrink: 0; }
   .section-nav a:hover, .section-nav a.active { background: var(--navy-deep); color: #fff; border-color: var(--navy-deep); }
-
-  /* ===== Logo showcase divider ===== */
-  .logo-showcase { background: var(--paper); padding: 20px 0; text-align: center; border-bottom: 1px solid var(--line); }
-  .logo-showcase-mark { display: inline-flex; width: 46px; height: 46px; align-items: center; justify-content: center; opacity: 0.85; }
-  .logo-showcase-mark img { width: 100%; height: 100%; object-fit: contain; }
 
   /* ===== Generic section ===== */
   .p-section { padding: 4.5rem 0; }
@@ -159,11 +161,21 @@
   .proj-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.18); font-size: 2.4rem; }
   .proj-tag { position: absolute; top: 14px; left: 14px; background: var(--cyan); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 50px; }
   .proj-info { padding: 20px 22px 24px; }
-  .proj-info h3 { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+  .proj-info h3 { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
   .proj-info p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.7; margin: 10px 0 12px; }
   .proj-meta { display: flex; flex-wrap: wrap; gap: 4px; }
   .proj-meta span { font-size: 12px; color: var(--ink-mute); }
   .proj-meta span:not(:last-child)::after { content: '·'; margin-left: 6px; color: var(--line); }
+
+  .proj-status { position: absolute; top: 14px; right: 14px; background: var(--navy-deep); color: var(--cyan-glow); font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; z-index: 2; }
+  .approach-section { padding: 4.5rem 0; background: var(--paper); }
+  .approach-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 32px; }
+  @media (min-width: 720px) { .approach-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .approach-grid { grid-template-columns: repeat(4, 1fr); } }
+  .approach-card { padding: 24px; border: 1px solid var(--line); border-top: 3px solid var(--cyan); background: var(--cream); }
+  .approach-card .num { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .15em; color: var(--cyan-deep); }
+  .approach-card h4 { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; margin: 8px 0; color: var(--ink); }
+  .approach-card p { font-size: 14px; color: var(--ink-soft); }
 
   /* ===== Experience (accordion on mobile) ===== */
   .exp-section { background: var(--navy-deep); padding: 4.5rem 0; position: relative; overflow: hidden; }
@@ -176,7 +188,7 @@
   .exp-row { display: grid; grid-template-columns: 1fr; gap: 4px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
   @media (min-width: 720px) { .exp-row { grid-template-columns: 160px 1fr 240px; gap: 20px; align-items: baseline; } }
   .exp-years { font-size: 12.5px; color: var(--cyan-glow); font-weight: 600; letter-spacing: 0.3px; }
-  .exp-role h4 { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: #fff; }
+  .exp-role h4 { font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 700; color: #fff; }
   .exp-role .company { color: rgba(255,255,255,0.55); font-size: 13.5px; font-weight: 500; }
   .exp-desc { color: rgba(255,255,255,0.55); font-size: 13.5px; }
   @media (min-width: 720px) { .exp-desc { text-align: right; } }
@@ -194,7 +206,7 @@
   .skills-section { padding: 4.5rem 0; }
   .skill-group { margin-bottom: 12px; border-bottom: 1px solid var(--line); }
   .skill-group-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
-  .skill-group-head h4 { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: var(--ink); }
+  .skill-group-head h4 { font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 700; color: var(--ink); }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 18px; }
   .skill-tag { border: 1px solid var(--line); background: var(--cream); border-radius: 999px; padding: 7px 15px; font-size: 13px; color: var(--ink); font-weight: 500; }
   @media (min-width: 720px) {
@@ -229,7 +241,7 @@
   .footer-social { display: flex; gap: 9px; margin-top: 6px; }
   .footer-social a { width: 34px; height: 34px; background: rgba(255,255,255,0.06); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: rgba(255,255,255,0.7); transition: var(--transition); }
   .footer-social a:hover { background: var(--cyan); color: #fff; }
-  .footer-col h3 { font-family: 'Fraunces', serif; color: #fff; font-size: 15.5px; margin-bottom: 1.1rem; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,0.08); font-weight: 700; }
+  .footer-col h3 { font-family: 'Montserrat', sans-serif; color: #fff; font-size: 15.5px; margin-bottom: 1.1rem; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,0.08); font-weight: 700; }
   .footer-col.collapsible h3 .f-plus { display: none; }
   .footer-links { display: flex; flex-direction: column; gap: 9px; }
   .footer-links a { font-size: 13.5px; color: rgba(255,255,255,0.55); display: flex; align-items: center; gap: 6px; transition: var(--transition); }
@@ -315,37 +327,36 @@
 </nav>
 
 <!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mmh-top-row">
-    <div class="mmh-logo-icon"><img src="images/logo.png" alt="Jaynite Digital Solutions" onerror="this.parentElement.style.display='none'"></div>
-    <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">&#10005;</button>
-  </div>
-  <div class="mmh-brand-bar">
-    <span class="mmh-brand-name">Jaynite Digital Solutions</span>
-    <span class="mmh-brand-tagline">Empowering Digital Innovation</span>
+<div class="mm-scrim" id="mmScrim" onclick="closeMobileMenu()"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-label="Menu">
+  <div class="mm-head">
+    <a href="index.html" class="mm-brand"><img src="images/logo.png" alt="" onerror="this.style.display='none'"><span><b>Jaynite Digital</b><small>Empowering Digital Innovation</small></span></a>
+    <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu"><i class="fas fa-xmark"></i></button>
   </div>
   <nav class="mobile-nav">
-    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="index.html">Home</a>
     <div class="mobile-nav-item" id="mobileServicesItem">
-      <button class="mobile-dropdown-toggle" onclick="toggleMobileDropdown()">Services <span class="caret">&#9662;</span></button>
+      <button class="mobile-dropdown-toggle" onclick="toggleMobileDropdown()" aria-expanded="false">Services <i class="fas fa-chevron-down caret"></i></button>
       <div class="mobile-sub-nav">
-        <a href="services.html#web" onclick="closeMobileMenu()"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a>
-        <a href="services.html#uiux" onclick="closeMobileMenu()"><i class="fas fa-pen-nib"></i> UI/UX Design</a>
-        <a href="services.html#security" onclick="closeMobileMenu()"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
-        <a href="services.html#printing" onclick="closeMobileMenu()"><i class="fas fa-print"></i> Printing &amp; Publications</a>
-        <a href="services.html#computers" onclick="closeMobileMenu()"><i class="fas fa-desktop"></i> Computers &amp; Accessories</a>
+        <a href="services.html#web"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a>
+        <a href="services.html#uiux"><i class="fas fa-pen-nib"></i> UI/UX Design</a>
+        <a href="services.html#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
+        <a href="services.html#printing"><i class="fas fa-print"></i> Printing &amp; Publications</a>
+        <a href="services.html#computers"><i class="fas fa-desktop"></i> Computers &amp; Accessories</a>
       </div>
     </div>
-    <a href="store.html" onclick="closeMobileMenu()">Store</a>
-    <a href="project.html" onclick="closeMobileMenu()">Projects</a>
-    <a href="resource.html" onclick="closeMobileMenu()">Resources</a>
-    <a href="about.html" onclick="closeMobileMenu()">About</a>
-    <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+    <a href="store.html">Store</a>
+    <a href="project.html" class="active">Projects</a>
+    <a href="resource.html">Resources</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
   </nav>
+  <a href="contact.html" class="mm-cta">Start a Project</a>
   <div class="mobile-menu-footer">
+    <a href="https://wa.me/233201485621" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp us</a>
     <p>&copy; 2026 Jaynite Digital Solutions</p>
   </div>
-</div>
+</aside>
 
 <!-- PAGE HEADER -->
 <section class="page-header">
@@ -369,9 +380,6 @@
   </div>
 </div>
 
-<!-- LOGO SHOWCASE -->
-<div class="logo-showcase"><div class="logo-showcase-mark"><img src="images/logo.png" alt="" onerror="this.parentElement.style.display='none'"></div></div>
-
 <!-- PROJECTS -->
 <section class="p-section" id="our-work">
   <div class="container">
@@ -380,17 +388,31 @@
     <p class="section-desc">A mix of web builds, brand identity work, and IT infrastructure — each one solving a real problem for a real business.</p>
 
     <div class="proj-grid" id="projGrid">
-      <a href="contact.html" class="proj-card reveal" data-cat="web">
+      <a href="https://nnarawia-grains-ltd.web.app/index.html" target="_blank" rel="noopener" class="proj-card reveal" data-cat="web">
         <div class="proj-img-wrap">
           <span class="proj-tag">Web Development</span>
-          <img src="images/project-groupeania.jpg" alt="Groupeania Ltd corporate website" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="images/project-nnarawia.jpg" alt="Nnarawia Grains Ltd website" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="proj-fallback" style="display:none"><i class="fas fa-laptop-code"></i></div>
         </div>
         <div class="proj-info">
-          <h3>Groupeania Ltd</h3>
+          <h3>Nnarawia Grains Ltd</h3>
           <div class="divider-rule"></div>
-          <p>A responsive corporate website with an integrated content management system.</p>
+          <p>A responsive corporate website for a Ghanaian grains company, designed, built and hosted by Jaynite.</p>
           <div class="proj-meta"><span>HTML5</span><span>CSS3</span><span>CMS</span></div>
+        </div>
+      </a>
+
+      <a href="contact.html" class="proj-card reveal" data-cat="web">
+        <div class="proj-img-wrap">
+          <span class="proj-tag">Web Application</span>
+          <img src="images/project-agribusiness.jpg" alt="Agribusiness Management System" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="proj-fallback" style="display:none"><i class="fas fa-seedling"></i></div>
+        </div>
+        <div class="proj-info">
+          <h3>Agribusiness Management System</h3>
+          <div class="divider-rule"></div>
+          <p>Custom-built on request: a management system for agribusinesses to track suppliers, inventory, sales and reporting, tailored to your operation and delivered ready to use.</p>
+          <div class="proj-meta"><span>Built on Request</span><span>Inventory</span><span>Reporting</span></div>
         </div>
       </a>
 
@@ -467,7 +489,20 @@
   </div>
 </section>
 
-<div class="logo-showcase"><div class="logo-showcase-mark"><img src="images/logo.png" alt="" onerror="this.parentElement.style.display='none'"></div></div>
+<!-- APPROACH -->
+<section class="approach-section" id="approach">
+  <div class="container">
+    <p class="section-label">How We Build</p>
+    <h2 class="section-title">What Every Project Teaches Us</h2>
+    <p class="section-desc">The habits behind each build, so every new project starts stronger than the last.</p>
+    <div class="approach-grid">
+      <div class="approach-card reveal"><span class="num">01</span><h4>Understand the Business</h4><p>We learn how the business really runs first, from suppliers and stock to sales, before choosing any technology.</p></div>
+      <div class="approach-card reveal"><span class="num">02</span><h4>Design for Real Users</h4><p>Staff and customers mostly use phones, so every page and system is designed mobile-first and kept simple.</p></div>
+      <div class="approach-card reveal"><span class="num">03</span><h4>Build, Host &amp; Secure</h4><p>We handle development, hosting and security together, so clients get one accountable team.</p></div>
+      <div class="approach-card reveal"><span class="num">04</span><h4>Measure &amp; Improve</h4><p>After launch we review feedback and usage, then refine. Each project's lessons feed the next one.</p></div>
+    </div>
+  </div>
+</section>
 
 <!-- EXPERIENCE -->
 <section class="exp-section" id="experience">
@@ -478,34 +513,39 @@
 
     <div class="exp-list">
       <div class="exp-row open" onclick="this.classList.toggle('open')">
-        <div class="exp-years">2020 — Present</div>
-        <div class="exp-role"><h4>Founder &amp; CEO</h4><div class="company">Jaynite Digital Solutions</div></div>
-        <div class="exp-desc">Web development, cybersecurity, UI/UX and digital transformation for Ghanaian businesses.</div>
+        <div class="exp-years">Jan 2018 — Present</div>
+        <div class="exp-role"><h4>Information Technology</h4><div class="company">Jaynite Digital Solutions · Freelance</div></div>
+        <div class="exp-desc">Software development, web design, cybersecurity and digital services for Ghanaian businesses.</div>
       </div>
       <div class="exp-row" onclick="this.classList.toggle('open')">
-        <div class="exp-years">2022 — Present</div>
+        <div class="exp-years">2026 — Present</div>
         <div class="exp-role"><h4>Secretary</h4><div class="company">Nnarawia Foundation LBG</div></div>
         <div class="exp-desc">Community support through education, healthcare and youth development initiatives.</div>
       </div>
       <div class="exp-row" onclick="this.classList.toggle('open')">
-        <div class="exp-years">2021 — 2022</div>
-        <div class="exp-role"><h4>Digital &amp; Graphics Specialist</h4><div class="company">Groupeania Ltd</div></div>
-        <div class="exp-desc">Full branding overhaul, corporate printing, and intern training.</div>
+        <div class="exp-years">Jul 2025 — Oct 2025</div>
+        <div class="exp-role"><h4>IT Coordinator</h4><div class="company">Nnarawia Grains Ltd · Contract</div></div>
+        <div class="exp-desc">Website build, vendor management, procurement and inventory control, logistics coordination, quality checks and reporting.</div>
+      </div>
+      <div class="exp-row" onclick="this.classList.toggle('open')">
+        <div class="exp-years">Dec 2023 — 2025</div>
+        <div class="exp-role"><h4>Digital &amp; Graphics Specialist</h4><div class="company">GroupeAnia Limited</div></div>
+        <div class="exp-desc">Typesetting, online registration, printing, scanning, lamination and binding, plus graphic design and branding.</div>
+      </div>
+      <div class="exp-row" onclick="this.classList.toggle('open')">
+        <div class="exp-years">2021 — 2023</div>
+        <div class="exp-role"><h4>Cafe Manager</h4><div class="company">Chachas Internet Caf&eacute; &amp; Design House</div></div>
+        <div class="exp-desc">Maintained computer systems and networks, troubleshooting, client support and printing services.</div>
       </div>
       <div class="exp-row" onclick="this.classList.toggle('open')">
         <div class="exp-years">2020 — 2021</div>
-        <div class="exp-role"><h4>IT Manager</h4><div class="company">Chachas Internet Caf&eacute; &amp; Design House</div></div>
-        <div class="exp-desc">Customer IT support, printing services, and hardware troubleshooting.</div>
-      </div>
-      <div class="exp-row" onclick="this.classList.toggle('open')">
-        <div class="exp-years">2019 — 2020</div>
-        <div class="exp-role"><h4>IT Coordinator</h4><div class="company">Nnarawia Grains Ltd</div></div>
-        <div class="exp-desc">Digital records management and process optimization.</div>
+        <div class="exp-role"><h4>Manager</h4><div class="company">Paulee Business Solution</div></div>
+        <div class="exp-desc">Mobile money vending, data accuracy research, and analysis of collected records.</div>
       </div>
       <div class="exp-row" onclick="this.classList.toggle('open')">
         <div class="exp-years">2018 — 2019</div>
         <div class="exp-role"><h4>Manager</h4><div class="company">Mindcraft Multimedia</div></div>
-        <div class="exp-desc">Client projects in graphic design, printing and digital solutions.</div>
+        <div class="exp-desc">Project management, hardware and software purchasing, IT systems reporting and mobile money transactions.</div>
       </div>
     </div>
   </div>
@@ -619,9 +659,10 @@
 <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
 <script>
-function openMobileMenu(){ document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow='hidden'; }
-function closeMobileMenu(){ document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow=''; }
-function toggleMobileDropdown(){ document.getElementById('mobileServicesItem').classList.toggle('open'); }
+function openMobileMenu(){ document.getElementById('mobileMenu').classList.add('open'); document.getElementById('mmScrim').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeMobileMenu(){ document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('mmScrim').classList.remove('open'); document.body.style.overflow=''; }
+function toggleMobileDropdown(){ var i=document.getElementById('mobileServicesItem'); i.querySelector('button').setAttribute('aria-expanded', i.classList.toggle('open')); }
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMobileMenu(); });
 
 // Footer mobile accordion
 document.querySelectorAll('.footer-col.collapsible > h3').forEach(h=>{
