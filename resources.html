@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources – Jaynite Digital Solutions</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy-deep:  #050811;
+    --navy-mid:   #0d1830;
+    --ink:        #0a0e1a;
+    --ink-soft:   #5b6472;
+    --ink-mute:   #8a94a3;
+    --cyan:       #009cb8;
+    --cyan-deep:  #007a91;
+    --cyan-glow:  #00e5ff;
+    --blue:       #2979ff;
+    --paper:      #ffffff;
+    --cream:      #f6fbfc;
+    --pale:       #e4f6fa;
+    --line:       rgba(10,14,26,0.1);
+    --line-soft:  rgba(10,14,26,0.06);
+    --shadow:     0 8px 40px rgba(10,20,40,0.1);
+    --shadow-lg:  0 20px 60px rgba(10,20,40,0.16);
+    --radius:     12px;
+    --radius-lg:  20px;
+    --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Raleway', sans-serif; color: var(--ink); background: var(--cream); overflow-x: hidden; line-height: 1.6; }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  .section-label { font-weight: 700; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--cyan-deep); margin-bottom: 12px; }
+  .section-title { font-family: 'Montserrat', sans-serif; font-size: clamp(28px, 4vw, 42px); color: var(--ink); line-height: 1.15; margin-bottom: 16px; font-weight: 700; }
+  .section-desc { font-size: 16px; line-height: 1.8; color: var(--ink-soft); max-width: 600px; }
+  .divider-rule { width: 36px; height: 3px; background: linear-gradient(90deg, var(--cyan), var(--blue)); border-radius: 2px; }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 50px; font-size: 14px; font-weight: 700; cursor: pointer; transition: var(--transition); border: 2px solid transparent; white-space: nowrap; font-family: inherit; }
+  .btn-primary { background: linear-gradient(135deg, var(--cyan), var(--blue)); color: #fff; box-shadow: 0 4px 20px rgba(0,156,184,0.3); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,156,184,0.45); }
+  .btn-outline-white { background: transparent; color: #fff; border-color: rgba(255,255,255,0.55); }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: #fff; transform: translateY(-2px); }
+  .btn-outline-ink { background: transparent; color: var(--ink); border-color: var(--line); }
+  .btn-outline-ink:hover { border-color: var(--ink); transform: translateY(-2px); }
+
+  /* ===== Top bar ===== */
+  .topbar { background: var(--navy-deep); color: rgba(255,255,255,0.75); font-size: 12.5px; padding: 8px 0; }
+  .topbar .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .topbar-contacts { display: flex; gap: 22px; flex-wrap: wrap; }
+  .topbar-contacts a { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.75); transition: var(--transition); }
+  .topbar-contacts a:hover { color: var(--cyan-glow); }
+  .topbar-right { display: flex; align-items: center; gap: 16px; }
+  .topbar-social { display: flex; gap: 8px; margin-left: 4px; }
+  .topbar-social a { display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.08); color: #fff; font-size: 11px; transition: var(--transition); }
+  .topbar-social a:hover { background: var(--cyan); }
+  @media (max-width: 768px) { .topbar { display: none; } }
+
+  /* ===== Navbar ===== */
+  .navbar { background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(10,20,40,0.06); position: sticky; top: 0; z-index: 1000; transition: var(--transition); }
+  .navbar .container { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-img-wrap { width: 58px; height: 58px; border-radius: 50%; padding: 4px; overflow: hidden; flex-shrink: 0; background: #fff; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; }
+  .logo-img-wrap img { width: 100%; height: 100%; object-fit: contain; }
+  .logo-text { display: flex; flex-direction: column; }
+  .logo-name { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.1; }
+  .logo-tagline { font-size: 9.5px; color: var(--cyan-deep); font-weight: 600; letter-spacing: 0.3px; line-height: 1.4; }
+
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  @media (min-width: 900px) {
+    .nav-links { display: flex; align-items: center; gap: 3px; }
+    .nav-links a { padding: 8px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; color: var(--ink); transition: var(--transition); position: relative; }
+    .nav-links a:hover, .nav-links a.active { color: var(--cyan-deep); background: rgba(0,156,184,0.07); }
+    .nav-links a.active::after { content: ''; position: absolute; bottom: 1px; left: 50%; transform: translateX(-50%); width: 18px; height: 2px; background: var(--cyan); border-radius: 2px; }
+    .nav-item { position: relative; display: flex; align-items: center; }
+    .nav-dropdown { position: absolute; top: calc(100% + 8px); left: 0; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-lg); border: 1px solid var(--line); min-width: 230px; padding: 8px; opacity: 0; visibility: hidden; transform: translateY(8px); transition: var(--transition); z-index: 1000; }
+    .nav-item:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown a { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; font-size: 13.5px; font-weight: 500; color: var(--ink); }
+    .nav-dropdown a:hover { background: rgba(0,156,184,0.07); color: var(--cyan-deep); }
+    .nav-dropdown a i { width: 15px; color: var(--cyan); font-size: 0.85rem; }
+    .nav-cta { display: flex; align-items: center; }
+  }
+
+  .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); }
+  .hamburger span { width: 22px; height: 2px; background: var(--ink); border-radius: 2px; display: block; }
+  @media (min-width: 900px) { .hamburger { display: none; } }
+  @media (max-width: 899px) {
+    .navbar .container { justify-content: center; position: relative; height: 72px; }
+    .logo-text { display: none; }
+  }
+
+  /* ===== Mobile menu (slide-in drawer) ===== */
+  .mm-scrim { position: fixed; inset: 0; background: rgba(5,8,17,0.55); backdrop-filter: blur(2px); opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; z-index: 1999; }
+  .mm-scrim.open { opacity: 1; visibility: visible; }
+  .mobile-menu { position: fixed; top: 0; left: 0; bottom: 0; width: min(86vw, 360px); background: #fff; z-index: 2000; display: flex; flex-direction: column; overflow-y: auto; transform: translateX(-100%); visibility: hidden; transition: transform .35s cubic-bezier(.4,0,.2,1), visibility .35s; box-shadow: 12px 0 40px rgba(5,8,17,.25); }
+  .mobile-menu.open { transform: none; visibility: visible; }
+  .mm-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--line-soft); }
+  .mm-brand { display: flex; align-items: center; gap: 10px; }
+  .mm-brand img { width: 52px; height: 52px; border-radius: 50%; padding: 3px; background: #fff; border: 1px solid var(--line); object-fit: contain; }
+  .mm-brand b { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; color: var(--ink); display: block; line-height: 1.15; }
+  .mm-brand small { font-size: 10px; color: var(--cyan-deep); font-weight: 600; letter-spacing: .3px; }
+  .mobile-close { background: var(--pale); border: none; color: var(--ink); width: 36px; height: 36px; border-radius: 50%; font-size: 16px; cursor: pointer; }
+  .mobile-nav { padding: 6px 0; }
+  .mobile-nav a, .mobile-dropdown-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; background: none; border: none; border-left: 3px solid transparent; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 13.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); padding: 17px 22px; text-align: left; transition: var(--transition); }
+  .mobile-nav a:hover, .mobile-dropdown-toggle:hover { background: var(--cream); color: var(--cyan-deep); }
+  .mobile-nav a.active { color: var(--cyan-deep); border-left-color: var(--cyan); background: var(--cream); }
+  .mobile-nav-item { border-top: 1px solid var(--line-soft); }
+  .mobile-nav-item.first { border-top: none; }
+  .mobile-nav > a { border-top: 1px solid var(--line-soft); }
+  .mobile-nav > a:first-child { border-top: none; }
+  .caret { font-size: 11px; color: var(--cyan-deep); transition: var(--transition); }
+  .mobile-nav-item.open .caret { transform: rotate(180deg); }
+  .mobile-sub-nav { max-height: 0; overflow: hidden; transition: max-height .35s ease; background: var(--cream); }
+  .mobile-nav-item.open .mobile-sub-nav { max-height: 400px; }
+  .mobile-nav .mobile-sub-nav a { justify-content: flex-start; gap: 12px; font-size: 12.5px; font-weight: 500; letter-spacing: .02em; text-transform: none; padding: 13px 22px 13px 34px; border-top: none; color: var(--ink-soft); }
+  .mobile-sub-nav a i { color: var(--cyan); width: 16px; text-align: center; }
+  .mm-cta { display: block; margin: 12px 20px 0; padding: 16px; text-align: center; background: var(--cyan); color: #fff; font-family: 'Montserrat', sans-serif; font-size: 12.5px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+  .mm-cta:hover { background: var(--cyan-deep); }
+  .mobile-menu-footer { margin-top: auto; padding: 22px; font-size: 12px; color: var(--ink-mute); }
+  .mobile-menu-footer a { display: block; color: var(--ink-soft); padding: 4px 0; }
+  .mobile-menu-footer a i { color: var(--cyan); width: 18px; }
+  .mobile-menu-footer p { margin-top: 10px; }
+
+  /* ===== Page header ===== */
+  .page-header { background: radial-gradient(circle at 20% 20%, rgba(0,229,255,0.12), transparent 45%), radial-gradient(circle at 85% 70%, rgba(41,121,255,0.12), transparent 45%), linear-gradient(160deg, var(--navy-deep), var(--navy-mid)); padding: 6.5rem 0 4.5rem; position: relative; overflow: hidden; text-align: center; }
+  .page-header .container { position: relative; z-index: 1; }
+  .page-header .section-label { color: var(--cyan-glow); justify-content: center; display: flex; }
+  .page-header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(34px, 5.5vw, 54px); color: #fff; line-height: 1.12; margin-bottom: 16px; font-weight: 700; }
+  .page-header p { color: rgba(255,255,255,0.72); font-size: 16px; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+  /* ===== Section nav ===== */
+  .section-nav { background: var(--paper); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 500; }
+  @media (min-width: 900px) { .section-nav { top: 76px; } }
+  .section-nav-inner { display: flex; gap: 6px; overflow-x: auto; padding: 13px 0; scrollbar-width: none; }
+  .section-nav-inner::-webkit-scrollbar { display: none; }
+  .section-nav a { white-space: nowrap; font-size: 13px; font-weight: 600; color: var(--ink-soft); padding: 8px 15px; border-radius: 50px; border: 1px solid var(--line); transition: var(--transition); flex-shrink: 0; }
+  .section-nav a:hover, .section-nav a.active { background: var(--navy-deep); color: #fff; border-color: var(--navy-deep); }
+
+  /* ===== Generic section ===== */
+  .p-section { padding: 4.5rem 0; }
+  .p-section.alt { background: var(--paper); }
+  section[id] { scroll-margin-top: 140px; }
+
+  /* ===== Project grid ===== */
+  .proj-grid { display: grid; grid-template-columns: 1fr; gap: 28px; margin-top: 36px; }
+  @media (min-width: 640px) { .proj-grid { grid-template-columns: repeat(2, 1fr); } }
+  .proj-card { background: var(--paper); border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); transition: var(--transition); text-decoration: none; color: inherit; display: block; }
+  .proj-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(0,156,184,0.35); }
+  .proj-img-wrap { position: relative; height: 190px; background: var(--navy-deep); overflow: hidden; }
+  .proj-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+  .proj-card:hover .proj-img-wrap img { transform: scale(1.05); }
+  .proj-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.18); font-size: 2.4rem; }
+  .proj-tag { position: absolute; top: 14px; left: 14px; background: var(--cyan); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 50px; }
+  .proj-info { padding: 20px 22px 24px; }
+  .proj-info h3 { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+  .proj-info p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.7; margin: 10px 0 12px; }
+  .proj-meta { display: flex; flex-wrap: wrap; gap: 4px; }
+  .proj-meta span { font-size: 12px; color: var(--ink-mute); }
+  .proj-meta span:not(:last-child)::after { content: '·'; margin-left: 6px; color: var(--line); }
+
+  .proj-status { position: absolute; top: 14px; right: 14px; background: var(--navy-deep); color: var(--cyan-glow); font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; z-index: 2; }
+  .clients-section { padding: 4.5rem 0; }
+  .clients-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 32px; }
+  @media (min-width: 720px) { .clients-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
+  .client-tile { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 18px 12px 16px; transition: var(--transition); position: relative; }
+  a.client-tile:hover, .client-tile:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--cyan); }
+  .client-logo { width: 100%; height: 96px; display: flex; align-items: center; justify-content: center; position: relative; }
+  .client-logo img { max-width: 100%; max-height: 96px; object-fit: contain; }
+  .client-ini { width: 72px; height: 72px; border-radius: 50%; background: var(--pale); color: var(--cyan-deep); font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 20px; display: flex; align-items: center; justify-content: center; position: absolute; }
+  .client-tile p { font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1.35; }
+  .client-tag { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--cyan-deep); }
+
+  .approach-section { padding: 4.5rem 0; background: var(--paper); }
+  .approach-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 32px; }
+  @media (min-width: 720px) { .approach-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .approach-grid { grid-template-columns: repeat(4, 1fr); } }
+  .approach-card { padding: 24px; border: 1px solid var(--line); border-top: 3px solid var(--cyan); background: var(--cream); }
+  .approach-card .num { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .15em; color: var(--cyan-deep); }
+  .approach-card h4 { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; margin: 8px 0; color: var(--ink); }
+  .approach-card p { font-size: 14px; color: var(--ink-soft); }
+
+  /* ===== Experience (accordion on mobile) ===== */
+  .exp-section { background: var(--navy-deep); padding: 4.5rem 0; position: relative; overflow: hidden; }
+  .exp-section::before { content: ''; position: absolute; top: -120px; right: -120px; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(0,229,255,0.08), transparent 70%); }
+  .exp-section .container { position: relative; z-index: 1; }
+  .exp-section .section-label { color: var(--cyan-glow); }
+  .exp-section .section-title { color: #fff; }
+  .exp-section .section-desc { color: rgba(255,255,255,0.65); }
+  .exp-list { margin-top: 32px; }
+  .exp-row { display: grid; grid-template-columns: 1fr; gap: 4px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  @media (min-width: 720px) { .exp-row { grid-template-columns: 160px 1fr 240px; gap: 20px; align-items: baseline; } }
+  .exp-years { font-size: 12.5px; color: var(--cyan-glow); font-weight: 600; letter-spacing: 0.3px; }
+  .exp-role h4 { font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 700; color: #fff; }
+  .exp-role .company { color: rgba(255,255,255,0.55); font-size: 13.5px; font-weight: 500; }
+  .exp-desc { color: rgba(255,255,255,0.55); font-size: 13.5px; }
+  @media (min-width: 720px) { .exp-desc { text-align: right; } }
+
+  @media (max-width: 719px) {
+    .exp-row { cursor: pointer; }
+    .exp-desc { display: none; padding-top: 6px; }
+    .exp-row.open .exp-desc { display: block; }
+    .exp-role { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+    .exp-role::after { content: '+'; color: var(--cyan-glow); font-size: 18px; font-weight: 700; flex-shrink: 0; transition: var(--transition); }
+    .exp-row.open .exp-role::after { content: '\2212'; }
+  }
+
+  /* ===== Skills ===== */
+  .skills-section { padding: 4.5rem 0; }
+  .skill-group { margin-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .skill-group-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+  .skill-group-head h4 { font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 700; color: var(--ink); }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 18px; }
+  .skill-tag { border: 1px solid var(--line); background: var(--cream); border-radius: 999px; padding: 7px 15px; font-size: 13px; color: var(--ink); font-weight: 500; }
+  @media (min-width: 720px) {
+    .skill-group-head { cursor: default; }
+  }
+  @media (max-width: 719px) {
+    .skill-group-head { cursor: pointer; }
+    .skill-tags { display: none; }
+    .skill-group.open .skill-tags { display: flex; }
+    .skill-caret { color: var(--cyan-deep); font-size: 18px; font-weight: 700; transition: var(--transition); }
+    .skill-group.open .skill-caret { transform: rotate(45deg); }
+  }
+
+  /* ===== CTA ===== */
+  .cta-section { padding: 6rem 0; background: linear-gradient(160deg, var(--navy-deep), var(--navy-mid)); position: relative; overflow: hidden; }
+  .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 25% 30%, rgba(0,229,255,0.1), transparent 45%), radial-gradient(circle at 80% 75%, rgba(41,121,255,0.1), transparent 45%); }
+  .cta-inner { text-align: center; position: relative; z-index: 1; }
+  .cta-section .section-label { color: var(--cyan-glow); justify-content: center; display: flex; }
+  .cta-section .section-title { color: #fff; }
+  .cta-desc { color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.7; margin: 0 auto 36px; max-width: 480px; }
+  .cta-buttons { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+  /* ===== Footer ===== */
+  footer { background: #030509; color: rgba(255,255,255,0.65); }
+  .footer-main { padding: 4.2rem 0 2.6rem; }
+  .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.2rem; }
+  @media (min-width: 800px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1.2fr; } }
+  .footer-brand .logo-name { color: #fff; font-size: 18px; }
+  .footer-brand .logo-tagline { color: var(--cyan-glow); }
+  .footer-brand .logo-img-wrap { background: #fff; }
+  .footer-about { font-size: 13.5px; line-height: 1.8; margin: 16px 0; color: rgba(255,255,255,0.5); }
+  .footer-social { display: flex; gap: 9px; margin-top: 6px; }
+  .footer-social a { width: 34px; height: 34px; background: rgba(255,255,255,0.06); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: rgba(255,255,255,0.7); transition: var(--transition); }
+  .footer-social a:hover { background: var(--cyan); color: #fff; }
+  .footer-col h3 { font-family: 'Montserrat', sans-serif; color: #fff; font-size: 15.5px; margin-bottom: 1.1rem; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,0.08); font-weight: 700; }
+  .footer-col.collapsible h3 .f-plus { display: none; }
+  .footer-links { display: flex; flex-direction: column; gap: 9px; }
+  .footer-links a { font-size: 13.5px; color: rgba(255,255,255,0.55); display: flex; align-items: center; gap: 6px; transition: var(--transition); }
+  .footer-links a:hover { color: var(--cyan-glow); padding-left: 3px; }
+  .footer-links a i { color: var(--cyan-glow); font-size: 0.78em; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding: 20px 0; text-align: center; font-size: 12.5px; color: rgba(255,255,255,0.4); }
+
+  @media (max-width: 767px) {
+    .footer-col.collapsible h3 { cursor: pointer; display: flex; align-items: center; justify-content: space-between; margin-bottom: 0; padding: 14px 0; border-bottom: none; }
+    .footer-col.collapsible h3 .f-plus { display: inline-flex; color: var(--cyan-glow); transition: var(--transition); font-size: 0.82rem; }
+    .footer-col.collapsible.open h3 .f-plus { transform: rotate(45deg); }
+    .footer-col.collapsible .footer-section-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding-bottom 0.3s ease; padding-bottom: 0; }
+    .footer-col.collapsible.open .footer-section-body { max-height: 500px; padding-bottom: 14px; }
+    .footer-col.collapsible { border-bottom: 1px solid rgba(255,255,255,0.08); }
+  }
+
+  .wa-float { position: fixed; bottom: 24px; right: 24px; width: 54px; height: 54px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(37,211,102,0.35); z-index: 900; transition: var(--transition); }
+  .wa-float:hover { transform: scale(1.08); }
+  .wa-float i { color: #fff; font-size: 1.5rem; }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+  /* ===== Resources page ===== */
+  .res-search { position: relative; max-width: 520px; margin: 0 auto 22px; }
+  .res-search i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--cyan-deep); }
+  .res-search input { width: 100%; padding: 15px 18px 15px 46px; border-radius: 50px; border: 1px solid var(--line); background: #fff; font-family: 'Raleway', sans-serif; font-size: 15px; color: var(--ink); outline: none; transition: var(--transition); }
+  .res-search input:focus { border-color: var(--cyan); box-shadow: 0 0 0 4px rgba(0,156,184,0.12); }
+  .rtabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 18px; }
+  @media (min-width: 900px) { .rtabs { display: flex; flex-wrap: wrap; justify-content: center; } }
+  .rtab { padding: 14px 12px; border: none; cursor: pointer; background: var(--navy-deep); color: #fff; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: .02em; transition: var(--transition); }
+  .rtab:first-child { grid-column: 1 / -1; }
+  @media (min-width: 900px) { .rtab { padding: 13px 22px; border-radius: 50px; } .rtab:first-child { grid-column: auto; } }
+  .rtab:hover { background: var(--navy-mid); }
+  .rtab.active { background: var(--cyan); }
+  .res-note { text-align: center; font-size: 13px; color: var(--ink-mute); margin-bottom: 34px; }
+  .res-note i { color: var(--cyan-deep); margin-right: 6px; }
+  .res-group { margin-bottom: 40px; }
+  .res-group-title { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 16px; padding-left: 12px; border-left: 4px solid var(--cyan); }
+  .res-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  @media (min-width: 720px) { .res-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .res-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
+  .res-card { display: flex; gap: 16px; padding: 20px; background: #fff; border: 1px solid var(--line); border-radius: 14px; transition: var(--transition); }
+  .res-card:hover { transform: translateY(-4px); border-color: var(--cyan); box-shadow: 0 12px 36px rgba(10,20,40,0.1); }
+  .res-icon { flex: 0 0 48px; width: 48px; height: 48px; border-radius: 50%; background: #e4f6fa; color: var(--cyan-deep); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+  .res-body { min-width: 0; }
+  .res-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+  .res-top h3 { font-family: 'Montserrat', sans-serif; font-size: 15.5px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+  .res-badge { flex: 0 0 auto; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--cyan-deep); background: #e4f6fa; padding: 3px 9px; border-radius: 50px; white-space: nowrap; }
+  .res-body p { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 10px; }
+  .res-visit { font-family: 'Montserrat', sans-serif; font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--cyan-deep); }
+  .res-empty { text-align: center; color: var(--ink-soft); padding: 30px 0; }
+  .soon-card { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; margin-top: 30px; padding: 28px; background: #fff; border: 1px dashed var(--cyan); border-radius: 16px; }
+  .soon-card > i { font-size: 1.8rem; color: var(--cyan-deep); }
+  .soon-card h3 { font-family: 'Montserrat', sans-serif; font-size: 18px; color: var(--ink); margin-bottom: 4px; }
+  .soon-card p { color: var(--ink-soft); font-size: 14.5px; }
+  @media (min-width: 720px) { .soon-card { flex-direction: row; align-items: center; } .soon-card > div { flex: 1; } }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-contacts">
+      <a href="mailto:jaynitedigital@gmail.com"><i class="fas fa-envelope"></i>&nbsp;jaynitedigital@gmail.com</a>
+      <a href="tel:+233201485621"><i class="fas fa-phone"></i>&nbsp;0201 485 621</a>
+      <span style="color:rgba(255,255,255,0.3)">|</span>
+      <span>Sunyani, Bono Region, Ghana</span>
+    </div>
+    <div class="topbar-right">
+      <span>Mon – Fri: 8am – 6pm</span>
+      <div class="topbar-social">
+        <a href="https://www.instagram.com/jaynite_digital" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@jaynitedigital" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <div class="logo-img-wrap"><img src="images/logo.png" alt="Jaynite Digital Solutions" onerror="this.style.display='none'"></div>
+      <div class="logo-text">
+        <span class="logo-name">Jaynite Digital</span>
+        <span class="logo-tagline">Empowering Digital Innovation</span>
+      </div>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <div class="nav-item">
+        <a href="services.html">Services</a>
+        <div class="nav-dropdown">
+          <a href="services.html#web"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a>
+          <a href="services.html#uiux"><i class="fas fa-pen-nib"></i> UI/UX Design</a>
+          <a href="services.html#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
+          <a href="services.html#printing"><i class="fas fa-print"></i> Printing &amp; Publications</a>
+          <a href="services.html#computers"><i class="fas fa-desktop"></i> Computers &amp; Accessories</a>
+        </div>
+      </div>
+      <a href="store.html">Store</a>
+      <a href="project.html">Projects</a>
+      <a href="resource.html" class="active">Resources</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="nav-cta">
+      <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn btn-primary">Let's Talk &rarr;</a>
+    </div>
+
+    <button class="hamburger" onclick="openMobileMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mm-scrim" id="mmScrim" onclick="closeMobileMenu()"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-label="Menu">
+  <div class="mm-head">
+    <a href="index.html" class="mm-brand"><img src="images/logo.png" alt="" onerror="this.style.display='none'"><span><b>Jaynite Digital Solutions</b><small>Built on Trust. Connected by Technology.</small></span></a>
+    <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu"><i class="fas fa-xmark"></i></button>
+  </div>
+  <nav class="mobile-nav">
+    <a href="index.html">Home</a>
+    <div class="mobile-nav-item" id="mobileServicesItem">
+      <button class="mobile-dropdown-toggle" onclick="toggleMobileDropdown()" aria-expanded="false">Services <i class="fas fa-chevron-down caret"></i></button>
+      <div class="mobile-sub-nav">
+        <a href="services.html#web"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a>
+        <a href="services.html#uiux"><i class="fas fa-pen-nib"></i> UI/UX Design</a>
+        <a href="services.html#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
+        <a href="services.html#printing"><i class="fas fa-print"></i> Printing &amp; Publications</a>
+        <a href="services.html#computers"><i class="fas fa-desktop"></i> Computers &amp; Accessories</a>
+      </div>
+    </div>
+    <a href="store.html">Store</a>
+    <a href="project.html">Projects</a>
+    <a href="resource.html" class="active">Resources</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a href="contact.html" class="mm-cta">Start a Project</a>
+  <div class="mobile-menu-footer">
+    <a href="https://wa.me/233201485621" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp us</a>
+    <p>Built on Trust. Connected by Technology. Driven by Solutions.</p><p>&copy; 2026 Jaynite Digital Solutions</p>
+  </div>
+</aside>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="container">
+    <p class="section-label">Free &amp; Helpful</p>
+    <h1>Resources</h1>
+    <p>A hand-picked library of free tools, learning platforms and official services to help you learn, build, stay safe online and get things done.</p>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section class="p-section" id="library">
+  <div class="container">
+    <div class="res-search"><i class="fas fa-magnifying-glass"></i><input type="search" id="resSearch" placeholder="Search resources (e.g. design, PDF, WAEC)" aria-label="Search resources"></div>
+    <div class="rtabs" id="rtabs"><button class="rtab active" data-cat="all">All</button><button class="rtab" data-cat="learn">Learning &amp; Coding</button><button class="rtab" data-cat="design">Design &amp; Media</button><button class="rtab" data-cat="security">Cybersecurity</button><button class="rtab" data-cat="dev">Developer Tools</button><button class="rtab" data-cat="office">Productivity &amp; Office</button><button class="rtab" data-cat="gh">Ghana Public Services</button></div>
+    <p class="res-note"><i class="fas fa-circle-info"></i> We link to the original, official websites. Always download and use resources from their owners, and follow their terms.</p>
+    <div id="resGroups">
+      <div class="res-group" data-group="learn">
+        <h3 class="res-group-title">Learning &amp; Coding</h3>
+        <div class="res-grid">
+        <a href="https://www.freecodecamp.org" target="_blank" rel="noopener" class="res-card reveal" data-cat="learn" data-search="freecodecamp free, project-based courses and certifications in web development, data and more.">
+          <span class="res-icon"><i class="fas fa-code"></i></span>
+          <div class="res-body"><div class="res-top"><h3>freeCodeCamp</h3><span class="res-badge">Free</span></div><p>Free, project-based courses and certifications in web development, data and more.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://developer.mozilla.org" target="_blank" rel="noopener" class="res-card reveal" data-cat="learn" data-search="mdn web docs the most trusted reference for html, css and javascript.">
+          <span class="res-icon"><i class="fas fa-book-open"></i></span>
+          <div class="res-body"><div class="res-top"><h3>MDN Web Docs</h3><span class="res-badge">Free</span></div><p>The most trusted reference for HTML, CSS and JavaScript.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://roadmap.sh" target="_blank" rel="noopener" class="res-card reveal" data-cat="learn" data-search="roadmap.sh step-by-step learning roadmaps for developers, designers and devops.">
+          <span class="res-icon"><i class="fas fa-route"></i></span>
+          <div class="res-body"><div class="res-top"><h3>roadmap.sh</h3><span class="res-badge">Free</span></div><p>Step-by-step learning roadmaps for developers, designers and DevOps.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://www.khanacademy.org" target="_blank" rel="noopener" class="res-card reveal" data-cat="learn" data-search="khan academy free lessons in maths, science, computing and exam preparation.">
+          <span class="res-icon"><i class="fas fa-graduation-cap"></i></span>
+          <div class="res-body"><div class="res-top"><h3>Khan Academy</h3><span class="res-badge">Free</span></div><p>Free lessons in maths, science, computing and exam preparation.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://www.w3schools.com" target="_blank" rel="noopener" class="res-card reveal" data-cat="learn" data-search="w3schools beginner-friendly tutorials with live examples you can edit.">
+          <span class="res-icon"><i class="fas fa-laptop-code"></i></span>
+          <div class="res-body"><div class="res-top"><h3>W3Schools</h3><span class="res-badge">Free</span></div><p>Beginner-friendly tutorials with live examples you can edit.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://www.edx.org" target="_blank" rel="noopener" class="res-card reveal" data-cat="learn" data-search="edx university-level courses from leading institutions, many free to audit.">
+          <span class="res-icon"><i class="fas fa-building-columns"></i></span>
+          <div class="res-body"><div class="res-top"><h3>edX</h3><span class="res-badge">Free to audit</span></div><p>University-level courses from leading institutions, many free to audit.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        </div>
+      </div>
+      <div class="res-group" data-group="design">
+        <h3 class="res-group-title">Design &amp; Media</h3>
+        <div class="res-grid">
+        <a href="https://www.canva.com" target="_blank" rel="noopener" class="res-card reveal" data-cat="design" data-search="canva design flyers, posters, cvs and social media posts with ready templates.">
+          <span class="res-icon"><i class="fas fa-palette"></i></span>
+          <div class="res-body"><div class="res-top"><h3>Canva</h3><span class="res-badge">Free plan</span></div><p>Design flyers, posters, CVs and social media posts with ready templates.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://www.figma.com" target="_blank" rel="noopener" class="res-card reveal" data-cat="design" data-search="figma collaborative interface and ui/ux design tool that runs in the browser.">
+          <span class="res-icon"><i class="fas fa-pen-ruler"></i></span>
+          <div class="res-body"><div class="res-top"><h3>Figma</h3><span class="res-badge">Free plan</span></div><p>Collaborative interface and UI/UX design tool that runs in the browser.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://fonts.google.com" target="_blank" rel="noopener" class="res-card reveal" data-cat="design" data-search="google fonts hundreds of free fonts for websites, print and branding.">
+          <span class="res-icon"><i class="fas fa-font"></i></span>
+          <div class="res-body"><div class="res-top"><h3>Google Fonts</h3><span class="res-badge">Free</span></div><p>Hundreds of free fonts for websites, print and branding.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://unsplash.com" target="_blank" rel="noopener" class="res-card reveal" data-cat="design" data-search="unsplash high-quality free photos for websites and designs.">
+          <span class="res-icon"><i class="fas fa-image"></i></span>
+          <div class="res-body"><div class="res-top"><h3>Unsplash</h3><span class="res-badge">Free</span></div><p>High-quality free photos for websites and designs.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://www.pexels.com" target="_blank" rel="noopener" class="res-card reveal" data-cat="design" data-search="pexels free stock photos and videos you can use in your projects.">
+          <span class="res-icon"><i class="fas fa-camera"></i></span>
+          <div class="res-body"><div class="res-top"><h3>Pexels</h3><span class="res-badge">Free</span></div><p>Free stock photos and videos you can use in your projects.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://coolors.co" target="_blank" rel="noopener" class="res-card reveal" data-cat="design" data-search="coolors generate and save colour palettes for any brand or website.">
+          <span class="res-icon"><i class="fas fa-swatchbrush"></i></span>
+          <div class="res-body"><div class="res-top"><h3>Coolors</h3><span class="res-badge">Free plan</span></div><p>Generate and save colour palettes for any brand or website.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        </div>
+      </div>
+      <div class="res-group" data-group="security">
+        <h3 class="res-group-title">Cybersecurity</h3>
+        <div class="res-grid">
+        <a href="https://www.csa.gov.gh" target="_blank" rel="noopener" class="res-card reveal" data-cat="security" data-search="cyber security authority, ghana ghana&#x27;s national cybersecurity regulator. report incidents and read official guidance.">
+          <span class="res-icon"><i class="fas fa-shield-halved"></i></span>
+          <div class="res-body"><div class="res-top"><h3>Cyber Security Authority, Ghana</h3><span class="res-badge">Official</span></div><p>Ghana's national cybersecurity regulator. Report incidents and read official guidance.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://haveibeenpwned.com" target="_blank" rel="noopener" class="res-card reveal" data-cat="security" data-search="have i been pwned check whether your email or phone number appeared in a known data breach.">
+          <span class="res-icon"><i class="fas fa-user-lock"></i></span>
+          <div class="res-body"><div class="res-top"><h3>Have I Been Pwned</h3><span class="res-badge">Free</span></div><p>Check whether your email or phone number appeared in a known data breach.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://www.virustotal.com" target="_blank" rel="noopener" class="res-card reveal" data-cat="security" data-search="virustotal scan suspicious files and links with many antivirus engines at once.">
+          <span class="res-icon"><i class="fas fa-virus-slash"></i></span>
+          <div class="res-body"><div class="res-top"><h3>VirusTotal</h3><span class="res-badge">Free</span></div><p>Scan suspicious files and links with many antivirus engines at once.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://bitwarden.com" target="_blank" rel="noopener" class="res-card reveal" data-cat="security" data-search="bitwarden open-source password manager to keep every account on a strong, unique password.">
+          <span class="res-icon"><i class="fas fa-key"></i></span>
+          <div class="res-body"><div class="res-top"><h3>Bitwarden</h3><span class="res-badge">Free plan</span></div><p>Open-source password manager to keep every account on a strong, unique password.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://www.cisa.gov" target="_blank" rel="noopener" class="res-card reveal" data-cat="security" data-search="cisa practical cybersecurity tips and alerts from the us cyber defence agency.">
+          <span class="res-icon"><i class="fas fa-flag"></i></span>
+          <div class="res-body"><div class="res-top"><h3>CISA</h3><span class="res-badge">Official</span></div><p>Practical cybersecurity tips and alerts from the US cyber defence agency.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://tryhackme.com" target="_blank" rel="noopener" class="res-card reveal" data-cat="security" data-search="tryhackme hands-on, beginner-friendly labs to learn cybersecurity safely.">
+          <span class="res-icon"><i class="fas fa-terminal"></i></span>
+          <div class="res-body"><div class="res-top"><h3>TryHackMe</h3><span class="res-badge">Free plan</span></div><p>Hands-on, beginner-friendly labs to learn cybersecurity safely.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        </div>
+      </div>
+      <div class="res-group" data-group="dev">
+        <h3 class="res-group-title">Developer Tools</h3>
+        <div class="res-grid">
+        <a href="https://github.com" target="_blank" rel="noopener" class="res-card reveal" data-cat="dev" data-search="github host code, track changes and collaborate on projects.">
+          <span class="res-icon"><i class="fas fa-code-branch"></i></span>
+          <div class="res-body"><div class="res-top"><h3>GitHub</h3><span class="res-badge">Free plan</span></div><p>Host code, track changes and collaborate on projects.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://code.visualstudio.com" target="_blank" rel="noopener" class="res-card reveal" data-cat="dev" data-search="visual studio code free, powerful code editor with thousands of extensions.">
+          <span class="res-icon"><i class="fas fa-file-code"></i></span>
+          <div class="res-body"><div class="res-top"><h3>Visual Studio Code</h3><span class="res-badge">Free</span></div><p>Free, powerful code editor with thousands of extensions.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://firebase.google.com" target="_blank" rel="noopener" class="res-card reveal" data-cat="dev" data-search="firebase hosting, database and authentication for web and mobile apps.">
+          <span class="res-icon"><i class="fas fa-fire"></i></span>
+          <div class="res-body"><div class="res-top"><h3>Firebase</h3><span class="res-badge">Free plan</span></div><p>Hosting, database and authentication for web and mobile apps.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://www.netlify.com" target="_blank" rel="noopener" class="res-card reveal" data-cat="dev" data-search="netlify deploy static websites in minutes with free hosting.">
+          <span class="res-icon"><i class="fas fa-rocket"></i></span>
+          <div class="res-body"><div class="res-top"><h3>Netlify</h3><span class="res-badge">Free plan</span></div><p>Deploy static websites in minutes with free hosting.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://caniuse.com" target="_blank" rel="noopener" class="res-card reveal" data-cat="dev" data-search="can i use check which browsers support a web feature before you use it.">
+          <span class="res-icon"><i class="fas fa-circle-check"></i></span>
+          <div class="res-body"><div class="res-top"><h3>Can I use</h3><span class="res-badge">Free</span></div><p>Check which browsers support a web feature before you use it.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://tinypng.com" target="_blank" rel="noopener" class="res-card reveal" data-cat="dev" data-search="tinypng compress images to make your website load faster.">
+          <span class="res-icon"><i class="fas fa-compress"></i></span>
+          <div class="res-body"><div class="res-top"><h3>TinyPNG</h3><span class="res-badge">Free</span></div><p>Compress images to make your website load faster.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        </div>
+      </div>
+      <div class="res-group" data-group="office">
+        <h3 class="res-group-title">Productivity &amp; Office</h3>
+        <div class="res-grid">
+        <a href="https://www.ilovepdf.com" target="_blank" rel="noopener" class="res-card reveal" data-cat="office" data-search="ilovepdf merge, split, compress and convert pdf files online.">
+          <span class="res-icon"><i class="fas fa-file-pdf"></i></span>
+          <div class="res-body"><div class="res-top"><h3>iLovePDF</h3><span class="res-badge">Free plan</span></div><p>Merge, split, compress and convert PDF files online.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://www.libreoffice.org" target="_blank" rel="noopener" class="res-card reveal" data-cat="office" data-search="libreoffice free, open-source alternative to microsoft office.">
+          <span class="res-icon"><i class="fas fa-file-word"></i></span>
+          <div class="res-body"><div class="res-top"><h3>LibreOffice</h3><span class="res-badge">Free</span></div><p>Free, open-source alternative to Microsoft Office.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://workspace.google.com" target="_blank" rel="noopener" class="res-card reveal" data-cat="office" data-search="google docs, sheets &amp;amp; slides create and share documents, spreadsheets and presentations online.">
+          <span class="res-icon"><i class="fas fa-table"></i></span>
+          <div class="res-body"><div class="res-top"><h3>Google Docs, Sheets &amp; Slides</h3><span class="res-badge">Free</span></div><p>Create and share documents, spreadsheets and presentations online.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://www.qr-code-generator.com" target="_blank" rel="noopener" class="res-card reveal" data-cat="office" data-search="qr code generator create qr codes for links, contacts and payments.">
+          <span class="res-icon"><i class="fas fa-qrcode"></i></span>
+          <div class="res-body"><div class="res-top"><h3>QR Code Generator</h3><span class="res-badge">Free plan</span></div><p>Create QR codes for links, contacts and payments.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        </div>
+      </div>
+      <div class="res-group" data-group="gh">
+        <h3 class="res-group-title">Ghana Public Services</h3>
+        <div class="res-grid">
+        <a href="https://www.ghana.gov.gh" target="_blank" rel="noopener" class="res-card reveal" data-cat="gh" data-search="ghana.gov the official government portal for public services in ghana.">
+          <span class="res-icon"><i class="fas fa-landmark"></i></span>
+          <div class="res-body"><div class="res-top"><h3>Ghana.gov</h3><span class="res-badge">Official</span></div><p>The official government portal for public services in Ghana.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://www.waecgh.org" target="_blank" rel="noopener" class="res-card reveal" data-cat="gh" data-search="waec ghana official site for wassce and bece information and results.">
+          <span class="res-icon"><i class="fas fa-pen-to-square"></i></span>
+          <div class="res-body"><div class="res-top"><h3>WAEC Ghana</h3><span class="res-badge">Official</span></div><p>Official site for WASSCE and BECE information and results.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://www.cssps.gov.gh" target="_blank" rel="noopener" class="res-card reveal" data-cat="gh" data-search="cssps computerised school selection and placement system for shs placement.">
+          <span class="res-icon"><i class="fas fa-school"></i></span>
+          <div class="res-body"><div class="res-top"><h3>CSSPS</h3><span class="res-badge">Official</span></div><p>Computerised School Selection and Placement System for SHS placement.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://ges.gov.gh" target="_blank" rel="noopener" class="res-card reveal" data-cat="gh" data-search="ghana education service official notices and information for teachers, schools and parents.">
+          <span class="res-icon"><i class="fas fa-chalkboard-user"></i></span>
+          <div class="res-body"><div class="res-top"><h3>Ghana Education Service</h3><span class="res-badge">Official</span></div><p>Official notices and information for teachers, schools and parents.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://nia.gov.gh" target="_blank" rel="noopener" class="res-card reveal" data-cat="gh" data-search="national identification authority information on the ghana card and national identification.">
+          <span class="res-icon"><i class="fas fa-id-card"></i></span>
+          <div class="res-body"><div class="res-top"><h3>National Identification Authority</h3><span class="res-badge">Official</span></div><p>Information on the Ghana Card and national identification.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://gra.gov.gh" target="_blank" rel="noopener" class="res-card reveal" data-cat="gh" data-search="ghana revenue authority tax information, tin registration and filing for individuals and businesses.">
+          <span class="res-icon"><i class="fas fa-receipt"></i></span>
+          <div class="res-body"><div class="res-top"><h3>Ghana Revenue Authority</h3><span class="res-badge">Official</span></div><p>Tax information, TIN registration and filing for individuals and businesses.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        <a href="https://rgd.gov.gh" target="_blank" rel="noopener" class="res-card reveal" data-cat="gh" data-search="registrar general&#x27;s department register a business and access company registration information.">
+          <span class="res-icon"><i class="fas fa-briefcase"></i></span>
+          <div class="res-body"><div class="res-top"><h3>Registrar General's Department</h3><span class="res-badge">Official</span></div><p>Register a business and access company registration information.</p><span class="res-visit">Visit website <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+        </a>
+        </div>
+      </div>
+    </div>
+    <p class="res-empty" id="resEmpty" style="display:none">No resources match your search. Try another word, or ask us on WhatsApp.</p>
+  </div>
+</section>
+
+<!-- JAYNITE TEMPLATES -->
+<section class="p-section alt" id="templates">
+  <div class="container">
+    <p class="section-label">From Jaynite</p>
+    <h2 class="section-title">Jaynite Templates</h2>
+    <p class="section-desc">Our own free templates are on the way: CVs, invoices, flyers and website starters you can use straight away.</p>
+    <div class="soon-card reveal"><i class="fas fa-box-open"></i><div><h3>Coming Soon</h3><p>Want a template made for your business? Tell us what you need.</p></div><a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn btn-primary">Request a Template</a></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="start">
+  <div class="container cta-inner">
+    <p class="section-label">Suggest a Resource</p>
+    <h2 class="section-title">Can't Find What You Need?</h2>
+    <p class="cta-desc">Tell us what you're looking for and we'll point you in the right direction, or add it to this page.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Chat With Us</a>
+      <a href="services.html" class="btn btn-outline-white">View Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="margin-bottom:14px">
+            <div class="logo-img-wrap"><img src="images/logo.png" alt="Jaynite Digital Solutions" onerror="this.style.display='none'"></div>
+            <div class="logo-text">
+              <span class="logo-name">Jaynite Digital Solutions</span>
+              <span class="logo-tagline">Empowering Digital Innovation</span>
+            </div>
+          </div>
+          <p class="footer-about">Digital innovation in Ghana — web design, publication media, and IT support.</p>
+          <div class="footer-social">
+            <a href="https://youtube.com/@jaynitedigital" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/233201485621" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/jaynite_digital" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col collapsible">
+          <h3>Site <span class="f-plus"><i class="fas fa-plus"></i></span></h3>
+          <div class="footer-section-body">
+            <div class="footer-links">
+              <a href="index.html">&rsaquo; Home</a>
+              <a href="services.html">&rsaquo; Services</a>
+              <a href="store.html">&rsaquo; Store</a>
+              <a href="resource.html">&rsaquo; Resources</a>
+              <a href="about.html">&rsaquo; About</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-col collapsible">
+          <h3>Store <span class="f-plus"><i class="fas fa-plus"></i></span></h3>
+          <div class="footer-section-body">
+            <div class="footer-links">
+              <a href="store.html#data">&rsaquo; Data Bundles</a>
+              <a href="store.html#checkers">&rsaquo; Results Checkers</a>
+              <a href="store.html#packages">&rsaquo; Website Packages</a>
+              <a href="store.html#systems">&rsaquo; Management Systems</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-col collapsible">
+          <h3>Contact <span class="f-plus"><i class="fas fa-plus"></i></span></h3>
+          <div class="footer-section-body">
+            <div class="footer-links">
+              <a href="#">Sunyani, Bono Region, Ghana</a>
+              <a href="https://wa.me/233201485621" target="_blank">+233 20 148 5621</a>
+              <a href="mailto:jaynitedigital@gmail.com">jaynitedigital@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bottom">&copy; 2026 Jaynite Digital Solutions.</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+function openMobileMenu(){ document.getElementById('mobileMenu').classList.add('open'); document.getElementById('mmScrim').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeMobileMenu(){ document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('mmScrim').classList.remove('open'); document.body.style.overflow=''; }
+function toggleMobileDropdown(){ var i=document.getElementById('mobileServicesItem'); i.querySelector('button').setAttribute('aria-expanded', i.classList.toggle('open')); }
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMobileMenu(); });
+
+// Footer mobile accordion
+document.querySelectorAll('.footer-col.collapsible > h3').forEach(h=>{
+  h.addEventListener('click', ()=> h.closest('.footer-col').classList.toggle('open'));
+});
+
+// Reveal on scroll
+var observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if (entry.isIntersecting) entry.target.classList.add('in-view');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
+
+
+// Resource filter + search
+(function(){
+  var tabs=document.querySelectorAll('.rtab'), cards=document.querySelectorAll('.res-card'), groups=document.querySelectorAll('.res-group'), q=document.getElementById('resSearch'), empty=document.getElementById('resEmpty'), cat='all';
+  function apply(){
+    var term=q.value.trim().toLowerCase(), shown=0;
+    cards.forEach(function(c){ var ok=(cat==='all'||c.dataset.cat===cat)&&(!term||c.dataset.search.indexOf(term)>-1); c.style.display=ok?'':'none'; if(ok){shown++; c.classList.add('in-view');} });
+    groups.forEach(function(g){ g.style.display=g.querySelector('.res-card:not([style*="none"])')?'':'none'; });
+    empty.style.display=shown?'none':'block';
+  }
+  tabs.forEach(function(t){ t.addEventListener('click',function(){ tabs.forEach(function(x){x.classList.remove('active');}); t.classList.add('active'); cat=t.dataset.cat; apply(); }); });
+  q.addEventListener('input',apply);
+})();
+</script>
+</body>
+</html>
