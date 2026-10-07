@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy - Jaynite Digital Solutions</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy-deep:  #050811;
+    --navy-mid:   #0d1830;
+    --ink:        #0a0e1a;
+    --ink-soft:   #5b6472;
+    --ink-mute:   #8a94a3;
+    --cyan:       #009cb8;
+    --cyan-deep:  #007a91;
+    --cyan-glow:  #00e5ff;
+    --blue:       #2979ff;
+    --paper:      #ffffff;
+    --cream:      #f6fbfc;
+    --pale:       #e4f6fa;
+    --line:       rgba(10,14,26,0.1);
+    --line-soft:  rgba(10,14,26,0.06);
+    --shadow:     0 8px 40px rgba(10,20,40,0.1);
+    --shadow-lg:  0 20px 60px rgba(10,20,40,0.16);
+    --radius:     12px;
+    --radius-lg:  20px;
+    --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Raleway', sans-serif; color: var(--ink); background: var(--cream); overflow-x: hidden; line-height: 1.6; }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  .section-label { font-weight: 700; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--cyan-deep); margin-bottom: 12px; }
+  .section-title { font-family: 'Montserrat', sans-serif; font-size: clamp(28px, 4vw, 42px); color: var(--ink); line-height: 1.15; margin-bottom: 16px; font-weight: 700; }
+  .section-desc { font-size: 16px; line-height: 1.8; color: var(--ink-soft); max-width: 600px; }
+  .divider-rule { width: 36px; height: 3px; background: linear-gradient(90deg, var(--cyan), var(--blue)); border-radius: 2px; }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 50px; font-size: 14px; font-weight: 700; cursor: pointer; transition: var(--transition); border: 2px solid transparent; white-space: nowrap; font-family: inherit; }
+  .btn-primary { background: linear-gradient(135deg, var(--cyan), var(--blue)); color: #fff; box-shadow: 0 4px 20px rgba(0,156,184,0.3); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,156,184,0.45); }
+  .btn-outline-white { background: transparent; color: #fff; border-color: rgba(255,255,255,0.55); }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: #fff; transform: translateY(-2px); }
+  .btn-outline-ink { background: transparent; color: var(--ink); border-color: var(--line); }
+  .btn-outline-ink:hover { border-color: var(--ink); transform: translateY(-2px); }
+
+  /* ===== Top bar ===== */
+  .topbar { background: var(--navy-deep); color: rgba(255,255,255,0.75); font-size: 12.5px; padding: 8px 0; }
+  .topbar .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .topbar-contacts { display: flex; gap: 22px; flex-wrap: wrap; }
+  .topbar-contacts a { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.75); transition: var(--transition); }
+  .topbar-contacts a:hover { color: var(--cyan-glow); }
+  .topbar-right { display: flex; align-items: center; gap: 16px; }
+  .topbar-social { display: flex; gap: 8px; margin-left: 4px; }
+  .topbar-social a { display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.08); color: #fff; font-size: 11px; transition: var(--transition); }
+  .topbar-social a:hover { background: var(--cyan); }
+  @media (max-width: 768px) { .topbar { display: none; } }
+
+  /* ===== Navbar ===== */
+  .navbar { background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(10,20,40,0.06); position: sticky; top: 0; z-index: 1000; transition: var(--transition); }
+  .navbar .container { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-img-wrap { width: 58px; height: 58px; border-radius: 50%; padding: 4px; overflow: hidden; flex-shrink: 0; background: #fff; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; }
+  .logo-img-wrap img { width: 100%; height: 100%; object-fit: contain; }
+  .logo-text { display: flex; flex-direction: column; }
+  .logo-name { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.1; }
+  .logo-tagline { font-size: 9.5px; color: var(--cyan-deep); font-weight: 600; letter-spacing: 0.3px; line-height: 1.4; }
+
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  @media (min-width: 900px) {
+    .nav-links { display: flex; align-items: center; gap: 3px; }
+    .nav-links a { padding: 8px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; color: var(--ink); transition: var(--transition); position: relative; }
+    .nav-links a:hover, .nav-links a.active { color: var(--cyan-deep); background: rgba(0,156,184,0.07); }
+    .nav-links a.active::after { content: ''; position: absolute; bottom: 1px; left: 50%; transform: translateX(-50%); width: 18px; height: 2px; background: var(--cyan); border-radius: 2px; }
+    .nav-item { position: relative; display: flex; align-items: center; }
+    .nav-dropdown { position: absolute; top: calc(100% + 8px); left: 0; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-lg); border: 1px solid var(--line); min-width: 230px; padding: 8px; opacity: 0; visibility: hidden; transform: translateY(8px); transition: var(--transition); z-index: 1000; }
+    .nav-item:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown a { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; font-size: 13.5px; font-weight: 500; color: var(--ink); }
+    .nav-dropdown a:hover { background: rgba(0,156,184,0.07); color: var(--cyan-deep); }
+    .nav-dropdown a i { width: 15px; color: var(--cyan); font-size: 0.85rem; }
+    .nav-cta { display: flex; align-items: center; }
+    .nav-dropdown .dropdown-divider { height: 1px; background: var(--line); margin: 6px 8px; }
+  }
+
+  .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); }
+  .hamburger span { width: 22px; height: 2px; background: var(--ink); border-radius: 2px; display: block; }
+  @media (min-width: 900px) { .hamburger { display: none; } }
+  @media (max-width: 899px) {
+    .navbar .container { justify-content: center; position: relative; height: 72px; }
+    .logo-text { display: none; }
+  }
+
+  /* ===== Mobile menu (slide-in drawer) ===== */
+  .mm-scrim { position: fixed; inset: 0; background: rgba(5,8,17,0.55); backdrop-filter: blur(2px); opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; z-index: 1999; }
+  .mm-scrim.open { opacity: 1; visibility: visible; }
+  .mobile-menu { position: fixed; top: 0; left: 0; bottom: 0; width: min(86vw, 360px); background: #fff; z-index: 2000; display: flex; flex-direction: column; overflow-y: auto; transform: translateX(-100%); visibility: hidden; transition: transform .35s cubic-bezier(.4,0,.2,1), visibility .35s; box-shadow: 12px 0 40px rgba(5,8,17,.25); }
+  .mobile-menu.open { transform: none; visibility: visible; }
+  .mm-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--line-soft); }
+  .mm-brand { display: flex; align-items: center; gap: 10px; }
+  .mm-brand img { width: 52px; height: 52px; border-radius: 50%; padding: 3px; background: #fff; border: 1px solid var(--line); object-fit: contain; }
+  .mm-brand b { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; color: var(--ink); display: block; line-height: 1.15; }
+  .mm-brand small { font-size: 10px; color: var(--cyan-deep); font-weight: 600; letter-spacing: .3px; }
+  .mobile-close { background: var(--pale); border: none; color: var(--ink); width: 36px; height: 36px; border-radius: 50%; font-size: 16px; cursor: pointer; }
+  .mobile-nav { padding: 6px 0; }
+  .mobile-nav a, .mobile-dropdown-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; background: none; border: none; border-left: 3px solid transparent; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 13.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); padding: 17px 22px; text-align: left; transition: var(--transition); }
+  .mobile-nav a:hover, .mobile-dropdown-toggle:hover { background: var(--cream); color: var(--cyan-deep); }
+  .mobile-nav a.active { color: var(--cyan-deep); border-left-color: var(--cyan); background: var(--cream); }
+  .mobile-nav-item { border-top: 1px solid var(--line-soft); }
+  .mobile-nav-item.first { border-top: none; }
+  .mobile-nav > a { border-top: 1px solid var(--line-soft); }
+  .mobile-nav > a:first-child { border-top: none; }
+  .caret { font-size: 11px; color: var(--cyan-deep); transition: var(--transition); }
+  .mobile-nav-item.open .caret { transform: rotate(180deg); }
+  .mobile-sub-nav { max-height: 0; overflow: hidden; transition: max-height .35s ease; background: var(--cream); }
+  .mobile-nav-item.open .mobile-sub-nav { max-height: 720px; }
+  .mobile-nav .mobile-sub-nav a { justify-content: flex-start; gap: 12px; font-size: 12.5px; font-weight: 500; letter-spacing: .02em; text-transform: none; padding: 13px 22px 13px 34px; border-top: none; color: var(--ink-soft); }
+  .mobile-sub-nav a i { color: var(--cyan); width: 16px; text-align: center; }
+  .mm-cta { display: block; margin: 12px 20px 0; padding: 16px; text-align: center; background: var(--cyan); color: #fff; font-family: 'Montserrat', sans-serif; font-size: 12.5px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+  .mm-cta:hover { background: var(--cyan-deep); }
+  .mobile-menu-footer { margin-top: auto; padding: 22px; font-size: 12px; color: var(--ink-mute); }
+  .mobile-menu-footer a { display: block; color: var(--ink-soft); padding: 4px 0; }
+  .mobile-menu-footer a i { color: var(--cyan); width: 18px; }
+  .mobile-menu-footer p { margin-top: 10px; }
+
+  /* ===== Page header ===== */
+  .page-header { background: radial-gradient(circle at 20% 20%, rgba(0,229,255,0.12), transparent 45%), radial-gradient(circle at 85% 70%, rgba(41,121,255,0.12), transparent 45%), linear-gradient(160deg, var(--navy-deep), var(--navy-mid)); padding: 6.5rem 0 4.5rem; position: relative; overflow: hidden; text-align: center; }
+  .page-header .container { position: relative; z-index: 1; }
+  .page-header .section-label { color: var(--cyan-glow); justify-content: center; display: flex; }
+  .page-header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(34px, 5.5vw, 54px); color: #fff; line-height: 1.12; margin-bottom: 16px; font-weight: 700; }
+  .page-header p { color: rgba(255,255,255,0.72); font-size: 16px; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+  /* ===== Section nav ===== */
+  .section-nav { background: var(--paper); border-bottom: 1px solid var(--line); position: sticky; top: 72px; z-index: 500; }
+  @media (min-width: 900px) { .section-nav { top: 76px; } }
+  .section-nav-inner { display: flex; gap: 6px; overflow-x: auto; padding: 13px 0; scrollbar-width: none; }
+  .section-nav-inner::-webkit-scrollbar { display: none; }
+  .section-nav a { white-space: nowrap; font-size: 13px; font-weight: 600; color: var(--ink-soft); padding: 8px 15px; border-radius: 50px; border: 1px solid var(--line); transition: var(--transition); flex-shrink: 0; }
+  .section-nav a:hover, .section-nav a.active { background: var(--navy-deep); color: #fff; border-color: var(--navy-deep); }
+
+  /* ===== Generic section ===== */
+  .p-section { padding: 4.5rem 0; }
+  .p-section.alt { background: var(--paper); }
+  section[id] { scroll-margin-top: 140px; }
+
+
+  /* ===== Legal pages ===== */
+  section[id] { scroll-margin-top: 140px; }
+  .legal-sec { padding: 4rem 0; }
+  .legal-sec.cream { background: var(--cream); }
+  .legal-sec.white { background: var(--paper); }
+  .legal-inner { max-width: 820px; margin: 0 auto; }
+  .legal-num { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .15em; color: var(--cyan-deep); margin-bottom: 8px; }
+  .legal-inner h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(24px, 3.4vw, 32px); font-weight: 700; color: var(--ink); line-height: 1.2; margin-bottom: 18px; }
+  .legal-inner h3 { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); margin: 22px 0 8px; }
+  .legal-inner p { color: var(--ink-soft); font-size: 15.5px; line-height: 1.85; margin-bottom: 14px; }
+  .legal-inner p strong, .legal-inner li strong { color: var(--ink); }
+  .legal-inner ul { margin: 0 0 16px; display: flex; flex-direction: column; gap: 10px; }
+  .legal-inner li { position: relative; padding-left: 26px; color: var(--ink-soft); font-size: 15.5px; line-height: 1.75; }
+  .legal-inner li::before { content: ''; position: absolute; left: 4px; top: 11px; width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); }
+  .legal-inner a { color: var(--cyan-deep); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+  .legal-note { background: var(--pale); border-left: 4px solid var(--cyan); border-radius: 0 var(--radius) var(--radius) 0; padding: 16px 20px; margin: 18px 0; }
+  .legal-note p { margin: 0; color: var(--ink); font-size: 14.5px; }
+  .legal-meta { color: rgba(255,255,255,0.55); font-size: 13px; margin-top: 18px; }
+  .legal-top { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 8px; }
+  @media (min-width: 720px) { .legal-top { grid-template-columns: repeat(3, 1fr); } }
+  .legal-chip { background: var(--paper); border: 1px solid var(--line); border-top: 3px solid var(--cyan); border-radius: var(--radius); padding: 18px; }
+  .legal-chip i { color: var(--cyan-deep); font-size: 20px; margin-bottom: 8px; display: block; }
+  .legal-chip h4 { font-family: 'Montserrat', sans-serif; font-size: 14.5px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .legal-chip p { font-size: 13.5px; line-height: 1.6; margin: 0; color: var(--ink-soft); }
+  /* ===== CTA ===== */
+  .cta-section { padding: 6rem 0; background: linear-gradient(160deg, var(--navy-deep), var(--navy-mid)); position: relative; overflow: hidden; }
+  .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 25% 30%, rgba(0,229,255,0.1), transparent 45%), radial-gradient(circle at 80% 75%, rgba(41,121,255,0.1), transparent 45%); }
+  .cta-inner { text-align: center; position: relative; z-index: 1; }
+  .cta-section .section-label { color: var(--cyan-glow); justify-content: center; display: flex; }
+  .cta-section .section-title { color: #fff; }
+  .cta-desc { color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.7; margin: 0 auto 36px; max-width: 480px; }
+  .cta-buttons { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+
+  /* ===== Footer ===== */
+  footer { background: #030509; color: rgba(255,255,255,0.65); }
+  .footer-main { padding: 4.2rem 0 2.6rem; }
+  .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.2rem; }
+  @media (min-width: 800px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1.2fr; } }
+  .footer-brand .logo-name { color: #fff; font-size: 18px; }
+  .footer-brand .logo-tagline { color: var(--cyan-glow); }
+  .footer-brand .logo-img-wrap { background: #fff; }
+  .footer-about { font-size: 13.5px; line-height: 1.8; margin: 16px 0; color: rgba(255,255,255,0.5); }
+  .footer-social { display: flex; gap: 9px; margin-top: 6px; }
+  .footer-social a { width: 34px; height: 34px; background: rgba(255,255,255,0.06); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: rgba(255,255,255,0.7); transition: var(--transition); }
+  .footer-social a:hover { background: var(--cyan); color: #fff; }
+  .footer-col h3 { font-family: 'Montserrat', sans-serif; color: #fff; font-size: 15.5px; margin-bottom: 1.1rem; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,0.08); font-weight: 700; }
+  .footer-col.collapsible h3 .f-plus { display: none; }
+  .footer-links { display: flex; flex-direction: column; gap: 9px; }
+  .footer-links a { font-size: 13.5px; color: rgba(255,255,255,0.55); display: flex; align-items: center; gap: 6px; transition: var(--transition); }
+  .footer-links a:hover { color: var(--cyan-glow); padding-left: 3px; }
+  .footer-links a i { color: var(--cyan-glow); font-size: 0.78em; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding: 20px 0; text-align: center; font-size: 12.5px; color: rgba(255,255,255,0.4); }
+  .footer-bottom { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .footer-bottom p { margin: 0; }
+  .footer-legal { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 14px; }
+  .footer-legal a { color: var(--cyan-glow); font-weight: 600; font-size: 13.5px; transition: var(--transition); }
+  .footer-legal a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+  .footer-legal .sep { color: rgba(255,255,255,0.3); }
+  @media (max-width: 767px) { .footer-bottom { padding-bottom: 84px; } }
+
+  @media (max-width: 767px) {
+    .footer-col.collapsible h3 { cursor: pointer; display: flex; align-items: center; justify-content: space-between; margin-bottom: 0; padding: 14px 0; border-bottom: none; }
+    .footer-col.collapsible h3 .f-plus { display: inline-flex; color: var(--cyan-glow); transition: var(--transition); font-size: 0.82rem; }
+    .footer-col.collapsible.open h3 .f-plus { transform: rotate(45deg); }
+    .footer-col.collapsible .footer-section-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding-bottom 0.3s ease; padding-bottom: 0; }
+    .footer-col.collapsible.open .footer-section-body { max-height: 500px; padding-bottom: 14px; }
+    .footer-col.collapsible { border-bottom: 1px solid rgba(255,255,255,0.08); }
+  }
+
+  .wa-float { position: fixed; bottom: 24px; right: 24px; width: 54px; height: 54px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(37,211,102,0.35); z-index: 900; transition: var(--transition); }
+  .wa-float:hover { transform: scale(1.08); }
+  .wa-float i { color: #fff; font-size: 1.5rem; }
+
+  html:not(.js) .reveal { opacity: 1; transform: none; }
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+  @media (max-width: 1149px) { .logo-tagline { display: none; } }
+  .footer-brand .logo { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .footer-brand .logo-img-wrap { width: 58px; height: 58px; border-radius: 50%; padding: 4px; overflow: hidden; flex-shrink: 0; background: #fff; display: flex; align-items: center; justify-content: center; }
+  .footer-brand .logo-img-wrap img { width: 100%; height: 100%; object-fit: contain; }
+  .footer-brand .logo-text { display: flex; flex-direction: column; }
+  .footer-brand .logo-name { font-family: 'Montserrat', sans-serif; font-weight: 700; color: #fff; font-size: 18px; line-height: 1.2; }
+  .footer-brand .logo-tagline { display: block; color: #00e5ff; font-size: 10.5px; font-weight: 600; letter-spacing: .2px; line-height: 1.4; margin-top: 2px; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-contacts">
+      <a href="mailto:jaynitedigital@gmail.com"><i class="fas fa-envelope"></i>&nbsp;jaynitedigital@gmail.com</a>
+      <a href="tel:+233201485621"><i class="fas fa-phone"></i>&nbsp;0201 485 621</a>
+      <span style="color:rgba(255,255,255,0.3)">|</span>
+      <span>Sunyani, Bono Region, Ghana</span>
+    </div>
+    <div class="topbar-right">
+      <span>Mon – Fri: 8am – 6pm</span>
+      <div class="topbar-social">
+        <a href="https://www.instagram.com/jaynite_digital" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@jaynitedigital" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <div class="logo-img-wrap"><img src="images/logo.png" alt="Jaynite Digital Solutions" onerror="this.style.display='none'"></div>
+      <div class="logo-text">
+        <span class="logo-name">Jaynite Digital Solutions</span>
+        <span class="logo-tagline">Built on Trust. Connected by Technology. Driven by Solutions.</span>
+      </div>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <div class="nav-item">
+        <a href="services.html">Services</a>
+        <div class="nav-dropdown">
+          <a href="services.html#web"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a>
+          <a href="services.html#uiux"><i class="fas fa-pen-nib"></i> UI/UX Design</a>
+          <a href="services.html#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
+          <a href="services.html#cloud"><i class="fas fa-cloud"></i> Cloud Computing</a>
+          <a href="services.html#marketing"><i class="fas fa-bullhorn"></i> Digital Marketing</a>
+          <a href="services.html#graphics"><i class="fas fa-palette"></i> Graphic Design</a>
+          <div class="dropdown-divider"></div>
+          <a href="services.html#printing"><i class="fas fa-print"></i> Printing, Flyers &amp; Banners</a>
+          <a href="services.html#computers"><i class="fas fa-desktop"></i> Computers &amp; IT Accessories</a>
+          <a href="services.html#tutoring"><i class="fas fa-chalkboard-teacher"></i> Home &amp; Online Tutoring</a>
+          <div class="dropdown-divider"></div>
+          <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener"><i class="fas fa-sim-card"></i> Buy Data Bundles &#8599;</a>
+          <a href="services.html#checkers"><i class="fas fa-graduation-cap"></i> Results Checkers</a>
+        </div>
+      </div>
+      <a href="store.html">Store</a>
+      <a href="project.html">Projects</a>
+      <a href="resource.html">Resources</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="nav-cta">
+      <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn btn-primary">Let's Talk &rarr;</a>
+    </div>
+
+    <button class="hamburger" onclick="openMobileMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mm-scrim" id="mmScrim" onclick="closeMobileMenu()"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-label="Menu">
+  <div class="mm-head">
+    <a href="index.html" class="mm-brand"><img src="images/logo.png" alt="" onerror="this.style.display='none'"><span><b>Jaynite Digital Solutions</b><small>Built on Trust. Connected by Technology.</small></span></a>
+    <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu"><i class="fas fa-xmark"></i></button>
+  </div>
+  <nav class="mobile-nav">
+    <a href="index.html">Home</a>
+    <div class="mobile-nav-item" id="mobileServicesItem">
+      <button class="mobile-dropdown-toggle" onclick="toggleMobileDropdown()" aria-expanded="false">Services <i class="fas fa-chevron-down caret"></i></button>
+      <div class="mobile-sub-nav">
+        <a href="services.html#web"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a>
+        <a href="services.html#uiux"><i class="fas fa-pen-nib"></i> UI/UX Design</a>
+        <a href="services.html#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
+        <a href="services.html#cloud"><i class="fas fa-cloud"></i> Cloud Computing</a>
+        <a href="services.html#marketing"><i class="fas fa-bullhorn"></i> Digital Marketing</a>
+        <a href="services.html#graphics"><i class="fas fa-palette"></i> Graphic Design</a>
+        <a href="services.html#printing"><i class="fas fa-print"></i> Printing &amp; Publications</a>
+        <a href="services.html#computers"><i class="fas fa-desktop"></i> Computers &amp; Accessories</a>
+        <a href="services.html#tutoring"><i class="fas fa-chalkboard-teacher"></i> Tutoring</a>
+        <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener"><i class="fas fa-sim-card"></i> Buy Data Bundles</a>
+        <a href="services.html#checkers"><i class="fas fa-graduation-cap"></i> Results Checkers</a>
+      </div>
+    </div>
+    <a href="store.html">Store</a>
+    <a href="project.html">Projects</a>
+    <a href="resource.html">Resources</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a href="contact.html" class="mm-cta">Start a Project</a>
+  <div class="mobile-menu-footer">
+    <a href="https://wa.me/233201485621" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp us</a>
+    <p>Built on Trust. Connected by Technology. Driven by Solutions.</p><p>&copy; 2026 Jaynite Digital Solutions</p>
+  </div>
+</aside>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="container">
+    <p class="section-label">Legal</p>
+    <h1>Privacy <span>Policy</span></h1>
+    <p>How Jaynite Digital Solutions handles your personal information, in plain language.</p>
+    <p class="legal-meta">Last updated: October 2026</p>
+  </div>
+</section>
+
+<!-- SECTION NAV -->
+<div class="section-nav">
+  <div class="container">
+    <div class="section-nav-inner">
+      <a href="#overview">Overview</a>
+      <a href="#collect">What We Collect</a>
+      <a href="#use">How We Use It</a>
+      <a href="#sharing">Sharing</a>
+      <a href="#rights">Your Rights</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</div>
+
+<section class="legal-sec cream" id="overview">
+  <div class="container">
+    <div class="legal-inner reveal">
+      <p class="legal-num">01</p>
+      <h2>Overview</h2>
+      <p>Jaynite Digital Solutions ("we", "us") is a digital services business based in Sunyani, Bono Region, Ghana. This policy explains what personal information we handle when you use this website or contact us, why we handle it, and the choices you have. We aim to follow Ghana's Data Protection Act, 2012 (Act 843).</p>
+      <div class="legal-top">
+        <div class="legal-chip"><i class="fas fa-user-lock"></i><h4>No accounts</h4><p>You don't need to sign up or log in to use this website.</p></div>
+        <div class="legal-chip"><i class="fas fa-chart-line"></i><h4>No analytics or ads</h4><p>We don't run analytics tools, advertising trackers or sell your data.</p></div>
+        <div class="legal-chip"><i class="fab fa-whatsapp"></i><h4>Contact by WhatsApp</h4><p>Our contact form simply opens WhatsApp with your message pre-filled.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="legal-sec white" id="collect">
+  <div class="container">
+    <div class="legal-inner reveal">
+      <p class="legal-num">02</p>
+      <h2>What We Collect</h2>
+      <p>We only handle information you choose to give us. This website does not store form submissions on a server.</p>
+      <ul>
+        <li><strong>Contact details and messages:</strong> your name, email address, phone number and message when you use the contact form, WhatsApp, email or phone. The contact form does not send anything to us by itself; it prepares a WhatsApp message that you send.</li>
+        <li><strong>Service information:</strong> details needed to carry out a job for you, such as business information for a website, or documents and personal details for applications, printing or tutoring.</li>
+        <li><strong>Order and payment confirmations:</strong> references we need to confirm that a payment was received for a store item or service.</li>
+      </ul>
+      <div class="legal-note"><p>We don't use analytics tools or advertising trackers, and this website does not set its own cookies. Some embedded third-party content (see section 04) may set its own.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="legal-sec cream" id="use">
+  <div class="container">
+    <div class="legal-inner reveal">
+      <p class="legal-num">03</p>
+      <h2>How We Use It</h2>
+      <p>We use your information only for what you asked us to do:</p>
+      <ul>
+        <li>to reply to your enquiries and give quotes;</li>
+        <li>to deliver services and products you request, including data bundles, results checkers, applications and printing;</li>
+        <li>to confirm payments and keep basic business and tax records;</li>
+        <li>to meet legal obligations, or to protect ourselves in a dispute.</li>
+      </ul>
+      <p>We do not sell your personal information, and we do not use it to send marketing messages you didn't ask for.</p>
+    </div>
+  </div>
+</section>
+
+<section class="legal-sec white" id="sharing">
+  <div class="container">
+    <div class="legal-inner reveal">
+      <p class="legal-num">04</p>
+      <h2>Sharing &amp; Third Parties</h2>
+      <p>We only share information when it is needed to do the job you asked for, or when the law requires it. This may include:</p>
+      <ul>
+        <li><strong>WhatsApp (Meta)</strong> and your email provider, which carry your messages to us.</li>
+        <li><strong>Payment and mobile money providers</strong> used to complete a payment.</li>
+        <li><strong>Third-party suppliers,</strong> such as the data-bundle shop we link to, and any school or institution you ask us to apply to on your behalf. Their own privacy policies apply to what they receive.</li>
+      </ul>
+      <h3>Services this website loads</h3>
+      <p>To display properly, pages load fonts and icons from Google Fonts and Cloudflare (cdnjs). The contact page shows a Google Maps embed, and the homepage can play a YouTube video, which only loads after you press play. These providers may receive your IP address and device details when they load.</p>
+      <h3>Security and how long we keep information</h3>
+      <p>We take reasonable steps to keep information safe and limit who can see it. We keep it only as long as needed to complete your request and for our records, then delete or anonymise it where we can.</p>
+    </div>
+  </div>
+</section>
+
+<section class="legal-sec cream" id="rights">
+  <div class="container">
+    <div class="legal-inner reveal">
+      <p class="legal-num">05</p>
+      <h2>Your Rights &amp; Contact</h2>
+      <p>Under Ghana's Data Protection Act you can ask us to tell you what information we hold about you, correct it, or delete it where we no longer need it. You can also object to how we use it. To make a request, message us on WhatsApp or email us, and we will respond as soon as we reasonably can.</p>
+      <p>If you are not satisfied with our response, you can complain to Ghana's Data Protection Commission (<a href="https://dataprotection.org.gh" target="_blank" rel="noopener">dataprotection.org.gh</a>).</p>
+      <h3>Children</h3>
+      <p>Our services are meant for adults and businesses. If a parent or guardian arranges a service for a child, we handle that information only for that purpose.</p>
+      <h3>Changes to this policy</h3>
+      <p>We may update this policy when our services change. The date at the top shows when it was last updated. See also our <a href="terms.html">Terms of Use</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="container cta-inner">
+    <p class="section-label">Questions?</p>
+    <h2 class="section-title">Have a Privacy Question?</h2>
+    <p class="cta-desc">Message us any time to ask about, correct or delete your information.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+      <a href="mailto:jaynitedigital@gmail.com" class="btn btn-outline-white"><i class="fas fa-envelope"></i> Email Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="margin-bottom:14px">
+            <div class="logo-img-wrap"><img src="images/logo.png" alt="Jaynite Digital Solutions" onerror="this.style.display='none'"></div>
+            <div class="logo-text">
+              <span class="logo-name">Jaynite Digital Solutions</span>
+              <span class="logo-tagline">Built on Trust. Connected by Technology. Driven by Solutions.</span>
+            </div>
+          </div>
+          <p class="footer-about">Web design, custom systems, publication media and IT support across Ghana.</p>
+          <div class="footer-social">
+            <a href="https://youtube.com/@jaynitedigital" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/233201485621" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/jaynite_digital" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col collapsible">
+          <h3>Site <span class="f-plus"><i class="fas fa-plus"></i></span></h3>
+          <div class="footer-section-body">
+            <div class="footer-links">
+              <a href="index.html">&rsaquo; Home</a>
+              <a href="services.html">&rsaquo; Services</a>
+              <a href="store.html">&rsaquo; Store</a>
+              <a href="project.html">&rsaquo; Projects</a>
+              <a href="resource.html">&rsaquo; Resources</a>
+              <a href="about.html">&rsaquo; About</a>
+              <a href="contact.html">&rsaquo; Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-col collapsible">
+          <h3>Store <span class="f-plus"><i class="fas fa-plus"></i></span></h3>
+          <div class="footer-section-body">
+            <div class="footer-links">
+              <a href="store.html#data">&rsaquo; Data Bundles</a>
+              <a href="store.html#checkers">&rsaquo; Results Checkers</a>
+              <a href="store.html#packages">&rsaquo; Website Packages</a>
+              <a href="store.html#systems">&rsaquo; Management Systems</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-col collapsible">
+          <h3>Contact <span class="f-plus"><i class="fas fa-plus"></i></span></h3>
+          <div class="footer-section-body">
+            <div class="footer-links">
+              <a href="#">Sunyani, Bono Region, Ghana</a>
+              <a href="https://wa.me/233201485621" target="_blank">+233 20 148 5621</a>
+              <a href="mailto:jaynitedigital@gmail.com">jaynitedigital@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bottom"><div class="footer-legal"><a href="privacy.html">Privacy Policy</a><span class="sep">&middot;</span><a href="terms.html">Terms of Use</a></div><p>&copy; 2026 Jaynite Digital Solutions.</p></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+function openMobileMenu(){ document.getElementById('mobileMenu').classList.add('open'); document.getElementById('mmScrim').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeMobileMenu(){ document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('mmScrim').classList.remove('open'); document.body.style.overflow=''; }
+function toggleMobileDropdown(){ var i=document.getElementById('mobileServicesItem'); i.querySelector('button').setAttribute('aria-expanded', i.classList.toggle('open')); }
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMobileMenu(); });
+document.querySelectorAll('.mobile-nav a').forEach(function(a){ a.addEventListener('click', closeMobileMenu); });
+
+document.querySelectorAll('.footer-col.collapsible > h3').forEach(function(h){
+  h.addEventListener('click', function(){ h.closest('.footer-col').classList.toggle('open'); });
+});
+
+var revealObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){ if(entry.isIntersecting){ entry.target.classList.add('in-view'); revealObserver.unobserve(entry.target); } });
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(function(el){ revealObserver.observe(el); });
+setTimeout(function(){ document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in-view'); }); }, 2500);
+
+var sectionNavLinks = document.querySelectorAll('.section-nav a');
+var navSections = Array.from(sectionNavLinks).map(function(a){ return document.querySelector(a.getAttribute('href')); });
+window.addEventListener('scroll', function(){
+  var current = navSections[0];
+  navSections.forEach(function(sec){ if (sec && window.scrollY >= sec.offsetTop - 170) current = sec; });
+  sectionNavLinks.forEach(function(a){ a.classList.toggle('active', document.querySelector(a.getAttribute('href')) === current); });
+});
+</script>
+</body>
+</html>
