@@ -131,8 +131,6 @@
   /* ===== Page header ===== */
   .page-header { background: radial-gradient(circle at 20% 20%, rgba(0,229,255,0.12), transparent 45%), radial-gradient(circle at 85% 70%, rgba(41,121,255,0.12), transparent 45%), linear-gradient(160deg, var(--navy-deep), var(--navy-mid)); padding: 6.5rem 0 4.5rem; position: relative; overflow: hidden; text-align: center; }
   .page-header .container { position: relative; z-index: 1; }
-  .hero-brand-mark { width: 112px; height: 112px; background: #fff; border-radius: 50%; padding: 12px; margin: 0 auto 22px; box-shadow: var(--shadow-lg); display: flex; align-items: center; justify-content: center; }
-  .hero-brand-mark img { width: 100%; height: 100%; object-fit: contain; }
   .page-header .section-label { color: var(--cyan-glow); justify-content: center; display: flex; }
   .page-header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(34px, 5.5vw, 54px); color: #fff; line-height: 1.12; margin-bottom: 16px; font-weight: 700; }
   .page-header p { color: rgba(255,255,255,0.72); font-size: 16px; max-width: 600px; margin: 0 auto; line-height: 1.7; }
@@ -168,6 +166,17 @@
   .proj-meta span:not(:last-child)::after { content: '·'; margin-left: 6px; color: var(--line); }
 
   .proj-status { position: absolute; top: 14px; right: 14px; background: var(--navy-deep); color: var(--cyan-glow); font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; z-index: 2; }
+  .clients-section { padding: 4.5rem 0; }
+  .clients-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 32px; }
+  @media (min-width: 720px) { .clients-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
+  .client-tile { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 18px 12px 16px; transition: var(--transition); position: relative; }
+  a.client-tile:hover, .client-tile:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--cyan); }
+  .client-logo { width: 100%; height: 96px; display: flex; align-items: center; justify-content: center; position: relative; }
+  .client-logo img { max-width: 100%; max-height: 96px; object-fit: contain; }
+  .client-ini { width: 72px; height: 72px; border-radius: 50%; background: var(--pale); color: var(--cyan-deep); font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 20px; display: flex; align-items: center; justify-content: center; position: absolute; }
+  .client-tile p { font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1.35; }
+  .client-tag { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--cyan-deep); }
+
   .approach-section { padding: 4.5rem 0; background: var(--paper); }
   .approach-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 32px; }
   @media (min-width: 720px) { .approach-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -330,7 +339,7 @@
 <div class="mm-scrim" id="mmScrim" onclick="closeMobileMenu()"></div>
 <aside class="mobile-menu" id="mobileMenu" aria-label="Menu">
   <div class="mm-head">
-    <a href="index.html" class="mm-brand"><img src="images/logo.png" alt="" onerror="this.style.display='none'"><span><b>Jaynite Digital</b><small>Empowering Digital Innovation</small></span></a>
+    <a href="index.html" class="mm-brand"><img src="images/logo.png" alt="" onerror="this.style.display='none'"><span><b>Jaynite Digital Solutions</b><small>Built on Trust. Connected by Technology.</small></span></a>
     <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu"><i class="fas fa-xmark"></i></button>
   </div>
   <nav class="mobile-nav">
@@ -354,14 +363,13 @@
   <a href="contact.html" class="mm-cta">Start a Project</a>
   <div class="mobile-menu-footer">
     <a href="https://wa.me/233201485621" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp us</a>
-    <p>&copy; 2026 Jaynite Digital Solutions</p>
+    <p>Built on Trust. Connected by Technology. Driven by Solutions.</p><p>&copy; 2026 Jaynite Digital Solutions</p>
   </div>
 </aside>
 
 <!-- PAGE HEADER -->
 <section class="page-header">
   <div class="container">
-    <div class="hero-brand-mark"><img src="images/logo.png" alt="Jaynite Digital Solutions" onerror="this.parentElement.style.display='none'"></div>
     <p class="section-label">Selected Work</p>
     <h1>Projects &amp; Portfolio</h1>
     <p>A record of what's actually been built — websites, brand work, and IT projects delivered across Ghana.</p>
@@ -373,6 +381,7 @@
   <div class="container">
     <div class="section-nav-inner">
       <a href="#our-work">Our Work</a>
+      <a href="#clients">Clients</a>
       <a href="#experience">Experience</a>
       <a href="#expertise">Expertise</a>
       <a href="#start">Start a Project</a>
@@ -388,17 +397,59 @@
     <p class="section-desc">A mix of web builds, brand identity work, and IT infrastructure — each one solving a real problem for a real business.</p>
 
     <div class="proj-grid" id="projGrid">
-      <a href="https://nnarawia-grains-ltd.web.app/index.html" target="_blank" rel="noopener" class="proj-card reveal" data-cat="web">
+      <a href="contact.html" class="proj-card reveal" data-cat="web">
         <div class="proj-img-wrap">
           <span class="proj-tag">Web Development</span>
-          <img src="images/project-nnarawia.jpg" alt="Nnarawia Grains Ltd website" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="proj-fallback" style="display:none"><i class="fas fa-laptop-code"></i></div>
+          <img src="images/project-websites.jpg" alt="Business &amp; Corporate Websites" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="proj-fallback" style="display:none"><i class="fas fa-globe"></i></div>
         </div>
         <div class="proj-info">
-          <h3>Nnarawia Grains Ltd</h3>
+          <h3>Business &amp; Corporate Websites</h3>
           <div class="divider-rule"></div>
-          <p>A responsive corporate website for a Ghanaian grains company, designed, built and hosted by Jaynite.</p>
-          <div class="proj-meta"><span>HTML5</span><span>CSS3</span><span>CMS</span></div>
+          <p>Fast, mobile-first websites for businesses, churches, schools and organisations, designed, built and hosted by Jaynite.</p>
+          <div class="proj-meta"><span>Design</span><span>Development</span><span>Hosting</span></div>
+        </div>
+      </a>
+
+      <a href="contact.html" class="proj-card reveal" data-cat="web">
+        <div class="proj-img-wrap">
+          <span class="proj-tag">Web Application</span>
+          <img src="images/project-hotel.jpg" alt="Hotel &amp; Guest House Management System" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="proj-fallback" style="display:none"><i class="fas fa-hotel"></i></div>
+        </div>
+        <div class="proj-info">
+          <h3>Hotel &amp; Guest House Management System</h3>
+          <div class="divider-rule"></div>
+          <p>Bookings, room availability, guest records, check-in and check-out, billing and daily reports in one system.</p>
+          <div class="proj-meta"><span>Bookings</span><span>Billing</span><span>Reports</span></div>
+        </div>
+      </a>
+
+      <a href="contact.html" class="proj-card reveal" data-cat="ai">
+        <div class="proj-img-wrap">
+          <span class="proj-tag">AI &amp; Health Tech</span>
+          <img src="images/project-medical.jpg" alt="Medical Diagnostic System" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="proj-fallback" style="display:none"><i class="fas fa-stethoscope"></i></div>
+        </div>
+        <div class="proj-info">
+          <h3>Medical Diagnostic System</h3>
+          <div class="divider-rule"></div>
+          <p>A symptom-based diagnostic assistant trained on a curated set of symptoms and illnesses to suggest likely conditions and next steps.</p>
+          <div class="proj-meta"><span>Symptom Matching</span><span>Knowledge Base</span><span>AI</span></div>
+        </div>
+      </a>
+
+      <a href="contact.html" class="proj-card reveal" data-cat="ai">
+        <div class="proj-img-wrap">
+          <span class="proj-tag">AI &amp; Smart Systems</span>
+          <img src="images/project-irrigation.jpg" alt="Smart Irrigation System" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="proj-fallback" style="display:none"><i class="fas fa-droplet"></i></div>
+        </div>
+        <div class="proj-info">
+          <h3>Smart Irrigation System</h3>
+          <div class="divider-rule"></div>
+          <p>An irrigation system run by four cooperating AI agents that sense soil and weather conditions and decide when and how much to water.</p>
+          <div class="proj-meta"><span>4 AI Agents</span><span>IoT Sensors</span><span>Automation</span></div>
         </div>
       </a>
 
@@ -485,6 +536,49 @@
           <div class="proj-meta"><span>Network Design</span><span>Monitoring</span></div>
         </div>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="clients-section" id="clients">
+  <div class="container">
+    <p class="section-label">Trusted By</p>
+    <h2 class="section-title">People We've Worked With</h2>
+    <p class="section-desc">Businesses, organisations and institutions that have trusted Jaynite with their websites, branding and IT.</p>
+    <div class="clients-grid">
+      <a href="https://nnarawia-grains-ltd.web.app/index.html" target="_blank" rel="noopener" class="client-tile reveal">
+        <div class="client-logo"><span class="client-ini">NG</span><img src="images/clients/nnarawia.png" alt="Nnarawia Grains Ltd logo" onerror="this.style.display='none'" onload="this.previousElementSibling.style.display='none'"></div>
+        <p>Nnarawia Grains Ltd</p><span class="client-tag">Website</span>
+      </a>
+      <div class="client-tile reveal">
+        <div class="client-logo"><span class="client-ini">TS</span><img src="images/clients/salvation-army.png" alt="The Salvation Army logo" onerror="this.style.display='none'" onload="this.previousElementSibling.style.display='none'"></div>
+        <p>The Salvation Army</p>
+      </div>
+      <div class="client-tile reveal">
+        <div class="client-logo"><span class="client-ini">RL</span><img src="images/clients/rich-laundry.png" alt="Rich Laundry Services logo" onerror="this.style.display='none'" onload="this.previousElementSibling.style.display='none'"></div>
+        <p>Rich Laundry Services</p>
+      </div>
+      <div class="client-tile reveal">
+        <div class="client-logo"><span class="client-ini">GC</span><img src="images/clients/gsg-consult.png" alt="GSG Consult logo" onerror="this.style.display='none'" onload="this.previousElementSibling.style.display='none'"></div>
+        <p>GSG Consult</p>
+      </div>
+      <div class="client-tile reveal">
+        <div class="client-logo"><span class="client-ini">MW</span><img src="images/clients/maddox-wine-shop.png" alt="Maddox Wine Shop logo" onerror="this.style.display='none'" onload="this.previousElementSibling.style.display='none'"></div>
+        <p>Maddox Wine Shop</p>
+      </div>
+      <div class="client-tile reveal">
+        <div class="client-logo"><span class="client-ini">VC</span><img src="images/clients/velis.png" alt="Velis Cosmetics &amp; Provisions logo" onerror="this.style.display='none'" onload="this.previousElementSibling.style.display='none'"></div>
+        <p>Velis Cosmetics &amp; Provisions</p>
+      </div>
+      <div class="client-tile reveal">
+        <div class="client-logo"><span class="client-ini">SG</span><img src="images/clients/sunyani-grand-ladies.png" alt="Sunyani Grand Ladies Auxiliary logo" onerror="this.style.display='none'" onload="this.previousElementSibling.style.display='none'"></div>
+        <p>Sunyani Grand Ladies Auxiliary</p>
+      </div>
+      <div class="client-tile reveal">
+        <div class="client-logo"><span class="client-ini">DR</span><img src="images/clients/destin-real-estate.png" alt="Destin Real Estate logo" onerror="this.style.display='none'" onload="this.previousElementSibling.style.display='none'"></div>
+        <p>Destin Real Estate</p>
+      </div>
     </div>
   </div>
 </section>
