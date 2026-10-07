@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services - Jaynite Digital Solutions</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy-deep:  #050811;
+    --navy-mid:   #0d1830;
+    --ink:        #0a0e1a;
+    --ink-soft:   #5b6472;
+    --ink-mute:   #8a94a3;
+    --cyan:       #009cb8;
+    --cyan-deep:  #007a91;
+    --cyan-glow:  #00e5ff;
+    --blue:       #2979ff;
+    --paper:      #ffffff;
+    --cream:      #f6fbfc;
+    --pale:       #e4f6fa;
+    --line:       rgba(10,14,26,0.1);
+    --line-soft:  rgba(10,14,26,0.06);
+    --shadow:     0 8px 40px rgba(10,20,40,0.1);
+    --shadow-lg:  0 20px 60px rgba(10,20,40,0.16);
+    --radius:     12px;
+    --radius-lg:  20px;
+    --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Raleway', sans-serif; color: var(--ink); background: var(--cream); overflow-x: hidden; line-height: 1.6; }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  .section-label { font-weight: 700; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--cyan-deep); margin-bottom: 12px; }
+  .section-title { font-family: 'Montserrat', sans-serif; font-size: clamp(28px, 4vw, 42px); color: var(--ink); line-height: 1.15; margin-bottom: 16px; font-weight: 700; }
+  .section-desc { font-size: 16px; line-height: 1.8; color: var(--ink-soft); max-width: 600px; }
+  .divider-rule { width: 36px; height: 3px; background: linear-gradient(90deg, var(--cyan), var(--blue)); border-radius: 2px; }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 50px; font-size: 14px; font-weight: 700; cursor: pointer; transition: var(--transition); border: 2px solid transparent; white-space: nowrap; font-family: inherit; }
+  .btn-primary { background: linear-gradient(135deg, var(--cyan), var(--blue)); color: #fff; box-shadow: 0 4px 20px rgba(0,156,184,0.3); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,156,184,0.45); }
+  .btn-outline-white { background: transparent; color: #fff; border-color: rgba(255,255,255,0.55); }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: #fff; transform: translateY(-2px); }
+  .btn-outline-ink { background: transparent; color: var(--ink); border-color: var(--line); }
+  .btn-outline-ink:hover { border-color: var(--ink); transform: translateY(-2px); }
+
+  /* ===== Top bar ===== */
+  .topbar { background: var(--navy-deep); color: rgba(255,255,255,0.75); font-size: 12.5px; padding: 8px 0; }
+  .topbar .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .topbar-contacts { display: flex; gap: 22px; flex-wrap: wrap; }
+  .topbar-contacts a { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.75); transition: var(--transition); }
+  .topbar-contacts a:hover { color: var(--cyan-glow); }
+  .topbar-right { display: flex; align-items: center; gap: 16px; }
+  .topbar-social { display: flex; gap: 8px; margin-left: 4px; }
+  .topbar-social a { display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.08); color: #fff; font-size: 11px; transition: var(--transition); }
+  .topbar-social a:hover { background: var(--cyan); }
+  @media (max-width: 768px) { .topbar { display: none; } }
+
+  /* ===== Navbar ===== */
+  .navbar { background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(10,20,40,0.06); position: sticky; top: 0; z-index: 1000; transition: var(--transition); }
+  .navbar .container { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-img-wrap { width: 58px; height: 58px; border-radius: 50%; padding: 4px; overflow: hidden; flex-shrink: 0; background: #fff; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; }
+  .logo-img-wrap img { width: 100%; height: 100%; object-fit: contain; }
+  .logo-text { display: flex; flex-direction: column; }
+  .logo-name { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.1; }
+  .logo-tagline { font-size: 9.5px; color: var(--cyan-deep); font-weight: 600; letter-spacing: 0.3px; line-height: 1.4; }
+
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  @media (min-width: 900px) {
+    .nav-links { display: flex; align-items: center; gap: 3px; }
+    .nav-links a { padding: 8px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; color: var(--ink); transition: var(--transition); position: relative; }
+    .nav-links a:hover, .nav-links a.active { color: var(--cyan-deep); background: rgba(0,156,184,0.07); }
+    .nav-links a.active::after { content: ''; position: absolute; bottom: 1px; left: 50%; transform: translateX(-50%); width: 18px; height: 2px; background: var(--cyan); border-radius: 2px; }
+    .nav-item { position: relative; display: flex; align-items: center; }
+    .nav-dropdown { position: absolute; top: calc(100% + 8px); left: 0; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-lg); border: 1px solid var(--line); min-width: 230px; padding: 8px; opacity: 0; visibility: hidden; transform: translateY(8px); transition: var(--transition); z-index: 1000; }
+    .nav-item:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown a { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; font-size: 13.5px; font-weight: 500; color: var(--ink); }
+    .nav-dropdown a:hover { background: rgba(0,156,184,0.07); color: var(--cyan-deep); }
+    .nav-dropdown a i { width: 15px; color: var(--cyan); font-size: 0.85rem; }
+    .nav-cta { display: flex; align-items: center; }
+    .nav-dropdown .dropdown-divider { height: 1px; background: var(--line); margin: 6px 8px; }
+  }
+
+  .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); }
+  .hamburger span { width: 22px; height: 2px; background: var(--ink); border-radius: 2px; display: block; }
+  @media (min-width: 900px) { .hamburger { display: none; } }
+  @media (max-width: 899px) {
+    .navbar .container { justify-content: center; position: relative; height: 72px; }
+    .logo-text { display: none; }
+  }
+
+  /* ===== Mobile menu (slide-in drawer) ===== */
+  .mm-scrim { position: fixed; inset: 0; background: rgba(5,8,17,0.55); backdrop-filter: blur(2px); opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; z-index: 1999; }
+  .mm-scrim.open { opacity: 1; visibility: visible; }
+  .mobile-menu { position: fixed; top: 0; left: 0; bottom: 0; width: min(86vw, 360px); background: #fff; z-index: 2000; display: flex; flex-direction: column; overflow-y: auto; transform: translateX(-100%); visibility: hidden; transition: transform .35s cubic-bezier(.4,0,.2,1), visibility .35s; box-shadow: 12px 0 40px rgba(5,8,17,.25); }
+  .mobile-menu.open { transform: none; visibility: visible; }
+  .mm-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--line-soft); }
+  .mm-brand { display: flex; align-items: center; gap: 10px; }
+  .mm-brand img { width: 52px; height: 52px; border-radius: 50%; padding: 3px; background: #fff; border: 1px solid var(--line); object-fit: contain; }
+  .mm-brand b { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; color: var(--ink); display: block; line-height: 1.15; }
+  .mm-brand small { font-size: 10px; color: var(--cyan-deep); font-weight: 600; letter-spacing: .3px; }
+  .mobile-close { background: var(--pale); border: none; color: var(--ink); width: 36px; height: 36px; border-radius: 50%; font-size: 16px; cursor: pointer; }
+  .mobile-nav { padding: 6px 0; }
+  .mobile-nav a, .mobile-dropdown-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; background: none; border: none; border-left: 3px solid transparent; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 13.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); padding: 17px 22px; text-align: left; transition: var(--transition); }
+  .mobile-nav a:hover, .mobile-dropdown-toggle:hover { background: var(--cream); color: var(--cyan-deep); }
+  .mobile-nav a.active { color: var(--cyan-deep); border-left-color: var(--cyan); background: var(--cream); }
+  .mobile-nav-item { border-top: 1px solid var(--line-soft); }
+  .mobile-nav-item.first { border-top: none; }
+  .mobile-nav > a { border-top: 1px solid var(--line-soft); }
+  .mobile-nav > a:first-child { border-top: none; }
+  .caret { font-size: 11px; color: var(--cyan-deep); transition: var(--transition); }
+  .mobile-nav-item.open .caret { transform: rotate(180deg); }
+  .mobile-sub-nav { max-height: 0; overflow: hidden; transition: max-height .35s ease; background: var(--cream); }
+  .mobile-nav-item.open .mobile-sub-nav { max-height: 720px; }
+  .mobile-nav .mobile-sub-nav a { justify-content: flex-start; gap: 12px; font-size: 12.5px; font-weight: 500; letter-spacing: .02em; text-transform: none; padding: 13px 22px 13px 34px; border-top: none; color: var(--ink-soft); }
+  .mobile-sub-nav a i { color: var(--cyan); width: 16px; text-align: center; }
+  .mm-cta { display: block; margin: 12px 20px 0; padding: 16px; text-align: center; background: var(--cyan); color: #fff; font-family: 'Montserrat', sans-serif; font-size: 12.5px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+  .mm-cta:hover { background: var(--cyan-deep); }
+  .mobile-menu-footer { margin-top: auto; padding: 22px; font-size: 12px; color: var(--ink-mute); }
+  .mobile-menu-footer a { display: block; color: var(--ink-soft); padding: 4px 0; }
+  .mobile-menu-footer a i { color: var(--cyan); width: 18px; }
+  .mobile-menu-footer p { margin-top: 10px; }
+
+  /* ===== Page header ===== */
+  .page-header { background: radial-gradient(circle at 20% 20%, rgba(0,229,255,0.12), transparent 45%), radial-gradient(circle at 85% 70%, rgba(41,121,255,0.12), transparent 45%), linear-gradient(160deg, var(--navy-deep), var(--navy-mid)); padding: 6.5rem 0 4.5rem; position: relative; overflow: hidden; text-align: center; }
+  .page-header .container { position: relative; z-index: 1; }
+  .page-header .section-label { color: var(--cyan-glow); justify-content: center; display: flex; }
+  .page-header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(34px, 5.5vw, 54px); color: #fff; line-height: 1.12; margin-bottom: 16px; font-weight: 700; }
+  .page-header p { color: rgba(255,255,255,0.72); font-size: 16px; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+
+  /* ===== Services ===== */
+  :root { --nav-h: 72px; }
+  @media (min-width: 900px) { :root { --nav-h: 76px; } }
+  html { scroll-padding-top: calc(var(--nav-h) + 76px); }
+  .svc-card, .inst-card, .request-card, .svc-sec { scroll-margin-top: calc(var(--nav-h) + 84px); }
+  button { font-family: inherit; }
+  .page-header h1 span { background: linear-gradient(135deg, var(--cyan-glow), var(--blue)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .page-header { padding: 6rem 0 4rem; }
+  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .32; z-index: 0; }
+  .page-header::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,8,17,0.35), rgba(5,8,17,0.75)); z-index: 0; }
+
+  .svc-search { position: relative; max-width: 560px; margin: 28px auto 0; }
+  .svc-search > i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--cyan-deep); pointer-events: none; }
+  .svc-search input { width: 100%; height: 54px; padding: 0 52px 0 52px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; background: #fff; font-family: inherit; font-size: 15.5px; color: var(--ink); box-shadow: 0 10px 40px rgba(0,0,0,0.25); }
+  .svc-search input:focus { outline: none; box-shadow: 0 0 0 3px rgba(0,229,255,0.35), 0 10px 40px rgba(0,0,0,0.25); }
+  .search-clear { position: absolute; right: 9px; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 50%; border: none; background: var(--pale); color: var(--cyan-deep); cursor: pointer; display: none; }
+  .search-clear.show { display: block; }
+
+  /* sticky filter bar */
+  .filter-bar { position: sticky; top: var(--nav-h); z-index: 500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .filter-inner { display: flex; gap: 10px; overflow-x: auto; padding: 14px 0; scrollbar-width: none; }
+  .filter-inner::-webkit-scrollbar { display: none; }
+  .chip { flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: 50px; border: 1px solid var(--line); background: #fff; font-size: 13.5px; font-weight: 600; color: var(--ink-soft); cursor: pointer; transition: var(--transition); white-space: nowrap; }
+  .chip i { color: var(--cyan-deep); font-size: 13px; }
+  .chip em { font-style: normal; font-size: 11px; font-weight: 700; background: var(--pale); color: var(--cyan-deep); padding: 1px 8px; border-radius: 50px; }
+  .chip:hover { border-color: var(--cyan); color: var(--cyan-deep); }
+  .chip.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .chip.active i { color: var(--cyan-glow); }
+  .chip.active em { background: rgba(255,255,255,0.16); color: #fff; }
+
+  .svc-sec { padding: 4.5rem 0; }
+  .svc-sec.cream { background: var(--cream); }
+  .svc-sec.white { background: var(--paper); }
+  .sec-note { margin-top: 28px; font-size: 14.5px; color: var(--ink-soft); }
+  .sec-note a { color: var(--cyan-deep); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
+  /* instant purchase (same look as the Store) */
+  .inst-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 32px; }
+  @media (min-width: 800px) { .inst-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
+  .inst-card { position: relative; display: flex; align-items: flex-end; min-height: 290px; border-radius: var(--radius-lg); overflow: hidden; background: linear-gradient(150deg, var(--navy-deep), var(--navy-mid)); color: #fff; box-shadow: var(--shadow); transition: var(--transition); }
+  .inst-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+  .inst-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; transition: transform .6s cubic-bezier(.16,1,.3,1); }
+  .inst-card:hover img { transform: scale(1.05); }
+  .inst-card::before { content: ''; position: absolute; top: -90px; right: -90px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(0,229,255,0.16), transparent 70%); z-index: 1; }
+  .inst-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(5,8,17,0.92) 0%, rgba(5,8,17,0.35) 70%, rgba(5,8,17,0.1) 100%); z-index: 1; }
+  .inst-icon { position: absolute; top: 24px; left: 24px; z-index: 2; width: 54px; height: 54px; border-radius: 50%; background: rgba(0,229,255,0.12); border: 1px solid rgba(0,229,255,0.3); color: var(--cyan-glow); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .inst-ribbon { position: absolute; top: 24px; right: 24px; z-index: 2; background: var(--cyan); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 5px 13px; border-radius: 50px; }
+  .inst-body { position: relative; z-index: 2; padding: 26px; width: 100%; }
+  .inst-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cyan-glow); }
+  .inst-body h3 { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 700; margin: 6px 0 8px; line-height: 1.25; }
+  .inst-body p { font-size: 14.5px; color: rgba(255,255,255,0.72); max-width: 440px; }
+  .inst-foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-top: 18px; }
+  .inst-price b { display: block; font-family: 'Montserrat', sans-serif; font-size: 18px; }
+  .inst-price span { font-size: 12.5px; color: rgba(255,255,255,0.6); }
+
+  /* stats (navy) */
+  .stat-band { padding: 4.5rem 0; background: var(--navy-deep); position: relative; overflow: hidden; }
+  .stat-band::before { content: ''; position: absolute; top: -120px; right: -120px; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(0,229,255,0.08), transparent 70%); }
+  .stat-band .container { position: relative; z-index: 1; }
+  .stat-band .section-label { color: var(--cyan-glow); }
+  .stat-band .section-title { color: #fff; }
+  .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 32px; }
+  @media (min-width: 768px) { .stat-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
+  .stat-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid var(--cyan-glow); padding: 26px 16px; border-radius: var(--radius); text-align: center; transition: var(--transition); }
+  .stat-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.07); }
+  .stat-num { font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 800; color: #fff; line-height: 1.1; }
+  .stat-lbl { font-size: 12px; color: rgba(255,255,255,0.6); font-weight: 600; margin-top: 8px; text-transform: uppercase; letter-spacing: 1px; }
+  @media (min-width: 768px) { .stat-num { font-size: 42px; } }
+
+  /* service cards */
+  .svc-grid { display: grid; grid-template-columns: 1fr; gap: 22px; margin-top: 32px; }
+  @media (min-width: 720px) { .svc-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .svc-grid { grid-template-columns: repeat(3, 1fr); } }
+  .svc-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow); transition: var(--transition); color: inherit; }
+  .svc-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(0,156,184,0.35); }
+  .svc-card:target, .request-card:target, .inst-card:target { outline: 3px solid var(--cyan); outline-offset: 3px; }
+  .svc-photo { position: relative; height: 170px; background: linear-gradient(150deg, var(--navy-deep), var(--navy-mid)); overflow: hidden; }
+  .svc-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.16,1,.3,1); }
+  .svc-card:hover .svc-photo img { transform: scale(1.05); }
+  .svc-fallback-icon { position: absolute; inset: 0; align-items: center; justify-content: center; color: rgba(0,229,255,0.35); font-size: 2.8rem; }
+  .svc-body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
+  .svc-body h3 { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+  .svc-body > p { font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+  .svc-feats { display: grid; gap: 8px; margin: 14px 0 18px; flex: 1; }
+  .svc-feats li { position: relative; padding-left: 24px; font-size: 13.5px; color: var(--ink-soft); line-height: 1.5; }
+  .svc-feats li i { position: absolute; left: 0; top: 3px; color: var(--cyan-deep); font-size: 12px; }
+  .svc-cta { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--cyan-deep); margin-top: auto; }
+  .svc-cta i { transition: transform .25s; }
+  .svc-card:hover .svc-cta i, .request-card:hover .svc-cta i { transform: translateX(4px); }
+  .request-card { background: var(--cream); border: 1px solid var(--line); border-top: 3px solid var(--cyan); border-radius: var(--radius-lg); padding: 26px 24px; display: flex; flex-direction: column; gap: 6px; transition: var(--transition); }
+  .request-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); background: #fff; }
+  .request-card .ri { width: 52px; height: 52px; border-radius: 50%; background: var(--pale); color: var(--cyan-deep); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 10px; }
+  .request-card h3 { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+  .request-card p { font-size: 14px; color: var(--ink-soft); line-height: 1.65; margin-bottom: 12px; flex: 1; }
+
+  .no-results { display: none; text-align: center; padding: 64px 20px; background: var(--cream); }
+  .no-results.show { display: block; }
+  .no-results i { font-size: 2rem; color: var(--cyan); margin-bottom: 12px; }
+  .no-results p { color: var(--ink-soft); max-width: 460px; margin: 0 auto 18px; }
+  .no-results a.wa { color: var(--cyan-deep); font-weight: 700; text-decoration: underline; }
+
+  /* process (cream) */
+  .process-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 32px; }
+  @media (min-width: 720px) { .process-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .process-grid { grid-template-columns: repeat(4, 1fr); } }
+  .process-step { background: var(--paper); border: 1px solid var(--line); border-top: 3px solid var(--cyan); border-radius: var(--radius); padding: 24px; }
+  .process-num { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .15em; color: var(--cyan-deep); }
+  .process-step h4 { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; margin: 8px 0; color: var(--ink); }
+  .process-step p { font-size: 14px; color: var(--ink-soft); }
+  /* ===== CTA ===== */
+  .cta-section { padding: 6rem 0; background: linear-gradient(160deg, var(--navy-deep), var(--navy-mid)); position: relative; overflow: hidden; }
+  .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 25% 30%, rgba(0,229,255,0.1), transparent 45%), radial-gradient(circle at 80% 75%, rgba(41,121,255,0.1), transparent 45%); }
+  .cta-inner { text-align: center; position: relative; z-index: 1; }
+  .cta-section .section-label { color: var(--cyan-glow); justify-content: center; display: flex; }
+  .cta-section .section-title { color: #fff; }
+  .cta-desc { color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.7; margin: 0 auto 36px; max-width: 480px; }
+  .cta-buttons { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+
+  /* ===== Footer ===== */
+  footer { background: #030509; color: rgba(255,255,255,0.65); }
+  .footer-main { padding: 4.2rem 0 2.6rem; }
+  .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.2rem; }
+  @media (min-width: 800px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1.2fr; } }
+  .footer-brand .logo-name { color: #fff; font-size: 18px; }
+  .footer-brand .logo-tagline { color: var(--cyan-glow); }
+  .footer-brand .logo-img-wrap { background: #fff; }
+  .footer-about { font-size: 13.5px; line-height: 1.8; margin: 16px 0; color: rgba(255,255,255,0.5); }
+  .footer-social { display: flex; gap: 9px; margin-top: 6px; }
+  .footer-social a { width: 34px; height: 34px; background: rgba(255,255,255,0.06); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: rgba(255,255,255,0.7); transition: var(--transition); }
+  .footer-social a:hover { background: var(--cyan); color: #fff; }
+  .footer-col h3 { font-family: 'Montserrat', sans-serif; color: #fff; font-size: 15.5px; margin-bottom: 1.1rem; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,0.08); font-weight: 700; }
+  .footer-col.collapsible h3 .f-plus { display: none; }
+  .footer-links { display: flex; flex-direction: column; gap: 9px; }
+  .footer-links a { font-size: 13.5px; color: rgba(255,255,255,0.55); display: flex; align-items: center; gap: 6px; transition: var(--transition); }
+  .footer-links a:hover { color: var(--cyan-glow); padding-left: 3px; }
+  .footer-links a i { color: var(--cyan-glow); font-size: 0.78em; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding: 20px 0; text-align: center; font-size: 12.5px; color: rgba(255,255,255,0.4); }
+  .footer-bottom { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .footer-bottom p { margin: 0; }
+  .footer-legal { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 14px; }
+  .footer-legal a { color: var(--cyan-glow); font-weight: 600; font-size: 13.5px; transition: var(--transition); }
+  .footer-legal a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+  .footer-legal .sep { color: rgba(255,255,255,0.3); }
+  @media (max-width: 767px) { .footer-bottom { padding-bottom: 84px; } }
+
+  @media (max-width: 767px) {
+    .footer-col.collapsible h3 { cursor: pointer; display: flex; align-items: center; justify-content: space-between; margin-bottom: 0; padding: 14px 0; border-bottom: none; }
+    .footer-col.collapsible h3 .f-plus { display: inline-flex; color: var(--cyan-glow); transition: var(--transition); font-size: 0.82rem; }
+    .footer-col.collapsible.open h3 .f-plus { transform: rotate(45deg); }
+    .footer-col.collapsible .footer-section-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding-bottom 0.3s ease; padding-bottom: 0; }
+    .footer-col.collapsible.open .footer-section-body { max-height: 500px; padding-bottom: 14px; }
+    .footer-col.collapsible { border-bottom: 1px solid rgba(255,255,255,0.08); }
+  }
+
+  .wa-float { position: fixed; bottom: 24px; right: 24px; width: 54px; height: 54px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(37,211,102,0.35); z-index: 900; transition: var(--transition); }
+  .wa-float:hover { transform: scale(1.08); }
+  .wa-float i { color: #fff; font-size: 1.5rem; }
+
+  html:not(.js) .reveal { opacity: 1; transform: none; }
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+  @media (max-width: 1149px) { .logo-tagline { display: none; } }
+  .footer-brand .logo { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .footer-brand .logo-img-wrap { width: 58px; height: 58px; border-radius: 50%; padding: 4px; overflow: hidden; flex-shrink: 0; background: #fff; display: flex; align-items: center; justify-content: center; }
+  .footer-brand .logo-img-wrap img { width: 100%; height: 100%; object-fit: contain; }
+  .footer-brand .logo-text { display: flex; flex-direction: column; }
+  .footer-brand .logo-name { font-family: 'Montserrat', sans-serif; font-weight: 700; color: #fff; font-size: 18px; line-height: 1.2; }
+  .footer-brand .logo-tagline { display: block; color: #00e5ff; font-size: 10.5px; font-weight: 600; letter-spacing: .2px; line-height: 1.4; margin-top: 2px; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-contacts">
+      <a href="mailto:jaynitedigital@gmail.com"><i class="fas fa-envelope"></i>&nbsp;jaynitedigital@gmail.com</a>
+      <a href="tel:+233201485621"><i class="fas fa-phone"></i>&nbsp;0201 485 621</a>
+      <span style="color:rgba(255,255,255,0.3)">|</span>
+      <span>Sunyani, Bono Region, Ghana</span>
+    </div>
+    <div class="topbar-right">
+      <span>Mon – Fri: 8am – 6pm</span>
+      <div class="topbar-social">
+        <a href="https://www.instagram.com/jaynite_digital" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@jaynitedigital" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <div class="logo-img-wrap"><img src="images/logo.png" alt="Jaynite Digital Solutions" onerror="this.style.display='none'"></div>
+      <div class="logo-text">
+        <span class="logo-name">Jaynite Digital Solutions</span>
+        <span class="logo-tagline">Built on Trust. Connected by Technology. Driven by Solutions.</span>
+      </div>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <div class="nav-item">
+        <a href="services.html" class="active">Services</a>
+        <div class="nav-dropdown">
+          <a href="services.html#web"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a>
+          <a href="services.html#uiux"><i class="fas fa-pen-nib"></i> UI/UX Design</a>
+          <a href="services.html#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
+          <a href="services.html#cloud"><i class="fas fa-cloud"></i> Cloud Computing</a>
+          <a href="services.html#marketing"><i class="fas fa-bullhorn"></i> Digital Marketing</a>
+          <a href="services.html#graphics"><i class="fas fa-palette"></i> Graphic Design</a>
+          <div class="dropdown-divider"></div>
+          <a href="services.html#printing"><i class="fas fa-print"></i> Printing, Flyers &amp; Banners</a>
+          <a href="services.html#computers"><i class="fas fa-desktop"></i> Computers &amp; IT Accessories</a>
+          <a href="services.html#tutoring"><i class="fas fa-chalkboard-teacher"></i> Home &amp; Online Tutoring</a>
+          <div class="dropdown-divider"></div>
+          <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener"><i class="fas fa-sim-card"></i> Buy Data Bundles &#8599;</a>
+          <a href="services.html#checkers"><i class="fas fa-graduation-cap"></i> Results Checkers</a>
+        </div>
+      </div>
+      <a href="store.html">Store</a>
+      <a href="project.html">Projects</a>
+      <a href="resource.html">Resources</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="nav-cta">
+      <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn btn-primary">Let's Talk &rarr;</a>
+    </div>
+
+    <button class="hamburger" onclick="openMobileMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mm-scrim" id="mmScrim" onclick="closeMobileMenu()"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-label="Menu">
+  <div class="mm-head">
+    <a href="index.html" class="mm-brand"><img src="images/logo.png" alt="" onerror="this.style.display='none'"><span><b>Jaynite Digital Solutions</b><small>Built on Trust. Connected by Technology.</small></span></a>
+    <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu"><i class="fas fa-xmark"></i></button>
+  </div>
+  <nav class="mobile-nav">
+    <a href="index.html">Home</a>
+    <div class="mobile-nav-item" id="mobileServicesItem">
+      <button class="mobile-dropdown-toggle" onclick="toggleMobileDropdown()" aria-expanded="false">Services <i class="fas fa-chevron-down caret"></i></button>
+      <div class="mobile-sub-nav">
+        <a href="services.html#web"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a>
+        <a href="services.html#uiux"><i class="fas fa-pen-nib"></i> UI/UX Design</a>
+        <a href="services.html#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
+        <a href="services.html#cloud"><i class="fas fa-cloud"></i> Cloud Computing</a>
+        <a href="services.html#marketing"><i class="fas fa-bullhorn"></i> Digital Marketing</a>
+        <a href="services.html#graphics"><i class="fas fa-palette"></i> Graphic Design</a>
+        <a href="services.html#printing"><i class="fas fa-print"></i> Printing &amp; Publications</a>
+        <a href="services.html#computers"><i class="fas fa-desktop"></i> Computers &amp; Accessories</a>
+        <a href="services.html#tutoring"><i class="fas fa-chalkboard-teacher"></i> Tutoring</a>
+        <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener"><i class="fas fa-sim-card"></i> Buy Data Bundles</a>
+        <a href="services.html#checkers"><i class="fas fa-graduation-cap"></i> Results Checkers</a>
+      </div>
+    </div>
+    <a href="store.html">Store</a>
+    <a href="project.html">Projects</a>
+    <a href="resource.html">Resources</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a href="contact.html" class="mm-cta">Start a Project</a>
+  <div class="mobile-menu-footer">
+    <a href="https://wa.me/233201485621" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp us</a>
+    <p>Built on Trust. Connected by Technology. Driven by Solutions.</p><p>&copy; 2026 Jaynite Digital Solutions</p>
+  </div>
+</aside>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="images/services-hero-poster.jpg" aria-hidden="true">
+    <source src="images/services-hero.mp4" type="video/mp4">
+  </video>
+  <div class="container">
+    <p class="section-label">Our Services</p>
+    <h1>Everything You Need, <span>Under One Roof</span></h1>
+    <p>From web development to walk-in printing, explore every service Jaynite Digital Solutions offers, and reach us directly on WhatsApp whenever you're ready.</p>
+    <div class="svc-search">
+      <i class="fas fa-magnifying-glass"></i>
+      <input type="search" id="svcSearch" placeholder="Search services: website, printing, passport..." autocomplete="off" aria-label="Search services">
+      <button type="button" class="search-clear" id="svcClear" aria-label="Clear search"><i class="fas fa-xmark"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="container"><div class="filter-inner" id="filters"><button type="button" class="chip active" data-filter="all"><i class="fas fa-layer-group"></i> All Services <em>14</em></button><button type="button" class="chip" data-filter="quick"><i class="fas fa-bolt"></i> Data &amp; Checkers <em>2</em></button><button type="button" class="chip" data-filter="digital"><i class="fas fa-code"></i> Digital &amp; Software <em>6</em></button><button type="button" class="chip" data-filter="ground"><i class="fas fa-print"></i> Print &amp; Devices <em>3</em></button><button type="button" class="chip" data-filter="forms"><i class="fas fa-file-signature"></i> Forms &amp; Registrations <em>3</em></button></div></div>
+</div>
+
+<!-- INSTANT PURCHASE -->
+<section class="svc-sec cream" id="quick-earn" data-group="quick">
+  <div class="container">
+    <p class="section-label">Available Right Now</p>
+    <h2 class="section-title">Instant Purchase</h2>
+    <p class="section-desc">Two services you can complete right now, without waiting for a reply.</p>
+    <div class="inst-grid">
+      <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc" target="_blank" rel="noopener" class="inst-card reveal" id="data" data-search="data bundle mtn telecel airteltigo internet data buy cheap fast instant" data-category="quick">
+        <img src="images/databundle-1.jpg" alt="" onerror="this.style.display='none'">
+        <span class="inst-icon"><i class="fas fa-sim-card"></i></span>
+        <span class="inst-ribbon">Instant</span>
+        <div class="inst-body">
+          <span class="inst-eyebrow">All Networks</span>
+          <h3>Buy Data Bundles</h3>
+          <p>MTN, Telecel &amp; AirtelTigo data, delivered to your number in minutes.</p>
+          <div class="inst-foot"><span class="inst-price"><b>From GH₵5</b><span>10 min &ndash; 1 hr delivery</span></span><span class="btn btn-primary">Buy Now <i class="fas fa-arrow-right"></i></span></div>
+        </div>
+      </a>
+      <a href="https://www.cheapdata.shop/shop/primedata-jaynite-digital-solutions-mkfmqvnc/checkers" target="_blank" rel="noopener" class="inst-card reveal" id="checkers" data-search="results checker wassce bece waec cssps voucher pin exam results" data-category="quick">
+        <img src="images/checker-1.jpg" alt="" onerror="this.style.display='none'">
+        <span class="inst-icon"><i class="fas fa-graduation-cap"></i></span>
+        <span class="inst-ribbon">Instant</span>
+        <div class="inst-body">
+          <span class="inst-eyebrow">WAEC &amp; CSSPS</span>
+          <h3>WASSCE &amp; BECE Results Checkers</h3>
+          <p>Checker PINs delivered digitally. No walk-in required.</p>
+          <div class="inst-foot"><span class="inst-price"><b>Fast &amp; Secure</b><span>Works on all devices</span></span><span class="btn btn-primary">Buy Now <i class="fas fa-arrow-right"></i></span></div>
+        </div>
+      </a>
+    </div>
+    <p class="sec-note">Looking for more? <a href="store.html">Browse the full Store &rarr;</a></p>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stat-band hide-on-filter">
+  <div class="container">
+    <p class="section-label">Why Clients Choose Us</p>
+    <h2 class="section-title">A Track Record You Can Rely On</h2>
+    <div class="stat-grid">
+      <div class="stat-card reveal"><div class="stat-num" data-target="50" data-suffix="+">0</div><div class="stat-lbl">Projects Completed</div></div>
+      <div class="stat-card reveal"><div class="stat-num" data-target="200" data-suffix="+">0</div><div class="stat-lbl">Happy Clients</div></div>
+      <div class="stat-card reveal"><div class="stat-num" data-target="5" data-suffix="+">0</div><div class="stat-lbl">Years Experience</div></div>
+      <div class="stat-card reveal"><div class="stat-num" data-target="24" data-suffix="/7">0</div><div class="stat-lbl">Support Available</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIGITAL &AMP; SOFTWARE SERVICES -->
+<section class="svc-sec white" id="digital-group" data-group="digital">
+  <div class="container">
+    <p class="section-label">Digital</p>
+    <h2 class="section-title">Digital &amp; Software Services</h2>
+    <p class="section-desc">Websites, software, security and growth for your business.</p>
+    <div class="svc-grid">
+        <a href="contact.html" class="svc-card reveal" id="web" data-search="web app development website software programming build" data-category="digital">
+          <div class="svc-photo">
+            <img src="images/service-web.jpg" alt="Web and app development" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="svc-fallback-icon" style="display:none"><i class="fas fa-laptop-code"></i></div>
+          </div>
+          <div class="svc-body">
+            <h3>Web &amp; App Development</h3>
+            <p>Modern, responsive websites and software built for performance and growth.</p>
+            <ul class="svc-feats">
+              <li><i class="fas fa-check"></i> Custom business websites &amp; e-commerce</li>
+              <li><i class="fas fa-check"></i> Mobile &amp; web app development</li>
+              <li><i class="fas fa-check"></i> Ongoing maintenance &amp; support</li>
+            </ul>
+            <span class="svc-cta">Discuss Your Project <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="contact.html" class="svc-card reveal" id="uiux" data-search="ui ux design wireframe prototype interface user experience" data-category="digital">
+          <div class="svc-photo">
+            <img src="images/service-uiux.jpg" alt="UI UX design" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="svc-fallback-icon" style="display:none"><i class="fas fa-pen-nib"></i></div>
+          </div>
+          <div class="svc-body">
+            <h3>UI/UX Design</h3>
+            <p>User-centered design that creates memorable digital experiences.</p>
+            <ul class="svc-feats">
+              <li><i class="fas fa-check"></i> Wireframing &amp; user research</li>
+              <li><i class="fas fa-check"></i> Mobile-first responsive interfaces</li>
+              <li><i class="fas fa-check"></i> Prototyping &amp; usability testing</li>
+            </ul>
+            <span class="svc-cta">Discuss Your Project <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="contact.html" class="svc-card reveal" id="security" data-search="cybersecurity security audit malware protection backup" data-category="digital">
+          <div class="svc-photo">
+            <img src="images/service-security.jpg" alt="Cybersecurity" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="svc-fallback-icon" style="display:none"><i class="fas fa-shield-alt"></i></div>
+          </div>
+          <div class="svc-body">
+            <h3>Cybersecurity</h3>
+            <p>Protecting digital assets with risk assessments and best-practice security.</p>
+            <ul class="svc-feats">
+              <li><i class="fas fa-check"></i> Security audits &amp; risk assessments</li>
+              <li><i class="fas fa-check"></i> Malware &amp; vulnerability protection</li>
+              <li><i class="fas fa-check"></i> Secure backup &amp; recovery planning</li>
+            </ul>
+            <span class="svc-cta">Discuss Your Project <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="contact.html" class="svc-card reveal" id="cloud" data-search="cloud computing aws firebase deployment migration hosting" data-category="digital">
+          <div class="svc-photo">
+            <img src="images/service-cloud.jpg" alt="Cloud computing" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="svc-fallback-icon" style="display:none"><i class="fas fa-cloud"></i></div>
+          </div>
+          <div class="svc-body">
+            <h3>Cloud Computing</h3>
+            <p>AWS/Firebase deployment, architecture migration, and automated backups.</p>
+            <ul class="svc-feats">
+              <li><i class="fas fa-check"></i> Cloud infrastructure setup</li>
+              <li><i class="fas fa-check"></i> Migration from legacy systems</li>
+              <li><i class="fas fa-check"></i> Automated backup solutions</li>
+            </ul>
+            <span class="svc-cta">Discuss Your Project <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="contact.html" class="svc-card reveal" id="marketing" data-search="digital marketing social media seo ads content strategy" data-category="digital">
+          <div class="svc-photo">
+            <img src="images/service-marketing.jpg" alt="Digital marketing" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="svc-fallback-icon" style="display:none"><i class="fas fa-bullhorn"></i></div>
+          </div>
+          <div class="svc-body">
+            <h3>Digital Marketing</h3>
+            <p>Strategic campaigns that boost your online presence and reach.</p>
+            <ul class="svc-feats">
+              <li><i class="fas fa-check"></i> Social media management</li>
+              <li><i class="fas fa-check"></i> SEO &amp; content strategy</li>
+              <li><i class="fas fa-check"></i> Paid ad campaigns &amp; reporting</li>
+            </ul>
+            <span class="svc-cta">Discuss Your Project <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="contact.html" class="svc-card reveal" id="graphics" data-search="graphic design logo branding poster flyer artwork illustration" data-category="digital">
+          <div class="svc-photo">
+            <img src="images/service-graphics.jpg" alt="Graphic design" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="svc-fallback-icon" style="display:none"><i class="fas fa-palette"></i></div>
+          </div>
+          <div class="svc-body">
+            <h3>Graphic Design</h3>
+            <p>Logos, branding and digital artwork that make your business memorable.</p>
+            <ul class="svc-feats">
+              <li><i class="fas fa-check"></i> Logo &amp; brand identity design</li>
+              <li><i class="fas fa-check"></i> Social media &amp; ad graphics</li>
+              <li><i class="fas fa-check"></i> Posters, flyers &amp; digital artwork</li>
+            </ul>
+            <span class="svc-cta">Discuss Your Project <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+    </div>
+  </div>
+</section>
+
+<!-- PRINT, DEVICES &AMP; LEARNING -->
+<section class="svc-sec cream" id="ground-group" data-group="ground">
+  <div class="container">
+    <p class="section-label">Print, Devices &amp; Learning</p>
+    <h2 class="section-title">Print, Devices &amp; Learning</h2>
+    <p class="section-desc">Walk-in services and products from our Sunyani shop, or delivered to you.</p>
+    <div class="svc-grid">
+        <a href="contact.html" class="svc-card reveal" id="printing" data-search="printing flyers banners frames t-shirts scanning photocopying publications" data-category="ground">
+          <div class="svc-photo">
+            <img src="images/service-printing.jpg" alt="Printing and publications" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="svc-fallback-icon" style="display:none"><i class="fas fa-print"></i></div>
+          </div>
+          <div class="svc-body">
+            <h3>Printing &amp; Publications</h3>
+            <p>Flyers, banners, frames, t-shirts, scanning and photocopying — walk-in or delivered.</p>
+            <ul class="svc-feats">
+              <li><i class="fas fa-check"></i> Flyers, posters &amp; banners</li>
+              <li><i class="fas fa-check"></i> Picture frames &amp; custom t-shirts</li>
+              <li><i class="fas fa-check"></i> Document scanning &amp; photocopying</li>
+            </ul>
+            <span class="svc-cta">Place an Order <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="contact.html" class="svc-card reveal" id="computers" data-search="computers laptops accessories chargers mice keyboards it hardware" data-category="ground">
+          <div class="svc-photo">
+            <img src="images/service-computers.jpg" alt="Computers and accessories" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="svc-fallback-icon" style="display:none"><i class="fas fa-desktop"></i></div>
+          </div>
+          <div class="svc-body">
+            <h3>Computers &amp; IT Accessories</h3>
+            <p>Laptops, computers and IT accessories for home, school and office use.</p>
+            <ul class="svc-feats">
+              <li><i class="fas fa-check"></i> New &amp; quality pre-owned laptops</li>
+              <li><i class="fas fa-check"></i> Chargers, mice, keyboards &amp; more</li>
+              <li><i class="fas fa-check"></i> Device setup &amp; software install</li>
+            </ul>
+            <span class="svc-cta">Ask What's Available <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="contact.html" class="svc-card reveal" id="tutoring" data-search="tutoring lessons ict computer literacy training home online" data-category="ground">
+          <div class="svc-photo">
+            <img src="images/service-tutoring.jpg" alt="Home and online tutoring" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="svc-fallback-icon" style="display:none"><i class="fas fa-chalkboard-teacher"></i></div>
+          </div>
+          <div class="svc-body">
+            <h3>Home &amp; Online Tutoring</h3>
+            <p>Professional tutoring in various subjects and technical skills, in-person or online.</p>
+            <ul class="svc-feats">
+              <li><i class="fas fa-check"></i> One-on-one &amp; group sessions</li>
+              <li><i class="fas fa-check"></i> In-person (home) or fully online</li>
+              <li><i class="fas fa-check"></i> ICT &amp; computer literacy training</li>
+            </ul>
+            <span class="svc-cta">Book a Session <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+    </div>
+  </div>
+</section>
+
+<!-- FORMS &AMP; INSTITUTIONAL REGISTRATIONS -->
+<section class="svc-sec white" id="forms-group" data-group="forms">
+  <div class="container">
+    <p class="section-label">Paperwork Made Easy</p>
+    <h2 class="section-title">Forms &amp; Institutional Registrations</h2>
+    <p class="section-desc">We guide you through the paperwork so every detail is right the first time.</p>
+    <div class="svc-grid">
+        <div class="request-card reveal" id="forms" data-search="university forms admission application institutional on request" data-category="forms">
+          <div class="ri"><i class="fas fa-file-signature"></i></div>
+          <h3>University &amp; Institutional Forms</h3>
+          <p>Available on request — message us with the details and we'll purchase and guide you through it.</p>
+          <a href="contact.html" class="svc-cta">Request This <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="request-card reveal" id="registrations" data-search="ssnit gra ghana card nia dvla rgd nmc business registration government" data-category="forms">
+          <div class="ri"><i class="fas fa-landmark"></i></div>
+          <h3>Government &amp; Institutional Registrations</h3>
+          <p>SSNIT, GRA, Ghana Card, DVLA, business registration &amp; more — we guide you through every field.</p>
+          <a href="contact.html" class="svc-cta">Ask What We Can Handle <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="request-card reveal" id="passport" data-search="passport application travel visa immigration documentation" data-category="forms">
+          <div class="ri"><i class="fas fa-passport"></i></div>
+          <h3>Passport &amp; Travel Applications</h3>
+          <p>Passport application support and travel documentation — we help you get every detail right the first time.</p>
+          <a href="contact.html" class="svc-cta">Request This <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+  </div>
+</section>
+
+<div class="no-results" id="noResults">
+  <i class="fas fa-magnifying-glass"></i>
+  <p>No services match your search. Try a different term, or ask us on WhatsApp. We probably still do it.</p>
+  <button type="button" class="btn btn-primary" id="noResultsReset">Show All Services</button>
+  <p style="margin-top:14px"><a class="wa" href="https://wa.me/233201485621" target="_blank" rel="noopener">Ask on WhatsApp</a></p>
+</div>
+
+<!-- PROCESS -->
+<section class="svc-sec cream hide-on-filter" id="how">
+  <div class="container">
+    <p class="section-label">How It Works</p>
+    <h2 class="section-title">Simple, From Message to Delivery</h2>
+    <p class="section-desc">No long forms. Just tell us what you need.</p>
+    <div class="process-grid">
+      <div class="process-step reveal"><p class="process-num">01</p><h4>Message Us</h4><p>Reach out on WhatsApp with what you need.</p></div>
+      <div class="process-step reveal"><p class="process-num">02</p><h4>We Discuss Details</h4><p>We understand your requirements and timeline.</p></div>
+      <div class="process-step reveal"><p class="process-num">03</p><h4>We Get to Work</h4><p>Your project, order, or request is handled promptly.</p></div>
+      <div class="process-step reveal"><p class="process-num">04</p><h4>Delivery</h4><p>Pick up, walk-in collect, or have it delivered to you.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="start">
+  <div class="container cta-inner">
+    <p class="section-label">Let's Talk</p>
+    <h2 class="section-title">Not Sure Where to Start?</h2>
+    <p class="cta-desc">Tell us what you're trying to do and we'll point you to the right service.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+      <a href="store.html" class="btn btn-outline-white"><i class="fas fa-bag-shopping"></i> Visit the Store</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="margin-bottom:14px">
+            <div class="logo-img-wrap"><img src="images/logo.png" alt="Jaynite Digital Solutions" onerror="this.style.display='none'"></div>
+            <div class="logo-text">
+              <span class="logo-name">Jaynite Digital Solutions</span>
+              <span class="logo-tagline">Built on Trust. Connected by Technology. Driven by Solutions.</span>
+            </div>
+          </div>
+          <p class="footer-about">Web design, custom systems, publication media and IT support across Ghana.</p>
+          <div class="footer-social">
+            <a href="https://youtube.com/@jaynitedigital" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/233201485621" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/jaynite_digital" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col collapsible">
+          <h3>Site <span class="f-plus"><i class="fas fa-plus"></i></span></h3>
+          <div class="footer-section-body">
+            <div class="footer-links">
+              <a href="index.html">&rsaquo; Home</a>
+              <a href="services.html">&rsaquo; Services</a>
+              <a href="store.html">&rsaquo; Store</a>
+              <a href="project.html">&rsaquo; Projects</a>
+              <a href="resource.html">&rsaquo; Resources</a>
+              <a href="about.html">&rsaquo; About</a>
+              <a href="contact.html">&rsaquo; Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-col collapsible">
+          <h3>Store <span class="f-plus"><i class="fas fa-plus"></i></span></h3>
+          <div class="footer-section-body">
+            <div class="footer-links">
+              <a href="store.html#data">&rsaquo; Data Bundles</a>
+              <a href="store.html#checkers">&rsaquo; Results Checkers</a>
+              <a href="store.html#packages">&rsaquo; Website Packages</a>
+              <a href="store.html#systems">&rsaquo; Management Systems</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-col collapsible">
+          <h3>Contact <span class="f-plus"><i class="fas fa-plus"></i></span></h3>
+          <div class="footer-section-body">
+            <div class="footer-links">
+              <a href="#">Sunyani, Bono Region, Ghana</a>
+              <a href="https://wa.me/233201485621" target="_blank">+233 20 148 5621</a>
+              <a href="mailto:jaynitedigital@gmail.com">jaynitedigital@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bottom"><div class="footer-legal"><a href="privacy.html">Privacy Policy</a><span class="sep">&middot;</span><a href="terms.html">Terms of Use</a></div><p>&copy; 2026 Jaynite Digital Solutions.</p></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+function openMobileMenu(){ document.getElementById('mobileMenu').classList.add('open'); document.getElementById('mmScrim').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeMobileMenu(){ document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('mmScrim').classList.remove('open'); document.body.style.overflow=''; }
+function toggleMobileDropdown(){ var i=document.getElementById('mobileServicesItem'); i.querySelector('button').setAttribute('aria-expanded', i.classList.toggle('open')); }
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMobileMenu(); });
+document.querySelectorAll('.mobile-nav a').forEach(function(a){ a.addEventListener('click', closeMobileMenu); });
+document.querySelectorAll('.footer-col.collapsible > h3').forEach(function(h){ h.addEventListener('click', function(){ h.closest('.footer-col').classList.toggle('open'); }); });
+
+// Save mobile data: no background video on small screens or when the visitor prefers reduced motion
+(function(){
+  var v = document.getElementById('heroVideo');
+  if(v && (window.innerWidth < 768 || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches))) v.remove();
+})();
+
+// Scroll reveal (+ failsafe so content is never left hidden)
+var revealObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){ if(entry.isIntersecting){ entry.target.classList.add('in-view'); revealObserver.unobserve(entry.target); } });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el){ revealObserver.observe(el); });
+setTimeout(function(){ document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in-view'); }); }, 2500);
+
+// Animated stat counters
+var statObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting && !entry.target.dataset.done){
+      entry.target.dataset.done = 'true';
+      var el = entry.target, target = parseInt(el.dataset.target, 10), suffix = el.dataset.suffix || '', start = performance.now();
+      function tick(now){
+        var p = Math.min((now - start) / 1400, 1), e = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(e * target) + suffix;
+        if(p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+  });
+},{threshold:0.4});
+document.querySelectorAll('.stat-num').forEach(function(el){ statObserver.observe(el); });
+
+// Search + filter
+var q = '', cat = 'all';
+var items = Array.prototype.slice.call(document.querySelectorAll('[data-search]'));
+items.forEach(function(el){ el.dataset.haystack = (el.dataset.search + ' ' + el.textContent).toLowerCase().replace(/\s+/g, ' '); });
+var secs = Array.prototype.slice.call(document.querySelectorAll('.svc-sec[data-group]'));
+function apply(){
+  var terms = q.toLowerCase().split(/\s+/).filter(Boolean), visible = 0;
+  items.forEach(function(el){
+    var ok = (cat === 'all' || el.dataset.category === cat) && terms.every(function(t){ return el.dataset.haystack.indexOf(t) > -1; });
+    el.style.display = ok ? '' : 'none'; if(ok) visible++;
+  });
+  secs.forEach(function(s){ s.style.display = Array.prototype.some.call(s.querySelectorAll('[data-search]'), function(c){ return c.style.display !== 'none'; }) ? '' : 'none'; });
+  var filtering = cat !== 'all' || q;
+  document.querySelectorAll('.hide-on-filter').forEach(function(s){ s.style.display = filtering ? 'none' : ''; });
+  document.querySelectorAll('#filters .chip').forEach(function(c){ c.classList.toggle('active', c.dataset.filter === cat); });
+  document.getElementById('svcClear').classList.toggle('show', q.length > 0);
+  document.getElementById('noResults').classList.toggle('show', visible === 0);
+}
+function reset(){ q = ''; cat = 'all'; document.getElementById('svcSearch').value = ''; apply(); }
+document.getElementById('svcSearch').addEventListener('input', function(){ q = this.value.trim(); apply(); });
+document.getElementById('svcClear').addEventListener('click', function(){ reset(); document.getElementById('svcSearch').focus(); });
+document.getElementById('noResultsReset').addEventListener('click', reset);
+document.getElementById('filters').addEventListener('click', function(e){
+  var c = e.target.closest('.chip'); if(!c) return;
+  cat = c.dataset.filter; apply(); c.scrollIntoView({inline:'center', block:'nearest', behavior:'smooth'});
+});
+apply();
+</script>
+</body>
+</html>
