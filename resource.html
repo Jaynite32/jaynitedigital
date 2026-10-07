@@ -309,6 +309,12 @@
   .soon-card p { color: var(--ink-soft); font-size: 14.5px; }
   @media (min-width: 720px) { .soon-card { flex-direction: row; align-items: center; } .soon-card > div { flex: 1; } }
   @media (max-width: 1149px) { .logo-tagline { display: none; } }
+  .footer-brand .logo { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .footer-brand .logo-img-wrap { width: 58px; height: 58px; border-radius: 50%; padding: 4px; overflow: hidden; flex-shrink: 0; background: #fff; display: flex; align-items: center; justify-content: center; }
+  .footer-brand .logo-img-wrap img { width: 100%; height: 100%; object-fit: contain; }
+  .footer-brand .logo-text { display: flex; flex-direction: column; }
+  .footer-brand .logo-name { font-family: 'Montserrat', sans-serif; font-weight: 700; color: #fff; font-size: 18px; line-height: 1.2; }
+  .footer-brand .logo-tagline { display: block; color: #00e5ff; font-size: 10.5px; font-weight: 600; letter-spacing: .2px; line-height: 1.4; margin-top: 2px; }
 </style>
 </head>
 <body>
@@ -630,7 +636,7 @@
               <span class="logo-tagline">Built on Trust. Connected by Technology. Driven by Solutions.</span>
             </div>
           </div>
-          <p class="footer-about">Built on Trust. Connected by Technology. Driven by Solutions. Web design, custom systems, publication media and IT support across Ghana.</p>
+          <p class="footer-about">Web design, custom systems, publication media and IT support across Ghana.</p>
           <div class="footer-social">
             <a href="https://youtube.com/@jaynitedigital" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
             <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
