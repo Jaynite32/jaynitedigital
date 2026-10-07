@@ -135,7 +135,7 @@ header {
 
 
 /* Desktop header is hidden by default; only shown at >=900px. This is the fix for the
-   mobile "duplicate nav text" bug — without this rule the desktop nav list rendered
+   mobile "duplicate nav text" bug: without this rule the desktop nav list rendered
    inline on mobile underneath the mobile header bar. */
 .header-desktop { display: none; }
 
@@ -227,7 +227,7 @@ header {
 .trust-item { display: flex; align-items: center; gap: 0.6rem; color: var(--text-muted); font-size: 0.85rem; font-weight: 500; font-family: var(--f-mono); }
 .trust-item i { color: var(--cyan-glow); }
 
-/* Scroll cue arrow — mobile hero only, hidden everywhere else by default */
+/* Scroll cue arrow: mobile hero only, hidden everywhere else by default */
 .scroll-cue { display: none; position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); width: 34px; height: 34px; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; color: var(--cyan-glow); z-index: 3; background: rgba(3,10,22,0.4); backdrop-filter: blur(4px); animation: cueBounce 2s ease-in-out infinite; }
 @keyframes cueBounce { 0%,100% { transform: translate(-50%,0); opacity:0.55; } 50% { transform: translate(-50%,6px); opacity:1; } }
 
@@ -253,7 +253,7 @@ header {
 
   .slide-dots { justify-content: center; margin-bottom: 0.2rem; }
 
-  /* Trust strip becomes a swipeable chip row — fixes the text getting cut off at the screen edge */
+  /* Trust strip becomes a swipeable chip row: fixes the text getting cut off at the screen edge */
   .hero-strip { padding: 0.85rem 0 1rem; }
   .hero-strip .container {
     display: flex;
@@ -420,7 +420,7 @@ footer { background: #02040a; border-top: var(--glass-border); color: var(--text
 
 .footer-bottom { text-align: center; padding-top: 2rem; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.8rem; color: rgba(255,255,255,0.4); }
 
-/* Footer accordion — mobile only. Quick Links, Services, Contact Info collapse
+/* Footer accordion: mobile only. Quick Links, Services, Contact Info collapse
    behind their heading until the + is tapped. Desktop is unaffected. */
 @media (max-width: 767px) {
   .footer-section.collapsible h3 { cursor: pointer; display: flex; align-items: center; justify-content: space-between; margin-bottom: 0; padding: 1rem 0; }
@@ -545,11 +545,127 @@ header { background: rgba(255,255,255,0.94); border-bottom: none; box-shadow: 0 
 .btn-outline-dark { background: transparent; border: 2px solid rgba(10,14,26,0.2); color: #0a0e1a; }
 .btn-outline-dark:hover { border-color: #009cb8; color: #007a91; }
 @media (max-width: 767px) { .video-actions .btn { width: 100%; justify-content: center; } .video-play { width: 64px; height: 64px; } }
+
+/* ===== Desktop header = project page (top bar + navbar) ===== */
+.pj-shell { display: none; --navy-deep: #050811; --navy-mid: #0d1830; --ink: #0a0e1a; --ink-soft: #5b6472; --cyan: #009cb8; --cyan-deep: #007a91; --cyan-glow: #00e5ff; --blue: #2979ff; --line: rgba(10,14,26,0.1); --radius: 12px; --shadow-lg: 0 12px 40px rgba(10,20,40,0.15); --transition: all 0.3s ease; }
+@media (min-width: 900px) { .pj-shell { display: contents; } #siteHeader { display: none; } .hero { padding-top: 70px; } }
+.pj-shell a { text-decoration: none; }
+  .pj-shell .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 50px; font-size: 14px; font-weight: 700; cursor: pointer; transition: var(--transition); border: 2px solid transparent; white-space: nowrap; font-family: inherit; }
+  .pj-shell .btn-primary { background: linear-gradient(135deg, var(--cyan), var(--blue)); color: #fff; box-shadow: 0 4px 20px rgba(0,156,184,0.3); }
+  .pj-shell .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,156,184,0.45); }
+  /* ===== Top bar ===== */
+  .topbar { background: var(--navy-deep); color: rgba(255,255,255,0.75); font-size: 12.5px; padding: 8px 0; }
+  .topbar .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .topbar-contacts { display: flex; gap: 22px; flex-wrap: wrap; }
+  .topbar-contacts a { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.75); transition: var(--transition); }
+  .topbar-contacts a:hover { color: var(--cyan-glow); }
+  .topbar-right { display: flex; align-items: center; gap: 16px; }
+  .topbar-social { display: flex; gap: 8px; margin-left: 4px; }
+  .topbar-social a { display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.08); color: #fff; font-size: 11px; transition: var(--transition); }
+  .topbar-social a:hover { background: var(--cyan); }
+  @media (max-width: 768px) { .topbar { display: none; } }
+
+  /* ===== Navbar ===== */
+  .navbar { background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(10,20,40,0.06); position: sticky; top: 0; z-index: 1000; transition: var(--transition); }
+  .navbar .container { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-img-wrap { width: 58px; height: 58px; border-radius: 50%; padding: 4px; overflow: hidden; flex-shrink: 0; background: #fff; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; }
+  .logo-img-wrap img { width: 100%; height: 100%; object-fit: contain; }
+  .logo-text { display: flex; flex-direction: column; }
+  .logo-name { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.1; }
+  .logo-tagline { font-size: 9.5px; color: var(--cyan-deep); font-weight: 600; letter-spacing: 0.3px; line-height: 1.4; }
+
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  @media (min-width: 900px) {
+    .nav-links { display: flex; align-items: center; gap: 3px; }
+    .nav-links a { padding: 8px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; color: var(--ink); transition: var(--transition); position: relative; }
+    .nav-links a:hover, .nav-links a.active { color: var(--cyan-deep); background: rgba(0,156,184,0.07); }
+    .nav-links a.active::after { content: ''; position: absolute; bottom: 1px; left: 50%; transform: translateX(-50%); width: 18px; height: 2px; background: var(--cyan); border-radius: 2px; }
+    .nav-item { position: relative; display: flex; align-items: center; }
+    .nav-dropdown { position: absolute; top: calc(100% + 8px); left: 0; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-lg); border: 1px solid var(--line); min-width: 230px; padding: 8px; opacity: 0; visibility: hidden; transform: translateY(8px); transition: var(--transition); z-index: 1000; }
+    .nav-item:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown a { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; font-size: 13.5px; font-weight: 500; color: var(--ink); }
+    .nav-dropdown a:hover { background: rgba(0,156,184,0.07); color: var(--cyan-deep); }
+    .nav-dropdown a i { width: 15px; color: var(--cyan); font-size: 0.85rem; }
+    .nav-cta { display: flex; align-items: center; }
+  }
+
+  .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); }
+  .hamburger span { width: 22px; height: 2px; background: var(--ink); border-radius: 2px; display: block; }
+  @media (min-width: 900px) { .hamburger { display: none; } }
+  @media (max-width: 899px) {
+    .navbar .container { justify-content: center; position: relative; height: 72px; }
+    .logo-text { display: none; }
+.pj-shell .nav-cta .btn { text-transform: none; letter-spacing: 0; }
+@media (max-width: 1149px) { .logo-tagline { display: none; } }
+.btn-orange { background: linear-gradient(135deg, #009cb8, #2979ff) !important; color: #fff !important; box-shadow: 0 4px 20px rgba(0,156,184,0.3) !important; }
+.svc-more { text-align: center; margin-top: 2.2rem; }
 </style>
 </head>
 <body>
 
 <!-- Header -->
+<div class="pj-shell">
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-contacts">
+      <a href="mailto:jaynitedigital@gmail.com"><i class="fas fa-envelope"></i>&nbsp;jaynitedigital@gmail.com</a>
+      <a href="tel:+233201485621"><i class="fas fa-phone"></i>&nbsp;0201 485 621</a>
+      <span style="color:rgba(255,255,255,0.3)">|</span>
+      <span>Sunyani, Bono Region, Ghana</span>
+    </div>
+    <div class="topbar-right">
+      <span>Mon – Fri: 8am – 6pm</span>
+      <div class="topbar-social">
+        <a href="https://www.instagram.com/jaynite_digital" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@jaynitedigital" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.linkedin.com/in/akomani-emmanuel-282943370" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <div class="logo-img-wrap"><img src="images/logo.png" alt="Jaynite Digital Solutions" onerror="this.style.display='none'"></div>
+      <div class="logo-text">
+        <span class="logo-name">Jaynite Digital Solutions</span>
+        <span class="logo-tagline">Built on Trust. Connected by Technology. Driven by Solutions.</span>
+      </div>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <div class="nav-item">
+        <a href="services.html">Services</a>
+        <div class="nav-dropdown">
+          <a href="services.html#web"><i class="fas fa-laptop-code"></i> Web &amp; App Development</a>
+          <a href="services.html#uiux"><i class="fas fa-pen-nib"></i> UI/UX Design</a>
+          <a href="services.html#security"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
+          <a href="services.html#printing"><i class="fas fa-print"></i> Printing &amp; Publications</a>
+          <a href="services.html#computers"><i class="fas fa-desktop"></i> Computers &amp; Accessories</a>
+        </div>
+      </div>
+      <a href="store.html">Store</a>
+      <a href="project.html">Projects</a>
+      <a href="resource.html">Resources</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="nav-cta">
+      <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn btn-primary">Let's Talk &rarr;</a>
+    </div>
+
+    <button class="hamburger" onclick="openMobileMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+</div>
+
 <header id="siteHeader">
   <div class="header-utility">
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
@@ -789,6 +905,7 @@ header { background: rgba(255,255,255,0.94); border-bottom: none; box-shadow: 0 
         </div>
       </a>
     </div>
+    <div class="svc-more"><a href="services.html" class="btn btn-cyan">See All Services <i class="fas fa-arrow-right"></i></a></div>
   </div>
 </section>
 
@@ -852,7 +969,7 @@ header { background: rgba(255,255,255,0.94); border-bottom: none; box-shadow: 0 
         <span class="logo-tile" aria-hidden="true"><img src="images/inst-rgd.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';"><b style="display:none">RGD</b></span>
       </div>
     </div>
-    <p class="institutions-note">We assist with all kinds of <strong>Online Registrations</strong>, <strong>Teachers and Nursing Training College forms</strong>, and <strong>University Admission forms</strong> — guiding you through every field so nothing gets rejected for a simple mistake.</p>
+    <p class="institutions-note">We assist with all kinds of <strong>Online Registrations</strong>, <strong>Teachers and Nursing Training College forms</strong>, and <strong>University Admission forms</strong>: guiding you through every field so nothing gets rejected for a simple mistake.</p>
 
     <div class="credibility-grid">
       <div class="cred-card">
@@ -938,7 +1055,7 @@ header { background: rgba(255,255,255,0.94); border-bottom: none; box-shadow: 0 
       </div>
       <div class="toolkit-item">
       <div class="toolkit-head"><div class="th-left"><i class="fas fa-image tk-icon"></i><h4>Upload &amp; Host Images Free</h4></div><span class="plus"><i class="fas fa-plus"></i></span></div>
-       <div class="toolkit-body"><div class="toolkit-body-inner"><p>Upload photos and get an instant shareable link — no account needed.</p><a href="https://imgbb.com/" target="_blank" rel="noopener">Open ImgBB →</a></div></div>
+       <div class="toolkit-body"><div class="toolkit-body-inner"><p>Upload photos and get an instant shareable link: no account needed.</p><a href="https://imgbb.com/" target="_blank" rel="noopener">Open ImgBB →</a></div></div>
       </div>
     </div>
     <div class="tk-more"><a href="resource.html" class="btn btn-cyan">View More Tools &amp; Resources <i class="fas fa-arrow-right"></i></a></div>
@@ -950,7 +1067,7 @@ header { background: rgba(255,255,255,0.94); border-bottom: none; box-shadow: 0 
   <div class="container">
     <div class="section-label">
       <span>Watch</span>
-      <h2>See Jaynite in Action</h2>
+      <h2>See Us in Action</h2>
       <p>Watch our latest video on YouTube to see how we work and what we can build for you.</p>
     </div>
     <div class="video-wrap">
@@ -972,7 +1089,7 @@ header { background: rgba(255,255,255,0.94); border-bottom: none; box-shadow: 0 
     <div class="section-label">
       <span class="kicker">Convenient &amp; Secure</span>
       <h2>Payment Options We Accept</h2>
-      <p>Pay however works best for you — locally or from abroad.</p>
+      <p>Pay however works best for you: locally or from abroad.</p>
     </div>
     <div class="pay-grid">
       <div class="pay-card">
@@ -1016,7 +1133,7 @@ header { background: rgba(255,255,255,0.94); border-bottom: none; box-shadow: 0 
       <h2>Ready to Upgrade Your Digital Footprint?</h2>
       <p>Whether you require a custom web platform, branding material, data top-up, or enterprise IT hardware, we are ready to assist.</p>
       <div class="btn-group">
-        <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn btn-orange"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+        <a href="https://wa.me/233201485621" target="_blank" rel="noopener" class="btn btn-orange"><i class="fab fa-whatsapp"></i> Start a Conversation</a>
         <a href="contact.html" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact Us</a>
       </div>
     </div>
@@ -1041,7 +1158,6 @@ header { background: rgba(255,255,255,0.94); border-bottom: none; box-shadow: 0 
         <h3>Quick Links <span class="f-plus"><i class="fas fa-plus"></i></span></h3>
         <div class="footer-section-body">
         <ul>
-          <li><a href="index.html"><i class="fas fa-angle-right"></i> Home</a></li>
           <li><a href="services.html"><i class="fas fa-angle-right"></i> Services</a></li>
           <li><a href="store.html"><i class="fas fa-angle-right"></i> Store</a></li>
           <li><a href="project.html"><i class="fas fa-angle-right"></i> Projects</a></li>
@@ -1112,7 +1228,7 @@ document.querySelectorAll('.toolkit-head').forEach(h=>{
   h.addEventListener('click', ()=> h.closest('.toolkit-item').classList.toggle('active'));
 });
 
-// Footer Accordion (mobile only — CSS keeps sections open on desktop regardless of this class)
+// Footer Accordion (mobile only: CSS keeps sections open on desktop regardless of this class)
 document.querySelectorAll('.footer-section.collapsible > h3').forEach(h=>{
   h.addEventListener('click', ()=> h.closest('.footer-section').classList.toggle('active'));
 });
