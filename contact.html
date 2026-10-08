@@ -232,7 +232,7 @@
   .cta-buttons { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
 
 
-  /* ===== Footer ===== */
+ /* ===== Footer ===== */
   footer { background: #030509; color: rgba(255,255,255,0.65); }
   .footer-main { padding: 4.2rem 0 2.6rem; }
   .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.2rem; }
@@ -250,28 +250,28 @@
   .footer-links a { font-size: 13.5px; color: rgba(255,255,255,0.55); display: flex; align-items: center; gap: 6px; transition: var(--transition); }
   .footer-links a:hover { color: var(--cyan-glow); padding-left: 3px; }
   .footer-links a i { color: var(--cyan-glow); font-size: 0.78em; }
- .footer-bottom { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-.footer-bottom p { margin: 0; }
-.footer-legal { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 14px; }
-.footer-legal a { color: var(--cyan-glow); font-weight: 600; font-size: 13.5px; transition: var(--transition); }
-.footer-legal a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
-.footer-legal .sep { color: rgba(255,255,255,0.3); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding: 20px 0; text-align: center; font-size: 12.5px; color: rgba(255,255,255,0.4); }
+  .footer-bottom { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .footer-bottom p { margin: 0; }
+  .footer-legal { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 14px; }
+  .footer-legal a { color: var(--cyan-glow); font-weight: 600; font-size: 13.5px; transition: var(--transition); }
+  .footer-legal a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+  .footer-legal .sep { color: rgba(255,255,255,0.3); }
+  @media (max-width: 767px) { .footer-bottom { padding-bottom: 84px; } }
 
-@media (max-width: 767px) {
-  .footer-bottom { padding-bottom: 84px; }
-  .footer-col.collapsible h3 { cursor: pointer; display: flex; align-items: center; justify-content: space-between; margin-bottom: 0; padding: 14px 0; border-bottom: none; }
-  .footer-col.collapsible h3 .f-plus { display: inline-flex; color: var(--cyan-glow); transition: var(--transition); font-size: 0.82rem; }
-  .footer-col.collapsible.open h3 .f-plus { transform: rotate(45deg); }
-  .footer-col.collapsible .footer-section-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding-bottom 0.3s ease; padding-bottom: 0; }
-  .footer-col.collapsible.open .footer-section-body { max-height: 500px; padding-bottom: 14px; }
-  .footer-col.collapsible { border-bottom: 1px solid rgba(255,255,255,0.08); }
-}
+  @media (max-width: 767px) {
+    .footer-col.collapsible h3 { cursor: pointer; display: flex; align-items: center; justify-content: space-between; margin-bottom: 0; padding: 14px 0; border-bottom: none; }
+    .footer-col.collapsible h3 .f-plus { display: inline-flex; color: var(--cyan-glow); transition: var(--transition); font-size: 0.82rem; }
+    .footer-col.collapsible.open h3 .f-plus { transform: rotate(45deg); }
+    .footer-col.collapsible .footer-section-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding-bottom 0.3s ease; padding-bottom: 0; }
+    .footer-col.collapsible.open .footer-section-body { max-height: 500px; padding-bottom: 14px; }
+    .footer-col.collapsible { border-bottom: 1px solid rgba(255,255,255,0.08); }
+  }
 
   .wa-float { position: fixed; bottom: 24px; right: 24px; width: 54px; height: 54px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(37,211,102,0.35); z-index: 900; transition: var(--transition); }
   .wa-float:hover { transform: scale(1.08); }
   .wa-float i { color: #fff; font-size: 1.5rem; }
 
-  html:not(.js) .reveal { opacity: 1; transform: none; }
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.in-view { opacity: 1; transform: translateY(0); }
   @media (max-width: 1149px) { .logo-tagline { display: none; } }
